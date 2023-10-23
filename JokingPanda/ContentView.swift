@@ -13,7 +13,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
-    @State var isRecording = false
+//    @State var isRecording = false
     
     @StateObject var speaker = Speaker()
     
@@ -24,10 +24,6 @@ struct ContentView: View {
                 .fontWeight(.bold)
             
             switch speechStatus {
-            case .authorized:
-                Button("Start Panda") {
-                    speaker.speak("Hello, I'm The Joking Panda! Do you want to hear a joke?")
-                }
             case .denied:
                 Button("Open settings to turn on your microphone") {
                     // Open app settings
@@ -45,8 +41,12 @@ struct ContentView: View {
                         speechStatus = SFSpeechRecognizer.authorizationStatus()
                     }
                 }
+            case .restricted:
+                Text("There seems to be a problem accessing your microphone. It doesnt look like you can speak to the panda 🥺.")
             default:
-                Text("Unfortunately talking panda only works for devices with a microphone.")
+                Button("Start Panda") {
+                    speaker.speak("Hello, I'm The Joking Panda! Do you want to hear a joke?")
+                }
             }
         }
         .padding()
