@@ -1,0 +1,593 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
+		8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* ContentView.swift */; };
+		8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D642AE67101002CEA1E /* Assets.xcassets */; };
+		8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */; };
+		8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */; };
+		8DC97D7C2AE67101002CEA1E /* JokingPandaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */; };
+		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DC97D6E2AE67101002CEA1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DC97D552AE670FF002CEA1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC97D5C2AE670FF002CEA1E;
+			remoteInfo = JokingPanda;
+		};
+		8DC97D782AE67101002CEA1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DC97D552AE670FF002CEA1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC97D5C2AE670FF002CEA1E;
+			remoteInfo = JokingPanda;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
+		8DC97D622AE670FF002CEA1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8DC97D642AE67101002CEA1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8DC97D6D2AE67101002CEA1E /* JokingPandaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokingPandaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaTests.swift; sourceTree = "<group>"; };
+		8DC97D772AE67101002CEA1E /* JokingPandaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokingPandaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITests.swift; sourceTree = "<group>"; };
+		8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DC97D5A2AE670FF002CEA1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC97D6A2AE67101002CEA1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC97D742AE67101002CEA1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8DC97D542AE670FF002CEA1E = {
+			isa = PBXGroup;
+			children = (
+				8DC97D5F2AE670FF002CEA1E /* JokingPanda */,
+				8DC97D702AE67101002CEA1E /* JokingPandaTests */,
+				8DC97D7A2AE67101002CEA1E /* JokingPandaUITests */,
+				8DC97D5E2AE670FF002CEA1E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8DC97D5E2AE670FF002CEA1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */,
+				8DC97D6D2AE67101002CEA1E /* JokingPandaTests.xctest */,
+				8DC97D772AE67101002CEA1E /* JokingPandaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8DC97D5F2AE670FF002CEA1E /* JokingPanda */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
+				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
+				8DC97D642AE67101002CEA1E /* Assets.xcassets */,
+				8DC97D662AE67101002CEA1E /* Preview Content */,
+			);
+			path = JokingPanda;
+			sourceTree = "<group>";
+		};
+		8DC97D662AE67101002CEA1E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8DC97D702AE67101002CEA1E /* JokingPandaTests */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */,
+			);
+			path = JokingPandaTests;
+			sourceTree = "<group>";
+		};
+		8DC97D7A2AE67101002CEA1E /* JokingPandaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */,
+				8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */,
+			);
+			path = JokingPandaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DC97D5C2AE670FF002CEA1E /* JokingPanda */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DC97D812AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPanda" */;
+			buildPhases = (
+				8DC97D592AE670FF002CEA1E /* Sources */,
+				8DC97D5A2AE670FF002CEA1E /* Frameworks */,
+				8DC97D5B2AE670FF002CEA1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JokingPanda;
+			productName = JokingPanda;
+			productReference = 8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8DC97D6C2AE67101002CEA1E /* JokingPandaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DC97D842AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPandaTests" */;
+			buildPhases = (
+				8DC97D692AE67101002CEA1E /* Sources */,
+				8DC97D6A2AE67101002CEA1E /* Frameworks */,
+				8DC97D6B2AE67101002CEA1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DC97D6F2AE67101002CEA1E /* PBXTargetDependency */,
+			);
+			name = JokingPandaTests;
+			productName = JokingPandaTests;
+			productReference = 8DC97D6D2AE67101002CEA1E /* JokingPandaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8DC97D762AE67101002CEA1E /* JokingPandaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DC97D872AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPandaUITests" */;
+			buildPhases = (
+				8DC97D732AE67101002CEA1E /* Sources */,
+				8DC97D742AE67101002CEA1E /* Frameworks */,
+				8DC97D752AE67101002CEA1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DC97D792AE67101002CEA1E /* PBXTargetDependency */,
+			);
+			name = JokingPandaUITests;
+			productName = JokingPandaUITests;
+			productReference = 8DC97D772AE67101002CEA1E /* JokingPandaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8DC97D552AE670FF002CEA1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					8DC97D5C2AE670FF002CEA1E = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					8DC97D6C2AE67101002CEA1E = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 8DC97D5C2AE670FF002CEA1E;
+					};
+					8DC97D762AE67101002CEA1E = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 8DC97D5C2AE670FF002CEA1E;
+					};
+				};
+			};
+			buildConfigurationList = 8DC97D582AE670FF002CEA1E /* Build configuration list for PBXProject "JokingPanda" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8DC97D542AE670FF002CEA1E;
+			productRefGroup = 8DC97D5E2AE670FF002CEA1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DC97D5C2AE670FF002CEA1E /* JokingPanda */,
+				8DC97D6C2AE67101002CEA1E /* JokingPandaTests */,
+				8DC97D762AE67101002CEA1E /* JokingPandaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DC97D5B2AE670FF002CEA1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */,
+				8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC97D6B2AE67101002CEA1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC97D752AE67101002CEA1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DC97D592AE670FF002CEA1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
+				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC97D692AE67101002CEA1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC97D732AE67101002CEA1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC97D7C2AE67101002CEA1E /* JokingPandaUITests.swift in Sources */,
+				8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8DC97D6F2AE67101002CEA1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC97D5C2AE670FF002CEA1E /* JokingPanda */;
+			targetProxy = 8DC97D6E2AE67101002CEA1E /* PBXContainerItemProxy */;
+		};
+		8DC97D792AE67101002CEA1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC97D5C2AE670FF002CEA1E /* JokingPanda */;
+			targetProxy = 8DC97D782AE67101002CEA1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8DC97D7F2AE67101002CEA1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8DC97D802AE67101002CEA1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8DC97D822AE67101002CEA1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JokingPanda/Preview Content\"";
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPanda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DC97D832AE67101002CEA1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JokingPanda/Preview Content\"";
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPanda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8DC97D852AE67101002CEA1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPandaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JokingPanda.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JokingPanda";
+			};
+			name = Debug;
+		};
+		8DC97D862AE67101002CEA1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPandaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JokingPanda.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JokingPanda";
+			};
+			name = Release;
+		};
+		8DC97D882AE67101002CEA1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPandaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JokingPanda;
+			};
+			name = Debug;
+		};
+		8DC97D892AE67101002CEA1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPandaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JokingPanda;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8DC97D582AE670FF002CEA1E /* Build configuration list for PBXProject "JokingPanda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC97D7F2AE67101002CEA1E /* Debug */,
+				8DC97D802AE67101002CEA1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DC97D812AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPanda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC97D822AE67101002CEA1E /* Debug */,
+				8DC97D832AE67101002CEA1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DC97D842AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPandaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC97D852AE67101002CEA1E /* Debug */,
+				8DC97D862AE67101002CEA1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DC97D872AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPandaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DC97D882AE67101002CEA1E /* Debug */,
+				8DC97D892AE67101002CEA1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8DC97D552AE670FF002CEA1E /* Project object */;
+}
