@@ -14,7 +14,7 @@
 		8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */; };
 		8DC97D7C2AE67101002CEA1E /* JokingPandaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */; };
 		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
-		8DC97D8D2AE677E5002CEA1E /* PandaUtterance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */; };
+		8DC97D902AE6E1D8002CEA1E /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +45,8 @@
 		8DC97D772AE67101002CEA1E /* JokingPandaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokingPandaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITests.swift; sourceTree = "<group>"; };
 		8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PandaUtterance.swift; sourceTree = "<group>"; };
 		8DC97D8E2AE6BE11002CEA1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */,
+				8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -279,8 +279,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
-				8DC97D8D2AE677E5002CEA1E /* PandaUtterance.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
+				8DC97D902AE6E1D8002CEA1E /* Speaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

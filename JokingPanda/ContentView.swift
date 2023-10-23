@@ -12,8 +12,10 @@ import Speech
 struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
-    @State var synthesizer = AVSpeechSynthesizer()
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
+    @State var isRecording = false
+    
+    @StateObject var speaker = Speaker()
     
     var body: some View {
         VStack {
@@ -24,13 +26,10 @@ struct ContentView: View {
             switch speechStatus {
             case .authorized:
                 Button("Start Panda") {
-                    let utterance = PandaUtterance(string: "Hello, I'm The Joking Panda! Do you want to hear a joke?")
-                    
-                    // Tell the synthesizer to speak the utterance.
-                    synthesizer.speak(utterance)
+                    speaker.speak("Hello, I'm The Joking Panda! Do you want to hear a joke?")
                 }
             case .denied:
-                Button("Enable your microphone in settings") {
+                Button("Open settings to turn on your microphone") {
                     // Open app settings
                     if let url = URL.init(string: UIApplication.openSettingsURLString) {
                         UIApplication.shared.open(url, options: [:], completionHandler: {_ in 
@@ -39,7 +38,7 @@ struct ContentView: View {
                     }
                 }
             case .notDetermined:
-                Button("Enable your microphone to talk to the panda") {
+                Button("Talk to the panda") {
                     // Request access to microphone
                     SFSpeechRecognizer.requestAuthorization { status in
                         print("Updated speech status: \(status)")
