@@ -46,6 +46,7 @@
 		8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITests.swift; sourceTree = "<group>"; };
 		8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PandaUtterance.swift; sourceTree = "<group>"; };
+		8DC97D8E2AE6BE11002CEA1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +77,7 @@
 		8DC97D542AE670FF002CEA1E = {
 			isa = PBXGroup;
 			children = (
+				8DC97D8E2AE6BE11002CEA1E /* README.md */,
 				8DC97D5F2AE670FF002CEA1E /* JokingPanda */,
 				8DC97D702AE67101002CEA1E /* JokingPandaTests */,
 				8DC97D7A2AE67101002CEA1E /* JokingPandaUITests */,
