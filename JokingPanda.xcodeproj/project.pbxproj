@@ -14,6 +14,7 @@
 		8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */; };
 		8DC97D7C2AE67101002CEA1E /* JokingPandaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */; };
 		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
+		8DC97D8D2AE677E5002CEA1E /* PandaUtterance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		8DC97D772AE67101002CEA1E /* JokingPandaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokingPandaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITests.swift; sourceTree = "<group>"; };
 		8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PandaUtterance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,8 @@
 		8DC97D5F2AE670FF002CEA1E /* JokingPanda */ = {
 			isa = PBXGroup;
 			children = (
+				8DC97D8A2AE673C0002CEA1E /* Model */,
+				8DC97D8B2AE673CB002CEA1E /* Views */,
 				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
 				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
 				8DC97D642AE67101002CEA1E /* Assets.xcassets */,
@@ -125,6 +129,21 @@
 				8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */,
 			);
 			path = JokingPandaUITests;
+			sourceTree = "<group>";
+		};
+		8DC97D8A2AE673C0002CEA1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D8C2AE677E5002CEA1E /* PandaUtterance.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DC97D8B2AE673CB002CEA1E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
+				8DC97D8D2AE677E5002CEA1E /* PandaUtterance.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +367,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "In order to speak to the Panda, please enable your microphone";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -404,6 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "In order to speak to the Panda, please enable your microphone";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -430,6 +452,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,6 +482,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
