@@ -30,7 +30,7 @@ class Speaker: NSObject, ObservableObject {
             utterance.volume = 0.8
             
             // Assign the voice to the utterance.
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
             
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
             try AVAudioSession.sharedInstance().setActive(true)
