@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
+    @State var personToStartTalking = Person.panda
     
     @StateObject var speaker = Speaker()
     @StateObject var speechRecognizer = SpeechRecognizer()
@@ -22,7 +23,24 @@ struct ContentView: View {
                 .font(.headline)
                 .fontWeight(.bold)
             
-            if !speaker.isSpeaking && !speechRecognizer.isRecording {
+            if personToStartTalking == .currentUser && !speechRecognizer.isRecording {
+                Button("Respond to Panda") {
+                    do {
+                        try speechRecognizer.startRecording()
+                    }
+                    catch {
+                        print("Problem starting recording...")
+                    }
+                }
+            }
+            else if personToStartTalking == .currentUser && speechRecognizer.isRecording {
+                Text("Talk to the panda 😮")
+                Button("I'm done talking") {
+                    speechRecognizer.stopRecording()
+                    personToStartTalking = .panda
+                }
+            }
+            else {
                 switch speechStatus {
                 case .denied:
                     Button("Open settings to turn on your microphone") {
@@ -46,25 +64,10 @@ struct ContentView: View {
                 default:
                     Button("Start Panda") {
                         speaker.speak("Hello, I'm The Joking Panda! Do you want to hear a joke?")
-//                        do {
-//                            try speechRecognizer.startRecording()
-//                        }
-//                        catch {
-//                            print("Problem starting recording...")
-//                        }
+                        personToStartTalking = .currentUser
                     }
                 }
             }
-            else if speechRecognizer.isRecording {
-                Text("Talk to the panda 😮")
-                Button("I'm done talking") {
-                    speechRecognizer.stopRecording()
-                }
-            }
-            else {
-                Text("Looks like we've got a bit of an error ❌")
-            }
-            
         }
         .padding()
     }

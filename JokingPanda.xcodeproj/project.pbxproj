@@ -16,6 +16,7 @@
 		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
 		8DC97D902AE6E1D8002CEA1E /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */; };
 		8DC97D922AE6F256002CEA1E /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */; };
+		8DC97D942AE80486002CEA1E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D932AE80486002CEA1E /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8DC97D8E2AE6BE11002CEA1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		8DC97D932AE80486002CEA1E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */,
 				8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */,
+				8DC97D932AE80486002CEA1E /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
 				8DC97D922AE6F256002CEA1E /* SpeechRecognizer.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
+				8DC97D942AE80486002CEA1E /* User.swift in Sources */,
 				8DC97D902AE6E1D8002CEA1E /* Speaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
