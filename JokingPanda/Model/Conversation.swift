@@ -8,6 +8,5 @@
 import Foundation
 
 struct Conversation {
-    internal let botPhrases: [String]
-    internal let expectedUserPhrases: [String]
+    internal let phrases: [String]
 }
