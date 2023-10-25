@@ -12,7 +12,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
-    @State var personToStartTalking = Person.panda
+    @State var personToStartTalking = Person.bot
     
     @StateObject var speaker = Speaker()
     @StateObject var speechRecognizer = SpeechRecognizer()
@@ -37,7 +37,7 @@ struct ContentView: View {
                 Text("Talk to the panda 😮")
                 Button("I'm done talking") {
                     speechRecognizer.stopRecording()
-                    personToStartTalking = .panda
+                    personToStartTalking = .bot
                 }
             }
             else {
