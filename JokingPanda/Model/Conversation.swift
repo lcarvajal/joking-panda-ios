@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Conversation {
-    internal let phrases: [String]
+struct Conversation: Hashable, Codable, Identifiable {
+    var id: Int
+    var phrases: [String]
 }
