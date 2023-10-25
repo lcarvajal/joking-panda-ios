@@ -19,6 +19,7 @@
 		8DC97D942AE80486002CEA1E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D932AE80486002CEA1E /* Person.swift */; };
 		8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Conversation.swift */; };
 		8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D972AE93284002CEA1E /* ConversationManager.swift */; };
+		8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D9A2AE98896002CEA1E /* conversationData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		8DC97D932AE80486002CEA1E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8DC97D952AE92CB0002CEA1E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		8DC97D972AE93284002CEA1E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		8DC97D9A2AE98896002CEA1E /* conversationData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = conversationData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,10 +108,10 @@
 		8DC97D5F2AE670FF002CEA1E /* JokingPanda */ = {
 			isa = PBXGroup;
 			children = (
+				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
 				8DC97D8A2AE673C0002CEA1E /* Model */,
 				8DC97D8B2AE673CB002CEA1E /* Views */,
-				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
-				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
+				8DC97D992AE98856002CEA1E /* Resources */,
 				8DC97D642AE67101002CEA1E /* Assets.xcassets */,
 				8DC97D662AE67101002CEA1E /* Preview Content */,
 			);
@@ -156,8 +158,17 @@
 		8DC97D8B2AE673CB002CEA1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		8DC97D992AE98856002CEA1E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D9A2AE98896002CEA1E /* conversationData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */,
 				8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */,
 				8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */,
 			);
