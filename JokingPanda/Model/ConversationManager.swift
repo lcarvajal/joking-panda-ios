@@ -39,24 +39,27 @@ class ConversationManager: NSObject, ObservableObject {
 
     private func converse() {
         if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
-            speaker.speak(currentPhrase())
-            updateStatus(.botSpeaking)
-//            if personToStartTalking() == .bot {
-//                speaker.speak(currentPhrase())
-//            }
-//            else {
-//                do {
-//                    print("Expected user phrase: \(currentPhrase())")
-//                    try speechRecognizer.startRecording()
-//                    // When recording is finished increment phrase counter and stop recording
-//    //                incrementPhraseIndex()
-//                    // if phrase index isn't finished, call function again
-//    //                converse()
-//                }
-//                catch {
-//                    print("Problem starting recording...")
-//                }
-//            }
+            if personToStartTalking() == .bot {
+                speaker.speak(currentPhrase())
+                updateStatus(.botSpeaking)
+            }
+            else {
+                do {
+                    print("Expected user phrase: \(currentPhrase())")
+                    status = .currentUserSpeaking
+                    try speechRecognizer.startRecording()
+                    
+                    let seconds = 2.0
+                    DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                        self.speechRecognizer.stopRecording()
+                        self.incrementPhraseIndex()
+                        self.converse()
+                    }
+                }
+                catch {
+                    print("Problem starting recording...")
+                }
+            }
         }
         else {
             return
@@ -77,6 +80,7 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private func incrementPhraseIndex() {
+        updateStatus(.noOneSpeaking)
         phraseIndex += 1
 
         if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
@@ -100,7 +104,7 @@ class ConversationManager: NSObject, ObservableObject {
         case .currentUserSpeaking:
             imageName = "panda-mic-resting"
         case .noOneSpeaking:
-            imageName = "panda-mic-resting-eyes-closed"
+            imageName = "panda-dance"
         case .stopped:
             imageName = "panda-mic-down"
         }
@@ -126,7 +130,6 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
 //        self.isSpeaking = false
         // Stop speaker and start recording after speaker is finished...
         speaker.stop()
-        updateStatus(.noOneSpeaking)
         incrementPhraseIndex()
         converse()
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
