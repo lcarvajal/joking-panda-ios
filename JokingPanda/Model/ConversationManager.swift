@@ -8,12 +8,21 @@
 import Foundation
 import Speech
 
+enum ConversationStatus {
+    case botSpeaking
+    case currentUserSpeaking
+    case noOneSpeaking
+    case stopped
+}
+
 class ConversationManager: NSObject, ObservableObject {
-    internal var speaker = Speaker()
-    internal var speechRecognizer = SpeechRecognizer()
-    internal var isConversing = false
+    @Published var imageName = "panda-mic-down"
+    internal var status: ConversationStatus = .stopped
     
-    private var conversations: [Conversation] = JokingPanda.load("conversationData.json")
+    private let speaker = Speaker()
+    private let speechRecognizer = SpeechRecognizer()
+    private let conversations: [Conversation] = JokingPanda.load("conversationData.json")
+    
     private var conversationIndex = 0
     private var phraseIndex = 0
     
@@ -22,11 +31,16 @@ class ConversationManager: NSObject, ObservableObject {
         speechRecognizer.speechRecognizer.delegate = self
         speaker.synthesizer.delegate = self
     }
+    
+    internal func startConversation() {
+        updateStatus(.botSpeaking)
+        converse()
+    }
 
-    internal func converse() {
-        if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) {
-            isConversing = true
+    private func converse() {
+        if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
             speaker.speak(currentPhrase())
+            updateStatus(.botSpeaking)
 //            if personToStartTalking() == .bot {
 //                speaker.speak(currentPhrase())
 //            }
@@ -45,7 +59,6 @@ class ConversationManager: NSObject, ObservableObject {
 //            }
         }
         else {
-            isConversing = false
             return
         }
     }
@@ -69,13 +82,28 @@ class ConversationManager: NSObject, ObservableObject {
         if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
             phraseIndex = 0
             conversationIndex += 1
-            isConversing = false
+            updateStatus(.stopped)
 
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
             }
         }
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
+    }
+    
+    private func updateStatus(_ updatedStatus: ConversationStatus) {
+        status = updatedStatus
+        
+        switch status {
+        case .botSpeaking:
+            imageName = "panda-mic-up-mouth-open"
+        case .currentUserSpeaking:
+            imageName = "panda-mic-resting"
+        case .noOneSpeaking:
+            imageName = "panda-mic-resting-eyes-closed"
+        case .stopped:
+            imageName = "panda-mic-down"
+        }
     }
 }
 
@@ -98,10 +126,9 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
 //        self.isSpeaking = false
         // Stop speaker and start recording after speaker is finished...
         speaker.stop()
+        updateStatus(.noOneSpeaking)
         incrementPhraseIndex()
-        if isConversing {
-            converse()
-        }
+        converse()
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }

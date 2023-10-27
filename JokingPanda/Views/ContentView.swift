@@ -12,23 +12,22 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
-    @State var conversationManager = ConversationManager()
-    @State var pandaImageToDisplay = "panda-mic-resting"
+    @StateObject var conversationManager = ConversationManager()
     
     var body: some View {
         VStack {
-            Image(pandaImageToDisplay)
+            Image(conversationManager.imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 400)
 
             
-            if speechStatus == .authorized && !conversationManager.isConversing {
+            if speechStatus == .authorized && conversationManager.status == .stopped {
                 Button("Listen to a Joke") {
-                    conversationManager.converse()
+                    conversationManager.startConversation()
                 }
             }
-            else if speechStatus == .authorized && conversationManager.isConversing {
+            else if speechStatus == .authorized {
                 Text("")
             }
             else {
