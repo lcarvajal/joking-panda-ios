@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import Speech
 
 struct ConversationManager {
+    internal var speaker = Speaker()
+    internal var speechRecognizer = SpeechRecognizer()
+    
     private var conversations: [Conversation] = load("conversationData.json")
     private var conversationIndex = 0
     private var phraseIndex = 0
@@ -37,6 +41,27 @@ struct ConversationManager {
         else {
             return Person.currentUser
         }
+    }
+    
+    internal mutating func speak() {
+        speaker.speak(currentPhrase())
+        incrementPhraseIndex()
+    }
+    
+    internal mutating func listen() {
+        do {
+            print("Expected user phrase: \(currentPhrase())")
+            speaker.stop()
+            try speechRecognizer.startRecording()
+        }
+        catch {
+            print("Problem starting recording...")
+        }
+    }
+    
+    internal mutating func stopListening() {
+        speechRecognizer.stopRecording()
+        incrementPhraseIndex()
     }
 }
 
