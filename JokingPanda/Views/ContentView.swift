@@ -23,27 +23,13 @@ struct ContentView: View {
                 .frame(height: 400)
 
             
-            if speechStatus == .authorized {
-                if conversationManager.personToStartTalking() == .currentUser && !conversationManager.speechRecognizer.isRecording {
-                    Button("Respond to Panda") {
-                        pandaImageToDisplay = "panda-mic-down"
-                        conversationManager.listen()
-                    }
+            if speechStatus == .authorized && !conversationManager.isConversing {
+                Button("Listen to a Joke") {
+                    conversationManager.converse()
                 }
-                else if conversationManager.personToStartTalking() == .currentUser && conversationManager.speechRecognizer.isRecording {
-                    Button("I'm done talking") {
-                        conversationManager.stopListening()
-                        
-                        pandaImageToDisplay = "panda-mic-up-mouth-open"
-                        conversationManager.speak()
-                    }
-                }
-                else {
-                    Button("Listen to Panda") {
-                        pandaImageToDisplay = "panda-mic-up-mouth-open"
-                        conversationManager.speak()
-                    }
-                }
+            }
+            else if speechStatus == .authorized && conversationManager.isConversing {
+                Text("")
             }
             else {
                 AuthorizationView()

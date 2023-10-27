@@ -11,7 +11,7 @@ import Speech
 class SpeechRecognizer: NSObject, ObservableObject {
     @Published var isRecording = false
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
+    internal let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
@@ -22,11 +22,6 @@ class SpeechRecognizer: NSObject, ObservableObject {
         let dynamicLanguageModel = outputDir.appendingPathComponent("LM")
         let dynamicVocabulary = outputDir.appendingPathComponent("Vocab")
         return SFSpeechLanguageModel.Configuration(languageModel: dynamicLanguageModel, vocabulary: dynamicVocabulary)
-    }
-    
-    override init() {
-        super.init()
-        self.speechRecognizer.delegate = self
     }
     
     internal func startRecording() throws {
@@ -94,17 +89,5 @@ class SpeechRecognizer: NSObject, ObservableObject {
         audioEngine.stop()
         recognitionRequest?.endAudio()
         isRecording = false
-    }
-}
-
-extension SpeechRecognizer: SFSpeechRecognizerDelegate {
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-//        if available {
-//            recordButton.isEnabled = true
-//            recordButton.setTitle("Start Recording", for: [])
-//        } else {
-//            recordButton.isEnabled = false
-//            recordButton.setTitle("Recognition Not Available", for: .disabled)
-//        }
     }
 }
