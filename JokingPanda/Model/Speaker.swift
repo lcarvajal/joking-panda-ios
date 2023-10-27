@@ -9,17 +9,10 @@ import Foundation
 import Speech
 
 class Speaker: NSObject, ObservableObject {
-    @Published var isSpeaking = false
     @Published var isShowingSpeakingErrorAlert = false
     
     internal var errorDescription: String?
-    
-    private let synthesizer = AVSpeechSynthesizer()
-    
-    override init() {
-        super.init()
-        self.synthesizer.delegate = self
-    }
+    internal let synthesizer = AVSpeechSynthesizer()
     
     internal func speak(_ text: String) {
         do {
@@ -43,21 +36,5 @@ class Speaker: NSObject, ObservableObject {
     
     internal func stop() {
         self.synthesizer.stopSpeaking(at: .immediate)
-    }
-}
-
-extension Speaker: AVSpeechSynthesizerDelegate {
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        self.isSpeaking = true
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        self.isSpeaking = false
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        self.isSpeaking = false
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }

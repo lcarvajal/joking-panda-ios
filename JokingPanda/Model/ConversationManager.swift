@@ -8,33 +8,49 @@
 import Foundation
 import Speech
 
-struct ConversationManager {
+class ConversationManager: NSObject, ObservableObject {
     internal var speaker = Speaker()
     internal var speechRecognizer = SpeechRecognizer()
+    internal var isConversing = false
     
-    private var conversations: [Conversation] = load("conversationData.json")
+    private var conversations: [Conversation] = JokingPanda.load("conversationData.json")
     private var conversationIndex = 0
     private var phraseIndex = 0
     
-    internal mutating func incrementPhraseIndex() {
-        phraseIndex += 1
-        
-        if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
-            phraseIndex = 0
-            conversationIndex += 1
-            
-            if conversationIndex > (conversations.count - 1) {
-                conversationIndex = 0
-            }
-        }
-        print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
+    override init() {
+        super.init()
+        speechRecognizer.speechRecognizer.delegate = self
+        speaker.synthesizer.delegate = self
     }
 
-    internal func currentPhrase() -> String {
-        return conversations[conversationIndex].phrases[phraseIndex]
+    internal func converse() {
+        if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) {
+            isConversing = true
+            speaker.speak(currentPhrase())
+//            if personToStartTalking() == .bot {
+//                speaker.speak(currentPhrase())
+//            }
+//            else {
+//                do {
+//                    print("Expected user phrase: \(currentPhrase())")
+//                    try speechRecognizer.startRecording()
+//                    // When recording is finished increment phrase counter and stop recording
+//    //                incrementPhraseIndex()
+//                    // if phrase index isn't finished, call function again
+//    //                converse()
+//                }
+//                catch {
+//                    print("Problem starting recording...")
+//                }
+//            }
+        }
+        else {
+            isConversing = false
+            return
+        }
     }
     
-    internal func personToStartTalking() -> Person {
+    private func personToStartTalking() -> Person {
         if phraseIndex % 2 == 0  {
             return Person.bot
         }
@@ -43,25 +59,50 @@ struct ConversationManager {
         }
     }
     
-    internal mutating func speak() {
-        speaker.speak(currentPhrase())
-        incrementPhraseIndex()
+    private func currentPhrase() -> String {
+        return conversations[conversationIndex].phrases[phraseIndex]
     }
     
-    internal mutating func listen() {
-        do {
-            print("Expected user phrase: \(currentPhrase())")
-            speaker.stop()
-            try speechRecognizer.startRecording()
+    private func incrementPhraseIndex() {
+        phraseIndex += 1
+
+        if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
+            phraseIndex = 0
+            conversationIndex += 1
+            isConversing = false
+
+            if conversationIndex > (conversations.count - 1) {
+                conversationIndex = 0
+            }
         }
-        catch {
-            print("Problem starting recording...")
-        }
+        print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
+    }
+}
+
+
+extension ConversationManager: SFSpeechRecognizerDelegate {
+    
+}
+
+extension ConversationManager: AVSpeechSynthesizerDelegate {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+//        self.isSpeaking = true
     }
     
-    internal mutating func stopListening() {
-        speechRecognizer.stopRecording()
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+//        self.isSpeaking = false
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+//        self.isSpeaking = false
+        // Stop speaker and start recording after speaker is finished...
+        speaker.stop()
         incrementPhraseIndex()
+        if isConversing {
+            converse()
+        }
+        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }
 
