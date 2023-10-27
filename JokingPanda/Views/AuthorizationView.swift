@@ -11,7 +11,6 @@ import Speech
 struct AuthorizationView: View {
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
     
-    
     var body: some View {
         switch speechStatus {
         case .denied:
