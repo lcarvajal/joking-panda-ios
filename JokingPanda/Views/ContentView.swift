@@ -19,31 +19,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("🐼")
-                .font(.headline)
-                .fontWeight(.bold)
+            Image("panda-mic-resting")
+                .resizable()
+                .scaledToFit()
+                .frame(height: 400)
+
             
-            switch speechStatus {
-            case .denied:
-                Button("Open settings to turn on your microphone") {
-                    // Open app settings
-                    if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: {_ in
-                            speechStatus = SFSpeechRecognizer.authorizationStatus()
-                        })
-                    }
-                }
-            case .notDetermined:
-                Button("Talk to the panda") {
-                    // Request access to microphone
-                    SFSpeechRecognizer.requestAuthorization { status in
-                        print("Updated speech status: \(status)")
-                        speechStatus = SFSpeechRecognizer.authorizationStatus()
-                    }
-                }
-            case .restricted:
-                Text("There seems to be a problem accessing your microphone. It doesnt look like you can speak to the panda 🥺.")
-            default:
+            if speechStatus == .authorized {
                 if conversationManager.personToStartTalking() == .currentUser && !speechRecognizer.isRecording {
                     Button("Respond to Panda") {
                         do {
@@ -61,6 +43,9 @@ struct ContentView: View {
                     Button("I'm done talking") {
                         speechRecognizer.stopRecording()
                         conversationManager.incrementPhraseIndex()
+                        
+                        speaker.speak(conversationManager.currentPhrase())
+                        conversationManager.incrementPhraseIndex()
                     }
                 }
                 else {
@@ -69,6 +54,9 @@ struct ContentView: View {
                         conversationManager.incrementPhraseIndex()
                     }
                 }
+            }
+            else {
+                AuthorizationView()
             }
         }
         .padding()
