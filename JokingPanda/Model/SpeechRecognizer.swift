@@ -12,6 +12,7 @@ class SpeechRecognizer: NSObject, ObservableObject {
     @Published var isRecording = false
     
     internal let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
+    
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
