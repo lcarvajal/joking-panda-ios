@@ -15,9 +15,6 @@ struct ContentView: View {
     @State var conversationManager = ConversationManager()
     @State var pandaImageToDisplay = "panda-mic-resting"
     
-    @StateObject var speaker = Speaker()
-    @StateObject var speechRecognizer = SpeechRecognizer()
-    
     var body: some View {
         VStack {
             Image(pandaImageToDisplay)
@@ -27,34 +24,24 @@ struct ContentView: View {
 
             
             if speechStatus == .authorized {
-                if conversationManager.personToStartTalking() == .currentUser && !speechRecognizer.isRecording {
+                if conversationManager.personToStartTalking() == .currentUser && !conversationManager.speechRecognizer.isRecording {
                     Button("Respond to Panda") {
-                        do {
-                            print("Expected user phrase: \(conversationManager.currentPhrase())")
-                            speaker.stop()
-                            pandaImageToDisplay = "panda-mic-down"
-                            try speechRecognizer.startRecording()
-                        }
-                        catch {
-                            print("Problem starting recording...")
-                        }
+                        pandaImageToDisplay = "panda-mic-down"
+                        conversationManager.listen()
                     }
                 }
-                else if conversationManager.personToStartTalking() == .currentUser && speechRecognizer.isRecording {
+                else if conversationManager.personToStartTalking() == .currentUser && conversationManager.speechRecognizer.isRecording {
                     Button("I'm done talking") {
-                        speechRecognizer.stopRecording()
-                        conversationManager.incrementPhraseIndex()
+                        conversationManager.stopListening()
                         
                         pandaImageToDisplay = "panda-mic-up-mouth-open"
-                        speaker.speak(conversationManager.currentPhrase())
-                        conversationManager.incrementPhraseIndex()
+                        conversationManager.speak()
                     }
                 }
                 else {
                     Button("Listen to Panda") {
                         pandaImageToDisplay = "panda-mic-up-mouth-open"
-                        speaker.speak(conversationManager.currentPhrase())
-                        conversationManager.incrementPhraseIndex()
+                        conversationManager.speak()
                     }
                 }
             }
