@@ -13,13 +13,14 @@ struct ContentView: View {
     
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
     @State var conversationManager = ConversationManager()
+    @State var pandaImageToDisplay = "panda-mic-resting"
     
     @StateObject var speaker = Speaker()
     @StateObject var speechRecognizer = SpeechRecognizer()
     
     var body: some View {
         VStack {
-            Image("panda-mic-resting")
+            Image(pandaImageToDisplay)
                 .resizable()
                 .scaledToFit()
                 .frame(height: 400)
@@ -31,6 +32,7 @@ struct ContentView: View {
                         do {
                             print("Expected user phrase: \(conversationManager.currentPhrase())")
                             speaker.stop()
+                            pandaImageToDisplay = "panda-mic-down"
                             try speechRecognizer.startRecording()
                         }
                         catch {
@@ -39,17 +41,18 @@ struct ContentView: View {
                     }
                 }
                 else if conversationManager.personToStartTalking() == .currentUser && speechRecognizer.isRecording {
-                    Text("Talk to the panda 😮")
                     Button("I'm done talking") {
                         speechRecognizer.stopRecording()
                         conversationManager.incrementPhraseIndex()
                         
+                        pandaImageToDisplay = "panda-mic-up-mouth-open"
                         speaker.speak(conversationManager.currentPhrase())
                         conversationManager.incrementPhraseIndex()
                     }
                 }
                 else {
                     Button("Listen to Panda") {
+                        pandaImageToDisplay = "panda-mic-up-mouth-open"
                         speaker.speak(conversationManager.currentPhrase())
                         conversationManager.incrementPhraseIndex()
                     }
@@ -60,6 +63,7 @@ struct ContentView: View {
             }
         }
         .padding()
+        .background(Color.gray)
     }
 }
 
