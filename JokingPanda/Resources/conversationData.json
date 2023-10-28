@@ -1,14 +1,14 @@
 [
     {
         "id": 1001,
-        "phrases": ["Hey, want to hear a joke?", "Yes.", "Knock, knock!", "Who's there?", "Luke.", "Luke who?", "Luke through the peephole to find out!"]
+        "phrases": ["Knock, knock!", "Who's there?", "Luke.", "Luke who?", "Luke through the peephole to find out!"]
     },
     {
         "id": 1002,
-        "phrases": ["Want to hear another joke?", "Yes.", "Knock, knock!", "Who's there?", "Tank.", "Tank who?", "You're Welcome!"]
+        "phrases": ["Knock, knock!", "Who's there?", "Tank.", "Tank who?", "You're Welcome!"]
     },
     {
         "id": 1003,
-        "phrases": ["Want one last joke?", "Yes.", "Knock, knock!", "Who's there?", "Cow says.", "Cow says who?", "No, a cow says moooooo!"]
+        "phrases": ["Knock, knock!", "Who's there?", "Cow says.", "Cow says who?", "No, a cow says moooooo!"]
     }
 ]

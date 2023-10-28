@@ -12,6 +12,7 @@ class SpeechRecognizer: NSObject, ObservableObject {
     @Published var isRecording = false
     
     internal let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
+    internal var speechRecognized = ""
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -60,9 +61,12 @@ class SpeechRecognizer: NSObject, ObservableObject {
             if let result = result {
                 print("This text was understood by the panda: \(result.bestTranscription.formattedString)")
                 isFinal = result.isFinal
+                self.speechRecognized = result.bestTranscription.formattedString
             }
             
             if error != nil || isFinal {
+                print("Audio recognition error: \(error?.localizedDescription)")
+                
                 // Stop recognizing speech if there is a problem.
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)

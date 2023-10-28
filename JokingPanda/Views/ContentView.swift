@@ -16,7 +16,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(conversationManager.imageName)
+            Image(AnimationManager.performAnimation(conversationStatus: conversationManager.status))
                 .resizable()
                 .scaledToFit()
                 .frame(height: 400)

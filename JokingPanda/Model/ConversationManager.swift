@@ -16,8 +16,7 @@ enum ConversationStatus {
 }
 
 class ConversationManager: NSObject, ObservableObject {
-    @Published var imageName = "panda-mic-down"
-    internal var status: ConversationStatus = .stopped
+    @Published var status: ConversationStatus = .stopped
     
     private let speaker = Speaker()
     private let speechRecognizer = SpeechRecognizer()
@@ -28,12 +27,11 @@ class ConversationManager: NSObject, ObservableObject {
     
     override init() {
         super.init()
-        speechRecognizer.speechRecognizer.delegate = self
         speaker.synthesizer.delegate = self
     }
     
     internal func startConversation() {
-        updateStatus(.botSpeaking)
+        status = .botSpeaking
         converse()
     }
 
@@ -41,16 +39,19 @@ class ConversationManager: NSObject, ObservableObject {
         if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
             if personToStartTalking() == .bot {
                 speaker.speak(currentPhrase())
-                updateStatus(.botSpeaking)
+                status = .botSpeaking
             }
             else {
                 do {
                     print("Expected user phrase: \(currentPhrase())")
                     status = .currentUserSpeaking
-                    try speechRecognizer.startRecording()
                     
-                    let seconds = 2.0
+                    // FIXME: - Logic for recording must go inside speech recognition function
+                    try speechRecognizer.startRecording()
+                        
+                    let seconds = 4.0
                     DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                        print("Recording stopped with this speech recognized: \(self.speechRecognizer.speechRecognized)")
                         self.speechRecognizer.stopRecording()
                         self.incrementPhraseIndex()
                         self.converse()
@@ -66,27 +67,14 @@ class ConversationManager: NSObject, ObservableObject {
         }
     }
     
-    private func personToStartTalking() -> Person {
-        if phraseIndex % 2 == 0  {
-            return Person.bot
-        }
-        else {
-            return Person.currentUser
-        }
-    }
-    
-    private func currentPhrase() -> String {
-        return conversations[conversationIndex].phrases[phraseIndex]
-    }
-    
     private func incrementPhraseIndex() {
-        updateStatus(.noOneSpeaking)
+        status = .noOneSpeaking
         phraseIndex += 1
 
         if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
             phraseIndex = 0
             conversationIndex += 1
-            updateStatus(.stopped)
+            status = .stopped
 
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
@@ -95,25 +83,13 @@ class ConversationManager: NSObject, ObservableObject {
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
     }
     
-    private func updateStatus(_ updatedStatus: ConversationStatus) {
-        status = updatedStatus
-        
-        switch status {
-        case .botSpeaking:
-            imageName = "panda-mic-up-mouth-open"
-        case .currentUserSpeaking:
-            imageName = "panda-mic-resting"
-        case .noOneSpeaking:
-            imageName = "panda-dance"
-        case .stopped:
-            imageName = "panda-mic-down"
-        }
+    private func personToStartTalking() -> Person {
+        return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
     }
-}
-
-
-extension ConversationManager: SFSpeechRecognizerDelegate {
     
+    private func currentPhrase() -> String {
+        return conversations[conversationIndex].phrases[phraseIndex]
+    }
 }
 
 extension ConversationManager: AVSpeechSynthesizerDelegate {
@@ -122,7 +98,6 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-//        self.isSpeaking = false
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
     
