@@ -18,9 +18,10 @@ enum ConversationStatus {
 class ConversationManager: NSObject, ObservableObject {
     @Published var status: ConversationStatus = .stopped
     
+    private let audioSession = AVAudioSession.sharedInstance()
     private let speaker = Speaker()
     private let speechRecognizer = SpeechRecognizer()
-    private let conversations: [Conversation] = JokingPanda.load("conversationData.json")
+    private let conversations: [Conversation] = Tool.load("conversationData.json")
     
     private var conversationIndex = 0
     private var phraseIndex = 0
@@ -29,6 +30,14 @@ class ConversationManager: NSObject, ObservableObject {
         super.init()
         speaker.synthesizer.delegate = self
         speechRecognizer.speechRecognizer.delegate = self
+        
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            print("Error activating audio session: \(error)")
+        }
     }
     
     internal func startConversation() {
@@ -37,6 +46,10 @@ class ConversationManager: NSObject, ObservableObject {
     }
 
     private func converse() {
+        print("Phrase index: \(phraseIndex)")
+        print(personToStartTalking())
+        print("status: \(status)")
+        
         if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
             if personToStartTalking() == .bot {
                 speaker.speak(currentPhrase())
@@ -56,6 +69,7 @@ class ConversationManager: NSObject, ObservableObject {
                         self.speechRecognizer.stopRecording()
                         self.incrementPhraseIndex()
                         print("Start next part of conversation")
+                        
                         self.converse()
                     }
                 }
@@ -102,41 +116,14 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
 
 extension ConversationManager: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-//        self.isSpeaking = true
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-//        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-//        self.isSpeaking = false
-        // Stop speaker and start recording after speaker is finished...
         speaker.stop()
         incrementPhraseIndex()
         converse()
-//        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-    }
-}
-
-func load<T: Decodable>(_ filename: String) -> T {
-    let data: Data
-
-    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-        else {
-            fatalError("Couldn't find \(filename) in main bundle.")
-    }
-
-    do {
-        data = try Data(contentsOf: file)
-    } catch {
-        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-    }
-
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
-    } catch {
-        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
 }

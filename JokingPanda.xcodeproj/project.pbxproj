@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
+		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
 		8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* ContentView.swift */; };
 		8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D642AE67101002CEA1E /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
 		8DC97D622AE670FF002CEA1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D4CB9EF2AEFEA7A00B7A00F /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
+				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
+				8DC97D932AE80486002CEA1E /* Person.swift */,
+				8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */,
+				8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */,
+			);
+			path = Conversation;
+			sourceTree = "<group>";
+		};
 		8DC97D542AE670FF002CEA1E = {
 			isa = PBXGroup;
 			children = (
@@ -150,12 +164,9 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */,
-				8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */,
-				8DC97D932AE80486002CEA1E /* Person.swift */,
-				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
-				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
+				8D4CB9EF2AEFEA7A00B7A00F /* Conversation */,
 				8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */,
+				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,6 +328,7 @@
 				8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */,
 				8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */,
+				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
