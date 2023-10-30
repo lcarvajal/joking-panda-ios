@@ -28,9 +28,10 @@ struct ContentView: View {
                 }
             }
             else if speechStatus == .authorized {
-                Text("")
+                Text("Conversation Going On")
             }
             else {
+                // FIXME: This is broken on first app launch
                 AuthorizationView()
             }
         }

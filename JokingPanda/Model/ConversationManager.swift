@@ -28,6 +28,7 @@ class ConversationManager: NSObject, ObservableObject {
     override init() {
         super.init()
         speaker.synthesizer.delegate = self
+        speechRecognizer.speechRecognizer.delegate = self
     }
     
     internal func startConversation() {
@@ -46,14 +47,15 @@ class ConversationManager: NSObject, ObservableObject {
                     print("Expected user phrase: \(currentPhrase())")
                     status = .currentUserSpeaking
                     
-                    // FIXME: - Logic for recording must go inside speech recognition function
                     try speechRecognizer.startRecording()
-                        
+                    
+                    // FIXME: - Logic for recording must go inside speech recognition function in order to create actions for different input
                     let seconds = 4.0
                     DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                         print("Recording stopped with this speech recognized: \(self.speechRecognizer.speechRecognized)")
                         self.speechRecognizer.stopRecording()
                         self.incrementPhraseIndex()
+                        print("Start next part of conversation")
                         self.converse()
                     }
                 }
@@ -92,13 +94,19 @@ class ConversationManager: NSObject, ObservableObject {
     }
 }
 
+extension ConversationManager: SFSpeechRecognizerDelegate {
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        print("Availability of microphone changed: \(available)")
+    }
+}
+
 extension ConversationManager: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
 //        self.isSpeaking = true
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+//        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
@@ -107,7 +115,7 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
         speaker.stop()
         incrementPhraseIndex()
         converse()
-        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+//        try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }
 
