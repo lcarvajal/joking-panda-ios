@@ -22,15 +22,23 @@ struct ContentView: View {
                 .frame(height: 400)
 
             
-            if speechStatus == .authorized && conversationManager.status == .stopped {
-                Button("Listen to a Joke") {
-                    conversationManager.startConversation()
+            switch speechStatus {
+            case .authorized:
+                switch conversationManager.status {
+                case .botSpeaking:
+                    Text("🐼")
+                    Text(conversationManager.currentPhrase())
+                case .currentUserSpeaking:
+                    Text("🎙️")
+                    Text(conversationManager.speechRecognized)
+                case .stopped:
+                    Button("Listen to a Joke") {
+                        conversationManager.startConversation()
+                    }
+                default:
+                    Text("Conversation Going On")
                 }
-            }
-            else if speechStatus == .authorized {
-                Text("Conversation Going On")
-            }
-            else {
+            default:
                 // FIXME: This is broken on first app launch
                 AuthorizationView()
             }

@@ -17,8 +17,6 @@
 		8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */; };
 		8DC97D7C2AE67101002CEA1E /* JokingPandaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */; };
 		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
-		8DC97D902AE6E1D8002CEA1E /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */; };
-		8DC97D922AE6F256002CEA1E /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */; };
 		8DC97D942AE80486002CEA1E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D932AE80486002CEA1E /* Person.swift */; };
 		8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Conversation.swift */; };
 		8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D972AE93284002CEA1E /* ConversationManager.swift */; };
@@ -57,8 +55,6 @@
 		8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITests.swift; sourceTree = "<group>"; };
 		8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8DC97D8E2AE6BE11002CEA1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
-		8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		8DC97D932AE80486002CEA1E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8DC97D952AE92CB0002CEA1E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		8DC97D972AE93284002CEA1E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
@@ -90,18 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D4CB9EF2AEFEA7A00B7A00F /* Conversation */ = {
-			isa = PBXGroup;
-			children = (
-				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
-				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
-				8DC97D932AE80486002CEA1E /* Person.swift */,
-				8DC97D912AE6F256002CEA1E /* SpeechRecognizer.swift */,
-				8DC97D8F2AE6E1D8002CEA1E /* Speaker.swift */,
-			);
-			path = Conversation;
-			sourceTree = "<group>";
-		};
 		8DC97D542AE670FF002CEA1E = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
+				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
 				8DC97D8A2AE673C0002CEA1E /* Model */,
 				8DC97D8B2AE673CB002CEA1E /* Views */,
 				8DC97D992AE98856002CEA1E /* Resources */,
@@ -164,7 +149,8 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D4CB9EF2AEFEA7A00B7A00F /* Conversation */,
+				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
+				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */,
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 			);
@@ -320,11 +306,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
-				8DC97D922AE6F256002CEA1E /* SpeechRecognizer.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
-				8DC97D902AE6E1D8002CEA1E /* Speaker.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */,
 				8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */,
