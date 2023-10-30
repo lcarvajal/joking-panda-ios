@@ -8,13 +8,6 @@
 import Foundation
 import Speech
 
-enum ConversationStatus {
-    case botSpeaking
-    case currentUserSpeaking
-    case noOneSpeaking
-    case stopped
-}
-
 class ConversationManager: NSObject, ObservableObject {
     @Published var status: ConversationStatus = .stopped
     @Published var speechRecognized: String = ""
