@@ -18,6 +18,9 @@ class ConversationManager: NSObject, ObservableObject {
     
     private var conversationIndex = 0
     private var phraseIndex = 0
+    private var personToStartTalking: Person {
+        return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
+    }
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -72,12 +75,14 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private func converse() {
+        // converse() is a recursive function that gets called again after the bot finishes speaking (in SpeechSynthesizerDelegate)
+        // it also gets called again after the recording stops for a user
         print("Phrase index: \(phraseIndex)")
-        print(personToStartTalking())
+        print(personToStartTalking)
         print("status: \(status)")
         
         if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
-            if personToStartTalking() == .bot {
+            if personToStartTalking == .bot {
                 speak(currentPhrase)
                 status = .botSpeaking
             }
@@ -124,10 +129,6 @@ class ConversationManager: NSObject, ObservableObject {
             }
         }
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
-    }
-    
-    private func personToStartTalking() -> Person {
-        return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
     }
 }
 
@@ -190,7 +191,6 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
     }
     
     private func stopRecording() {
-        print("Stop recording")
         audioEngine.stop()
         recognitionRequest?.endAudio()
     }

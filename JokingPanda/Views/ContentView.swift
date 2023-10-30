@@ -19,8 +19,9 @@ struct ContentView: View {
             Image(AnimationManager.performAnimation(conversationStatus: conversationManager.status))
                 .resizable()
                 .scaledToFit()
-                .frame(height: 400)
+                .background(Color.blue)
 
+            Spacer()
             
             switch speechStatus {
             case .authorized:
@@ -42,9 +43,10 @@ struct ContentView: View {
                 // FIXME: This is broken on first app launch
                 AuthorizationView()
             }
+            
+            Spacer()
         }
         .padding()
-        .background(Color.gray)
     }
 }
 
