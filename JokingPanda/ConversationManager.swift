@@ -10,7 +10,10 @@ import Speech
 
 class ConversationManager: NSObject, ObservableObject {
     @Published var status: ConversationStatus = .stopped
+    
     @Published var speechRecognized: String = ""
+    @Published var messageHistory: String = ""
+    @Published var phraseBotIsSaying: String = ""
     
     internal var currentPhrase: String {
         return conversations[conversationIndex].phrases[phraseIndex]
@@ -98,6 +101,14 @@ class ConversationManager: NSObject, ObservableObject {
                     DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                         print("Recording stopped with this speech recognized: \(self.speechRecognized)")
                         self.stopRecording()
+                        
+                        if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5 {
+                            self.messageHistory += "\n🗣️ \(self.currentPhrase)"
+                        }
+                        else {
+                            self.messageHistory += "\n🗣️ \(self.speechRecognized)"
+                        }
+                        
                         self.incrementPhraseIndex()
                         print("Start next part of conversation")
                         
@@ -224,14 +235,18 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
     
     // MARK: - AVSpeechSynthesizerDelegate
     
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-    }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
+        phraseBotIsSaying = (utterance.speechString as NSString).substring(with: characterRange)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         stopSpeaking()
+        if messageHistory == "" {
+            messageHistory += "🐼 \(currentPhrase)"
+        }
+        else {
+            messageHistory += "\n🐼 \(currentPhrase)"
+        }
         incrementPhraseIndex()
         converse()
     }
