@@ -19,17 +19,21 @@ class ConversationManager: NSObject, ObservableObject {
     @Published var status: ConversationStatus = .stopped
     @Published var speechRecognized: String = ""
     
+    internal var currentPhrase: String {
+        return conversations[conversationIndex].phrases[phraseIndex]
+    }
+    
     private var conversationIndex = 0
     private var phraseIndex = 0
+    
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
     
     private let audioEngine = AVAudioEngine()
     private let audioSession = AVAudioSession.sharedInstance()
     private let conversations: [Conversation] = Tool.load("conversationData.json")
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
     private let synthesizer = AVSpeechSynthesizer()
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
-    
     
     @available(iOS 17, *)
     private var lmConfiguration: SFSpeechLanguageModel.Configuration {
@@ -45,16 +49,35 @@ class ConversationManager: NSObject, ObservableObject {
         speechRecognizer.delegate = self
     }
     
+    // MARK: - Setup
+    
+    private func activateAudioSession() {
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            print("Error activating audio session: \(error)")
+        }
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            print("Error activating audio session: \(error)")
+        }
+    }
+    
+    // MARK: - Actions
+    
     internal func startConversation() {
         activateAudioSession()
         status = .botSpeaking
         converse()
     }
     
-    internal func currentPhrase() -> String {
-        return conversations[conversationIndex].phrases[phraseIndex]
-    }
-
     private func converse() {
         print("Phrase index: \(phraseIndex)")
         print(personToStartTalking())
@@ -62,12 +85,12 @@ class ConversationManager: NSObject, ObservableObject {
         
         if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
             if personToStartTalking() == .bot {
-                speak(currentPhrase())
+                speak(currentPhrase)
                 status = .botSpeaking
             }
             else {
                 do {
-                    print("Expected user phrase: \(currentPhrase())")
+                    print("Expected user phrase: \(currentPhrase)")
                     status = .currentUserSpeaking
                     
                     try startRecording()
@@ -113,47 +136,12 @@ class ConversationManager: NSObject, ObservableObject {
     private func personToStartTalking() -> Person {
         return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
     }
-    
-    private func activateAudioSession() {
-        do {
-            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            print("Error activating audio session: \(error)")
-        }
-    }
-    
-    private func deactivateAudioSession() {
-        do {
-            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            print("Error activating audio session: \(error)")
-        }
-    }
-    
-//    Functions for speaking out loud
-    internal func speak(_ text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.rate = 0.57
-        utterance.pitchMultiplier = 0.8
-        utterance.postUtteranceDelay = 0.2
-        utterance.volume = 0.8
-        
-        // Assign the voice to the utterance.
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        
-        self.synthesizer.speak(utterance)
-    }
-    
-    internal func stopSpeaking() {
-        self.synthesizer.stopSpeaking(at: .immediate)
-    }
-    
-//    Functions for recording
-    internal func startRecording() throws {
+}
 
+extension ConversationManager: SFSpeechRecognizerDelegate {
+    // MARK: - Actions
+    
+    private func startRecording() throws {
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
@@ -208,20 +196,41 @@ class ConversationManager: NSObject, ObservableObject {
         try audioEngine.start()
     }
     
-    internal func stopRecording() {
+    private func stopRecording() {
         print("Stop recording")
         audioEngine.stop()
         recognitionRequest?.endAudio()
     }
-}
-
-extension ConversationManager: SFSpeechRecognizerDelegate {
+    
+    // MARK: - SFSpeechRecognizerDelegate
+    
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         print("Availability of microphone changed: \(available)")
     }
 }
 
 extension ConversationManager: AVSpeechSynthesizerDelegate {
+    // MARK: - Actions
+    
+    private func speak(_ text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.rate = 0.57
+        utterance.pitchMultiplier = 0.8
+        utterance.postUtteranceDelay = 0.2
+        utterance.volume = 0.8
+        
+        // Assign the voice to the utterance.
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        
+        self.synthesizer.speak(utterance)
+    }
+    
+    private func stopSpeaking() {
+        self.synthesizer.stopSpeaking(at: .immediate)
+    }
+    
+    // MARK: - AVSpeechSynthesizerDelegate
+    
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
     }
     

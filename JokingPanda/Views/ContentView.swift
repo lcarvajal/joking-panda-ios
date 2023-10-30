@@ -27,7 +27,7 @@ struct ContentView: View {
                 switch conversationManager.status {
                 case .botSpeaking:
                     Text("🐼")
-                    Text(conversationManager.currentPhrase())
+                    Text(conversationManager.currentPhrase)
                 case .currentUserSpeaking:
                     Text("🎙️")
                     Text(conversationManager.speechRecognized)
