@@ -16,40 +16,77 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(AnimationManager.performAnimation(conversationStatus: conversationManager.status))
-                .resizable()
-                .scaledToFit()
-                .background(Color.blue)
-
-            Spacer()
+            ZStack {
+                Image(AnimationManager.performAnimation(conversationStatus: conversationManager.status))
+                    .resizable()
+                    .scaledToFill()
+                    .background(Color.green)
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        if speechStatus == .authorized && conversationManager.status == .stopped {
+                            if #available(iOS 17.0, *) {
+                                Image(systemName: "hand.tap.fill")
+                                    .symbolRenderingMode(.palette)
+                                    .font(.system(size: 100))
+                                    .foregroundStyle(.white, .blue)
+                                    .symbolEffect(.pulse, options: .repeating, isActive: true)
+                                    
+                            } else {
+                                // FIXME: This will look bad
+                                Image(systemName: "hand.tap.fill")
+                                    .font(.system(size: 100))
+                            }
+                        }
+                    }
+                    .padding(10)
+                }
+            }
+            .onTapGesture {
+                if speechStatus == .authorized && conversationManager.status == .stopped {
+                    conversationManager.startConversation()
+                }
+            }
+            
+            ScrollViewReader { proxy in
+                ScrollView {
+                    Text(conversationManager.messageHistory)
+                        .id(1)            // this is where to add an id
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(nil)
+                        .font(.system(size: 26, design: .rounded))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
+                }
+                .onChange(of: conversationManager.messageHistory) { _ in
+                    proxy.scrollTo(1, anchor: .bottom)
+                }
+            }
             
             switch speechStatus {
             case .authorized:
                 switch conversationManager.status {
                 case .botSpeaking:
-                    Text("🐼")
-                    Text(conversationManager.currentPhrase)
+                    Text("🐼 \(conversationManager.phraseBotIsSaying)")
+                        .font(.system(size: 26, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
                 case .currentUserSpeaking:
-                    Text("🎙️")
-                    Text(conversationManager.speechRecognized)
-                case .stopped:
-                    Button("Listen to a Joke") {
-                        conversationManager.startConversation()
-                    }
+                    Text("🎙️ \(conversationManager.speechRecognized)")
+                        .font(.system(size: 26, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
                 default:
-                    Text("Conversation Going On")
+                    EmptyView()
                 }
             default:
                 // FIXME: This is broken on first app launch
                 AuthorizationView()
             }
-            
-            Spacer()
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(speechStatus: .authorized)
 }
