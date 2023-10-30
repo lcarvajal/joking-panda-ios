@@ -30,17 +30,10 @@ class ConversationManager: NSObject, ObservableObject {
         super.init()
         speaker.synthesizer.delegate = self
         speechRecognizer.speechRecognizer.delegate = self
-        
-        do {
-            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            print("Error activating audio session: \(error)")
-        }
     }
     
     internal func startConversation() {
+        activateAudioSession()
         status = .botSpeaking
         converse()
     }
@@ -94,6 +87,7 @@ class ConversationManager: NSObject, ObservableObject {
 
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
+                deactivateAudioSession()
             }
         }
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
@@ -105,6 +99,25 @@ class ConversationManager: NSObject, ObservableObject {
     
     private func currentPhrase() -> String {
         return conversations[conversationIndex].phrases[phraseIndex]
+    }
+    
+    private func activateAudioSession() {
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            print("Error activating audio session: \(error)")
+        }
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            print("Error activating audio session: \(error)")
+        }
     }
 }
 
