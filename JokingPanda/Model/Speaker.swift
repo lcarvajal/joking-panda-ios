@@ -9,9 +9,6 @@ import Foundation
 import Speech
 
 class Speaker: NSObject, ObservableObject {
-    @Published var isShowingSpeakingErrorAlert = false
-    
-    internal var errorDescription: String?
     internal let synthesizer = AVSpeechSynthesizer()
     
     internal func speak(_ text: String) {
@@ -29,8 +26,7 @@ class Speaker: NSObject, ObservableObject {
             try AVAudioSession.sharedInstance().setActive(true)
             self.synthesizer.speak(utterance)
         } catch let error {
-            self.errorDescription = error.localizedDescription
-            isShowingSpeakingErrorAlert.toggle()
+            print("Error speaking: \(error.localizedDescription)")
         }
     }
     

@@ -27,7 +27,7 @@ class SpeechRecognizer: NSObject, ObservableObject {
     }
     
     internal func startRecording() throws {
-        
+
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
