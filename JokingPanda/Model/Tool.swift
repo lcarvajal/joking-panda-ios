@@ -11,6 +11,11 @@ struct Tool {
     
     // Get the number of character changes to get from string a to string b
     static func levenshtein(aStr: String, bStr: String) -> Int {
+        if aStr.count < 1 || bStr.count < 1 {
+            print("Attempting to compare a string with less than 1 characters")
+            return abs(aStr.count - bStr.count)
+        }
+        
         let a = Array(aStr.utf16)
         let b = Array(bStr.utf16)
         

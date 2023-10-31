@@ -102,7 +102,7 @@ class ConversationManager: NSObject, ObservableObject {
                         print("Recording stopped with this speech recognized: \(self.speechRecognized)")
                         self.stopRecording()
                         
-                        if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5 {
+                        if (self.speechRecognized.count < 1) && (Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5) {
                             self.messageHistory += "\n🗣️ \(self.currentPhrase)"
                         }
                         else {
