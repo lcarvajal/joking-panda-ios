@@ -33,14 +33,16 @@ struct ContentView: View {
                                 if #available(iOS 17.0, *) {
                                     Image(systemName: "hand.tap.fill")
                                         .symbolRenderingMode(.palette)
-                                        .font(.system(size: 100))
+                                        .font(.system(size: 50))
                                         .foregroundStyle(.white, .blue)
                                         .symbolEffect(.pulse, options: .repeating, isActive: true)
+                                        .padding()
                                     
                                 } else {
                                     // FIXME: This will look bad
                                     Image(systemName: "hand.tap.fill")
-                                        .font(.system(size: 100))
+                                        .font(.system(size: 50))
+                                        .padding()
                                 }
                             }
                         }
@@ -81,7 +83,9 @@ struct ContentView: View {
                         .font(.system(size: 26, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
                 default:
-                    EmptyView()
+                    Text("")
+                        .font(.system(size: 26, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
                 }
             default:
                 // FIXME: This is broken on first app launch

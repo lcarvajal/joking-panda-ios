@@ -14,33 +14,50 @@ struct AnimationManager {
         Constant.ImageName.pandaMicUpMouthClosed
     ]
     
-    static func performAnimation(conversationStatus: ConversationStatus) -> String {
-        let imageName: String
-        
-        switch conversationStatus {
-        case .botSpeaking:
-            imageName = Constant.ImageName.pandaMicUpMouthOpen
-        case .currentUserSpeaking:
-            imageName = Constant.ImageName.pandaMicResting
-        case .noOneSpeaking:
-            imageName = Constant.ImageName.pandaDance
-        case .stopped:
-            imageName = Constant.ImageName.pandaMicDown
-        }
-        
-        return imageName
-    }
+    static private let dancingPandaImageNames = [
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicRestingEyesClosed,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicDown,
+        Constant.ImageName.pandaDance,
+        Constant.ImageName.pandaMicUpMouthClosed,
+    ]
+    
+    static private let restingPandaImageNames = [
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicRestingEyesClosed
+    ]
     
     static func animationImageFor(conversationStatus: ConversationStatus) -> UIImage {
+        let imageNames: [String]
+        let duration: TimeInterval
+        
         switch conversationStatus {
         case .botSpeaking:
-            return animationImageFor(imageNames: talkingPandaImageNames)!
-        default:
-            return animationImageFor(imageNames: [Constant.ImageName.pandaMicResting])!
+            imageNames = talkingPandaImageNames
+            duration = 0.75
+        case .currentUserSpeaking:
+            imageNames = restingPandaImageNames
+            duration = 2
+        case .noOneSpeaking, .stopped:
+            imageNames = dancingPandaImageNames
+            duration = 2
         }
+        
+        return animationImageFor(imageNames: imageNames, duration: duration)
     }
     
-    static private func animationImageFor(imageNames: [String]) -> UIImage? {
+    static private func animationImageFor(imageNames: [String], duration: TimeInterval) -> UIImage {
         var images: [UIImage] = []
         
         for imageName in imageNames {
@@ -50,6 +67,12 @@ struct AnimationManager {
             }
         }
         
-        return UIImage.animatedImage(with: images, duration: 0.5)
+        if let animatedImage = UIImage.animatedImage(with: images, duration: duration) {
+            return animatedImage
+        }
+        else {
+            // FIXME: Not the most graceful solution to an image not existing
+            return UIImage()
+        }
     }
 }
