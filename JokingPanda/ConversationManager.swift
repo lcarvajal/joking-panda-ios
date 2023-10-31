@@ -31,7 +31,7 @@ class ConversationManager: NSObject, ObservableObject {
     private let audioEngine = AVAudioEngine()
     private let audioSession = AVAudioSession.sharedInstance()
     private let conversations: [Conversation] = Tool.load("conversationData.json")
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private let synthesizer = AVSpeechSynthesizer()
     
     @available(iOS 17, *)
@@ -97,7 +97,7 @@ class ConversationManager: NSObject, ObservableObject {
                     try startRecording()
                     
                     // FIXME: - Logic for recording must go inside speech recognition function in order to create actions for different input
-                    let seconds = 4.0
+                    let seconds = 3.0
                     DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
                         print("Recording stopped with this speech recognized: \(self.speechRecognized)")
                         self.stopRecording()
@@ -159,6 +159,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
         recognitionRequest.shouldReportPartialResults = true
+        recognitionRequest.contextualStrings = currentPhrase.components(separatedBy: " ")
         
         // Keep speech recognition data on device
         if #available(iOS 13, *) {
@@ -218,13 +219,11 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
     
     private func speak(_ text: String) {
         let utterance = AVSpeechUtterance(string: text)
-        utterance.rate = 0.57
+        utterance.rate = 0.45
         utterance.pitchMultiplier = 0.8
         utterance.postUtteranceDelay = 0.2
         utterance.volume = 0.8
-        
-        // Assign the voice to the utterance.
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
         
         self.synthesizer.speak(utterance)
     }

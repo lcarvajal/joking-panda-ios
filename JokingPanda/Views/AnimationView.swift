@@ -39,11 +39,12 @@ struct AnimationView: UIViewRepresentable {
 #Preview {
     GeometryReader { geometry in
         VStack {
-            Spacer()
-            AnimationView(conversationStatus: .botSpeaking, parentWidth: geometry.size.width, parentHeight: geometry.size.height)
+            AnimationView(conversationStatus: .botSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
                 .background(Color.green)
-            
-            Spacer()
+            AnimationView(conversationStatus: .currentUserSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
+                .background(Color.green)
+            AnimationView(conversationStatus: .noOneSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
+                .background(Color.green)
         }
     }
 }
