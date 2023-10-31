@@ -46,6 +46,8 @@ class ConversationManager: NSObject, ObservableObject {
         super.init()
         synthesizer.delegate = self
         speechRecognizer.delegate = self
+        
+        conversationIndex = Int(arc4random_uniform(UInt32(conversations.count)))
     }
     
     // MARK: - Setup
@@ -152,6 +154,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
             recognitionTask.cancel()
             self.recognitionTask = nil
         }
+        speechRecognized = ""
         
         let inputNode = audioEngine.inputNode
 
