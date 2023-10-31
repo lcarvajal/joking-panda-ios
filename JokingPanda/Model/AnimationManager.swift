@@ -6,22 +6,50 @@
 //
 
 import Foundation
+import UIKit
 
 struct AnimationManager {
+    static private let talkingPandaImageNames = [
+        Constant.ImageName.pandaMicUpMouthOpen,
+        Constant.ImageName.pandaMicUpMouthClosed
+    ]
+    
     static func performAnimation(conversationStatus: ConversationStatus) -> String {
         let imageName: String
         
         switch conversationStatus {
         case .botSpeaking:
-            imageName = "panda-mic-up-mouth-open"
+            imageName = Constant.ImageName.pandaMicUpMouthOpen
         case .currentUserSpeaking:
-            imageName = "panda-mic-resting"
+            imageName = Constant.ImageName.pandaMicResting
         case .noOneSpeaking:
-            imageName = "panda-dance"
+            imageName = Constant.ImageName.pandaDance
         case .stopped:
-            imageName = "panda-mic-down"
+            imageName = Constant.ImageName.pandaMicDown
         }
         
         return imageName
+    }
+    
+    static func animationImageFor(conversationStatus: ConversationStatus) -> UIImage {
+        switch conversationStatus {
+        case .botSpeaking:
+            return animationImageFor(imageNames: talkingPandaImageNames)!
+        default:
+            return animationImageFor(imageNames: [Constant.ImageName.pandaMicResting])!
+        }
+    }
+    
+    static private func animationImageFor(imageNames: [String]) -> UIImage? {
+        var images: [UIImage] = []
+        
+        for imageName in imageNames {
+            if let image = UIImage(named: imageName) {
+                images.append(image)
+                
+            }
+        }
+        
+        return UIImage.animatedImage(with: images, duration: 0.5)
     }
 }

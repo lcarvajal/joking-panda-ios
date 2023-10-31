@@ -16,37 +16,41 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                Image(AnimationManager.performAnimation(conversationStatus: conversationManager.status))
-                    .resizable()
-                    .scaledToFill()
-                    .background(Color.green)
-                
-                VStack {
-                    Spacer()
-                    HStack {
+            GeometryReader { geometry in
+                ZStack {
+                    switch conversationManager.status {
+                    case .botSpeaking:
+                        AnimationView(conversationStatus: conversationManager.status, parentWidth: geometry.size.width, parentHeight: geometry.size.height)
+                    default:
+                        AnimationView(conversationStatus: conversationManager.status, parentWidth: geometry.size.width, parentHeight: geometry.size.height)
+                    }
+                    
+                    VStack {
                         Spacer()
-                        if speechStatus == .authorized && conversationManager.status == .stopped {
-                            if #available(iOS 17.0, *) {
-                                Image(systemName: "hand.tap.fill")
-                                    .symbolRenderingMode(.palette)
-                                    .font(.system(size: 100))
-                                    .foregroundStyle(.white, .blue)
-                                    .symbolEffect(.pulse, options: .repeating, isActive: true)
+                        HStack {
+                            Spacer()
+                            if speechStatus == .authorized && conversationManager.status == .stopped {
+                                if #available(iOS 17.0, *) {
+                                    Image(systemName: "hand.tap.fill")
+                                        .symbolRenderingMode(.palette)
+                                        .font(.system(size: 100))
+                                        .foregroundStyle(.white, .blue)
+                                        .symbolEffect(.pulse, options: .repeating, isActive: true)
                                     
-                            } else {
-                                // FIXME: This will look bad
-                                Image(systemName: "hand.tap.fill")
-                                    .font(.system(size: 100))
+                                } else {
+                                    // FIXME: This will look bad
+                                    Image(systemName: "hand.tap.fill")
+                                        .font(.system(size: 100))
+                                }
                             }
                         }
+                        .padding(10)
                     }
-                    .padding(10)
                 }
-            }
-            .onTapGesture {
-                if speechStatus == .authorized && conversationManager.status == .stopped {
-                    conversationManager.startConversation()
+                .onTapGesture {
+                    if speechStatus == .authorized && conversationManager.status == .stopped {
+                        conversationManager.startConversation()
+                    }
                 }
             }
             
