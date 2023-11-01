@@ -12,6 +12,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
+    @State var displayMessages = false
     @StateObject var conversationManager = ConversationManager()
     
     var body: some View {
@@ -34,7 +35,7 @@ struct ContentView: View {
                                     Image(systemName: "hand.tap.fill")
                                         .symbolRenderingMode(.palette)
                                         .font(.system(size: 50))
-                                        .foregroundStyle(.white, .blue)
+                                        .foregroundStyle(.white, .tappableAccent)
                                         .symbolEffect(.pulse, options: .repeating, isActive: true)
                                         .padding()
                                     
@@ -49,6 +50,7 @@ struct ContentView: View {
                         .padding(10)
                     }
                 }
+                .background(Color.tappableArea)
                 .onTapGesture {
                     if speechStatus == .authorized && conversationManager.status == .stopped {
                         conversationManager.startConversation()
@@ -56,45 +58,55 @@ struct ContentView: View {
                 }
             }
             
-            ScrollViewReader { proxy in
-                ScrollView {
-                    Text(conversationManager.messageHistory)
-                        .id(1)            // this is where to add an id
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(nil)
-                        .font(.system(size: 26, design: .rounded))
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
-                }
-                .onChange(of: conversationManager.messageHistory) { _ in
-                    proxy.scrollTo(1, anchor: .bottom)
-                }
-            }
-            
             switch speechStatus {
             case .authorized:
-                switch conversationManager.status {
-                case .botSpeaking:
-                    Text("🐼 \(conversationManager.phraseBotIsSaying)")
+                VStack {
+                    Button {
+                        displayMessages.toggle()
+                    } label: {
+                        Image(systemName: displayMessages ? "chevron.compact.down" : "chevron.compact.up")
+                            .imageScale(.large)
+                            .foregroundStyle(.tappableAccent)
+                            .padding(.bottom, 1)
+                            .frame(maxWidth: .infinity)
+                    }
+
+                    ScrollViewReader { proxy in
+                        ScrollView {
+                            Text(conversationManager.messageHistory)
+                                .id(1)            // this is where to add an id
+                                .multilineTextAlignment(.leading)
+                                .lineLimit(nil)
+                                .font(.system(size: 18, design: .rounded))
+                                .frame(maxWidth: .infinity,
+                                       alignment: .leading)
+                        }
+                        .background(Color.background)
+                        .onChange(of: conversationManager.messageHistory) { _ in
+                            proxy.scrollTo(1, anchor: .bottom)
+                        }
+                    }
+
+                    Text(conversationManager.speechOrPhraseToDisplay)
                         .font(.system(size: 26, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
-                case .currentUserSpeaking:
-                    Text("🎙️ \(conversationManager.speechRecognized)")
-                        .font(.system(size: 26, design: .rounded))
-                        .fixedSize(horizontal: false, vertical: true)
-                default:
-                    Text("")
-                        .font(.system(size: 26, design: .rounded))
-                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.backgroundLighter)
+                        .cornerRadius(10)
+                        .padding(.top, 0)
                 }
+                .frame(maxHeight: displayMessages ? .infinity : 180)
+                .padding()
             default:
                 // FIXME: This is broken on first app launch
                 AuthorizationView()
             }
         }
+        .background(Color.background)
     }
 }
 
 #Preview {
     ContentView(speechStatus: .authorized)
+        .preferredColorScheme(.dark)
 }

@@ -10,10 +10,11 @@ import Speech
 
 class ConversationManager: NSObject, ObservableObject {
     @Published var status: ConversationStatus = .stopped
-    
-    @Published var speechRecognized: String = ""
     @Published var messageHistory: String = ""
-    @Published var phraseBotIsSaying: String = ""
+    @Published var speechOrPhraseToDisplay = " "
+    
+    private var speechRecognized: String = ""
+    private var phraseBotIsSaying: String = ""
     
     internal var currentPhrase: String {
         return conversations[conversationIndex].phrases[phraseIndex]
@@ -82,9 +83,6 @@ class ConversationManager: NSObject, ObservableObject {
     private func converse() {
         // converse() is a recursive function that gets called again after the bot finishes speaking (in SpeechSynthesizerDelegate)
         // it also gets called again after the recording stops for a user
-        print("Phrase index: \(phraseIndex)")
-        print(personToStartTalking)
-        print("status: \(status)")
         
         if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
             if personToStartTalking == .bot {
@@ -111,9 +109,8 @@ class ConversationManager: NSObject, ObservableObject {
                             self.messageHistory += "\n🗣️ \(self.speechRecognized)"
                         }
                         
+                        self.updateSpeechOrPhraseToDisplay()
                         self.incrementPhraseIndex()
-                        print("Start next part of conversation")
-                        
                         self.converse()
                     }
                 }
@@ -143,6 +140,17 @@ class ConversationManager: NSObject, ObservableObject {
         }
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
     }
+    
+    private func updateSpeechOrPhraseToDisplay() {
+        switch status {
+        case .botSpeaking:
+            speechOrPhraseToDisplay = "🐼 \(phraseBotIsSaying)"
+        case .currentUserSpeaking:
+            speechOrPhraseToDisplay = "🎙️ \(speechRecognized)"
+        default:
+            speechOrPhraseToDisplay = " "
+        }
+    }
 }
 
 extension ConversationManager: SFSpeechRecognizerDelegate {
@@ -155,6 +163,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
             self.recognitionTask = nil
         }
         speechRecognized = ""
+        updateSpeechOrPhraseToDisplay()
         
         let inputNode = audioEngine.inputNode
 
@@ -181,6 +190,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
                 print("This text was understood by the panda: \(result.bestTranscription.formattedString)")
                 isFinal = result.isFinal
                 self.speechRecognized = result.bestTranscription.formattedString
+                self.updateSpeechOrPhraseToDisplay()
             }
             
             if error != nil || isFinal {
@@ -239,6 +249,7 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         phraseBotIsSaying = (utterance.speechString as NSString).substring(with: characterRange)
+        updateSpeechOrPhraseToDisplay()
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
