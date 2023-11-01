@@ -15,8 +15,6 @@ struct AnimationView: UIViewRepresentable {
     
     internal func makeUIView(context: Self.Context) -> UIView {
         let parentView = UIView()
-        parentView.backgroundColor = .black
-        parentView.layer.borderColor = Color.orange.cgColor
         parentView.autoresizesSubviews = true
         
         let animationImage = AnimationManager.animationImageFor(conversationStatus: conversationStatus)
@@ -24,7 +22,6 @@ struct AnimationView: UIViewRepresentable {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.autoresizesSubviews = true
-        imageView.backgroundColor = .orange
         imageView.frame = CGRect(x: 0, y: 0, width: parentWidth, height: parentHeight)
         parentView.addSubview(imageView)
         
@@ -40,11 +37,11 @@ struct AnimationView: UIViewRepresentable {
     GeometryReader { geometry in
         VStack {
             AnimationView(conversationStatus: .botSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-                .background(Color.green)
+                .background(Color.skyBlue)
             AnimationView(conversationStatus: .currentUserSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-                .background(Color.green)
+                .background(Color.ebony)
             AnimationView(conversationStatus: .noOneSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-                .background(Color.green)
+                .background(Color.tappableArea)
         }
     }
 }
