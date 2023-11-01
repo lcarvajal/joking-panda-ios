@@ -99,24 +99,7 @@ class ConversationManager: NSObject, ObservableObject {
                     status = .currentUserSpeaking
                     
                     try startRecording()
-                    
-                    // FIXME: - Logic for recording must go inside speech recognition function in order to create actions for different input
-                    let seconds = 3.0
-                    DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-                        print("Recording stopped with this speech recognized: \(self.speechRecognized)")
-                        self.stopRecording()
-                        
-                        if (self.speechRecognized.count < 1) && (Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5) {
-                            self.messageHistory += "\n🗣️ \(self.currentPhrase)"
-                        }
-                        else {
-                            self.messageHistory += "\n🗣️ \(self.speechRecognized)"
-                        }
-                        
-                        self.updateSpeechOrPhraseToDisplay()
-                        self.incrementPhraseIndex()
-                        self.converse()
-                    }
+                    stopRecordingAndHandleRecognizedPhrase()
                 }
                 catch {
                     print("Problem starting recording...")
@@ -217,6 +200,27 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         
         audioEngine.prepare()
         try audioEngine.start()
+    }
+    
+    private func stopRecordingAndHandleRecognizedPhrase() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            if self.speechRecognized.count < 1 {
+                // If user hasn't said anything, wait on user input
+                self.stopRecordingAndHandleRecognizedPhrase()
+                return
+            }
+            else if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5 {
+                self.messageHistory += "\n🗣️ \(self.currentPhrase)"
+            }
+            else {
+                self.messageHistory += "\n🗣️ \(self.speechRecognized)"
+            }
+            
+            self.stopRecording()
+            self.updateSpeechOrPhraseToDisplay()
+            self.incrementPhraseIndex()
+            self.converse()
+        }
     }
     
     private func stopRecording() {

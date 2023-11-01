@@ -21,7 +21,6 @@ struct ContentView: View {
                 ZStack {
                     AnimationView(geometry: .constant(geometry), image: AnimationManager.animationImageFor(conversationStatus: conversationManager.status))
                     
-                    
                     VStack {
                         Spacer()
                         HStack {
@@ -99,7 +98,7 @@ struct ContentView: View {
                         .padding(.top, 0)
                     }
                 }
-                .frame(maxHeight: displayMessages ? .infinity : 180)
+                .frame(maxHeight: displayMessages ? .infinity : 100)
                 .padding()
             default:
                 // FIXME: This is broken on first app launch
