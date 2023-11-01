@@ -66,7 +66,7 @@ struct ContentView: View {
                             .padding(.bottom, 1)
                             .frame(maxWidth: .infinity)
                     }
-
+                    
                     ScrollViewReader { proxy in
                         ScrollView {
                             Text(conversationManager.messageHistory)
@@ -81,19 +81,23 @@ struct ContentView: View {
                         .onChange(of: conversationManager.messageHistory) { _ in
                             proxy.scrollTo(1, anchor: .bottom)
                         }
+                        .onChange(of: displayMessages) { _ in
+                            proxy.scrollTo(1, anchor: .bottom)
+                        }
                     }
 
-                    UIView {
-                        Text(conversationManager.speechOrPhraseToDisplay)
-                            .font(.system(size: 26, design: .rounded))
-                            .fixedSize(horizontal: false, vertical: true)
-                            .frame(maxWidth: .infinity)
-                            .padding()
+                    if conversationManager.status != .stopped {
+                        HStack {
+                            Text(conversationManager.speechOrPhraseToDisplay)
+                                .font(.system(size: 26, design: .rounded))
+                                .fixedSize(horizontal: false, vertical: true)
+                                .frame(maxWidth: .infinity)
+                                .padding(10)
+                        }
+                        .background(Color.backgroundLighter)
+                        .cornerRadius(10)
+                        .padding(.top, 0)
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.backgroundLighter)
-                    .cornerRadius(10)
-                    .padding(.top, 0)
                 }
                 .frame(maxHeight: displayMessages ? .infinity : 180)
                 .padding()

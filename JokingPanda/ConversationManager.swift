@@ -75,6 +75,10 @@ class ConversationManager: NSObject, ObservableObject {
     // MARK: - Actions
     
     internal func startConversation() {
+        if self.messageHistory != "" {
+            self.messageHistory += "\n"
+        }
+        
         activateAudioSession()
         status = .botSpeaking
         converse()
