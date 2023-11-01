@@ -54,8 +54,8 @@
     {"id":1055,"phrases":["Knock, knock.","Who’s there?","Alex.","Alex who?","Alex-plain later!"]},
     {"id":1056,"phrases":["Knock, knock.","Who’s there?","Iva.","Iva who?","I’ve a sore hand from knocking!"]},
     {"id":1057,"phrases":["Knock, knock.","Who’s there?","Ketchup.","Ketchup who?","Ketchup with me and I’ll tell you!"]},
-    {"id":1058,"phrases":["Knock, knock.","Who’s there?","Canoe.","Canoe who?","Canoe help me get inside?","Knock knock.","Who’s there?","Needle.","Needle who?","Needle little money please."]},
-    {"id":1059,"phrases":["Knock, knock.","Who’s there?","Watson.","Watson who?","Watson TV right now?"]},
+    {"id":1058,"phrases":["Knock, knock.","Who’s there?","Canoe.","Canoe who?","Canoe help me get inside?"]},
+    {"id":1059,"phrases":["Knock, knock.","Who’s there?","Watson.","Watson who?","Watson TV right now!"]},
     {"id":1060,"phrases":["Knock, knock.","Who’s there?","Anee.","Anee who?","Anee one you like!"]},
     {"id":1061,"phrases":["Knock, knock.","Who’s there?","Dozen.","Dozen who?","Dozen anybody want to let me in?"]},
     {"id":1062,"phrases":["Knock, knock.","Who’s there?","Dishes.","Dishes who?","Dish is a nice place!","Knock knock.","Who’s there?","A herd.","A herd who?","A herd you were home, so here I am!"]},
@@ -93,4 +93,5 @@
     {"id":1094,"phrases":["Knock, knock.","Who's there?","Andrew.","Andrew who?","Andrew a picture!"]},
     {"id":1095,"phrases":["Knock, knock.","Who's there?","Dwayne.","Dwayne who?","Dwayne the tub, I'm dwowning."]},
     {"id":1096,"phrases":["Knock, knock.","Who’s there?","Armageddon.","Armageddon who?","Armageddon a little bored. Let’s go out."]},
+    {"id":1097, "phrases":["Knock knock.","Who’s there?","Needle.","Needle who?","Needle little money please."]}
 ]

@@ -8,40 +8,37 @@
 import SwiftUI
 
 struct AnimationView: UIViewRepresentable {
-    @State var conversationStatus: ConversationStatus
-    
-    let parentWidth: CGFloat
-    let parentHeight: CGFloat
+    @Binding var geometry: GeometryProxy
+    @State var image: UIImage
     
     internal func makeUIView(context: Self.Context) -> UIView {
         let parentView = UIView()
         parentView.autoresizesSubviews = true
-        
-        let animationImage = AnimationManager.animationImageFor(conversationStatus: conversationStatus)
-        let imageView = UIImageView(image: animationImage)
-        imageView.contentMode = .scaleAspectFit
-        imageView.clipsToBounds = true
-        imageView.autoresizesSubviews = true
-        imageView.frame = CGRect(x: 0, y: 0, width: parentWidth, height: parentHeight)
-        parentView.addSubview(imageView)
-        
         return parentView
     }
 
     internal func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AnimationView>) {
+        uiView.subviews.forEach { $0.removeFromSuperview() }
         
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.autoresizesSubviews = true
+        imageView.frame = CGRect(x: 0, y: 0, width: geometry.size.width, height: geometry.size.height)
+        
+        uiView.addSubview(imageView)
     }
 }
 
 #Preview {
     GeometryReader { geometry in
         VStack {
-            AnimationView(conversationStatus: .botSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
+            AnimationView(geometry: .constant(geometry), image: AnimationManager.animationImageFor(conversationStatus: .stopped))
                 .background(Color.skyBlue)
-            AnimationView(conversationStatus: .currentUserSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-                .background(Color.ebony)
-            AnimationView(conversationStatus: .noOneSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-                .background(Color.tappableArea)
+//            AnimationView(conversationStatus: .currentUserSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
+//                .background(Color.ebony)
+//            AnimationView(conversationStatus: .noOneSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
+//                .background(Color.tappableArea)
         }
     }
 }

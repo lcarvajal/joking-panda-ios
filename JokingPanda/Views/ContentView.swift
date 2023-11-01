@@ -19,12 +19,8 @@ struct ContentView: View {
         VStack {
             GeometryReader { geometry in
                 ZStack {
-                    switch conversationManager.status {
-                    case .botSpeaking:
-                        AnimationView(conversationStatus: conversationManager.status, parentWidth: geometry.size.width, parentHeight: geometry.size.height)
-                    default:
-                        AnimationView(conversationStatus: conversationManager.status, parentWidth: geometry.size.width, parentHeight: geometry.size.height)
-                    }
+                    AnimationView(geometry: .constant(geometry), image: AnimationManager.animationImageFor(conversationStatus: conversationManager.status))
+                    
                     
                     VStack {
                         Spacer()
@@ -87,13 +83,17 @@ struct ContentView: View {
                         }
                     }
 
-                    Text(conversationManager.speechOrPhraseToDisplay)
-                        .font(.system(size: 26, design: .rounded))
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity)
-                        .background(Color.backgroundLighter)
-                        .cornerRadius(10)
-                        .padding(.top, 0)
+                    UIView {
+                        Text(conversationManager.speechOrPhraseToDisplay)
+                            .font(.system(size: 26, design: .rounded))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.backgroundLighter)
+                    .cornerRadius(10)
+                    .padding(.top, 0)
                 }
                 .frame(maxHeight: displayMessages ? .infinity : 180)
                 .padding()
