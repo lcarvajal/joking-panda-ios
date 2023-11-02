@@ -74,9 +74,12 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private func pickUpFromLastConversation() {
-        if let id =  UserDefaults.standard.object(forKey: Constant.UserDefault.conversationId) as? Int,
-            let index = conversations.firstIndex(where: { $0.id == id }) {
+        let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
+        
+        print("Current id set: \(id)")
+        if let index = conversations.firstIndex(where: { $0.id == id }) {
             conversationIndex = index
+            print("Conversatino index retrieved")
         }
     }
     
@@ -133,12 +136,13 @@ class ConversationManager: NSObject, ObservableObject {
             phraseIndex = 0
             conversationIndex += 1
             status = .stopped
-            UserDefaults.standard.set(conversationIndex, forKey: Constant.UserDefault.conversationId)
 
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
                 deactivateAudioSession()
             }
+            
+            UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
         }
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
     }
