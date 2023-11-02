@@ -49,7 +49,7 @@ class ConversationManager: NSObject, ObservableObject {
         synthesizer.delegate = self
         speechRecognizer.delegate = self
         
-        conversationIndex = Int(arc4random_uniform(UInt32(conversations.count)))
+        pickUpFromLastConversation()
     }
     
     // MARK: - Setup
@@ -70,6 +70,13 @@ class ConversationManager: NSObject, ObservableObject {
         }
         catch {
             print("Error activating audio session: \(error)")
+        }
+    }
+    
+    private func pickUpFromLastConversation() {
+        if let id =  UserDefaults.standard.object(forKey: Constant.UserDefault.conversationId) as? Int,
+            let index = conversations.firstIndex(where: { $0.id == id }) {
+            conversationIndex = index
         }
     }
     
@@ -126,6 +133,7 @@ class ConversationManager: NSObject, ObservableObject {
             phraseIndex = 0
             conversationIndex += 1
             status = .stopped
+            UserDefaults.standard.set(conversationIndex, forKey: Constant.UserDefault.conversationId)
 
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
