@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790D2AF1571500317DAF /* AnimationView.swift */; };
 		8D0A79102AF15A6100317DAF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790F2AF15A6100317DAF /* Constant.swift */; };
+		8D0A79132AF3AFCA00317DAF /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8D0A79122AF3AFCA00317DAF /* Mixpanel */; };
+		8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A79142AF3B02B00317DAF /* AppDelegate.swift */; };
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
@@ -45,6 +47,7 @@
 /* Begin PBXFileReference section */
 		8D0A790D2AF1571500317DAF /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		8D0A790F2AF15A6100317DAF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		8D0A79142AF3B02B00317DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0A79132AF3AFCA00317DAF /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +118,7 @@
 		8DC97D5F2AE670FF002CEA1E /* JokingPanda */ = {
 			isa = PBXGroup;
 			children = (
+				8D0A79142AF3B02B00317DAF /* AppDelegate.swift */,
 				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
 				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
 				8DC97D8A2AE673C0002CEA1E /* Model */,
@@ -196,6 +201,9 @@
 			dependencies = (
 			);
 			name = JokingPanda;
+			packageProductDependencies = (
+				8D0A79122AF3AFCA00317DAF /* Mixpanel */,
+			);
 			productName = JokingPanda;
 			productReference = 8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */;
 			productType = "com.apple.product-type.application";
@@ -268,6 +276,9 @@
 				Base,
 			);
 			mainGroup = 8DC97D542AE670FF002CEA1E;
+			packageReferences = (
+				8D0A79112AF3AFCA00317DAF /* XCRemoteSwiftPackageReference "mixpanel-swift" */,
+			);
 			productRefGroup = 8DC97D5E2AE670FF002CEA1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -311,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
@@ -660,6 +672,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8D0A79112AF3AFCA00317DAF /* XCRemoteSwiftPackageReference "mixpanel-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mixpanel/mixpanel-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8D0A79122AF3AFCA00317DAF /* Mixpanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D0A79112AF3AFCA00317DAF /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
+			productName = Mixpanel;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8DC97D552AE670FF002CEA1E /* Project object */;
 }
