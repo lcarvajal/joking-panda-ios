@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Mixpanel
 import Speech
 
 class ConversationManager: NSObject, ObservableObject {
@@ -82,6 +83,12 @@ class ConversationManager: NSObject, ObservableObject {
         activateAudioSession()
         status = .botSpeaking
         converse()
+        
+        // Track conversation started
+        Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
+                                      properties: [
+                                        Constant.Event.Property.conversationId: conversations[conversationIndex].id
+                                      ])
     }
     
     private func converse() {

@@ -20,7 +20,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     
     private func configureAppEventTracking() {
         if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"), let keys = NSDictionary(contentsOfFile: path),
-           let mixpanelProjectToken = keys[Constant.Key.mixpanelProjectToken] as? String {
+           let mixpanelProjectToken = keys[Constant.AppKey.mixpanelProjectToken] as? String {
             let mixpanel = Mixpanel.initialize(token: mixpanelProjectToken, trackAutomaticEvents: true)
             mixpanel.serverURL = Constant.Url.mixpanelServerUrl
         }
