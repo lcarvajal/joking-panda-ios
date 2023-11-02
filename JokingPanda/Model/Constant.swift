@@ -17,10 +17,6 @@ struct Constant {
         }
     }
     
-    struct AppKey {
-        static let mixpanelProjectToken = "mixpanelProjectToken"
-    }
-    
     struct ImageName {
         static let pandaMicUpMouthOpen = "panda-mic-up-mouth-open"
         static let pandaMicUpMouthClosed = "panda-mic-up-mouth-closed"
@@ -30,6 +26,14 @@ struct Constant {
         static let pandaMicResting = "panda-mic-resting"
         static let pandaMicRestingEyesClosed = "panda-mic-resting-eyes-closed"
         static let pandaDance = "panda-dance"
+    }
+    
+    struct SensitiveKey {
+        static let mixpanelProjectToken = "mixpanelProjectToken"
+    }
+    
+    struct UserDefault {
+        static let conversationId = "conversationId"
     }
     
     struct Url {
