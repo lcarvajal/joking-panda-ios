@@ -49,7 +49,7 @@ class ConversationManager: NSObject, ObservableObject {
         synthesizer.delegate = self
         speechRecognizer.delegate = self
         
-        pickUpFromLastConversation()
+        setConversationIndexOfLastConversation()
     }
     
     // MARK: - Setup
@@ -73,13 +73,10 @@ class ConversationManager: NSObject, ObservableObject {
         }
     }
     
-    private func pickUpFromLastConversation() {
+    private func setConversationIndexOfLastConversation() {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
-        
-        print("Current id set: \(id)")
         if let index = conversations.firstIndex(where: { $0.id == id }) {
             conversationIndex = index
-            print("Conversatino index retrieved")
         }
     }
     
