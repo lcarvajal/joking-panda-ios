@@ -10,17 +10,14 @@ import Foundation
 struct Constant {
     struct Event {
         static let appOpended = "App Opened"
+        static let conversationStarted = "Conversation Started"
         
-        struct Key {
-            
-        }
-        
-        struct Value {
-            
+        struct Property {
+            static let conversationId = "Conversation Id"
         }
     }
     
-    struct Key {
+    struct AppKey {
         static let mixpanelProjectToken = "mixpanelProjectToken"
     }
     
