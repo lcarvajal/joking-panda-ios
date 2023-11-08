@@ -9,8 +9,8 @@ import SwiftUI
 import Speech
 
 struct AuthorizationsView: View {
-    @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
-    @State var microphoneStatus = AVCaptureDevice.authorizationStatus(for: .audio)
+    @Binding var speechStatus: SFSpeechRecognizerAuthorizationStatus
+    @Binding var microphoneStatus: AVAuthorizationStatus
     
     var body: some View {
         VStack {
@@ -20,7 +20,7 @@ struct AuthorizationsView: View {
             
             Spacer()
             
-            Text("Start talking to the panda by enabling these settings")
+            Text("Talk to The Panda by enabling these settings")
                 .multilineTextAlignment(.center)
                 .padding()
             
@@ -80,10 +80,10 @@ struct AuthorizationsView: View {
             Spacer()
         }
         .padding()
-        .background(Color.backgroundLighter)
+        .background(Color.background)
     }
 }
 
 #Preview {
-    AuthorizationsView().preferredColorScheme(.dark)
+    AuthorizationsView(speechStatus: Binding.constant(SFSpeechRecognizerAuthorizationStatus.notDetermined), microphoneStatus: Binding.constant(AVAuthorizationStatus.notDetermined)).preferredColorScheme(.dark)
 }
