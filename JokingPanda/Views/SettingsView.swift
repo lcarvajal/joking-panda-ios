@@ -10,11 +10,12 @@ import StoreKit
 
 struct SettingsView: View {
     @Environment(\.requestReview) private var requestReview
+    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text("Feedback")) {
+                Section {
                     Button(action: {
                         if let emailURL = URL(string: "mailto:appsbylukas+hahapanda@gmail.com") {
                             if UIApplication.shared.canOpenURL(emailURL) {
@@ -34,10 +35,15 @@ struct SettingsView: View {
                     }) {
                         Text("Review on The App Store")
                     }
+                } header: {
+                    Text("Feedback")
+                } footer: {
+                    Text(appVersion ?? "Made with ❤️ in Vienna")
                 }
             }
             .listStyle(GroupedListStyle()) // Apply a grouped list style
             .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
