@@ -37,14 +37,6 @@ class ConversationManager: NSObject, ObservableObject {
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private let synthesizer = AVSpeechSynthesizer()
     
-    @available(iOS 17, *)
-    private var lmConfiguration: SFSpeechLanguageModel.Configuration {
-        let outputDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
-        let dynamicLanguageModel = outputDir.appendingPathComponent("LM")
-        let dynamicVocabulary = outputDir.appendingPathComponent("Vocab")
-        return SFSpeechLanguageModel.Configuration(languageModel: dynamicLanguageModel, vocabulary: dynamicVocabulary)
-    }
-    
     override init() {
         super.init()
         synthesizer.delegate = self
