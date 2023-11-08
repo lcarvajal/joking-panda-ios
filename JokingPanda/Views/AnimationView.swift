@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimationView: UIViewRepresentable {
     @Binding var geometry: GeometryProxy
-    @State var image: UIImage
+    @Binding var status: ConversationStatus
     
     internal func makeUIView(context: Self.Context) -> UIView {
         let parentView = UIView()
@@ -19,7 +19,8 @@ struct AnimationView: UIViewRepresentable {
 
     internal func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AnimationView>) {
         uiView.subviews.forEach { $0.removeFromSuperview() }
-        
+        print("Update image")
+        let image = AnimationManager.animationImageFor(conversationStatus: status)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -33,12 +34,8 @@ struct AnimationView: UIViewRepresentable {
 #Preview {
     GeometryReader { geometry in
         VStack {
-            AnimationView(geometry: .constant(geometry), image: AnimationManager.animationImageFor(conversationStatus: .stopped))
-                .background(Color.skyBlue)
-//            AnimationView(conversationStatus: .currentUserSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-//                .background(Color.ebony)
-//            AnimationView(conversationStatus: .noOneSpeaking, parentWidth: geometry.size.width, parentHeight: 150)
-//                .background(Color.tappableArea)
+//            AnimationView(geometry: .constant(geometry), status: .botSpeaking)
+//                .background(Color.skyBlue)
         }
     }
 }
