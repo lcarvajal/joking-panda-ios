@@ -9,36 +9,15 @@ import SwiftUI
 import Speech
 
 struct ContentView: View {
-    @Environment(\.scenePhase) var scenePhase
-    
-    @State var showSheet = false
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
-    @State var displayMessages = false
-    @StateObject var conversationManager = ConversationManager()
+    @State var microphoneStatus = AVCaptureDevice.authorizationStatus(for: .audio)
     
     var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                ZStack {
-                    AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
-                    
-                    if conversationManager.status == .stopped {
-                        OverlayedButtonsView(showSheet: $showSheet)
-                    }
-                }
-                .background(Color.tappableArea)
-                .onTapGesture {
-                    if speechStatus == .authorized && conversationManager.status == .stopped {
-                        conversationManager.startConversation()
-                    }
-                    else if speechStatus == .notDetermined {
-                        AuthorizationView()
-                    }
-                }
-            }
-            
-            ConversationView(displayMessages: $displayMessages, conversationManager: conversationManager)
-                .background(Color.background)
+        if microphoneStatus != .authorized || speechStatus != .authorized {
+            AuthorizationsView()
+        }
+        else {
+            BotInterfaceView()
         }
     }
 }

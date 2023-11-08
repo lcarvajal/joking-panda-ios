@@ -13,7 +13,7 @@
 		8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A79142AF3B02B00317DAF /* AppDelegate.swift */; };
 		8D0A79172AF3B40800317DAF /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A79162AF3B40800317DAF /* Keys.plist */; };
 		8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */; };
-		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */; };
+		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
@@ -30,6 +30,8 @@
 		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
 		8DE4C1D82AFC312C00B36205 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* ConversationView.swift */; };
 		8DE4C1DA2AFC335500B36205 /* OverlayedButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayedButtonsView.swift */; };
+		8DE4C1DC2AFC393700B36205 /* BotInterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DB2AFC393700B36205 /* BotInterfaceView.swift */; };
+		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +57,7 @@
 		8D0A79142AF3B02B00317DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0A79162AF3B40800317DAF /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "knock-knock.m4a"; sourceTree = "<group>"; };
-		8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsView.swift; sourceTree = "<group>"; };
 		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,8 @@
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8DE4C1D72AFC312C00B36205 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		8DE4C1D92AFC335500B36205 /* OverlayedButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayedButtonsView.swift; sourceTree = "<group>"; };
+		8DE4C1DB2AFC393700B36205 /* BotInterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotInterfaceView.swift; sourceTree = "<group>"; };
+		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */,
+				8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
@@ -190,7 +195,8 @@
 			children = (
 				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
-				8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */,
+				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
+				8DE4C1DB2AFC393700B36205 /* BotInterfaceView.swift */,
 				8DE4C1D72AFC312C00B36205 /* ConversationView.swift */,
 				8DE4C1D92AFC335500B36205 /* OverlayedButtonsView.swift */,
 				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
@@ -352,9 +358,11 @@
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
+				8DE4C1DC2AFC393700B36205 /* BotInterfaceView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */,
-				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */,
+				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
+				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8DE4C1DA2AFC335500B36205 /* OverlayedButtonsView.swift in Sources */,
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,

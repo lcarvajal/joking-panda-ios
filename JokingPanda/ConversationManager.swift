@@ -76,19 +76,25 @@ class ConversationManager: NSObject, ObservableObject {
     // MARK: - Actions
     
     internal func startConversation() {
-        if self.messageHistory != "" {
-            self.messageHistory += "\n"
+        // Only start a new conversation if there is no ongoing conversation
+        if status == .stopped {
+            if self.messageHistory != "" {
+                self.messageHistory += "\n"
+            }
+            
+            activateAudioSession()
+            status = .botSpeaking
+            converse()
+            
+            // Track conversation started
+            Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
+                                          properties: [
+                                            Constant.Event.Property.conversationId: conversations[conversationIndex].id
+                                          ])
         }
-        
-        activateAudioSession()
-        status = .botSpeaking
-        converse()
-        
-        // Track conversation started
-        Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
-                                      properties: [
-                                        Constant.Event.Property.conversationId: conversations[conversationIndex].id
-                                      ])
+        else {
+            return
+        }
     }
     
     private func converse() {
