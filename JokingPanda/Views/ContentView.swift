@@ -11,6 +11,7 @@ import Speech
 struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
+    @State var showSheet = false
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
     @State var displayMessages = false
     @StateObject var conversationManager = ConversationManager()
@@ -21,11 +22,31 @@ struct ContentView: View {
                 ZStack {
                     AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
                     
-                    VStack {
-                        Spacer()
-                        HStack {
+                    if speechStatus == .authorized && conversationManager.status == .stopped {
+                        VStack {
+                            HStack {
+                                Spacer()
+                                
+                                Button(action: {
+                                    self.showSheet.toggle()
+                                }) {
+                                    Label("", systemImage: "gear")
+                                        .symbolRenderingMode(.palette)
+                                        .font(.system(size: 20))
+                                        .foregroundStyle(.tappableAccent)
+                                        .padding()
+                                        .padding(.top, 10)
+                                }
+                                .sheet(isPresented: $showSheet) {
+                                    NavigationView {    // only here !!
+                                        SettingsView()
+                                    }
+                                }
+                            }
                             Spacer()
-                            if speechStatus == .authorized && conversationManager.status == .stopped {
+                            HStack {
+                                Spacer()
+                                
                                 if #available(iOS 17.0, *) {
                                     Image(systemName: "hand.tap.fill")
                                         .symbolRenderingMode(.palette)
@@ -38,11 +59,12 @@ struct ContentView: View {
                                     // FIXME: This will look bad
                                     Image(systemName: "hand.tap.fill")
                                         .font(.system(size: 50))
+                                        .foregroundStyle(.white, .tappableAccent)
                                         .padding()
                                 }
                             }
+                            .padding(10)
                         }
-                        .padding(10)
                     }
                 }
                 .background(Color.tappableArea)
@@ -84,7 +106,7 @@ struct ContentView: View {
                             proxy.scrollTo(1, anchor: .bottom)
                         }
                     }
-
+                    
                     if conversationManager.status != .stopped {
                         HStack {
                             Text(conversationManager.speechOrPhraseToDisplay)

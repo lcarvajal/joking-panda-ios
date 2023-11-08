@@ -27,6 +27,7 @@
 		8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Conversation.swift */; };
 		8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D972AE93284002CEA1E /* ConversationManager.swift */; };
 		8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D9A2AE98896002CEA1E /* conversationData.json */; };
+		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		8DC97D952AE92CB0002CEA1E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		8DC97D972AE93284002CEA1E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		8DC97D9A2AE98896002CEA1E /* conversationData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = conversationData.json; sourceTree = "<group>"; };
+		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
 				8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */,
 				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
+				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */,
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,
+				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
 				8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */,
 				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,
 			);
