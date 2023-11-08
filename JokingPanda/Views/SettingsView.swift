@@ -35,19 +35,6 @@ struct SettingsView: View {
                         Text("Review on The App Store")
                     }
                 }
-                
-                //                Section(header: Text("Advanced Settings")) {
-                //                    Button(action: {
-                //                        // Add your action for the third button here
-                //                    }) {
-                //                        Text("Button 3")
-                //                    }
-                //                    Button(action: {
-                //                        // Add your action for the fourth button here
-                //                    }) {
-                //                        Text("Button 4")
-                //                    }
-                //                }
             }
             .listStyle(GroupedListStyle()) // Apply a grouped list style
             .navigationTitle("Settings")
