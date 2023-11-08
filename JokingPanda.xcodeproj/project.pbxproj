@@ -28,6 +28,10 @@
 		8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D972AE93284002CEA1E /* ConversationManager.swift */; };
 		8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D9A2AE98896002CEA1E /* conversationData.json */; };
 		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
+		8DE4C1D42AFC2E7700B36205 /* SettingsButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D32AFC2E7700B36205 /* SettingsButtonView.swift */; };
+		8DE4C1D62AFC2F1300B36205 /* PulsingFingerTapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D52AFC2F1300B36205 /* PulsingFingerTapView.swift */; };
+		8DE4C1D82AFC312C00B36205 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* ConversationView.swift */; };
+		8DE4C1DA2AFC335500B36205 /* OverlayedButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayedButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +76,10 @@
 		8DC97D972AE93284002CEA1E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		8DC97D9A2AE98896002CEA1E /* conversationData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = conversationData.json; sourceTree = "<group>"; };
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8DE4C1D32AFC2E7700B36205 /* SettingsButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButtonView.swift; sourceTree = "<group>"; };
+		8DE4C1D52AFC2F1300B36205 /* PulsingFingerTapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingFingerTapView.swift; sourceTree = "<group>"; };
+		8DE4C1D72AFC312C00B36205 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
+		8DE4C1D92AFC335500B36205 /* OverlayedButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayedButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,10 +192,14 @@
 		8DC97D8B2AE673CB002CEA1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
 				8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */,
-				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
+				8DE4C1D72AFC312C00B36205 /* ConversationView.swift */,
+				8DE4C1D32AFC2E7700B36205 /* SettingsButtonView.swift */,
 				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
+				8DE4C1D92AFC335500B36205 /* OverlayedButtonsView.swift */,
+				8DE4C1D52AFC2F1300B36205 /* PulsingFingerTapView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,13 +353,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DE4C1D82AFC312C00B36205 /* ConversationView.swift in Sources */,
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
+				8DE4C1D62AFC2F1300B36205 /* PulsingFingerTapView.swift in Sources */,
+				8DE4C1D42AFC2E7700B36205 /* SettingsButtonView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */,
+				8DE4C1DA2AFC335500B36205 /* OverlayedButtonsView.swift in Sources */,
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,
 				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
