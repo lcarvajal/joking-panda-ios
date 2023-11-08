@@ -14,12 +14,13 @@ class ConversationManager: NSObject, ObservableObject {
     @Published var messageHistory: String = ""
     @Published var speechOrPhraseToDisplay = " "
     
-    private var speechRecognized: String = ""
-    private var phraseBotIsSaying: String = ""
-    
     internal var currentPhrase: String {
         return conversations[conversationIndex].phrases[phraseIndex]
     }
+    
+    private var audioPlayer: AVAudioPlayer? = nil
+    private var speechRecognized: String = ""
+    private var phraseBotIsSaying: String = ""
     
     private var conversationIndex = 0
     private var phraseIndex = 0
@@ -128,12 +129,12 @@ class ConversationManager: NSObject, ObservableObject {
     private func incrementPhraseIndex() {
         status = .noOneSpeaking
         phraseIndex += 1
-
+        
         if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
             phraseIndex = 0
             conversationIndex += 1
             status = .stopped
-
+            
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
                 deactivateAudioSession()
@@ -142,6 +143,34 @@ class ConversationManager: NSObject, ObservableObject {
             UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
         }
         print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
+    }
+    
+    private func speak(_ text: String) {
+        
+        if let audioURL = Bundle.main.url(forResource: "\(text)", withExtension: "m4a") {
+            do {
+                audioPlayer = nil
+                audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+                if let player = audioPlayer {
+                    player.delegate = self
+                    player.prepareToPlay()
+                    player.play()
+                }
+            } catch {
+                print("Error playing audio: \(error.localizedDescription)")
+            }
+        }
+        else {
+            // Fallback on voice synthesis if audio file doesn't exist
+            let utterance = AVSpeechUtterance(string: text)
+            utterance.rate = 0.45
+            utterance.pitchMultiplier = 0.8
+            utterance.postUtteranceDelay = 0.2
+            utterance.volume = 0.8
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
+            
+            self.synthesizer.speak(utterance)
+        }
     }
     
     private func updateSpeechOrPhraseToDisplay() {
@@ -169,7 +198,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         updateSpeechOrPhraseToDisplay()
         
         let inputNode = audioEngine.inputNode
-
+        
         // Create and configure the speech recognition request.
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
@@ -180,7 +209,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         if #available(iOS 13, *) {
             recognitionRequest.requiresOnDeviceRecognition = true
             if #available(iOS 17, *) {
-//                recognitionRequest.customizedLanguageModel = self.lmConfiguration
+                //                recognitionRequest.customizedLanguageModel = self.lmConfiguration
             }
         }
         
@@ -207,7 +236,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
                 self.recognitionTask = nil
             }
         }
-
+        
         // Configure the microphone input.
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
@@ -244,6 +273,15 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         recognitionRequest?.endAudio()
     }
     
+    private func updateMessageHistoryForPanda() {
+        if messageHistory == "" {
+            messageHistory += "🐼 \(currentPhrase)"
+        }
+        else {
+            messageHistory += "\n🐼 \(currentPhrase)"
+        }
+    }
+    
     // MARK: - SFSpeechRecognizerDelegate
     
     func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
@@ -252,22 +290,6 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
 }
 
 extension ConversationManager: AVSpeechSynthesizerDelegate {
-    // MARK: - Actions
-    
-    private func speak(_ text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.rate = 0.45
-        utterance.pitchMultiplier = 0.8
-        utterance.postUtteranceDelay = 0.2
-        utterance.volume = 0.8
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-        
-        self.synthesizer.speak(utterance)
-    }
-    
-    private func stopSpeaking() {
-        self.synthesizer.stopSpeaking(at: .immediate)
-    }
     
     // MARK: - AVSpeechSynthesizerDelegate
     
@@ -277,13 +299,38 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        stopSpeaking()
-        if messageHistory == "" {
-            messageHistory += "🐼 \(currentPhrase)"
+        synthesizer.stopSpeaking(at: .immediate)
+        updateMessageHistoryForPanda()
+        incrementPhraseIndex()
+        converse()
+    }
+}
+
+extension ConversationManager: AVAudioPlayerDelegate {
+    // MARK: - Actions
+    
+    private func deactivateAudioPlayer() {
+        if let player = audioPlayer {
+            audioPlayer?.delegate = nil
         }
-        else {
-            messageHistory += "\n🐼 \(currentPhrase)"
+        audioPlayer = nil
+    }
+    
+    // MARK: - AVAudioPlayerDelegate
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if flag {
+            // Audio playback completed successfully
+            print("Audio playback completed")
+            // You can perform any actions you want here, such as updating the UI.
+        } else {
+            // Audio playback was interrupted or encountered an error
+            print("Audio playback was interrupted or encountered an error")
+            // Handle any error scenarios.
         }
+        
+        deactivateAudioPlayer()
+        updateMessageHistoryForPanda()
         incrementPhraseIndex()
         converse()
     }
