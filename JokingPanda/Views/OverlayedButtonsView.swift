@@ -68,7 +68,3 @@ struct SettingsButtonView: View {
         }
     }
 }
-
-#Preview {
-    OverlayedButtonsView()
-}
