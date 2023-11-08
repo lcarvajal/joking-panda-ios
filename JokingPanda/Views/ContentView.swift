@@ -19,7 +19,7 @@ struct ContentView: View {
         VStack {
             GeometryReader { geometry in
                 ZStack {
-                    AnimationView(geometry: .constant(geometry), image: AnimationManager.animationImageFor(conversationStatus: conversationManager.status))
+                    AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
                     
                     VStack {
                         Spacer()

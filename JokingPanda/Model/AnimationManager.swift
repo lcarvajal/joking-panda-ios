@@ -45,7 +45,7 @@ struct AnimationManager {
         switch conversationStatus {
         case .botSpeaking:
             imageNames = talkingPandaImageNames
-            duration = 0.75
+            duration = 0.5
         case .currentUserSpeaking:
             imageNames = restingPandaImageNames
             duration = 2
