@@ -15,7 +15,7 @@ struct BotInterfaceView: View {
     @StateObject var conversationManager = ConversationManager()
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
                     AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
@@ -24,11 +24,11 @@ struct BotInterfaceView: View {
                         OverlayedButtonsView(showSheet: $showSheet)
                     }
                 }
-                .background(Color.tappableArea)
                 .onTapGesture {
                     conversationManager.startConversation()
                 }
             }
+            .background(Color.tappableArea)
             
             ConversationView(displayMessages: $displayMessages, conversationManager: conversationManager)
                 .background(Color.background)
