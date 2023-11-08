@@ -146,8 +146,12 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private func speak(_ text: String) {
+        status = .botSpeaking
         
-        if let audioURL = Bundle.main.url(forResource: "\(text)", withExtension: "m4a") {
+        let audioFileName = Tool.removePunctuation(from: text)
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "-")
+        if let audioURL = Bundle.main.url(forResource: "\(audioFileName)", withExtension: "m4a") {
             do {
                 audioPlayer = nil
                 audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
@@ -156,11 +160,16 @@ class ConversationManager: NSObject, ObservableObject {
                     player.prepareToPlay()
                     player.play()
                 }
+                
+                phraseBotIsSaying = currentPhrase
+                updateSpeechOrPhraseToDisplay()
             } catch {
                 print("Error playing audio: \(error.localizedDescription)")
             }
         }
         else {
+            print("Could not find \(audioFileName). Falling back to voice synthesizer.")
+            
             // Fallback on voice synthesis if audio file doesn't exist
             let utterance = AVSpeechUtterance(string: text)
             utterance.rate = 0.45
@@ -311,7 +320,7 @@ extension ConversationManager: AVAudioPlayerDelegate {
     
     private func deactivateAudioPlayer() {
         if let player = audioPlayer {
-            audioPlayer?.delegate = nil
+            player.delegate = nil
         }
         audioPlayer = nil
     }

@@ -12,6 +12,7 @@
 		8D0A79132AF3AFCA00317DAF /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8D0A79122AF3AFCA00317DAF /* Mixpanel */; };
 		8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A79142AF3B02B00317DAF /* AppDelegate.swift */; };
 		8D0A79172AF3B40800317DAF /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A79162AF3B40800317DAF /* Keys.plist */; };
+		8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */; };
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
@@ -50,6 +51,7 @@
 		8D0A790F2AF15A6100317DAF /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8D0A79142AF3B02B00317DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0A79162AF3B40800317DAF /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "knock-knock.m4a"; sourceTree = "<group>"; };
 		8D4CB9E92AEBFD8700B7A00F /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D0A79182AFB8C4000317DAF /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
 		8DC97D542AE670FF002CEA1E = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +192,7 @@
 		8DC97D992AE98856002CEA1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D0A79182AFB8C4000317DAF /* Audio */,
 				8DC97D9A2AE98896002CEA1E /* conversationData.json */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
@@ -299,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0A79172AF3B40800317DAF /* Keys.plist in Resources */,
+				8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */,
 				8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */,
 				8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */,
 				8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */,
