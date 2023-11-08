@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         if microphoneStatus != .authorized || speechStatus != .authorized {
-            AuthorizationsView()
+            AuthorizationsView(speechStatus: $speechStatus, microphoneStatus: $microphoneStatus)
         }
         else {
             BotInterfaceView()
