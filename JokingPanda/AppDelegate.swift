@@ -25,8 +25,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             mixpanel.serverURL = Constant.Url.mixpanelServerUrl
         }
         else {
-            print("WARNING: Keys not available in Keys.plist")
-            print("Unable to track app events")
+            // FIXME: Handle mixpanel not getting configured
         }
     }
 }

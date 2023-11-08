@@ -61,7 +61,7 @@ class ConversationManager: NSObject, ObservableObject {
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         }
         catch {
-            print("Error activating audio session: \(error)")
+            // FIXME: Handle error
         }
     }
     
@@ -70,7 +70,7 @@ class ConversationManager: NSObject, ObservableObject {
             try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
         }
         catch {
-            print("Error activating audio session: \(error)")
+            // FIXME: Handle error
         }
     }
     
@@ -110,14 +110,12 @@ class ConversationManager: NSObject, ObservableObject {
             }
             else {
                 do {
-                    print("Expected user phrase: \(currentPhrase)")
                     status = .currentUserSpeaking
-                    
                     try startRecording()
                     stopRecordingAndHandleRecognizedPhrase()
                 }
                 catch {
-                    print("Problem starting recording...")
+                    // FIXME: Handle error starting recording
                 }
             }
         }
@@ -142,7 +140,6 @@ class ConversationManager: NSObject, ObservableObject {
             
             UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
         }
-        print("Next phrase: \(conversations[conversationIndex].phrases[phraseIndex])")
     }
     
     private func speak(_ text: String) {
@@ -164,12 +161,10 @@ class ConversationManager: NSObject, ObservableObject {
                 phraseBotIsSaying = currentPhrase
                 updateSpeechOrPhraseToDisplay()
             } catch {
-                print("Error playing audio: \(error.localizedDescription)")
+                // FIXME: Handle error
             }
         }
         else {
-            print("Could not find \(audioFileName). Falling back to voice synthesizer.")
-            
             // Fallback on voice synthesis if audio file doesn't exist
             let utterance = AVSpeechUtterance(string: text)
             utterance.rate = 0.45
@@ -228,15 +223,13 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
             var isFinal = false
             
             if let result = result {
-                print("This text was understood by the panda: \(result.bestTranscription.formattedString)")
                 isFinal = result.isFinal
                 self.speechRecognized = result.bestTranscription.formattedString
                 self.updateSpeechOrPhraseToDisplay()
             }
             
             if error != nil || isFinal {
-                print("Audio recognition error: \(error?.localizedDescription)")
-                
+                // FIXME: Handle error
                 // Stop recognizing speech if there is a problem.
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -290,12 +283,6 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
             messageHistory += "\n🐼 \(currentPhrase)"
         }
     }
-    
-    // MARK: - SFSpeechRecognizerDelegate
-    
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        print("Availability of microphone changed: \(available)")
-    }
 }
 
 extension ConversationManager: AVSpeechSynthesizerDelegate {
@@ -328,16 +315,7 @@ extension ConversationManager: AVAudioPlayerDelegate {
     // MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if flag {
-            // Audio playback completed successfully
-            print("Audio playback completed")
-            // You can perform any actions you want here, such as updating the UI.
-        } else {
-            // Audio playback was interrupted or encountered an error
-            print("Audio playback was interrupted or encountered an error")
-            // Handle any error scenarios.
-        }
-        
+        // FIXME: Handle successful and unsuccessful cases
         deactivateAudioPlayer()
         updateMessageHistoryForPanda()
         incrementPhraseIndex()

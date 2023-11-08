@@ -19,7 +19,7 @@ struct AnimationView: UIViewRepresentable {
 
     internal func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AnimationView>) {
         uiView.subviews.forEach { $0.removeFromSuperview() }
-        print("Update image")
+        
         let image = AnimationManager.animationImageFor(conversationStatus: status)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
