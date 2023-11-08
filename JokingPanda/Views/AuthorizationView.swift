@@ -26,7 +26,6 @@ struct AuthorizationView: View {
             Button("Talk to the panda") {
                 // Request access to microphone
                 SFSpeechRecognizer.requestAuthorization { status in
-                    print("Updated speech status: \(status)")
                     speechStatus = SFSpeechRecognizer.authorizationStatus()
                 }
             }
