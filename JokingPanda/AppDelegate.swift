@@ -12,8 +12,13 @@ import Mixpanel
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        configureAppEventTracking()
-        Mixpanel.mainInstance().track(event: Constant.Event.appOpended)
+        
+        #if DEBUG
+            print("Event tracking not enabled in DEBUG")
+        #else
+            configureAppEventTracking()
+            Mixpanel.mainInstance().track(event: Constant.Event.appOpended)
+        #endif
         
         return true
     }

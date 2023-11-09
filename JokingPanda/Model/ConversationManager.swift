@@ -86,11 +86,15 @@ class ConversationManager: NSObject, ObservableObject {
             status = .botSpeaking
             converse()
             
-            // Track conversation started
-            Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
-                                          properties: [
-                                            Constant.Event.Property.conversationId: conversations[conversationIndex].id
-                                          ])
+            #if DEBUG
+                print("\(Constant.Event.conversationStarted) Event not tracked in DEBUG")
+            #else
+                // Track conversation started
+                Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
+                                              properties: [
+                                                Constant.Event.Property.conversationId: conversations[conversationIndex].id
+                                              ])
+            #endif
         }
         else {
             return
