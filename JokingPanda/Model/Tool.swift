@@ -74,7 +74,7 @@ struct Tool {
     
     static func removePunctuation(from text: String) -> String {
         // Define a regular expression pattern to match punctuation characters
-        let punctuationPattern = #"[.,\/#!$%\^&\*;:{}=\-_`~()]"#
+        let punctuationPattern = #"[.,\/#?'!$%\^&\*;:{}=\-_`’~()]"#
 
         // Use the regular expression to find and replace punctuation with an empty string
         let cleanedText = text.replacingOccurrences(of: punctuationPattern, with: "", options: .regularExpression, range: nil)

@@ -13,6 +13,112 @@
 		8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A79142AF3B02B00317DAF /* AppDelegate.swift */; };
 		8D0A79172AF3B40800317DAF /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A79162AF3B40800317DAF /* Keys.plist */; };
 		8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */; };
+		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
+		8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB22AFD66BE003E77B8 /* anita.m4a */; };
+		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
+		8D2D00032AFD6780003E77B8 /* mary.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBF2AFD66BF003E77B8 /* mary.m4a */; };
+		8D2D00042AFD6780003E77B8 /* needle-little-help-right-now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */; };
+		8D2D00052AFD6780003E77B8 /* glad-youre-excited-too.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF9F2AFD66BC003E77B8 /* glad-youre-excited-too.m4a */; };
+		8D2D00062AFD6780003E77B8 /* figs-the-doorbell-its-not-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7F2AFD66BA003E77B8 /* figs-the-doorbell-its-not-working.m4a */; };
+		8D2D00072AFD6780003E77B8 /* voodoo-you-think-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF612AFD66B8003E77B8 /* voodoo-you-think-you-are.m4a */; };
+		8D2D00082AFD6780003E77B8 /* spell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8C2AFD66BB003E77B8 /* spell.m4a */; };
+		8D2D00092AFD6780003E77B8 /* hal.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFAF2AFD66BE003E77B8 /* hal.m4a */; };
+		8D2D000A2AFD6780003E77B8 /* needle.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFAA2AFD66BD003E77B8 /* needle.m4a */; };
+		8D2D000B2AFD6780003E77B8 /* robin-you-give-me-your-money.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB72AFD66BE003E77B8 /* robin-you-give-me-your-money.m4a */; };
+		8D2D000C2AFD6780003E77B8 /* snow.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC52AFD66BF003E77B8 /* snow.m4a */; };
+		8D2D000D2AFD6780003E77B8 /* euripides.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF982AFD66BC003E77B8 /* euripides.m4a */; };
+		8D2D000E2AFD6780003E77B8 /* robin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC82AFD66BF003E77B8 /* robin.m4a */; };
+		8D2D000F2AFD6780003E77B8 /* dwayne.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFAE2AFD66BD003E77B8 /* dwayne.m4a */; };
+		8D2D00102AFD6780003E77B8 /* iran.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF942AFD66BB003E77B8 /* iran.m4a */; };
+		8D2D00122AFD6780003E77B8 /* bless-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBA2AFD66BE003E77B8 /* bless-you.m4a */; };
+		8D2D00132AFD6780003E77B8 /* thermos.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBC2AFD66BE003E77B8 /* thermos.m4a */; };
+		8D2D00142AFD6780003E77B8 /* tank.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBB2AFD66BE003E77B8 /* tank.m4a */; };
+		8D2D00152AFD6780003E77B8 /* amos.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF9C2AFD66BC003E77B8 /* amos.m4a */; };
+		8D2D00162AFD6780003E77B8 /* no-a-cow-says-mooooo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF6A2AFD66B8003E77B8 /* no-a-cow-says-mooooo.m4a */; };
+		8D2D00172AFD6780003E77B8 /* dozen.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC22AFD66BF003E77B8 /* dozen.m4a */; };
+		8D2D00182AFD6780003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC12AFD66BF003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a */; };
+		8D2D00192AFD6780003E77B8 /* a-little-old-lady.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF762AFD66B9003E77B8 /* a-little-old-lady.m4a */; };
+		8D2D001A2AFD6780003E77B8 /* says-me.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF862AFD66BA003E77B8 /* says-me.m4a */; };
+		8D2D001B2AFD6780003E77B8 /* stopwatch.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFAD2AFD66BD003E77B8 /* stopwatch.m4a */; };
+		8D2D001C2AFD6780003E77B8 /* to.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF702AFD66B9003E77B8 /* to.m4a */; };
+		8D2D001D2AFD6780003E77B8 /* alectricity-buzz.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC02AFD66BF003E77B8 /* alectricity-buzz.m4a */; };
+		8D2D001E2AFD6780003E77B8 /* olive.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF952AFD66BB003E77B8 /* olive.m4a */; };
+		8D2D001F2AFD6780003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF872AFD66BA003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a */; };
+		8D2D00202AFD6780003E77B8 /* some.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFAB2AFD66BD003E77B8 /* some.m4a */; };
+		8D2D00212AFD6780003E77B8 /* razor-hands-this-is-a-stick-up.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF822AFD66BA003E77B8 /* razor-hands-this-is-a-stick-up.m4a */; };
+		8D2D00222AFD6780003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF6C2AFD66B8003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a */; };
+		8D2D00232AFD6780003E77B8 /* nana-your-business.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7B2AFD66B9003E77B8 /* nana-your-business.m4a */; };
+		8D2D00242AFD6780003E77B8 /* icy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF962AFD66BB003E77B8 /* icy.m4a */; };
+		8D2D00252AFD6780003E77B8 /* luke-through-the-peephole-and-find-out.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF932AFD66BB003E77B8 /* luke-through-the-peephole-and-find-out.m4a */; };
+		8D2D00262AFD6780003E77B8 /* iva-sore-hand-from-knocking.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA42AFD66BD003E77B8 /* iva-sore-hand-from-knocking.m4a */; };
+		8D2D00272AFD6780003E77B8 /* police.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB12AFD66BE003E77B8 /* police.m4a */; };
+		8D2D00282AFD6780003E77B8 /* water.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA22AFD66BD003E77B8 /* water.m4a */; };
+		8D2D00292AFD6780003E77B8 /* a-mosquito-look-right-there.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF9D2AFD66BC003E77B8 /* a-mosquito-look-right-there.m4a */; };
+		8D2D002A2AFD6780003E77B8 /* amarillo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB32AFD66BE003E77B8 /* amarillo.m4a */; };
+		8D2D002B2AFD6780003E77B8 /* no-im-not.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF842AFD66BA003E77B8 /* no-im-not.m4a */; };
+		8D2D002C2AFD6780003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8D2AFD66BB003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a */; };
+		8D2D002D2AFD6780003E77B8 /* leaf-me-alone.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF712AFD66B9003E77B8 /* leaf-me-alone.m4a */; };
+		8D2D002E2AFD6780003E77B8 /* alex-plain-later.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB62AFD66BE003E77B8 /* alex-plain-later.m4a */; };
+		8D2D002F2AFD6780003E77B8 /* im-good-hawaii-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF642AFD66B8003E77B8 /* im-good-hawaii-you.m4a */; };
+		8D2D00302AFD6780003E77B8 /* canoe-come-out-right-now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF6F2AFD66B9003E77B8 /* canoe-come-out-right-now.m4a */; };
+		8D2D00312AFD6780003E77B8 /* luke.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA92AFD66BD003E77B8 /* luke.m4a */; };
+		8D2D00322AFD6780003E77B8 /* nana.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7E2AFD66BA003E77B8 /* nana.m4a */; };
+		8D2D00332AFD6780003E77B8 /* cash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF722AFD66B9003E77B8 /* cash.m4a */; };
+		8D2DFFC92AFD6780003E77B8 /* snow-use-the-joke-is-over.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB52AFD66BE003E77B8 /* snow-use-the-joke-is-over.m4a */; };
+		8D2DFFCA2AFD6780003E77B8 /* mary-christmas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB02AFD66BE003E77B8 /* mary-christmas.m4a */; };
+		8D2DFFCB2AFD6780003E77B8 /* theodore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF832AFD66BA003E77B8 /* theodore.m4a */; };
+		8D2DFFCC2AFD6780003E77B8 /* voodoo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA52AFD66BD003E77B8 /* voodoo.m4a */; };
+		8D2DFFCD2AFD6780003E77B8 /* hey-you-can-yodel.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF892AFD66BA003E77B8 /* hey-you-can-yodel.m4a */; };
+		8D2DFFCE2AFD6780003E77B8 /* candice.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF972AFD66BC003E77B8 /* candice.m4a */; };
+		8D2DFFCF2AFD6780003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF882AFD66BA003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a */; };
+		8D2DFFD02AFD6780003E77B8 /* lettuce-in-its-cold-out-here.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC72AFD66BF003E77B8 /* lettuce-in-its-cold-out-here.m4a */; };
+		8D2DFFD12AFD6780003E77B8 /* youre-welcome.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF792AFD66B9003E77B8 /* youre-welcome.m4a */; };
+		8D2DFFD22AFD6780003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF682AFD66B8003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a */; };
+		8D2DFFD32AFD6780003E77B8 /* annie.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF652AFD66B8003E77B8 /* annie.m4a */; };
+		8D2DFFD42AFD6780003E77B8 /* etch.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF632AFD66B8003E77B8 /* etch.m4a */; };
+		8D2DFFD52AFD6780003E77B8 /* w-h-o.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF922AFD66BB003E77B8 /* w-h-o.m4a */; };
+		8D2DFFD62AFD6780003E77B8 /* woo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF752AFD66B9003E77B8 /* woo.m4a */; };
+		8D2DFFD72AFD6780003E77B8 /* ice-cream.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF692AFD66B8003E77B8 /* ice-cream.m4a */; };
+		8D2DFFD82AFD6780003E77B8 /* who.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF782AFD66B9003E77B8 /* who.m4a */; };
+		8D2DFFD92AFD6780003E77B8 /* lettuce.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF672AFD66B8003E77B8 /* lettuce.m4a */; };
+		8D2DFFDA2AFD6780003E77B8 /* razor.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF802AFD66BA003E77B8 /* razor.m4a */; };
+		8D2DFFDB2AFD6780003E77B8 /* ketchup.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF9A2AFD66BC003E77B8 /* ketchup.m4a */; };
+		8D2DFFDC2AFD6780003E77B8 /* i-didnt-know-you-were-an-owl.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC62AFD66BF003E77B8 /* i-didnt-know-you-were-an-owl.m4a */; };
+		8D2DFFDD2AFD6780003E77B8 /* banana.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF772AFD66B9003E77B8 /* banana.m4a */; };
+		8D2DFFDE2AFD6780003E77B8 /* dozen-anyone-want-to-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBD2AFD66BF003E77B8 /* dozen-anyone-want-to-let-me-in.m4a */; };
+		8D2DFFDF2AFD6780003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */; };
+		8D2DFFE02AFD6780003E77B8 /* iva.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF732AFD66B9003E77B8 /* iva.m4a */; };
+		8D2DFFE12AFD6780003E77B8 /* boo.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7A2AFD66B9003E77B8 /* boo.m4a */; };
+		8D2DFFE22AFD6780003E77B8 /* candice-snack-be-eaten.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB42AFD66BE003E77B8 /* candice-snack-be-eaten.m4a */; };
+		8D2DFFE32AFD6780003E77B8 /* theodore-is-stuck-open-up.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA02AFD66BC003E77B8 /* theodore-is-stuck-open-up.m4a */; };
+		8D2DFFE42AFD6780003E77B8 /* leaf.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7D2AFD66BA003E77B8 /* leaf.m4a */; };
+		8D2DFFE52AFD6780003E77B8 /* hal-will-you-know-if-you-dont-come-open-the-door.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB92AFD66BE003E77B8 /* hal-will-you-know-if-you-dont-come-open-the-door.m4a */; };
+		8D2DFFE62AFD6780003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA72AFD66BD003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a */; };
+		8D2DFFE72AFD6780003E77B8 /* europe.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA12AFD66BC003E77B8 /* europe.m4a */; };
+		8D2DFFE82AFD6780003E77B8 /* orange.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF662AFD66B8003E77B8 /* orange.m4a */; };
+		8D2DFFE92AFD6780003E77B8 /* hawaii.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF902AFD66BB003E77B8 /* hawaii.m4a */; };
+		8D2DFFEA2AFD6780003E77B8 /* iran-here-and-im-tired.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBE2AFD66BF003E77B8 /* iran-here-and-im-tired.m4a */; };
+		8D2DFFEB2AFD6780003E77B8 /* mustache.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB82AFD66BE003E77B8 /* mustache.m4a */; };
+		8D2DFFEC2AFD6780003E77B8 /* says.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF742AFD66B9003E77B8 /* says.m4a */; };
+		8D2DFFED2AFD6780003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF6B2AFD66B8003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a */; };
+		8D2DFFEE2AFD6780003E77B8 /* honey-bee.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8F2AFD66BB003E77B8 /* honey-bee.m4a */; };
+		8D2DFFEF2AFD6780003E77B8 /* cow-says.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA82AFD66BD003E77B8 /* cow-says.m4a */; };
+		8D2DFFF02AFD6780003E77B8 /* dont-cry-its-just-a-joke.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA62AFD66BD003E77B8 /* dont-cry-its-just-a-joke.m4a */; };
+		8D2DFFF12AFD6780003E77B8 /* olive-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8A2AFD66BB003E77B8 /* olive-you.m4a */; };
+		8D2DFFF22AFD6780003E77B8 /* amarillo-nice-person.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA32AFD66BD003E77B8 /* amarillo-nice-person.m4a */; };
+		8D2DFFF32AFD6780003E77B8 /* figs.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF812AFD66BA003E77B8 /* figs.m4a */; };
+		8D2DFFF42AFD6780003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */; };
+		8D2DFFF52AFD6780003E77B8 /* sure.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF6D2AFD66B8003E77B8 /* sure.m4a */; };
+		8D2DFFF62AFD6780003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF9B2AFD66BC003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a */; };
+		8D2DFFF72AFD6780003E77B8 /* let-me-in-anita-borrow-something.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7C2AFD66BA003E77B8 /* let-me-in-anita-borrow-something.m4a */; };
+		8D2DFFF82AFD6780003E77B8 /* nah-im-more-into-almonds.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFAC2AFD66BD003E77B8 /* nah-im-more-into-almonds.m4a */; };
+		8D2DFFF92AFD6780003E77B8 /* icy-you-looking-at-me.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF852AFD66BA003E77B8 /* icy-you-looking-at-me.m4a */; };
+		8D2DFFFA2AFD6780003E77B8 /* maybe-some-day-youll-recognize-me.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8B2AFD66BB003E77B8 /* maybe-some-day-youll-recognize-me.m4a */; };
+		8D2DFFFB2AFD6780003E77B8 /* canoe.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC32AFD66BF003E77B8 /* canoe.m4a */; };
+		8D2DFFFC2AFD6780003E77B8 /* police-let-me-in-its-chilly-out.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF6E2AFD66B9003E77B8 /* police-let-me-in-its-chilly-out.m4a */; };
+		8D2DFFFD2AFD6780003E77B8 /* alec.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF9E2AFD66BC003E77B8 /* alec.m4a */; };
+		8D2DFFFE2AFD6780003E77B8 /* i-mustache-you-a-question.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF992AFD66BC003E77B8 /* i-mustache-you-a-question.m4a */; };
+		8D2DFFFF2AFD6780003E77B8 /* actually-its-to-whom.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF912AFD66BB003E77B8 /* actually-its-to-whom.m4a */; };
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
@@ -57,9 +163,116 @@
 		8D0A79142AF3B02B00317DAF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0A79162AF3B40800317DAF /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "knock-knock.m4a"; sourceTree = "<group>"; };
+		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
+		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
+		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
+		8D2DFF612AFD66B8003E77B8 /* voodoo-you-think-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "voodoo-you-think-you-are.m4a"; sourceTree = "<group>"; };
+		8D2DFF632AFD66B8003E77B8 /* etch.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = etch.m4a; sourceTree = "<group>"; };
+		8D2DFF642AFD66B8003E77B8 /* im-good-hawaii-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "im-good-hawaii-you.m4a"; sourceTree = "<group>"; };
+		8D2DFF652AFD66B8003E77B8 /* annie.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = annie.m4a; sourceTree = "<group>"; };
+		8D2DFF662AFD66B8003E77B8 /* orange.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = orange.m4a; sourceTree = "<group>"; };
+		8D2DFF672AFD66B8003E77B8 /* lettuce.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = lettuce.m4a; sourceTree = "<group>"; };
+		8D2DFF682AFD66B8003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a"; sourceTree = "<group>"; };
+		8D2DFF692AFD66B8003E77B8 /* ice-cream.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ice-cream.m4a"; sourceTree = "<group>"; };
+		8D2DFF6A2AFD66B8003E77B8 /* no-a-cow-says-mooooo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "no-a-cow-says-mooooo.m4a"; sourceTree = "<group>"; };
+		8D2DFF6B2AFD66B8003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "stopwatch-youre-doing-and-let-me-in.m4a"; sourceTree = "<group>"; };
+		8D2DFF6C2AFD66B8003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ice-cream-if-you-dont-give-me-some-candy.m4a"; sourceTree = "<group>"; };
+		8D2DFF6D2AFD66B8003E77B8 /* sure.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sure.m4a; sourceTree = "<group>"; };
+		8D2DFF6E2AFD66B9003E77B8 /* police-let-me-in-its-chilly-out.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "police-let-me-in-its-chilly-out.m4a"; sourceTree = "<group>"; };
+		8D2DFF6F2AFD66B9003E77B8 /* canoe-come-out-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "canoe-come-out-right-now.m4a"; sourceTree = "<group>"; };
+		8D2DFF702AFD66B9003E77B8 /* to.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = to.m4a; sourceTree = "<group>"; };
+		8D2DFF712AFD66B9003E77B8 /* leaf-me-alone.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "leaf-me-alone.m4a"; sourceTree = "<group>"; };
+		8D2DFF722AFD66B9003E77B8 /* cash.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cash.m4a; sourceTree = "<group>"; };
+		8D2DFF732AFD66B9003E77B8 /* iva.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = iva.m4a; sourceTree = "<group>"; };
+		8D2DFF742AFD66B9003E77B8 /* says.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = says.m4a; sourceTree = "<group>"; };
+		8D2DFF752AFD66B9003E77B8 /* woo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = woo.m4a; sourceTree = "<group>"; };
+		8D2DFF762AFD66B9003E77B8 /* a-little-old-lady.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "a-little-old-lady.m4a"; sourceTree = "<group>"; };
+		8D2DFF772AFD66B9003E77B8 /* banana.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = banana.m4a; sourceTree = "<group>"; };
+		8D2DFF782AFD66B9003E77B8 /* who.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.m4a; sourceTree = "<group>"; };
+		8D2DFF792AFD66B9003E77B8 /* youre-welcome.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "youre-welcome.m4a"; sourceTree = "<group>"; };
+		8D2DFF7A2AFD66B9003E77B8 /* boo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = boo.m4a; sourceTree = "<group>"; };
+		8D2DFF7B2AFD66B9003E77B8 /* nana-your-business.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "nana-your-business.m4a"; sourceTree = "<group>"; };
+		8D2DFF7C2AFD66BA003E77B8 /* let-me-in-anita-borrow-something.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "let-me-in-anita-borrow-something.m4a"; sourceTree = "<group>"; };
+		8D2DFF7D2AFD66BA003E77B8 /* leaf.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = leaf.m4a; sourceTree = "<group>"; };
+		8D2DFF7E2AFD66BA003E77B8 /* nana.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = nana.m4a; sourceTree = "<group>"; };
+		8D2DFF7F2AFD66BA003E77B8 /* figs-the-doorbell-its-not-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "figs-the-doorbell-its-not-working.m4a"; sourceTree = "<group>"; };
+		8D2DFF802AFD66BA003E77B8 /* razor.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = razor.m4a; sourceTree = "<group>"; };
+		8D2DFF812AFD66BA003E77B8 /* figs.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = figs.m4a; sourceTree = "<group>"; };
+		8D2DFF822AFD66BA003E77B8 /* razor-hands-this-is-a-stick-up.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "razor-hands-this-is-a-stick-up.m4a"; sourceTree = "<group>"; };
+		8D2DFF832AFD66BA003E77B8 /* theodore.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = theodore.m4a; sourceTree = "<group>"; };
+		8D2DFF842AFD66BA003E77B8 /* no-im-not.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "no-im-not.m4a"; sourceTree = "<group>"; };
+		8D2DFF852AFD66BA003E77B8 /* icy-you-looking-at-me.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "icy-you-looking-at-me.m4a"; sourceTree = "<group>"; };
+		8D2DFF862AFD66BA003E77B8 /* says-me.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "says-me.m4a"; sourceTree = "<group>"; };
+		8D2DFF872AFD66BA003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "orange-you-glad-i-didnt-say-banana.m4a"; sourceTree = "<group>"; };
+		8D2DFF882AFD66BA003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dwayne-the-sink-i-need-to-use-it.m4a"; sourceTree = "<group>"; };
+		8D2DFF892AFD66BA003E77B8 /* hey-you-can-yodel.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hey-you-can-yodel.m4a"; sourceTree = "<group>"; };
+		8D2DFF8A2AFD66BB003E77B8 /* olive-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "olive-you.m4a"; sourceTree = "<group>"; };
+		8D2DFF8B2AFD66BB003E77B8 /* maybe-some-day-youll-recognize-me.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "maybe-some-day-youll-recognize-me.m4a"; sourceTree = "<group>"; };
+		8D2DFF8C2AFD66BB003E77B8 /* spell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = spell.m4a; sourceTree = "<group>"; };
+		8D2DFF8D2AFD66BB003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "annie-thing-you-can-do-i-can-do-too.m4a"; sourceTree = "<group>"; };
+		8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alex.m4a; sourceTree = "<group>"; };
+		8D2DFF8F2AFD66BB003E77B8 /* honey-bee.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee.m4a"; sourceTree = "<group>"; };
+		8D2DFF902AFD66BB003E77B8 /* hawaii.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hawaii.m4a; sourceTree = "<group>"; };
+		8D2DFF912AFD66BB003E77B8 /* actually-its-to-whom.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "actually-its-to-whom.m4a"; sourceTree = "<group>"; };
+		8D2DFF922AFD66BB003E77B8 /* w-h-o.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "w-h-o.m4a"; sourceTree = "<group>"; };
+		8D2DFF932AFD66BB003E77B8 /* luke-through-the-peephole-and-find-out.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "luke-through-the-peephole-and-find-out.m4a"; sourceTree = "<group>"; };
+		8D2DFF942AFD66BB003E77B8 /* iran.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = iran.m4a; sourceTree = "<group>"; };
+		8D2DFF952AFD66BB003E77B8 /* olive.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = olive.m4a; sourceTree = "<group>"; };
+		8D2DFF962AFD66BB003E77B8 /* icy.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = icy.m4a; sourceTree = "<group>"; };
+		8D2DFF972AFD66BC003E77B8 /* candice.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = candice.m4a; sourceTree = "<group>"; };
+		8D2DFF982AFD66BC003E77B8 /* euripides.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = euripides.m4a; sourceTree = "<group>"; };
+		8D2DFF992AFD66BC003E77B8 /* i-mustache-you-a-question.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "i-mustache-you-a-question.m4a"; sourceTree = "<group>"; };
+		8D2DFF9A2AFD66BC003E77B8 /* ketchup.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ketchup.m4a; sourceTree = "<group>"; };
+		8D2DFF9B2AFD66BC003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sure-would-be-nice-if-you-opened-the-door.m4a"; sourceTree = "<group>"; };
+		8D2DFF9C2AFD66BC003E77B8 /* amos.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = amos.m4a; sourceTree = "<group>"; };
+		8D2DFF9D2AFD66BC003E77B8 /* a-mosquito-look-right-there.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "a-mosquito-look-right-there.m4a"; sourceTree = "<group>"; };
+		8D2DFF9E2AFD66BC003E77B8 /* alec.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alec.m4a; sourceTree = "<group>"; };
+		8D2DFF9F2AFD66BC003E77B8 /* glad-youre-excited-too.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "glad-youre-excited-too.m4a"; sourceTree = "<group>"; };
+		8D2DFFA02AFD66BC003E77B8 /* theodore-is-stuck-open-up.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "theodore-is-stuck-open-up.m4a"; sourceTree = "<group>"; };
+		8D2DFFA12AFD66BC003E77B8 /* europe.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = europe.m4a; sourceTree = "<group>"; };
+		8D2DFFA22AFD66BD003E77B8 /* water.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = water.m4a; sourceTree = "<group>"; };
+		8D2DFFA32AFD66BD003E77B8 /* amarillo-nice-person.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "amarillo-nice-person.m4a"; sourceTree = "<group>"; };
+		8D2DFFA42AFD66BD003E77B8 /* iva-sore-hand-from-knocking.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iva-sore-hand-from-knocking.m4a"; sourceTree = "<group>"; };
+		8D2DFFA52AFD66BD003E77B8 /* voodoo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = voodoo.m4a; sourceTree = "<group>"; };
+		8D2DFFA62AFD66BD003E77B8 /* dont-cry-its-just-a-joke.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dont-cry-its-just-a-joke.m4a"; sourceTree = "<group>"; };
+		8D2DFFA72AFD66BD003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "euripides-clothes-you-better-pay-for-them.m4a"; sourceTree = "<group>"; };
+		8D2DFFA82AFD66BD003E77B8 /* cow-says.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cow-says.m4a"; sourceTree = "<group>"; };
+		8D2DFFA92AFD66BD003E77B8 /* luke.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = luke.m4a; sourceTree = "<group>"; };
+		8D2DFFAA2AFD66BD003E77B8 /* needle.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = needle.m4a; sourceTree = "<group>"; };
+		8D2DFFAB2AFD66BD003E77B8 /* some.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = some.m4a; sourceTree = "<group>"; };
+		8D2DFFAC2AFD66BD003E77B8 /* nah-im-more-into-almonds.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "nah-im-more-into-almonds.m4a"; sourceTree = "<group>"; };
+		8D2DFFAD2AFD66BD003E77B8 /* stopwatch.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = stopwatch.m4a; sourceTree = "<group>"; };
+		8D2DFFAE2AFD66BD003E77B8 /* dwayne.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = dwayne.m4a; sourceTree = "<group>"; };
+		8D2DFFAF2AFD66BE003E77B8 /* hal.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hal.m4a; sourceTree = "<group>"; };
+		8D2DFFB02AFD66BE003E77B8 /* mary-christmas.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "mary-christmas.m4a"; sourceTree = "<group>"; };
+		8D2DFFB12AFD66BE003E77B8 /* police.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = police.m4a; sourceTree = "<group>"; };
+		8D2DFFB22AFD66BE003E77B8 /* anita.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = anita.m4a; sourceTree = "<group>"; };
+		8D2DFFB32AFD66BE003E77B8 /* amarillo.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = amarillo.m4a; sourceTree = "<group>"; };
+		8D2DFFB42AFD66BE003E77B8 /* candice-snack-be-eaten.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "candice-snack-be-eaten.m4a"; sourceTree = "<group>"; };
+		8D2DFFB52AFD66BE003E77B8 /* snow-use-the-joke-is-over.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "snow-use-the-joke-is-over.m4a"; sourceTree = "<group>"; };
+		8D2DFFB62AFD66BE003E77B8 /* alex-plain-later.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alex-plain-later.m4a"; sourceTree = "<group>"; };
+		8D2DFFB72AFD66BE003E77B8 /* robin-you-give-me-your-money.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "robin-you-give-me-your-money.m4a"; sourceTree = "<group>"; };
+		8D2DFFB82AFD66BE003E77B8 /* mustache.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = mustache.m4a; sourceTree = "<group>"; };
+		8D2DFFB92AFD66BE003E77B8 /* hal-will-you-know-if-you-dont-come-open-the-door.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "hal-will-you-know-if-you-dont-come-open-the-door.m4a"; sourceTree = "<group>"; };
+		8D2DFFBA2AFD66BE003E77B8 /* bless-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bless-you.m4a"; sourceTree = "<group>"; };
+		8D2DFFBB2AFD66BE003E77B8 /* tank.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = tank.m4a; sourceTree = "<group>"; };
+		8D2DFFBC2AFD66BE003E77B8 /* thermos.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = thermos.m4a; sourceTree = "<group>"; };
+		8D2DFFBD2AFD66BF003E77B8 /* dozen-anyone-want-to-let-me-in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dozen-anyone-want-to-let-me-in.m4a"; sourceTree = "<group>"; };
+		8D2DFFBE2AFD66BF003E77B8 /* iran-here-and-im-tired.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iran-here-and-im-tired.m4a"; sourceTree = "<group>"; };
+		8D2DFFBF2AFD66BF003E77B8 /* mary.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = mary.m4a; sourceTree = "<group>"; };
+		8D2DFFC02AFD66BF003E77B8 /* alectricity-buzz.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alectricity-buzz.m4a"; sourceTree = "<group>"; };
+		8D2DFFC12AFD66BF003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "thermos-be-a-better-way-to-get-to-you.m4a"; sourceTree = "<group>"; };
+		8D2DFFC22AFD66BF003E77B8 /* dozen.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = dozen.m4a; sourceTree = "<group>"; };
+		8D2DFFC32AFD66BF003E77B8 /* canoe.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = canoe.m4a; sourceTree = "<group>"; };
+		8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "annie-way-you-can-let-me-in.m4a"; sourceTree = "<group>"; };
+		8D2DFFC52AFD66BF003E77B8 /* snow.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = snow.m4a; sourceTree = "<group>"; };
+		8D2DFFC62AFD66BF003E77B8 /* i-didnt-know-you-were-an-owl.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "i-didnt-know-you-were-an-owl.m4a"; sourceTree = "<group>"; };
+		8D2DFFC72AFD66BF003E77B8 /* lettuce-in-its-cold-out-here.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lettuce-in-its-cold-out-here.m4a"; sourceTree = "<group>"; };
+		8D2DFFC82AFD66BF003E77B8 /* robin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = robin.m4a; sourceTree = "<group>"; };
 		8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsView.swift; sourceTree = "<group>"; };
 		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "knock-knock.m4a"; path = "../../../../../Desktop/panda audio files/1 round/knock-knock.m4a"; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
 		8DC97D622AE670FF002CEA1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,9 +324,124 @@
 		8D0A79182AFB8C4000317DAF /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				8D2DFF762AFD66B9003E77B8 /* a-little-old-lady.m4a */,
+				8D2DFF9D2AFD66BC003E77B8 /* a-mosquito-look-right-there.m4a */,
+				8D2DFF912AFD66BB003E77B8 /* actually-its-to-whom.m4a */,
+				8D2DFF9E2AFD66BC003E77B8 /* alec.m4a */,
+				8D2DFFC02AFD66BF003E77B8 /* alectricity-buzz.m4a */,
+				8D2DFFB62AFD66BE003E77B8 /* alex-plain-later.m4a */,
+				8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */,
+				8D2DFFA32AFD66BD003E77B8 /* amarillo-nice-person.m4a */,
+				8D2DFFB32AFD66BE003E77B8 /* amarillo.m4a */,
+				8D2DFF9C2AFD66BC003E77B8 /* amos.m4a */,
+				8D2DFFB22AFD66BE003E77B8 /* anita.m4a */,
+				8D2DFF8D2AFD66BB003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a */,
+				8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */,
+				8D2DFF652AFD66B8003E77B8 /* annie.m4a */,
+				8D2DFF772AFD66B9003E77B8 /* banana.m4a */,
+				8D2DFFBA2AFD66BE003E77B8 /* bless-you.m4a */,
+				8D2DFF7A2AFD66B9003E77B8 /* boo.m4a */,
+				8D2DFFB42AFD66BE003E77B8 /* candice-snack-be-eaten.m4a */,
+				8D2DFF972AFD66BC003E77B8 /* candice.m4a */,
+				8D2DFF6F2AFD66B9003E77B8 /* canoe-come-out-right-now.m4a */,
+				8D2DFFC32AFD66BF003E77B8 /* canoe.m4a */,
+				8D2DFF722AFD66B9003E77B8 /* cash.m4a */,
+				8D2DFFA82AFD66BD003E77B8 /* cow-says.m4a */,
+				8D2DFFBD2AFD66BF003E77B8 /* dozen-anyone-want-to-let-me-in.m4a */,
+				8D2DFFA62AFD66BD003E77B8 /* dont-cry-its-just-a-joke.m4a */,
+				8D2DFFC22AFD66BF003E77B8 /* dozen.m4a */,
+				8D2DFF882AFD66BA003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a */,
+				8D2DFFAE2AFD66BD003E77B8 /* dwayne.m4a */,
+				8D2DFF632AFD66B8003E77B8 /* etch.m4a */,
+				8D2DFFA72AFD66BD003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a */,
+				8D2DFF982AFD66BC003E77B8 /* euripides.m4a */,
+				8D2DFFA12AFD66BC003E77B8 /* europe.m4a */,
+				8D2DFF7F2AFD66BA003E77B8 /* figs-the-doorbell-its-not-working.m4a */,
+				8D2DFF812AFD66BA003E77B8 /* figs.m4a */,
+				8D2DFF9F2AFD66BC003E77B8 /* glad-youre-excited-too.m4a */,
+				8D2DFFAF2AFD66BE003E77B8 /* hal.m4a */,
+				8D2DFF902AFD66BB003E77B8 /* hawaii.m4a */,
+				8D2DFF892AFD66BA003E77B8 /* hey-you-can-yodel.m4a */,
+				8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */,
+				8D2DFF8F2AFD66BB003E77B8 /* honey-bee.m4a */,
+				8D2DFFB92AFD66BE003E77B8 /* hal-will-you-know-if-you-dont-come-open-the-door.m4a */,
+				8D2DFFC62AFD66BF003E77B8 /* i-didnt-know-you-were-an-owl.m4a */,
+				8D2DFF992AFD66BC003E77B8 /* i-mustache-you-a-question.m4a */,
+				8D2DFFBE2AFD66BF003E77B8 /* iran-here-and-im-tired.m4a */,
+				8D2DFF6C2AFD66B8003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a */,
+				8D2DFF692AFD66B8003E77B8 /* ice-cream.m4a */,
+				8D2DFF852AFD66BA003E77B8 /* icy-you-looking-at-me.m4a */,
+				8D2DFF962AFD66BB003E77B8 /* icy.m4a */,
+				8D2DFF642AFD66B8003E77B8 /* im-good-hawaii-you.m4a */,
+				8D2DFF942AFD66BB003E77B8 /* iran.m4a */,
+				8D2DFFA42AFD66BD003E77B8 /* iva-sore-hand-from-knocking.m4a */,
+				8D2DFF732AFD66B9003E77B8 /* iva.m4a */,
+				8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */,
+				8D2DFF9A2AFD66BC003E77B8 /* ketchup.m4a */,
+				8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */,
 				8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */,
+				8D2DFF712AFD66B9003E77B8 /* leaf-me-alone.m4a */,
+				8D2DFF7D2AFD66BA003E77B8 /* leaf.m4a */,
+				8D2DFF7C2AFD66BA003E77B8 /* let-me-in-anita-borrow-something.m4a */,
+				8D2DFFC72AFD66BF003E77B8 /* lettuce-in-its-cold-out-here.m4a */,
+				8D2DFF672AFD66B8003E77B8 /* lettuce.m4a */,
+				8D2DFF932AFD66BB003E77B8 /* luke-through-the-peephole-and-find-out.m4a */,
+				8D2DFFA92AFD66BD003E77B8 /* luke.m4a */,
+				8D2DFFB02AFD66BE003E77B8 /* mary-christmas.m4a */,
+				8D2DFFBF2AFD66BF003E77B8 /* mary.m4a */,
+				8D2DFF8B2AFD66BB003E77B8 /* maybe-some-day-youll-recognize-me.m4a */,
+				8D2DFFB82AFD66BE003E77B8 /* mustache.m4a */,
+				8D2DFFAC2AFD66BD003E77B8 /* nah-im-more-into-almonds.m4a */,
+				8D2DFF7B2AFD66B9003E77B8 /* nana-your-business.m4a */,
+				8D2DFF7E2AFD66BA003E77B8 /* nana.m4a */,
+				8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */,
+				8D2DFFAA2AFD66BD003E77B8 /* needle.m4a */,
+				8D2DFF6A2AFD66B8003E77B8 /* no-a-cow-says-mooooo.m4a */,
+				8D2DFF842AFD66BA003E77B8 /* no-im-not.m4a */,
+				8D2DFF8A2AFD66BB003E77B8 /* olive-you.m4a */,
+				8D2DFF952AFD66BB003E77B8 /* olive.m4a */,
+				8D2DFF872AFD66BA003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a */,
+				8D2DFF662AFD66B8003E77B8 /* orange.m4a */,
+				8D2DFF6E2AFD66B9003E77B8 /* police-let-me-in-its-chilly-out.m4a */,
+				8D2DFFB12AFD66BE003E77B8 /* police.m4a */,
+				8D2DFF822AFD66BA003E77B8 /* razor-hands-this-is-a-stick-up.m4a */,
+				8D2DFF802AFD66BA003E77B8 /* razor.m4a */,
+				8D2DFFB72AFD66BE003E77B8 /* robin-you-give-me-your-money.m4a */,
+				8D2DFFC82AFD66BF003E77B8 /* robin.m4a */,
+				8D2DFF862AFD66BA003E77B8 /* says-me.m4a */,
+				8D2DFF742AFD66B9003E77B8 /* says.m4a */,
+				8D2DFFB52AFD66BE003E77B8 /* snow-use-the-joke-is-over.m4a */,
+				8D2DFFC52AFD66BF003E77B8 /* snow.m4a */,
+				8D2DFFAB2AFD66BD003E77B8 /* some.m4a */,
+				8D2DFF8C2AFD66BB003E77B8 /* spell.m4a */,
+				8D2DFF6B2AFD66B8003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a */,
+				8D2DFFAD2AFD66BD003E77B8 /* stopwatch.m4a */,
+				8D2DFF9B2AFD66BC003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a */,
+				8D2DFF6D2AFD66B8003E77B8 /* sure.m4a */,
+				8D2DFFBB2AFD66BE003E77B8 /* tank.m4a */,
+				8D2DFFA02AFD66BC003E77B8 /* theodore-is-stuck-open-up.m4a */,
+				8D2DFF832AFD66BA003E77B8 /* theodore.m4a */,
+				8D2DFFC12AFD66BF003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a */,
+				8D2DFFBC2AFD66BE003E77B8 /* thermos.m4a */,
+				8D2DFF702AFD66B9003E77B8 /* to.m4a */,
+				8D2DFF612AFD66B8003E77B8 /* voodoo-you-think-you-are.m4a */,
+				8D2DFFA52AFD66BD003E77B8 /* voodoo.m4a */,
+				8D2DFF922AFD66BB003E77B8 /* w-h-o.m4a */,
+				8D2DFF682AFD66B8003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a */,
+				8D2DFFA22AFD66BD003E77B8 /* water.m4a */,
+				8D2DFF782AFD66B9003E77B8 /* who.m4a */,
+				8D2DFF752AFD66B9003E77B8 /* woo.m4a */,
+				8D2DFF792AFD66B9003E77B8 /* youre-welcome.m4a */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		8D2DFF5D2AFC4C4F003E77B8 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */,
+			);
+			path = Styles;
 			sourceTree = "<group>";
 		};
 		8DC97D542AE670FF002CEA1E = {
@@ -142,7 +470,6 @@
 			children = (
 				8D0A79142AF3B02B00317DAF /* AppDelegate.swift */,
 				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
-				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
 				8DC97D8A2AE673C0002CEA1E /* Model */,
 				8DC97D8B2AE673CB002CEA1E /* Views */,
 				8DC97D992AE98856002CEA1E /* Resources */,
@@ -181,8 +508,8 @@
 			isa = PBXGroup;
 			children = (
 				8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */,
-				8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
+				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 				8D0A790F2AF15A6100317DAF /* Constant.swift */,
@@ -193,6 +520,7 @@
 		8DC97D8B2AE673CB002CEA1E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8D2DFF5D2AFC4C4F003E77B8 /* Styles */,
 				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
 				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
@@ -207,8 +535,8 @@
 		8DC97D992AE98856002CEA1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8D0A79182AFB8C4000317DAF /* Audio */,
 				8DC97D9A2AE98896002CEA1E /* conversationData.json */,
+				8D0A79182AFB8C4000317DAF /* Audio */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
 			path = Resources;
@@ -324,11 +652,117 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D2D000E2AFD6780003E77B8 /* robin.m4a in Resources */,
+				8D2D00142AFD6780003E77B8 /* tank.m4a in Resources */,
+				8D2D00252AFD6780003E77B8 /* luke-through-the-peephole-and-find-out.m4a in Resources */,
+				8D2D002B2AFD6780003E77B8 /* no-im-not.m4a in Resources */,
+				8D2D00162AFD6780003E77B8 /* no-a-cow-says-mooooo.m4a in Resources */,
+				8D2DFFD82AFD6780003E77B8 /* who.m4a in Resources */,
+				8D2DFFF32AFD6780003E77B8 /* figs.m4a in Resources */,
+				8D2D00332AFD6780003E77B8 /* cash.m4a in Resources */,
+				8D2DFFC92AFD6780003E77B8 /* snow-use-the-joke-is-over.m4a in Resources */,
+				8D2D002F2AFD6780003E77B8 /* im-good-hawaii-you.m4a in Resources */,
+				8D2D00212AFD6780003E77B8 /* razor-hands-this-is-a-stick-up.m4a in Resources */,
+				8D2DFFFC2AFD6780003E77B8 /* police-let-me-in-its-chilly-out.m4a in Resources */,
+				8D2D00242AFD6780003E77B8 /* icy.m4a in Resources */,
+				8D2DFFEC2AFD6780003E77B8 /* says.m4a in Resources */,
+				8D2DFFE82AFD6780003E77B8 /* orange.m4a in Resources */,
+				8D2D00072AFD6780003E77B8 /* voodoo-you-think-you-are.m4a in Resources */,
+				8D2D00282AFD6780003E77B8 /* water.m4a in Resources */,
+				8D2D00292AFD6780003E77B8 /* a-mosquito-look-right-there.m4a in Resources */,
+				8D2D00202AFD6780003E77B8 /* some.m4a in Resources */,
+				8D2DFFEE2AFD6780003E77B8 /* honey-bee.m4a in Resources */,
+				8D2D00302AFD6780003E77B8 /* canoe-come-out-right-now.m4a in Resources */,
 				8D0A79172AF3B40800317DAF /* Keys.plist in Resources */,
+				8D2DFFD12AFD6780003E77B8 /* youre-welcome.m4a in Resources */,
+				8D2D00172AFD6780003E77B8 /* dozen.m4a in Resources */,
+				8D2D00312AFD6780003E77B8 /* luke.m4a in Resources */,
+				8D2DFFE42AFD6780003E77B8 /* leaf.m4a in Resources */,
+				8D2D002D2AFD6780003E77B8 /* leaf-me-alone.m4a in Resources */,
+				8D2D001D2AFD6780003E77B8 /* alectricity-buzz.m4a in Resources */,
+				8D2D00182AFD6780003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a in Resources */,
+				8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */,
+				8D2DFFD72AFD6780003E77B8 /* ice-cream.m4a in Resources */,
+				8D2D001B2AFD6780003E77B8 /* stopwatch.m4a in Resources */,
+				8D2D000D2AFD6780003E77B8 /* euripides.m4a in Resources */,
+				8D2D001A2AFD6780003E77B8 /* says-me.m4a in Resources */,
+				8D2D00152AFD6780003E77B8 /* amos.m4a in Resources */,
+				8D2D001F2AFD6780003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a in Resources */,
+				8D2DFFCA2AFD6780003E77B8 /* mary-christmas.m4a in Resources */,
+				8D2D00062AFD6780003E77B8 /* figs-the-doorbell-its-not-working.m4a in Resources */,
+				8D2DFFFA2AFD6780003E77B8 /* maybe-some-day-youll-recognize-me.m4a in Resources */,
+				8D2DFFEF2AFD6780003E77B8 /* cow-says.m4a in Resources */,
+				8D2DFFD32AFD6780003E77B8 /* annie.m4a in Resources */,
+				8D2DFFDA2AFD6780003E77B8 /* razor.m4a in Resources */,
+				8D2D00052AFD6780003E77B8 /* glad-youre-excited-too.m4a in Resources */,
+				8D2DFFD62AFD6780003E77B8 /* woo.m4a in Resources */,
+				8D2D00122AFD6780003E77B8 /* bless-you.m4a in Resources */,
+				8D2DFFDC2AFD6780003E77B8 /* i-didnt-know-you-were-an-owl.m4a in Resources */,
+				8D2DFFF82AFD6780003E77B8 /* nah-im-more-into-almonds.m4a in Resources */,
+				8D2DFFDE2AFD6780003E77B8 /* dozen-anyone-want-to-let-me-in.m4a in Resources */,
+				8D2D00222AFD6780003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a in Resources */,
+				8D2D000F2AFD6780003E77B8 /* dwayne.m4a in Resources */,
+				8D2D000C2AFD6780003E77B8 /* snow.m4a in Resources */,
+				8D2DFFF62AFD6780003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a in Resources */,
 				8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */,
 				8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */,
+				8D2D00272AFD6780003E77B8 /* police.m4a in Resources */,
+				8D2DFFD22AFD6780003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a in Resources */,
+				8D2DFFFB2AFD6780003E77B8 /* canoe.m4a in Resources */,
 				8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */,
+				8D2DFFE12AFD6780003E77B8 /* boo.m4a in Resources */,
+				8D2DFFF02AFD6780003E77B8 /* dont-cry-its-just-a-joke.m4a in Resources */,
+				8D2DFFF52AFD6780003E77B8 /* sure.m4a in Resources */,
+				8D2DFFF72AFD6780003E77B8 /* let-me-in-anita-borrow-something.m4a in Resources */,
+				8D2DFFF12AFD6780003E77B8 /* olive-you.m4a in Resources */,
+				8D2DFFF42AFD6780003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a in Resources */,
+				8D2D001E2AFD6780003E77B8 /* olive.m4a in Resources */,
+				8D2D002C2AFD6780003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a in Resources */,
+				8D2DFFD52AFD6780003E77B8 /* w-h-o.m4a in Resources */,
+				8D2DFFFE2AFD6780003E77B8 /* i-mustache-you-a-question.m4a in Resources */,
+				8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */,
+				8D2DFFD42AFD6780003E77B8 /* etch.m4a in Resources */,
+				8D2DFFDB2AFD6780003E77B8 /* ketchup.m4a in Resources */,
+				8D2DFFF22AFD6780003E77B8 /* amarillo-nice-person.m4a in Resources */,
+				8D2D00092AFD6780003E77B8 /* hal.m4a in Resources */,
+				8D2DFFE22AFD6780003E77B8 /* candice-snack-be-eaten.m4a in Resources */,
+				8D2DFFD02AFD6780003E77B8 /* lettuce-in-its-cold-out-here.m4a in Resources */,
+				8D2DFFE52AFD6780003E77B8 /* hal-will-you-know-if-you-dont-come-open-the-door.m4a in Resources */,
+				8D2D001C2AFD6780003E77B8 /* to.m4a in Resources */,
+				8D2DFFD92AFD6780003E77B8 /* lettuce.m4a in Resources */,
+				8D2DFFF92AFD6780003E77B8 /* icy-you-looking-at-me.m4a in Resources */,
+				8D2DFFE02AFD6780003E77B8 /* iva.m4a in Resources */,
+				8D2DFFCB2AFD6780003E77B8 /* theodore.m4a in Resources */,
+				8D2D00192AFD6780003E77B8 /* a-little-old-lady.m4a in Resources */,
+				8D2DFFE32AFD6780003E77B8 /* theodore-is-stuck-open-up.m4a in Resources */,
+				8D2D00322AFD6780003E77B8 /* nana.m4a in Resources */,
+				8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */,
+				8D2D00042AFD6780003E77B8 /* needle-little-help-right-now.m4a in Resources */,
+				8D2DFFCF2AFD6780003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a in Resources */,
+				8D2D00032AFD6780003E77B8 /* mary.m4a in Resources */,
+				8D2DFFFD2AFD6780003E77B8 /* alec.m4a in Resources */,
+				8D2D00132AFD6780003E77B8 /* thermos.m4a in Resources */,
+				8D2DFFED2AFD6780003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a in Resources */,
+				8D2DFFCC2AFD6780003E77B8 /* voodoo.m4a in Resources */,
+				8D2DFFEB2AFD6780003E77B8 /* mustache.m4a in Resources */,
+				8D2DFFEA2AFD6780003E77B8 /* iran-here-and-im-tired.m4a in Resources */,
+				8D2D002A2AFD6780003E77B8 /* amarillo.m4a in Resources */,
+				8D2DFFCD2AFD6780003E77B8 /* hey-you-can-yodel.m4a in Resources */,
+				8D2DFFE72AFD6780003E77B8 /* europe.m4a in Resources */,
+				8D2DFFDD2AFD6780003E77B8 /* banana.m4a in Resources */,
+				8D2DFFE92AFD6780003E77B8 /* hawaii.m4a in Resources */,
+				8D2D000B2AFD6780003E77B8 /* robin-you-give-me-your-money.m4a in Resources */,
 				8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */,
+				8D2D002E2AFD6780003E77B8 /* alex-plain-later.m4a in Resources */,
+				8D2DFFFF2AFD6780003E77B8 /* actually-its-to-whom.m4a in Resources */,
+				8D2DFFDF2AFD6780003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a in Resources */,
+				8D2D00232AFD6780003E77B8 /* nana-your-business.m4a in Resources */,
+				8D2DFFCE2AFD6780003E77B8 /* candice.m4a in Resources */,
+				8D2D00102AFD6780003E77B8 /* iran.m4a in Resources */,
+				8D2D000A2AFD6780003E77B8 /* needle.m4a in Resources */,
+				8D2D00262AFD6780003E77B8 /* iva-sore-hand-from-knocking.m4a in Resources */,
+				8D2D00082AFD6780003E77B8 /* spell.m4a in Resources */,
+				8D2DFFE62AFD6780003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

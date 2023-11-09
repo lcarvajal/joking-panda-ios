@@ -38,7 +38,7 @@ struct SettingsView: View {
                 } header: {
                     Text("Feedback")
                 } footer: {
-                    Text(appVersion ?? "Made with ❤️ in Vienna")
+                    Text("Version \(appVersion ?? "")")
                 }
             }
             .listStyle(GroupedListStyle()) // Apply a grouped list style
