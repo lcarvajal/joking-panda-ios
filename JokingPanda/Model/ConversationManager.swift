@@ -146,6 +146,7 @@ class ConversationManager: NSObject, ObservableObject {
         let audioFileName = Tool.removePunctuation(from: text)
             .lowercased()
             .replacingOccurrences(of: " ", with: "-")
+        print(audioFileName)
         if let audioURL = Bundle.main.url(forResource: "\(audioFileName)", withExtension: "m4a") {
             do {
                 audioPlayer = nil
