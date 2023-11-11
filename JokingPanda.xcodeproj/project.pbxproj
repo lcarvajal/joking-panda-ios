@@ -165,7 +165,7 @@
 		8D8EAF7E2AFFF27800F01B71 /* canoe-help-me-get-inside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF352AFFF27700F01B71 /* canoe-help-me-get-inside.m4a */; };
 		8D8EAF7F2AFFF27800F01B71 /* anyone-you-like.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF362AFFF27700F01B71 /* anyone-you-like.m4a */; };
 		8D8EAF802AFFF27800F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF372AFFF27700F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a */; };
-		8D8EAF812AFFF27800F01B71 /* armegeddon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF382AFFF27700F01B71 /* armegeddon.m4a */; };
+		8D8EAF812AFFF27800F01B71 /* armageddon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF382AFFF27700F01B71 /* armageddon.m4a */; };
 		8D8EAF822AFFF27800F01B71 /* armageddon-a-little-bored-lets-go-out.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF392AFFF27700F01B71 /* armageddon-a-little-bored-lets-go-out.m4a */; };
 		8D8EAF832AFFF27800F01B71 /* justin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3A2AFFF27700F01B71 /* justin.m4a */; };
 		8D8EAF842AFFF27800F01B71 /* a-herd-you-were-home-so-here-i-am.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */; };
@@ -389,7 +389,7 @@
 		8D8EAF352AFFF27700F01B71 /* canoe-help-me-get-inside.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "canoe-help-me-get-inside.m4a"; sourceTree = "<group>"; };
 		8D8EAF362AFFF27700F01B71 /* anyone-you-like.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "anyone-you-like.m4a"; sourceTree = "<group>"; };
 		8D8EAF372AFFF27700F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a"; sourceTree = "<group>"; };
-		8D8EAF382AFFF27700F01B71 /* armegeddon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = armegeddon.m4a; sourceTree = "<group>"; };
+		8D8EAF382AFFF27700F01B71 /* armageddon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = armageddon.m4a; sourceTree = "<group>"; };
 		8D8EAF392AFFF27700F01B71 /* armageddon-a-little-bored-lets-go-out.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "armageddon-a-little-bored-lets-go-out.m4a"; sourceTree = "<group>"; };
 		8D8EAF3A2AFFF27700F01B71 /* justin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = justin.m4a; sourceTree = "<group>"; };
 		8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "a-herd-you-were-home-so-here-i-am.m4a"; sourceTree = "<group>"; };
@@ -503,7 +503,7 @@
 				8D8EAF2A2AFFF27700F01B71 /* arfur-got.m4a */,
 				8D8EAF472AFFF27800F01B71 /* arfur.m4a */,
 				8D8EAF392AFFF27700F01B71 /* armageddon-a-little-bored-lets-go-out.m4a */,
-				8D8EAF382AFFF27700F01B71 /* armegeddon.m4a */,
+				8D8EAF382AFFF27700F01B71 /* armageddon.m4a */,
 				8D8EAF482AFFF27800F01B71 /* avenue-knocked-on-this-door-before.m4a */,
 				8D8EAF4C2AFFF27800F01B71 /* avenue.m4a */,
 				8D2DFF772AFD66B9003E77B8 /* banana.m4a */,
@@ -890,7 +890,7 @@
 				8D2D00212AFD6780003E77B8 /* razor-hands-this-is-a-stick-up.m4a in Resources */,
 				8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */,
 				8D8EAF5B2AFFF27800F01B71 /* yukon-say-that-again.m4a in Resources */,
-				8D8EAF812AFFF27800F01B71 /* armegeddon.m4a in Resources */,
+				8D8EAF812AFFF27800F01B71 /* armageddon.m4a in Resources */,
 				8D8EAF722AFFF27800F01B71 /* watson-tv-right-now.m4a in Resources */,
 				8D8EAF842AFFF27800F01B71 /* a-herd-you-were-home-so-here-i-am.m4a in Resources */,
 				8D2DFFFC2AFD6780003E77B8 /* police-let-me-in-its-chilly-out.m4a in Resources */,
