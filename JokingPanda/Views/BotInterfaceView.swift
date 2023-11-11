@@ -23,17 +23,6 @@ struct BotInterfaceView: View {
                     if conversationManager.status == .stopped {
                         OverlayedButtonsView(showSheet: $showSheet)
                     }
-                    
-//                    Use for App Preview
-//                    VStack {
-//                        Text("Laugh your head off talking to a panda!")
-//                            .font(.system(size: 40))
-//                            .fontWeight(.bold)
-//                            .foregroundColor(Color.white)
-//                            .padding(50)
-//                            .multilineTextAlignment(.center)
-//                        Spacer()
-//                    }
                 }
                 .onTapGesture {
                     conversationManager.startConversation()
