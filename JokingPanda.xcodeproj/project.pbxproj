@@ -122,6 +122,79 @@
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
+		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
+		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
+		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
+		8D8EAF592AFFF27800F01B71 /* ben-knocking-for-ten-minutes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF102AFFF27600F01B71 /* ben-knocking-for-ten-minutes.m4a */; };
+		8D8EAF5A2AFFF27800F01B71 /* a-herd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF112AFFF27600F01B71 /* a-herd.m4a */; };
+		8D8EAF5B2AFFF27800F01B71 /* yukon-say-that-again.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF122AFFF27600F01B71 /* yukon-say-that-again.m4a */; };
+		8D8EAF5C2AFFF27800F01B71 /* iona-new-toy.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF132AFFF27600F01B71 /* iona-new-toy.m4a */; };
+		8D8EAF5D2AFFF27800F01B71 /* adore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF142AFFF27600F01B71 /* adore.m4a */; };
+		8D8EAF5E2AFFF27800F01B71 /* iona.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF152AFFF27600F01B71 /* iona.m4a */; };
+		8D8EAF5F2AFFF27800F01B71 /* noah.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF162AFFF27600F01B71 /* noah.m4a */; };
+		8D8EAF602AFFF27800F01B71 /* dishes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF172AFFF27600F01B71 /* dishes.m4a */; };
+		8D8EAF612AFFF27800F01B71 /* viper-nose-its-running.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF182AFFF27600F01B71 /* viper-nose-its-running.m4a */; };
+		8D8EAF622AFFF27800F01B71 /* claire-a-path-im-coming-through.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF192AFFF27600F01B71 /* claire-a-path-im-coming-through.m4a */; };
+		8D8EAF632AFFF27800F01B71 /* althea-later-alligator.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF1A2AFFF27600F01B71 /* althea-later-alligator.m4a */; };
+		8D8EAF642AFFF27800F01B71 /* cd.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF1B2AFFF27600F01B71 /* cd.m4a */; };
+		8D8EAF652AFFF27800F01B71 /* justin-time-for-dinner.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF1C2AFFF27600F01B71 /* justin-time-for-dinner.m4a */; };
+		8D8EAF662AFFF27800F01B71 /* needle-little-money-please.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF1D2AFFF27600F01B71 /* needle-little-money-please.m4a */; };
+		8D8EAF672AFFF27800F01B71 /* roach-you-a-text-did-you-get-it.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF1E2AFFF27600F01B71 /* roach-you-a-text-did-you-get-it.m4a */; };
+		8D8EAF682AFFF27800F01B71 /* roach.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF1F2AFFF27600F01B71 /* roach.m4a */; };
+		8D8EAF692AFFF27800F01B71 /* scold-enough-out-here-to-go-ice-skating.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF202AFFF27600F01B71 /* scold-enough-out-here-to-go-ice-skating.m4a */; };
+		8D8EAF6A2AFFF27800F01B71 /* viper.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF212AFFF27600F01B71 /* viper.m4a */; };
+		8D8EAF6B2AFFF27800F01B71 /* harry.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF222AFFF27700F01B71 /* harry.m4a */; };
+		8D8EAF6C2AFFF27800F01B71 /* abby.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF232AFFF27700F01B71 /* abby.m4a */; };
+		8D8EAF6D2AFFF27800F01B71 /* abbot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF242AFFF27700F01B71 /* abbot.m4a */; };
+		8D8EAF6E2AFFF27800F01B71 /* adore-is-between-us-so-please-open-it.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF252AFFF27700F01B71 /* adore-is-between-us-so-please-open-it.m4a */; };
+		8D8EAF6F2AFFF27800F01B71 /* god-bless-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF262AFFF27700F01B71 /* god-bless-you.m4a */; };
+		8D8EAF702AFFF27800F01B71 /* kirtch.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF272AFFF27700F01B71 /* kirtch.m4a */; };
+		8D8EAF712AFFF27800F01B71 /* ivor.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF282AFFF27700F01B71 /* ivor.m4a */; };
+		8D8EAF722AFFF27800F01B71 /* watson-tv-right-now.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF292AFFF27700F01B71 /* watson-tv-right-now.m4a */; };
+		8D8EAF732AFFF27800F01B71 /* arfur-got.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF2A2AFFF27700F01B71 /* arfur-got.m4a */; };
+		8D8EAF742AFFF27800F01B71 /* dish-is-a-nice-place.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF2B2AFFF27700F01B71 /* dish-is-a-nice-place.m4a */; };
+		8D8EAF752AFFF27800F01B71 /* noah-good-place-we-can-go-hang-out.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF2C2AFFF27700F01B71 /* noah-good-place-we-can-go-hang-out.m4a */; };
+		8D8EAF762AFFF27800F01B71 /* watson.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF2D2AFFF27700F01B71 /* watson.m4a */; };
+		8D8EAF772AFFF27800F01B71 /* abbot-you-dont-know-who-this-is.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF2E2AFFF27700F01B71 /* abbot-you-dont-know-who-this-is.m4a */; };
+		8D8EAF782AFFF27800F01B71 /* youre-not-a-shoe.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF2F2AFFF27700F01B71 /* youre-not-a-shoe.m4a */; };
+		8D8EAF792AFFF27800F01B71 /* otto.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF302AFFF27700F01B71 /* otto.m4a */; };
+		8D8EAF7A2AFFF27800F01B71 /* sadie-magic-word-and-ill-come-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF312AFFF27700F01B71 /* sadie-magic-word-and-ill-come-in.m4a */; };
+		8D8EAF7B2AFFF27800F01B71 /* dozen-anybody-want-to-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF322AFFF27700F01B71 /* dozen-anybody-want-to-let-me-in.m4a */; };
+		8D8EAF7C2AFFF27800F01B71 /* amish.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF332AFFF27700F01B71 /* amish.m4a */; };
+		8D8EAF7D2AFFF27800F01B71 /* althea.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF342AFFF27700F01B71 /* althea.m4a */; };
+		8D8EAF7E2AFFF27800F01B71 /* canoe-help-me-get-inside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF352AFFF27700F01B71 /* canoe-help-me-get-inside.m4a */; };
+		8D8EAF7F2AFFF27800F01B71 /* anyone-you-like.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF362AFFF27700F01B71 /* anyone-you-like.m4a */; };
+		8D8EAF802AFFF27800F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF372AFFF27700F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a */; };
+		8D8EAF812AFFF27800F01B71 /* armegeddon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF382AFFF27700F01B71 /* armegeddon.m4a */; };
+		8D8EAF822AFFF27800F01B71 /* armageddon-a-little-bored-lets-go-out.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF392AFFF27700F01B71 /* armageddon-a-little-bored-lets-go-out.m4a */; };
+		8D8EAF832AFFF27800F01B71 /* justin.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3A2AFFF27700F01B71 /* justin.m4a */; };
+		8D8EAF842AFFF27800F01B71 /* a-herd-you-were-home-so-here-i-am.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */; };
+		8D8EAF852AFFF27800F01B71 /* ivor-you-let-me-in-or-ill-climb-through-the-window.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3C2AFFF27700F01B71 /* ivor-you-let-me-in-or-ill-climb-through-the-window.m4a */; };
+		8D8EAF862AFFF27800F01B71 /* al.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3D2AFFF27700F01B71 /* al.m4a */; };
+		8D8EAF872AFFF27800F01B71 /* sadie.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3E2AFFF27700F01B71 /* sadie.m4a */; };
+		8D8EAF882AFFF27800F01B71 /* somebody-too-short-to-ring-the-doorbell.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF3F2AFFF27700F01B71 /* somebody-too-short-to-ring-the-doorbell.m4a */; };
+		8D8EAF892AFFF27800F01B71 /* i-am.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF402AFFF27800F01B71 /* i-am.m4a */; };
+		8D8EAF8A2AFFF27800F01B71 /* ill-fell-terrible-if-you-dont-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF412AFFF27800F01B71 /* ill-fell-terrible-if-you-dont-let-me-in.m4a */; };
+		8D8EAF8B2AFFF27800F01B71 /* imma.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF422AFFF27800F01B71 /* imma.m4a */; };
+		8D8EAF8C2AFFF27800F01B71 /* abby-birthday-to-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF432AFFF27800F01B71 /* abby-birthday-to-you.m4a */; };
+		8D8EAF8D2AFFF27800F01B71 /* isabel.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF442AFFF27800F01B71 /* isabel.m4a */; };
+		8D8EAF8E2AFFF27800F01B71 /* dwayne-the-tub-im-dwowning.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF452AFFF27800F01B71 /* dwayne-the-tub-im-dwowning.m4a */; };
+		8D8EAF8F2AFFF27800F01B71 /* ben.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF462AFFF27800F01B71 /* ben.m4a */; };
+		8D8EAF902AFFF27800F01B71 /* arfur.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF472AFFF27800F01B71 /* arfur.m4a */; };
+		8D8EAF912AFFF27800F01B71 /* avenue-knocked-on-this-door-before.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF482AFFF27800F01B71 /* avenue-knocked-on-this-door-before.m4a */; };
+		8D8EAF922AFFF27800F01B71 /* um-how-many-aliens-do-you-know.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF492AFFF27800F01B71 /* um-how-many-aliens-do-you-know.m4a */; };
+		8D8EAF932AFFF27800F01B71 /* al-give-you-a-hug-if-you-open-this-door.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF4A2AFFF27800F01B71 /* al-give-you-a-hug-if-you-open-this-door.m4a */; };
+		8D8EAF942AFFF27800F01B71 /* yukon.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF4B2AFFF27800F01B71 /* yukon.m4a */; };
+		8D8EAF952AFFF27800F01B71 /* avenue.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF4C2AFFF27800F01B71 /* avenue.m4a */; };
+		8D8EAF962AFFF27800F01B71 /* alien.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF4D2AFFF27800F01B71 /* alien.m4a */; };
+		8D8EAF972AFFF27800F01B71 /* alfie.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF4E2AFFF27800F01B71 /* alfie.m4a */; };
+		8D8EAF982AFFF27800F01B71 /* scold.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF4F2AFFF27800F01B71 /* scold.m4a */; };
+		8D8EAF992AFFF27800F01B71 /* imma-getting-older-waiting-for-you-to-open-up.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF502AFFF27800F01B71 /* imma-getting-older-waiting-for-you-to-open-up.m4a */; };
+		8D8EAF9A2AFFF27800F01B71 /* claire.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF512AFFF27800F01B71 /* claire.m4a */; };
+		8D8EAF9B2AFFF27800F01B71 /* cd-person-on-your-doorstep.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF522AFFF27800F01B71 /* cd-person-on-your-doorstep.m4a */; };
+		8D8EAF9C2AFFF27800F01B71 /* norma-lee.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */; };
+		8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */; };
+		8D8EAF9E2AFFF27800F01B71 /* otto-know-i-forgot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
 		8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* ContentView.swift */; };
 		8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D642AE67101002CEA1E /* Assets.xcassets */; };
@@ -273,6 +346,79 @@
 		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "knock-knock.m4a"; path = "../../../../../Desktop/panda audio files/1 round/knock-knock.m4a"; sourceTree = "<group>"; };
+		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
+		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
+		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
+		8D8EAF102AFFF27600F01B71 /* ben-knocking-for-ten-minutes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ben-knocking-for-ten-minutes.m4a"; sourceTree = "<group>"; };
+		8D8EAF112AFFF27600F01B71 /* a-herd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "a-herd.m4a"; sourceTree = "<group>"; };
+		8D8EAF122AFFF27600F01B71 /* yukon-say-that-again.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "yukon-say-that-again.m4a"; sourceTree = "<group>"; };
+		8D8EAF132AFFF27600F01B71 /* iona-new-toy.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iona-new-toy.m4a"; sourceTree = "<group>"; };
+		8D8EAF142AFFF27600F01B71 /* adore.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = adore.m4a; sourceTree = "<group>"; };
+		8D8EAF152AFFF27600F01B71 /* iona.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = iona.m4a; sourceTree = "<group>"; };
+		8D8EAF162AFFF27600F01B71 /* noah.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = noah.m4a; sourceTree = "<group>"; };
+		8D8EAF172AFFF27600F01B71 /* dishes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = dishes.m4a; sourceTree = "<group>"; };
+		8D8EAF182AFFF27600F01B71 /* viper-nose-its-running.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "viper-nose-its-running.m4a"; sourceTree = "<group>"; };
+		8D8EAF192AFFF27600F01B71 /* claire-a-path-im-coming-through.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "claire-a-path-im-coming-through.m4a"; sourceTree = "<group>"; };
+		8D8EAF1A2AFFF27600F01B71 /* althea-later-alligator.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "althea-later-alligator.m4a"; sourceTree = "<group>"; };
+		8D8EAF1B2AFFF27600F01B71 /* cd.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = cd.m4a; sourceTree = "<group>"; };
+		8D8EAF1C2AFFF27600F01B71 /* justin-time-for-dinner.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "justin-time-for-dinner.m4a"; sourceTree = "<group>"; };
+		8D8EAF1D2AFFF27600F01B71 /* needle-little-money-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-money-please.m4a"; sourceTree = "<group>"; };
+		8D8EAF1E2AFFF27600F01B71 /* roach-you-a-text-did-you-get-it.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "roach-you-a-text-did-you-get-it.m4a"; sourceTree = "<group>"; };
+		8D8EAF1F2AFFF27600F01B71 /* roach.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = roach.m4a; sourceTree = "<group>"; };
+		8D8EAF202AFFF27600F01B71 /* scold-enough-out-here-to-go-ice-skating.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "scold-enough-out-here-to-go-ice-skating.m4a"; sourceTree = "<group>"; };
+		8D8EAF212AFFF27600F01B71 /* viper.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = viper.m4a; sourceTree = "<group>"; };
+		8D8EAF222AFFF27700F01B71 /* harry.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = harry.m4a; sourceTree = "<group>"; };
+		8D8EAF232AFFF27700F01B71 /* abby.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = abby.m4a; sourceTree = "<group>"; };
+		8D8EAF242AFFF27700F01B71 /* abbot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = abbot.m4a; sourceTree = "<group>"; };
+		8D8EAF252AFFF27700F01B71 /* adore-is-between-us-so-please-open-it.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "adore-is-between-us-so-please-open-it.m4a"; sourceTree = "<group>"; };
+		8D8EAF262AFFF27700F01B71 /* god-bless-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "god-bless-you.m4a"; sourceTree = "<group>"; };
+		8D8EAF272AFFF27700F01B71 /* kirtch.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = kirtch.m4a; sourceTree = "<group>"; };
+		8D8EAF282AFFF27700F01B71 /* ivor.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ivor.m4a; sourceTree = "<group>"; };
+		8D8EAF292AFFF27700F01B71 /* watson-tv-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "watson-tv-right-now.m4a"; sourceTree = "<group>"; };
+		8D8EAF2A2AFFF27700F01B71 /* arfur-got.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "arfur-got.m4a"; sourceTree = "<group>"; };
+		8D8EAF2B2AFFF27700F01B71 /* dish-is-a-nice-place.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dish-is-a-nice-place.m4a"; sourceTree = "<group>"; };
+		8D8EAF2C2AFFF27700F01B71 /* noah-good-place-we-can-go-hang-out.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "noah-good-place-we-can-go-hang-out.m4a"; sourceTree = "<group>"; };
+		8D8EAF2D2AFFF27700F01B71 /* watson.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = watson.m4a; sourceTree = "<group>"; };
+		8D8EAF2E2AFFF27700F01B71 /* abbot-you-dont-know-who-this-is.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "abbot-you-dont-know-who-this-is.m4a"; sourceTree = "<group>"; };
+		8D8EAF2F2AFFF27700F01B71 /* youre-not-a-shoe.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "youre-not-a-shoe.m4a"; sourceTree = "<group>"; };
+		8D8EAF302AFFF27700F01B71 /* otto.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = otto.m4a; sourceTree = "<group>"; };
+		8D8EAF312AFFF27700F01B71 /* sadie-magic-word-and-ill-come-in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sadie-magic-word-and-ill-come-in.m4a"; sourceTree = "<group>"; };
+		8D8EAF322AFFF27700F01B71 /* dozen-anybody-want-to-let-me-in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dozen-anybody-want-to-let-me-in.m4a"; sourceTree = "<group>"; };
+		8D8EAF332AFFF27700F01B71 /* amish.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = amish.m4a; sourceTree = "<group>"; };
+		8D8EAF342AFFF27700F01B71 /* althea.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = althea.m4a; sourceTree = "<group>"; };
+		8D8EAF352AFFF27700F01B71 /* canoe-help-me-get-inside.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "canoe-help-me-get-inside.m4a"; sourceTree = "<group>"; };
+		8D8EAF362AFFF27700F01B71 /* anyone-you-like.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "anyone-you-like.m4a"; sourceTree = "<group>"; };
+		8D8EAF372AFFF27700F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a"; sourceTree = "<group>"; };
+		8D8EAF382AFFF27700F01B71 /* armegeddon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = armegeddon.m4a; sourceTree = "<group>"; };
+		8D8EAF392AFFF27700F01B71 /* armageddon-a-little-bored-lets-go-out.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "armageddon-a-little-bored-lets-go-out.m4a"; sourceTree = "<group>"; };
+		8D8EAF3A2AFFF27700F01B71 /* justin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = justin.m4a; sourceTree = "<group>"; };
+		8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "a-herd-you-were-home-so-here-i-am.m4a"; sourceTree = "<group>"; };
+		8D8EAF3C2AFFF27700F01B71 /* ivor-you-let-me-in-or-ill-climb-through-the-window.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ivor-you-let-me-in-or-ill-climb-through-the-window.m4a"; sourceTree = "<group>"; };
+		8D8EAF3D2AFFF27700F01B71 /* al.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = al.m4a; sourceTree = "<group>"; };
+		8D8EAF3E2AFFF27700F01B71 /* sadie.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sadie.m4a; sourceTree = "<group>"; };
+		8D8EAF3F2AFFF27700F01B71 /* somebody-too-short-to-ring-the-doorbell.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "somebody-too-short-to-ring-the-doorbell.m4a"; sourceTree = "<group>"; };
+		8D8EAF402AFFF27800F01B71 /* i-am.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "i-am.m4a"; sourceTree = "<group>"; };
+		8D8EAF412AFFF27800F01B71 /* ill-fell-terrible-if-you-dont-let-me-in.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ill-fell-terrible-if-you-dont-let-me-in.m4a"; sourceTree = "<group>"; };
+		8D8EAF422AFFF27800F01B71 /* imma.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = imma.m4a; sourceTree = "<group>"; };
+		8D8EAF432AFFF27800F01B71 /* abby-birthday-to-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "abby-birthday-to-you.m4a"; sourceTree = "<group>"; };
+		8D8EAF442AFFF27800F01B71 /* isabel.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = isabel.m4a; sourceTree = "<group>"; };
+		8D8EAF452AFFF27800F01B71 /* dwayne-the-tub-im-dwowning.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dwayne-the-tub-im-dwowning.m4a"; sourceTree = "<group>"; };
+		8D8EAF462AFFF27800F01B71 /* ben.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = ben.m4a; sourceTree = "<group>"; };
+		8D8EAF472AFFF27800F01B71 /* arfur.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = arfur.m4a; sourceTree = "<group>"; };
+		8D8EAF482AFFF27800F01B71 /* avenue-knocked-on-this-door-before.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "avenue-knocked-on-this-door-before.m4a"; sourceTree = "<group>"; };
+		8D8EAF492AFFF27800F01B71 /* um-how-many-aliens-do-you-know.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "um-how-many-aliens-do-you-know.m4a"; sourceTree = "<group>"; };
+		8D8EAF4A2AFFF27800F01B71 /* al-give-you-a-hug-if-you-open-this-door.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "al-give-you-a-hug-if-you-open-this-door.m4a"; sourceTree = "<group>"; };
+		8D8EAF4B2AFFF27800F01B71 /* yukon.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = yukon.m4a; sourceTree = "<group>"; };
+		8D8EAF4C2AFFF27800F01B71 /* avenue.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = avenue.m4a; sourceTree = "<group>"; };
+		8D8EAF4D2AFFF27800F01B71 /* alien.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alien.m4a; sourceTree = "<group>"; };
+		8D8EAF4E2AFFF27800F01B71 /* alfie.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = alfie.m4a; sourceTree = "<group>"; };
+		8D8EAF4F2AFFF27800F01B71 /* scold.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = scold.m4a; sourceTree = "<group>"; };
+		8D8EAF502AFFF27800F01B71 /* imma-getting-older-waiting-for-you-to-open-up.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "imma-getting-older-waiting-for-you-to-open-up.m4a"; sourceTree = "<group>"; };
+		8D8EAF512AFFF27800F01B71 /* claire.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = claire.m4a; sourceTree = "<group>"; };
+		8D8EAF522AFFF27800F01B71 /* cd-person-on-your-doorstep.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "cd-person-on-your-doorstep.m4a"; sourceTree = "<group>"; };
+		8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee.m4a"; sourceTree = "<group>"; };
+		8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "harry-up-its-cold-outside.m4a"; sourceTree = "<group>"; };
+		8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "otto-know-i-forgot.m4a"; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
 		8DC97D622AE670FF002CEA1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -324,33 +470,66 @@
 		8D0A79182AFB8C4000317DAF /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */,
+				8D8EAF112AFFF27600F01B71 /* a-herd.m4a */,
 				8D2DFF762AFD66B9003E77B8 /* a-little-old-lady.m4a */,
 				8D2DFF9D2AFD66BC003E77B8 /* a-mosquito-look-right-there.m4a */,
+				8D8EAF2E2AFFF27700F01B71 /* abbot-you-dont-know-who-this-is.m4a */,
+				8D8EAF242AFFF27700F01B71 /* abbot.m4a */,
+				8D8EAF432AFFF27800F01B71 /* abby-birthday-to-you.m4a */,
+				8D8EAF232AFFF27700F01B71 /* abby.m4a */,
 				8D2DFF912AFD66BB003E77B8 /* actually-its-to-whom.m4a */,
+				8D8EAF252AFFF27700F01B71 /* adore-is-between-us-so-please-open-it.m4a */,
+				8D8EAF142AFFF27600F01B71 /* adore.m4a */,
+				8D8EAF4A2AFFF27800F01B71 /* al-give-you-a-hug-if-you-open-this-door.m4a */,
+				8D8EAF3D2AFFF27700F01B71 /* al.m4a */,
 				8D2DFF9E2AFD66BC003E77B8 /* alec.m4a */,
 				8D2DFFC02AFD66BF003E77B8 /* alectricity-buzz.m4a */,
-				8D2DFFB62AFD66BE003E77B8 /* alexplain-later.m4a */,
 				8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */,
+				8D2DFFB62AFD66BE003E77B8 /* alexplain-later.m4a */,
+				8D8EAF4E2AFFF27800F01B71 /* alfie.m4a */,
+				8D8EAF4D2AFFF27800F01B71 /* alien.m4a */,
+				8D8EAF1A2AFFF27600F01B71 /* althea-later-alligator.m4a */,
+				8D8EAF342AFFF27700F01B71 /* althea.m4a */,
 				8D2DFFA32AFD66BD003E77B8 /* amarillo-nice-person.m4a */,
 				8D2DFFB32AFD66BE003E77B8 /* amarillo.m4a */,
+				8D8EAF332AFFF27700F01B71 /* amish.m4a */,
 				8D2DFF9C2AFD66BC003E77B8 /* amos.m4a */,
 				8D2DFFB22AFD66BE003E77B8 /* anita.m4a */,
 				8D2DFF8D2AFD66BB003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a */,
 				8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */,
 				8D2DFF652AFD66B8003E77B8 /* annie.m4a */,
+				8D8EAF362AFFF27700F01B71 /* anyone-you-like.m4a */,
+				8D8EAF2A2AFFF27700F01B71 /* arfur-got.m4a */,
+				8D8EAF472AFFF27800F01B71 /* arfur.m4a */,
+				8D8EAF392AFFF27700F01B71 /* armageddon-a-little-bored-lets-go-out.m4a */,
+				8D8EAF382AFFF27700F01B71 /* armegeddon.m4a */,
+				8D8EAF482AFFF27800F01B71 /* avenue-knocked-on-this-door-before.m4a */,
+				8D8EAF4C2AFFF27800F01B71 /* avenue.m4a */,
 				8D2DFF772AFD66B9003E77B8 /* banana.m4a */,
+				8D8EAF102AFFF27600F01B71 /* ben-knocking-for-ten-minutes.m4a */,
+				8D8EAF462AFFF27800F01B71 /* ben.m4a */,
 				8D2DFFBA2AFD66BE003E77B8 /* bless-you.m4a */,
 				8D2DFF7A2AFD66B9003E77B8 /* boo.m4a */,
 				8D2DFFB42AFD66BE003E77B8 /* candice-snack-be-eaten.m4a */,
 				8D2DFF972AFD66BC003E77B8 /* candice.m4a */,
 				8D2DFF6F2AFD66B9003E77B8 /* canoe-come-out-right-now.m4a */,
+				8D8EAF352AFFF27700F01B71 /* canoe-help-me-get-inside.m4a */,
 				8D2DFFC32AFD66BF003E77B8 /* canoe.m4a */,
 				8D2DFF722AFD66B9003E77B8 /* cash.m4a */,
+				8D8EAF522AFFF27800F01B71 /* cd-person-on-your-doorstep.m4a */,
+				8D8EAF1B2AFFF27600F01B71 /* cd.m4a */,
+				8D8EAF192AFFF27600F01B71 /* claire-a-path-im-coming-through.m4a */,
+				8D8EAF512AFFF27800F01B71 /* claire.m4a */,
 				8D2DFFA82AFD66BD003E77B8 /* cow-says.m4a */,
-				8D2DFFBD2AFD66BF003E77B8 /* dozen-anyone-want-to-let-me-in.m4a */,
+				8D8EAF2B2AFFF27700F01B71 /* dish-is-a-nice-place.m4a */,
+				8D8EAF172AFFF27600F01B71 /* dishes.m4a */,
 				8D2DFFA62AFD66BD003E77B8 /* dont-cry-its-just-a-joke.m4a */,
+				8D8EAF322AFFF27700F01B71 /* dozen-anybody-want-to-let-me-in.m4a */,
+				8D2DFFBD2AFD66BF003E77B8 /* dozen-anyone-want-to-let-me-in.m4a */,
 				8D2DFFC22AFD66BF003E77B8 /* dozen.m4a */,
 				8D2DFF882AFD66BA003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a */,
+				8D8EAF452AFFF27800F01B71 /* dwayne-the-tub-im-dwowning.m4a */,
 				8D2DFFAE2AFD66BD003E77B8 /* dwayne.m4a */,
 				8D2DFF632AFD66B8003E77B8 /* etch.m4a */,
 				8D2DFFA72AFD66BD003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a */,
@@ -359,25 +538,41 @@
 				8D2DFF7F2AFD66BA003E77B8 /* figs-the-doorbell-its-not-working.m4a */,
 				8D2DFF812AFD66BA003E77B8 /* figs.m4a */,
 				8D2DFF9F2AFD66BC003E77B8 /* glad-youre-excited-too.m4a */,
+				8D8EAF262AFFF27700F01B71 /* god-bless-you.m4a */,
+				8D2DFFB92AFD66BE003E77B8 /* hal-will-you-know-if-you-dont-open-the-door.m4a */,
 				8D2DFFAF2AFD66BE003E77B8 /* hal.m4a */,
+				8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */,
+				8D8EAF222AFFF27700F01B71 /* harry.m4a */,
 				8D2DFF902AFD66BB003E77B8 /* hawaii.m4a */,
 				8D2DFF892AFD66BA003E77B8 /* hey-you-can-yodel.m4a */,
 				8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */,
 				8D2DFF8F2AFD66BB003E77B8 /* honey-bee.m4a */,
-				8D2DFFB92AFD66BE003E77B8 /* hal-will-you-know-if-you-dont-open-the-door.m4a */,
+				8D8EAF402AFFF27800F01B71 /* i-am.m4a */,
 				8D2DFFC62AFD66BF003E77B8 /* i-didnt-know-you-were-an-owl.m4a */,
 				8D2DFF992AFD66BC003E77B8 /* i-mustache-you-a-question.m4a */,
-				8D2DFFBE2AFD66BF003E77B8 /* iran-here-and-im-tired.m4a */,
 				8D2DFF6C2AFD66B8003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a */,
 				8D2DFF692AFD66B8003E77B8 /* ice-cream.m4a */,
 				8D2DFF852AFD66BA003E77B8 /* icy-you-looking-at-me.m4a */,
 				8D2DFF962AFD66BB003E77B8 /* icy.m4a */,
+				8D8EAF412AFFF27800F01B71 /* ill-fell-terrible-if-you-dont-let-me-in.m4a */,
 				8D2DFF642AFD66B8003E77B8 /* im-good-hawaii-you.m4a */,
+				8D8EAF502AFFF27800F01B71 /* imma-getting-older-waiting-for-you-to-open-up.m4a */,
+				8D8EAF422AFFF27800F01B71 /* imma.m4a */,
+				8D8EAF132AFFF27600F01B71 /* iona-new-toy.m4a */,
+				8D8EAF152AFFF27600F01B71 /* iona.m4a */,
+				8D2DFFBE2AFD66BF003E77B8 /* iran-here-and-im-tired.m4a */,
 				8D2DFF942AFD66BB003E77B8 /* iran.m4a */,
+				8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */,
+				8D8EAF442AFFF27800F01B71 /* isabel.m4a */,
 				8D2DFFA42AFD66BD003E77B8 /* iva-sore-hand-from-knocking.m4a */,
 				8D2DFF732AFD66B9003E77B8 /* iva.m4a */,
+				8D8EAF3C2AFFF27700F01B71 /* ivor-you-let-me-in-or-ill-climb-through-the-window.m4a */,
+				8D8EAF282AFFF27700F01B71 /* ivor.m4a */,
+				8D8EAF1C2AFFF27600F01B71 /* justin-time-for-dinner.m4a */,
+				8D8EAF3A2AFFF27700F01B71 /* justin.m4a */,
 				8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */,
 				8D2DFF9A2AFD66BC003E77B8 /* ketchup.m4a */,
+				8D8EAF272AFFF27700F01B71 /* kirtch.m4a */,
 				8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */,
 				8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */,
 				8D2DFF712AFD66B9003E77B8 /* leaf-me-alone.m4a */,
@@ -395,24 +590,38 @@
 				8D2DFF7B2AFD66B9003E77B8 /* nana-your-business.m4a */,
 				8D2DFF7E2AFD66BA003E77B8 /* nana.m4a */,
 				8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */,
+				8D8EAF1D2AFFF27600F01B71 /* needle-little-money-please.m4a */,
 				8D2DFFAA2AFD66BD003E77B8 /* needle.m4a */,
 				8D2DFF6A2AFD66B8003E77B8 /* no-a-cow-says-mooooo.m4a */,
 				8D2DFF842AFD66BA003E77B8 /* no-im-not.m4a */,
+				8D8EAF2C2AFFF27700F01B71 /* noah-good-place-we-can-go-hang-out.m4a */,
+				8D8EAF162AFFF27600F01B71 /* noah.m4a */,
+				8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */,
+				8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */,
 				8D2DFF8A2AFD66BB003E77B8 /* olive-you.m4a */,
 				8D2DFF952AFD66BB003E77B8 /* olive.m4a */,
 				8D2DFF872AFD66BA003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a */,
 				8D2DFF662AFD66B8003E77B8 /* orange.m4a */,
+				8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */,
+				8D8EAF302AFFF27700F01B71 /* otto.m4a */,
 				8D2DFF6E2AFD66B9003E77B8 /* police-let-me-in-its-chilly-out.m4a */,
 				8D2DFFB12AFD66BE003E77B8 /* police.m4a */,
 				8D2DFF822AFD66BA003E77B8 /* razor-hands-this-is-a-stick-up.m4a */,
 				8D2DFF802AFD66BA003E77B8 /* razor.m4a */,
+				8D8EAF1E2AFFF27600F01B71 /* roach-you-a-text-did-you-get-it.m4a */,
+				8D8EAF1F2AFFF27600F01B71 /* roach.m4a */,
 				8D2DFFB72AFD66BE003E77B8 /* robin-you-give-me-your-money.m4a */,
 				8D2DFFC82AFD66BF003E77B8 /* robin.m4a */,
+				8D8EAF312AFFF27700F01B71 /* sadie-magic-word-and-ill-come-in.m4a */,
+				8D8EAF3E2AFFF27700F01B71 /* sadie.m4a */,
 				8D2DFF862AFD66BA003E77B8 /* says-me.m4a */,
 				8D2DFF742AFD66B9003E77B8 /* says.m4a */,
+				8D8EAF202AFFF27600F01B71 /* scold-enough-out-here-to-go-ice-skating.m4a */,
+				8D8EAF4F2AFFF27800F01B71 /* scold.m4a */,
 				8D2DFFB52AFD66BE003E77B8 /* snow-use-the-joke-is-over.m4a */,
 				8D2DFFC52AFD66BF003E77B8 /* snow.m4a */,
 				8D2DFFAB2AFD66BD003E77B8 /* some.m4a */,
+				8D8EAF3F2AFFF27700F01B71 /* somebody-too-short-to-ring-the-doorbell.m4a */,
 				8D2DFF8C2AFD66BB003E77B8 /* spell.m4a */,
 				8D2DFF6B2AFD66B8003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a */,
 				8D2DFFAD2AFD66BD003E77B8 /* stopwatch.m4a */,
@@ -424,14 +633,24 @@
 				8D2DFFC12AFD66BF003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a */,
 				8D2DFFBC2AFD66BE003E77B8 /* thermos.m4a */,
 				8D2DFF702AFD66B9003E77B8 /* to.m4a */,
+				8D8EAF492AFFF27800F01B71 /* um-how-many-aliens-do-you-know.m4a */,
+				8D8EAF182AFFF27600F01B71 /* viper-nose-its-running.m4a */,
+				8D8EAF212AFFF27600F01B71 /* viper.m4a */,
 				8D2DFF612AFD66B8003E77B8 /* voodoo-you-think-you-are.m4a */,
 				8D2DFFA52AFD66BD003E77B8 /* voodoo.m4a */,
 				8D2DFF922AFD66BB003E77B8 /* w-h-o.m4a */,
+				8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */,
 				8D2DFF682AFD66B8003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a */,
 				8D2DFFA22AFD66BD003E77B8 /* water.m4a */,
+				8D8EAF292AFFF27700F01B71 /* watson-tv-right-now.m4a */,
+				8D8EAF2D2AFFF27700F01B71 /* watson.m4a */,
 				8D2DFF782AFD66B9003E77B8 /* who.m4a */,
 				8D2DFF752AFD66B9003E77B8 /* woo.m4a */,
+				8D8EAF372AFFF27700F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a */,
+				8D8EAF2F2AFFF27700F01B71 /* youre-not-a-shoe.m4a */,
 				8D2DFF792AFD66B9003E77B8 /* youre-welcome.m4a */,
+				8D8EAF122AFFF27600F01B71 /* yukon-say-that-again.m4a */,
+				8D8EAF4B2AFFF27800F01B71 /* yukon.m4a */,
 			);
 			path = Audio;
 			sourceTree = "<group>";
@@ -653,18 +872,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D2D000E2AFD6780003E77B8 /* robin.m4a in Resources */,
+				8D8EAF9C2AFFF27800F01B71 /* norma-lee.m4a in Resources */,
 				8D2D00142AFD6780003E77B8 /* tank.m4a in Resources */,
 				8D2D00252AFD6780003E77B8 /* luke-through-the-peep-hole-and-find-out.m4a in Resources */,
 				8D2D002B2AFD6780003E77B8 /* no-im-not.m4a in Resources */,
 				8D2D00162AFD6780003E77B8 /* no-a-cow-says-mooooo.m4a in Resources */,
+				8D8EAF642AFFF27800F01B71 /* cd.m4a in Resources */,
 				8D2DFFD82AFD6780003E77B8 /* who.m4a in Resources */,
 				8D2DFFF32AFD6780003E77B8 /* figs.m4a in Resources */,
 				8D2D00332AFD6780003E77B8 /* cash.m4a in Resources */,
+				8D8EAF942AFFF27800F01B71 /* yukon.m4a in Resources */,
+				8D8EAF982AFFF27800F01B71 /* scold.m4a in Resources */,
 				8D2DFFC92AFD6780003E77B8 /* snow-use-the-joke-is-over.m4a in Resources */,
 				8D2D002F2AFD6780003E77B8 /* im-good-hawaii-you.m4a in Resources */,
+				8D8EAF622AFFF27800F01B71 /* claire-a-path-im-coming-through.m4a in Resources */,
+				8D8EAF7B2AFFF27800F01B71 /* dozen-anybody-want-to-let-me-in.m4a in Resources */,
 				8D2D00212AFD6780003E77B8 /* razor-hands-this-is-a-stick-up.m4a in Resources */,
+				8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */,
+				8D8EAF5B2AFFF27800F01B71 /* yukon-say-that-again.m4a in Resources */,
+				8D8EAF812AFFF27800F01B71 /* armegeddon.m4a in Resources */,
+				8D8EAF722AFFF27800F01B71 /* watson-tv-right-now.m4a in Resources */,
+				8D8EAF842AFFF27800F01B71 /* a-herd-you-were-home-so-here-i-am.m4a in Resources */,
 				8D2DFFFC2AFD6780003E77B8 /* police-let-me-in-its-chilly-out.m4a in Resources */,
 				8D2D00242AFD6780003E77B8 /* icy.m4a in Resources */,
+				8D8EAF5D2AFFF27800F01B71 /* adore.m4a in Resources */,
 				8D2DFFEC2AFD6780003E77B8 /* says.m4a in Resources */,
 				8D2DFFE82AFD6780003E77B8 /* orange.m4a in Resources */,
 				8D2D00072AFD6780003E77B8 /* voodoo-you-think-you-are.m4a in Resources */,
@@ -676,10 +907,13 @@
 				8D0A79172AF3B40800317DAF /* Keys.plist in Resources */,
 				8D2DFFD12AFD6780003E77B8 /* youre-welcome.m4a in Resources */,
 				8D2D00172AFD6780003E77B8 /* dozen.m4a in Resources */,
+				8D8EAF8C2AFFF27800F01B71 /* abby-birthday-to-you.m4a in Resources */,
 				8D2D00312AFD6780003E77B8 /* luke.m4a in Resources */,
 				8D2DFFE42AFD6780003E77B8 /* leaf.m4a in Resources */,
 				8D2D002D2AFD6780003E77B8 /* leaf-me-alone.m4a in Resources */,
+				8D8EAF862AFFF27800F01B71 /* al.m4a in Resources */,
 				8D2D001D2AFD6780003E77B8 /* alectricity-buzz.m4a in Resources */,
+				8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */,
 				8D2D00182AFD6780003E77B8 /* thermos-be-a-better-way-to-get-to-you.m4a in Resources */,
 				8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */,
 				8D2DFFD72AFD6780003E77B8 /* ice-cream.m4a in Resources */,
@@ -688,79 +922,137 @@
 				8D2D001A2AFD6780003E77B8 /* says-me.m4a in Resources */,
 				8D2D00152AFD6780003E77B8 /* amos.m4a in Resources */,
 				8D2D001F2AFD6780003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a in Resources */,
+				8D8EAF672AFFF27800F01B71 /* roach-you-a-text-did-you-get-it.m4a in Resources */,
 				8D2DFFCA2AFD6780003E77B8 /* mary-christmas.m4a in Resources */,
 				8D2D00062AFD6780003E77B8 /* figs-the-doorbell-its-not-working.m4a in Resources */,
 				8D2DFFFA2AFD6780003E77B8 /* maybe-some-day-youll-recognize-me.m4a in Resources */,
+				8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */,
+				8D8EAF922AFFF27800F01B71 /* um-how-many-aliens-do-you-know.m4a in Resources */,
+				8D8EAF5F2AFFF27800F01B71 /* noah.m4a in Resources */,
+				8D8EAF822AFFF27800F01B71 /* armageddon-a-little-bored-lets-go-out.m4a in Resources */,
+				8D8EAF912AFFF27800F01B71 /* avenue-knocked-on-this-door-before.m4a in Resources */,
 				8D2DFFEF2AFD6780003E77B8 /* cow-says.m4a in Resources */,
 				8D2DFFD32AFD6780003E77B8 /* annie.m4a in Resources */,
 				8D2DFFDA2AFD6780003E77B8 /* razor.m4a in Resources */,
 				8D2D00052AFD6780003E77B8 /* glad-youre-excited-too.m4a in Resources */,
+				8D8EAF952AFFF27800F01B71 /* avenue.m4a in Resources */,
 				8D2DFFD62AFD6780003E77B8 /* woo.m4a in Resources */,
+				8D8EAF652AFFF27800F01B71 /* justin-time-for-dinner.m4a in Resources */,
 				8D2D00122AFD6780003E77B8 /* bless-you.m4a in Resources */,
+				8D8EAF6C2AFFF27800F01B71 /* abby.m4a in Resources */,
 				8D2DFFDC2AFD6780003E77B8 /* i-didnt-know-you-were-an-owl.m4a in Resources */,
 				8D2DFFF82AFD6780003E77B8 /* nah-im-more-into-almonds.m4a in Resources */,
+				8D8EAF592AFFF27800F01B71 /* ben-knocking-for-ten-minutes.m4a in Resources */,
+				8D8EAF832AFFF27800F01B71 /* justin.m4a in Resources */,
 				8D2DFFDE2AFD6780003E77B8 /* dozen-anyone-want-to-let-me-in.m4a in Resources */,
 				8D2D00222AFD6780003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a in Resources */,
 				8D2D000F2AFD6780003E77B8 /* dwayne.m4a in Resources */,
+				8D8EAF782AFFF27800F01B71 /* youre-not-a-shoe.m4a in Resources */,
 				8D2D000C2AFD6780003E77B8 /* snow.m4a in Resources */,
+				8D8EAF712AFFF27800F01B71 /* ivor.m4a in Resources */,
 				8D2DFFF62AFD6780003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a in Resources */,
 				8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */,
 				8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */,
+				8D8EAF7E2AFFF27800F01B71 /* canoe-help-me-get-inside.m4a in Resources */,
+				8D8EAF972AFFF27800F01B71 /* alfie.m4a in Resources */,
 				8D2D00272AFD6780003E77B8 /* police.m4a in Resources */,
 				8D2DFFD22AFD6780003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a in Resources */,
 				8D2DFFFB2AFD6780003E77B8 /* canoe.m4a in Resources */,
+				8D8EAF762AFFF27800F01B71 /* watson.m4a in Resources */,
 				8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */,
 				8D2DFFE12AFD6780003E77B8 /* boo.m4a in Resources */,
+				8D8EAF7F2AFFF27800F01B71 /* anyone-you-like.m4a in Resources */,
 				8D2DFFF02AFD6780003E77B8 /* dont-cry-its-just-a-joke.m4a in Resources */,
 				8D2DFFF52AFD6780003E77B8 /* sure.m4a in Resources */,
 				8D2DFFF72AFD6780003E77B8 /* let-me-in-anita-borrow-something.m4a in Resources */,
 				8D2DFFF12AFD6780003E77B8 /* olive-you.m4a in Resources */,
 				8D2DFFF42AFD6780003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a in Resources */,
 				8D2D001E2AFD6780003E77B8 /* olive.m4a in Resources */,
+				8D8EAF8B2AFFF27800F01B71 /* imma.m4a in Resources */,
 				8D2D002C2AFD6780003E77B8 /* annie-thing-you-can-do-i-can-do-too.m4a in Resources */,
 				8D2DFFD52AFD6780003E77B8 /* w-h-o.m4a in Resources */,
+				8D8EAF882AFFF27800F01B71 /* somebody-too-short-to-ring-the-doorbell.m4a in Resources */,
+				8D8EAF8D2AFFF27800F01B71 /* isabel.m4a in Resources */,
+				8D8EAF962AFFF27800F01B71 /* alien.m4a in Resources */,
 				8D2DFFFE2AFD6780003E77B8 /* i-mustache-you-a-question.m4a in Resources */,
 				8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */,
+				8D8EAF6A2AFFF27800F01B71 /* viper.m4a in Resources */,
 				8D2DFFD42AFD6780003E77B8 /* etch.m4a in Resources */,
 				8D2DFFDB2AFD6780003E77B8 /* ketchup.m4a in Resources */,
 				8D2DFFF22AFD6780003E77B8 /* amarillo-nice-person.m4a in Resources */,
+				8D8EAF932AFFF27800F01B71 /* al-give-you-a-hug-if-you-open-this-door.m4a in Resources */,
 				8D2D00092AFD6780003E77B8 /* hal.m4a in Resources */,
+				8D8EAF992AFFF27800F01B71 /* imma-getting-older-waiting-for-you-to-open-up.m4a in Resources */,
 				8D2DFFE22AFD6780003E77B8 /* candice-snack-be-eaten.m4a in Resources */,
+				8D8EAF632AFFF27800F01B71 /* althea-later-alligator.m4a in Resources */,
 				8D2DFFD02AFD6780003E77B8 /* lettuce-in-its-cold-out-here.m4a in Resources */,
+				8D8EAF732AFFF27800F01B71 /* arfur-got.m4a in Resources */,
+				8D8EAF6E2AFFF27800F01B71 /* adore-is-between-us-so-please-open-it.m4a in Resources */,
 				8D2DFFE52AFD6780003E77B8 /* hal-will-you-know-if-you-dont-open-the-door.m4a in Resources */,
 				8D2D001C2AFD6780003E77B8 /* to.m4a in Resources */,
 				8D2DFFD92AFD6780003E77B8 /* lettuce.m4a in Resources */,
+				8D8EAF8F2AFFF27800F01B71 /* ben.m4a in Resources */,
 				8D2DFFF92AFD6780003E77B8 /* icy-you-looking-at-me.m4a in Resources */,
+				8D8EAF902AFFF27800F01B71 /* arfur.m4a in Resources */,
 				8D2DFFE02AFD6780003E77B8 /* iva.m4a in Resources */,
+				8D8EAF9E2AFFF27800F01B71 /* otto-know-i-forgot.m4a in Resources */,
+				8D8EAF5A2AFFF27800F01B71 /* a-herd.m4a in Resources */,
+				8D8EAF682AFFF27800F01B71 /* roach.m4a in Resources */,
+				8D8EAF742AFFF27800F01B71 /* dish-is-a-nice-place.m4a in Resources */,
 				8D2DFFCB2AFD6780003E77B8 /* theodore.m4a in Resources */,
 				8D2D00192AFD6780003E77B8 /* a-little-old-lady.m4a in Resources */,
+				8D8EAF6F2AFFF27800F01B71 /* god-bless-you.m4a in Resources */,
 				8D2DFFE32AFD6780003E77B8 /* theodore-is-stuck-open-up.m4a in Resources */,
 				8D2D00322AFD6780003E77B8 /* nana.m4a in Resources */,
 				8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */,
+				8D8EAF872AFFF27800F01B71 /* sadie.m4a in Resources */,
 				8D2D00042AFD6780003E77B8 /* needle-little-help-right-now.m4a in Resources */,
 				8D2DFFCF2AFD6780003E77B8 /* dwayne-the-sink-i-need-to-use-it.m4a in Resources */,
+				8D8EAF9A2AFFF27800F01B71 /* claire.m4a in Resources */,
+				8D8EAF892AFFF27800F01B71 /* i-am.m4a in Resources */,
 				8D2D00032AFD6780003E77B8 /* mary.m4a in Resources */,
+				8D8EAF7D2AFFF27800F01B71 /* althea.m4a in Resources */,
+				8D8EAF5C2AFFF27800F01B71 /* iona-new-toy.m4a in Resources */,
+				8D8EAF802AFFF27800F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a in Resources */,
 				8D2DFFFD2AFD6780003E77B8 /* alec.m4a in Resources */,
 				8D2D00132AFD6780003E77B8 /* thermos.m4a in Resources */,
 				8D2DFFED2AFD6780003E77B8 /* stopwatch-youre-doing-and-let-me-in.m4a in Resources */,
+				8D8EAF612AFFF27800F01B71 /* viper-nose-its-running.m4a in Resources */,
+				8D8EAF852AFFF27800F01B71 /* ivor-you-let-me-in-or-ill-climb-through-the-window.m4a in Resources */,
 				8D2DFFCC2AFD6780003E77B8 /* voodoo.m4a in Resources */,
 				8D2DFFEB2AFD6780003E77B8 /* mustache.m4a in Resources */,
+				8D8EAF6B2AFFF27800F01B71 /* harry.m4a in Resources */,
+				8D8EAF702AFFF27800F01B71 /* kirtch.m4a in Resources */,
 				8D2DFFEA2AFD6780003E77B8 /* iran-here-and-im-tired.m4a in Resources */,
 				8D2D002A2AFD6780003E77B8 /* amarillo.m4a in Resources */,
 				8D2DFFCD2AFD6780003E77B8 /* hey-you-can-yodel.m4a in Resources */,
+				8D8EAF602AFFF27800F01B71 /* dishes.m4a in Resources */,
+				8D8EAF5E2AFFF27800F01B71 /* iona.m4a in Resources */,
 				8D2DFFE72AFD6780003E77B8 /* europe.m4a in Resources */,
 				8D2DFFDD2AFD6780003E77B8 /* banana.m4a in Resources */,
+				8D8EAF9B2AFFF27800F01B71 /* cd-person-on-your-doorstep.m4a in Resources */,
 				8D2DFFE92AFD6780003E77B8 /* hawaii.m4a in Resources */,
+				8D8EAF752AFFF27800F01B71 /* noah-good-place-we-can-go-hang-out.m4a in Resources */,
+				8D8EAF662AFFF27800F01B71 /* needle-little-money-please.m4a in Resources */,
+				8D8EAF772AFFF27800F01B71 /* abbot-you-dont-know-who-this-is.m4a in Resources */,
 				8D2D000B2AFD6780003E77B8 /* robin-you-give-me-your-money.m4a in Resources */,
 				8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */,
+				8D8EAF692AFFF27800F01B71 /* scold-enough-out-here-to-go-ice-skating.m4a in Resources */,
 				8D2D002E2AFD6780003E77B8 /* alexplain-later.m4a in Resources */,
 				8D2DFFFF2AFD6780003E77B8 /* actually-its-to-whom.m4a in Resources */,
+				8D8EAF8E2AFFF27800F01B71 /* dwayne-the-tub-im-dwowning.m4a in Resources */,
+				8D8EAF7C2AFFF27800F01B71 /* amish.m4a in Resources */,
+				8D8EAF792AFFF27800F01B71 /* otto.m4a in Resources */,
 				8D2DFFDF2AFD6780003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a in Resources */,
 				8D2D00232AFD6780003E77B8 /* nana-your-business.m4a in Resources */,
 				8D2DFFCE2AFD6780003E77B8 /* candice.m4a in Resources */,
+				8D8EAF6D2AFFF27800F01B71 /* abbot.m4a in Resources */,
 				8D2D00102AFD6780003E77B8 /* iran.m4a in Resources */,
 				8D2D000A2AFD6780003E77B8 /* needle.m4a in Resources */,
 				8D2D00262AFD6780003E77B8 /* iva-sore-hand-from-knocking.m4a in Resources */,
+				8D8EAF8A2AFFF27800F01B71 /* ill-fell-terrible-if-you-dont-let-me-in.m4a in Resources */,
+				8D8EAF7A2AFFF27800F01B71 /* sadie-magic-word-and-ill-come-in.m4a in Resources */,
+				8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */,
 				8D2D00082AFD6780003E77B8 /* spell.m4a in Resources */,
 				8D2DFFE62AFD6780003E77B8 /* euripides-clothes-you-better-pay-for-them.m4a in Resources */,
 			);
