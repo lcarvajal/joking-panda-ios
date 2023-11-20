@@ -16,6 +16,7 @@
 		8D0DDFEB2B0BE2B700A3A8F8 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */; };
 		8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */; };
 		8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */; };
+		8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
 		8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB22AFD66BE003E77B8 /* anita.m4a */; };
 		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
@@ -242,6 +243,7 @@
 		8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSpeechSynthesizer.swift; sourceTree = "<group>"; };
+		8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
 		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0A790F2AF15A6100317DAF /* Constant.swift */,
+				8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */,
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 			);
 			path = Helper;
@@ -1108,6 +1111,7 @@
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
+				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8DE4C1DC2AFC393700B36205 /* BotInterfaceView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
