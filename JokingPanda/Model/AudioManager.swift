@@ -57,4 +57,8 @@ class AudioManager {
             // FIXME: Handle error
         }
     }
+    
+    internal func stopAudioEngine() {
+        audioEngine.stop()
+    }
 }
