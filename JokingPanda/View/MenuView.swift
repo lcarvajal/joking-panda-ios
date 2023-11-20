@@ -30,13 +30,13 @@ struct MenuView: View {
                                                                 .foregroundColor(.tappableAccent)
                                                                 .symbolRenderingMode(.palette)
                                 }
-                                Spacer()
-                                NavigationLink(destination: ConversationView()) {
-                                    Image(systemName: "music.quarternote.3") // System icon
-                                                                .font(.system(size: 36))
-                                                                .foregroundColor(.tappableAccent)
-                                                                .symbolRenderingMode(.palette)
-                                }
+//                                Spacer()
+//                                NavigationLink(destination: ConversationView()) {
+//                                    Image(systemName: "music.quarternote.3") // System icon
+//                                                                .font(.system(size: 36))
+//                                                                .foregroundColor(.tappableAccent)
+//                                                                .symbolRenderingMode(.palette)
+//                                }
                                 Spacer()
                                 NavigationLink(destination: ConversationView()) {
                                     Image(systemName: "figure.socialdance") // System icon
