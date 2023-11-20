@@ -123,7 +123,7 @@
 		8D2DFFFE2AFD6780003E77B8 /* i-mustache-you-a-question.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF992AFD66BC003E77B8 /* i-mustache-you-a-question.m4a */; };
 		8D2DFFFF2AFD6780003E77B8 /* actually-its-to-whom.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF912AFD66BB003E77B8 /* actually-its-to-whom.m4a */; };
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */; };
-		8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */; };
+		8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
@@ -349,7 +349,7 @@
 		8D2DFFC72AFD66BF003E77B8 /* lettuce-in-its-cold-out-here.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lettuce-in-its-cold-out-here.m4a"; sourceTree = "<group>"; };
 		8D2DFFC82AFD66BF003E77B8 /* robin.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = robin.m4a; sourceTree = "<group>"; };
 		8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsView.swift; sourceTree = "<group>"; };
-		8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationManager.swift; sourceTree = "<group>"; };
+		8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "knock-knock.m4a"; path = "../../../../../Desktop/panda audio files/1 round/knock-knock.m4a"; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
@@ -751,7 +751,7 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D4CB9EB2AED1F7F00B7A00F /* AnimationManager.swift */,
+				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
 				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
@@ -1111,7 +1111,7 @@
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8DE4C1DC2AFC393700B36205 /* BotInterfaceView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
-				8D4CB9EC2AED1F7F00B7A00F /* AnimationManager.swift in Sources */,
+				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D0DDFEB2B0BE2B700A3A8F8 /* Audio.swift in Sources */,

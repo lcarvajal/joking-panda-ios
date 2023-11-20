@@ -1,5 +1,5 @@
 //
-//  AnimationManager.swift
+//  Animation.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 10/28/23.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct AnimationManager {
+struct Animation {
     static private let talkingPandaImageNames = [
         Constant.ImageName.pandaMicUpMouthOpen,
         Constant.ImageName.pandaMicUpMouthClosed
