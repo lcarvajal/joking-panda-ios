@@ -24,28 +24,28 @@ struct MenuView: View {
                             Spacer()
                             HStack {
                                 Spacer()
-                                NavigationLink(destination: BotInterfaceView()) {
+                                NavigationLink(destination: ConversationView()) {
                                     Image(systemName: "book.closed.fill") // System icon
                                                                 .font(.system(size: 36))
                                                                 .foregroundColor(.tappableAccent)
                                                                 .symbolRenderingMode(.palette)
                                 }
                                 Spacer()
-                                NavigationLink(destination: BotInterfaceView()) {
+                                NavigationLink(destination: ConversationView()) {
                                     Image(systemName: "music.quarternote.3") // System icon
                                                                 .font(.system(size: 36))
                                                                 .foregroundColor(.tappableAccent)
                                                                 .symbolRenderingMode(.palette)
                                 }
                                 Spacer()
-                                NavigationLink(destination: BotInterfaceView()) {
+                                NavigationLink(destination: ConversationView()) {
                                     Image(systemName: "figure.socialdance") // System icon
                                                                 .font(.system(size: 36))
                                                                 .foregroundColor(.tappableAccent)
                                                                 .symbolRenderingMode(.palette)
                                 }
                                 Spacer()
-                                NavigationLink(destination: BotInterfaceView()) {
+                                NavigationLink(destination: ConversationView()) {
                                     Image(systemName: "face.smiling.fill") // System icon
                                                                 .font(.system(size: 36))
                                                                 .foregroundColor(.tappableAccent)

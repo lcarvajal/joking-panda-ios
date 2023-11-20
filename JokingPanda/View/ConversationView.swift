@@ -1,5 +1,5 @@
 //
-//  MessageComposerView.swift
+//  ConversationView.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 11/8/23.
@@ -8,58 +8,31 @@
 import SwiftUI
 
 struct ConversationView: View {
-    @Binding var displayMessages: Bool
-    @ObservedObject var conversationManager: ConversationManager
+    @Environment(\.scenePhase) var scenePhase
+    
+    @State var showSheet = false
+    @State var displayMessages = false
+    @StateObject var conversationManager = ConversationManager()
     
     var body: some View {
-        VStack {
-            Button {
-                displayMessages.toggle()
-            } label: {
-                Image(systemName: displayMessages ? "chevron.compact.down" : "chevron.compact.up")
-                    .imageScale(.large)
-                    .foregroundStyle(.tappableAccent)
-                    .padding(.bottom, 1)
-                    .frame(maxWidth: .infinity)
-            }
-            
-            ScrollViewReader { proxy in
-                ScrollView {
-                    Text(conversationManager.messageHistory)
-                        .id(1)            // this is where to add an id
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(nil)
-                        .font(.system(size: 18, design: .rounded))
-                        .frame(maxWidth: .infinity,
-                               alignment: .leading)
+        VStack(spacing: 0) {
+            GeometryReader { geometry in
+                ZStack {
+                    AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
                 }
+                .onTapGesture {
+                    conversationManager.startConversation()
+                }
+            }
+            .background(Color.tappableArea)
+            
+            MessagesView(displayMessages: $displayMessages, conversationManager: conversationManager)
                 .background(Color.background)
-                .onChange(of: conversationManager.messageHistory) { _ in
-                    proxy.scrollTo(1, anchor: .bottom)
-                }
-                .onChange(of: displayMessages) { _ in
-                    proxy.scrollTo(1, anchor: .bottom)
-                }
-            }
-            
-            if conversationManager.status != .stopped {
-                HStack {
-                    Text(conversationManager.speechOrPhraseToDisplay)
-                        .font(.system(size: 26, design: .rounded))
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity)
-                        .padding(10)
-                }
-                .background(Color.backgroundLighter)
-                .cornerRadius(10)
-                .padding(.top, 0)
-            }
         }
-        .frame(maxHeight: displayMessages ? .infinity : 100)
-        .padding()
     }
 }
 
-//#Preview {
-//    MessageComposerView("Sample text")
-//}
+
+#Preview {
+    ConversationView()
+}
