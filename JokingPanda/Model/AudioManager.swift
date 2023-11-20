@@ -35,6 +35,13 @@ class AudioManager {
         }
     }
     
+    internal func deactivateAudioPlayer() {
+        if let player = audioPlayer {
+            player.delegate = nil
+        }
+        audioPlayer = nil
+    }
+    
     // MARK: - Actions
     
     internal func play(url: URL, delegate: AVAudioPlayerDelegate) {
@@ -49,12 +56,5 @@ class AudioManager {
         } catch {
             // FIXME: Handle error
         }
-    }
-    
-    internal func deactivateAudioPlayer() {
-        if let player = audioPlayer {
-            player.delegate = nil
-        }
-        audioPlayer = nil
     }
 }
