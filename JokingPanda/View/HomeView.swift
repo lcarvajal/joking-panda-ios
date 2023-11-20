@@ -17,7 +17,7 @@ struct HomeView: View {
             AuthorizationsView(speechStatus: $speechStatus, microphoneStatus: $microphoneStatus)
         }
         else {
-            BotInterfaceView()
+            MenuView()
         }
     }
 }

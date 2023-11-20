@@ -19,10 +19,6 @@ struct BotInterfaceView: View {
             GeometryReader { geometry in
                 ZStack {
                     AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
-                    
-                    if conversationManager.status == .stopped {
-                        OverlayedButtonsView(showSheet: $showSheet)
-                    }
                 }
                 .onTapGesture {
                     conversationManager.startConversation()
