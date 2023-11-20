@@ -62,16 +62,7 @@ class ConversationManager: NSObject, ObservableObject {
             audio.activateAudioSession()
             status = .botSpeaking
             converse()
-            
-            #if DEBUG
-                print("\(Constant.Event.conversationStarted) Event not tracked in DEBUG")
-            #else
-                // Track conversation started
-                Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
-                                              properties: [
-                                                Constant.Event.Property.conversationId: conversations[conversationIndex].id
-                                              ])
-            #endif
+            Event.startConversation()
         }
         else {
             return
@@ -88,14 +79,9 @@ class ConversationManager: NSObject, ObservableObject {
                 status = .botSpeaking
             }
             else {
-                do {
-                    status = .currentUserSpeaking
-                    try startRecording()
-                    stopRecordingAndHandleRecognizedPhrase()
-                }
-                catch {
-                    // FIXME: Handle error starting recording
-                }
+                status = .currentUserSpeaking
+                startRecording()
+                stopRecordingAndHandleRecognizedPhrase()
             }
         }
         else {
@@ -104,6 +90,8 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private func incrementPhraseIndex() {
+        // If conversation is coming to an end, a new conversation is started by incrementing conversation index
+        
         status = .noOneSpeaking
         phraseIndex += 1
         
@@ -118,24 +106,6 @@ class ConversationManager: NSObject, ObservableObject {
             }
             
             UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
-        }
-    }
-    
-    private func speak(_ text: String) {
-        status = .botSpeaking
-        
-        let audioFileName = Tool.removePunctuation(from: text)
-            .lowercased()
-            .replacingOccurrences(of: " ", with: "-")
-        
-        if let audioURL = Bundle.main.url(forResource: "\(audioFileName)", withExtension: "m4a") {
-            audio.play(url: audioURL, delegate: self)
-            phraseBotIsSaying = currentPhrase
-            updateSpeechOrPhraseToDisplay()
-        }
-        else {
-            // Fallback on voice synthesis if audio file doesn't exist
-            self.synthesizer.botSpeak(string: text)
         }
     }
     
@@ -154,7 +124,7 @@ class ConversationManager: NSObject, ObservableObject {
 extension ConversationManager: SFSpeechRecognizerDelegate {
     // MARK: - Actions
     
-    private func startRecording() throws {
+    private func startRecording() {
         speechRecognized = ""
         updateSpeechOrPhraseToDisplay()
         
@@ -168,7 +138,13 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         }
         
         audio.audioEngine.prepare()
-        try audio.audioEngine.start()
+        
+        do {
+            try audio.audioEngine.start()
+        }
+        catch {
+            // FIXME: - Handle Error
+        }
     }
     
     private func stopRecordingAndHandleRecognizedPhrase() {
@@ -225,6 +201,26 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
 }
 
 extension ConversationManager: AVAudioPlayerDelegate {
+    // MARK: - Actions
+    
+    private func speak(_ text: String) {
+        status = .botSpeaking
+        
+        let audioFileName = Tool.removePunctuation(from: text)
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "-")
+        
+        if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
+            audio.play(url: audioURL, delegate: self)
+            phraseBotIsSaying = currentPhrase
+            updateSpeechOrPhraseToDisplay()
+        }
+        else {
+            // Fallback on voice synthesis if audio file doesn't exist
+            self.synthesizer.botSpeak(string: text)
+        }
+    }
+    
     // MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
