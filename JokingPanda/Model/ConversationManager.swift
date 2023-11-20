@@ -19,7 +19,8 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private let audioManager = AudioManager()
-    private let speechRecognitionManager = SpeechRecognitionManager()
+    private let speechRecognizer = SpeechRecognizer()
+    private let synthesizer = AVSpeechSynthesizer()
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
@@ -29,14 +30,13 @@ class ConversationManager: NSObject, ObservableObject {
     private var personToStartTalking: Person {
         return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
     }
-    private let synthesizer = AVSpeechSynthesizer()
     
     private let conversations: [Conversation] = Tool.load("conversationData.json")
     
     override init() {
         super.init()
         synthesizer.delegate = self
-        speechRecognitionManager.speechRecognizer.delegate = self
+        speechRecognizer.setDelegate(delegate: self)
         
         setConversationIndexOfLastConversation()
     }
@@ -158,34 +158,13 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         speechRecognized = ""
         updateSpeechOrPhraseToDisplay()
         
-        let inputNode = audioManager.audioEngine.inputNode
-        speechRecognitionManager.cancelCurrentRecognitionTask()
-        speechRecognitionManager.configureRecognitionRequest(phrase: currentPhrase, inputNode: inputNode)
-        
-        speechRecognitionManager.recognitionTask = speechRecognitionManager.speechRecognizer.recognitionTask(with: speechRecognitionManager.recognitionRequest!) { result, error in
-            var isFinal = false
-            
-            if let result = result {
-                isFinal = result.isFinal
-                self.speechRecognized = result.bestTranscription.formattedString
-                self.updateSpeechOrPhraseToDisplay()
-            }
-            
-            if error != nil || isFinal {
-                // FIXME: Handle error
-                // Stop recognizing speech if there is a problem.
-                self.audioManager.audioEngine.stop()
-                inputNode.removeTap(onBus: 0)
-                
-                self.speechRecognitionManager.recognitionRequest = nil
-                self.speechRecognitionManager.recognitionTask = nil
-            }
-        }
-        
-        // Configure the microphone input.
-        let recordingFormat = inputNode.outputFormat(forBus: 0)
-        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
-            self.speechRecognitionManager.recognitionRequest?.append(buffer)
+        speechRecognizer.setInputNode(inputNode: audioManager.audioEngine.inputNode)
+        speechRecognizer.configure(expectedPhrase: currentPhrase) { recognizedSpeech in
+            self.speechRecognized = recognizedSpeech
+            self.updateSpeechOrPhraseToDisplay()
+        } errorCompletion: { error in
+            // Stop recognizing speech if there is a problem.
+            self.audioManager.audioEngine.stop()
         }
         
         audioManager.audioEngine.prepare()
@@ -214,8 +193,8 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
     }
     
     private func stopRecording() {
-        audioManager.audioEngine.stop()
-        speechRecognitionManager.recognitionRequest?.endAudio()
+        audioManager.stopAudioEngine()
+        speechRecognizer.stop()
     }
     
     private func updateMessageHistoryForPanda() {
