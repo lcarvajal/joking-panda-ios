@@ -14,6 +14,8 @@
 		8D0A79172AF3B40800317DAF /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A79162AF3B40800317DAF /* Keys.plist */; };
 		8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */; };
 		8D0DDFEB2B0BE2B700A3A8F8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEA2B0BE2B700A3A8F8 /* AudioManager.swift */; };
+		8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognitionManager.swift */; };
+		8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
 		8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB22AFD66BE003E77B8 /* anita.m4a */; };
 		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
@@ -238,6 +240,8 @@
 		8D0A79162AF3B40800317DAF /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "knock-knock.m4a"; sourceTree = "<group>"; };
 		8D0DDFEA2B0BE2B700A3A8F8 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognitionManager.swift; sourceTree = "<group>"; };
+		8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
 		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
@@ -657,6 +661,23 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		8D0DDFF02B0BEE2800A3A8F8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		8D0DDFF12B0BEE4000A3A8F8 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8D0A790F2AF15A6100317DAF /* Constant.swift */,
+				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		8D2DFF5D2AFC4C4F003E77B8 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -693,6 +714,8 @@
 				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
 				8DC97D8A2AE673C0002CEA1E /* Model */,
 				8DC97D8B2AE673CB002CEA1E /* Views */,
+				8D0DDFF02B0BEE2800A3A8F8 /* Extension */,
+				8D0DDFF12B0BEE4000A3A8F8 /* Helper */,
 				8DC97D992AE98856002CEA1E /* Resources */,
 				8DC97D642AE67101002CEA1E /* Assets.xcassets */,
 				8DC97D662AE67101002CEA1E /* Preview Content */,
@@ -733,8 +756,7 @@
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
 				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
-				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
-				8D0A790F2AF15A6100317DAF /* Constant.swift */,
+				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognitionManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1093,10 +1115,12 @@
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D0DDFEB2B0BE2B700A3A8F8 /* AudioManager.swift in Sources */,
+				8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */,
 				8DE4C1DA2AFC335500B36205 /* OverlayedButtonsView.swift in Sources */,
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,
 				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
+				8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognitionManager.swift in Sources */,
 				8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */,
 				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,
 			);

@@ -19,6 +19,7 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     private let audioManager = AudioManager()
+    private let speechRecognitionManager = SpeechRecognitionManager()
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
@@ -28,18 +29,14 @@ class ConversationManager: NSObject, ObservableObject {
     private var personToStartTalking: Person {
         return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
     }
-    
-    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    private var recognitionTask: SFSpeechRecognitionTask?
     private let synthesizer = AVSpeechSynthesizer()
     
     private let conversations: [Conversation] = Tool.load("conversationData.json")
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
     override init() {
         super.init()
         synthesizer.delegate = self
-        speechRecognizer.delegate = self
+        speechRecognitionManager.speechRecognizer.delegate = self
         
         setConversationIndexOfLastConversation()
     }
@@ -130,7 +127,7 @@ class ConversationManager: NSObject, ObservableObject {
         let audioFileName = Tool.removePunctuation(from: text)
             .lowercased()
             .replacingOccurrences(of: " ", with: "-")
-        print(audioFileName)
+        
         if let audioURL = Bundle.main.url(forResource: "\(audioFileName)", withExtension: "m4a") {
             audioManager.play(url: audioURL, delegate: self)
             phraseBotIsSaying = currentPhrase
@@ -138,14 +135,7 @@ class ConversationManager: NSObject, ObservableObject {
         }
         else {
             // Fallback on voice synthesis if audio file doesn't exist
-            let utterance = AVSpeechUtterance(string: text)
-            utterance.rate = 0.45
-            utterance.pitchMultiplier = 0.8
-            utterance.postUtteranceDelay = 0.2
-            utterance.volume = 0.8
-            utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
-            
-            self.synthesizer.speak(utterance)
+            self.synthesizer.botSpeak(string: text)
         }
     }
     
@@ -165,33 +155,14 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
     // MARK: - Actions
     
     private func startRecording() throws {
-        // Cancel the previous task if it's running.
-        if let recognitionTask = recognitionTask {
-            recognitionTask.cancel()
-            self.recognitionTask = nil
-        }
         speechRecognized = ""
         updateSpeechOrPhraseToDisplay()
         
         let inputNode = audioManager.audioEngine.inputNode
+        speechRecognitionManager.cancelCurrentRecognitionTask()
+        speechRecognitionManager.configureRecognitionRequest(phrase: currentPhrase, inputNode: inputNode)
         
-        // Create and configure the speech recognition request.
-        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
-        recognitionRequest.shouldReportPartialResults = true
-        recognitionRequest.contextualStrings = currentPhrase.components(separatedBy: " ")
-        
-        // Keep speech recognition data on device
-        if #available(iOS 13, *) {
-            recognitionRequest.requiresOnDeviceRecognition = true
-            if #available(iOS 17, *) {
-                //                recognitionRequest.customizedLanguageModel = self.lmConfiguration
-            }
-        }
-        
-        // Create a recognition task for the speech recognition session.
-        // Keep a reference to the task so that it can be canceled.
-        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+        speechRecognitionManager.recognitionTask = speechRecognitionManager.speechRecognizer.recognitionTask(with: speechRecognitionManager.recognitionRequest!) { result, error in
             var isFinal = false
             
             if let result = result {
@@ -206,15 +177,15 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
                 self.audioManager.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
-                self.recognitionRequest = nil
-                self.recognitionTask = nil
+                self.speechRecognitionManager.recognitionRequest = nil
+                self.speechRecognitionManager.recognitionTask = nil
             }
         }
         
         // Configure the microphone input.
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
-            self.recognitionRequest?.append(buffer)
+            self.speechRecognitionManager.recognitionRequest?.append(buffer)
         }
         
         audioManager.audioEngine.prepare()
@@ -244,7 +215,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
     
     private func stopRecording() {
         audioManager.audioEngine.stop()
-        recognitionRequest?.endAudio()
+        speechRecognitionManager.recognitionRequest?.endAudio()
     }
     
     private func updateMessageHistoryForPanda() {
