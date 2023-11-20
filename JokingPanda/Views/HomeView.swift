@@ -8,7 +8,7 @@
 import SwiftUI
 import Speech
 
-struct ContentView: View {
+struct HomeView: View {
     @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
     @State var microphoneStatus = AVCaptureDevice.authorizationStatus(for: .audio)
     
@@ -23,6 +23,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(speechStatus: .authorized)
+    HomeView(speechStatus: .authorized)
         .preferredColorScheme(.dark)
 }

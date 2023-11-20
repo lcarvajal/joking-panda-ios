@@ -200,7 +200,7 @@
 		8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */; };
 		8D8EAF9E2AFFF27800F01B71 /* otto-know-i-forgot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
-		8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* ContentView.swift */; };
+		8DC97D632AE670FF002CEA1E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* HomeView.swift */; };
 		8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D642AE67101002CEA1E /* Assets.xcassets */; };
 		8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */; };
 		8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */; };
@@ -429,7 +429,7 @@
 		8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "otto-know-i-forgot.m4a"; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
-		8DC97D622AE670FF002CEA1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8DC97D622AE670FF002CEA1E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8DC97D642AE67101002CEA1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8DC97D6D2AE67101002CEA1E /* JokingPandaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokingPandaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -768,7 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				8D2DFF5D2AFC4C4F003E77B8 /* Styles */,
-				8DC97D622AE670FF002CEA1E /* ContentView.swift */,
+				8DC97D622AE670FF002CEA1E /* HomeView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
 				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
 				8DE4C1DB2AFC393700B36205 /* BotInterfaceView.swift */,
@@ -1109,7 +1109,7 @@
 			files = (
 				8DE4C1D82AFC312C00B36205 /* ConversationView.swift in Sources */,
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
-				8DC97D632AE670FF002CEA1E /* ContentView.swift in Sources */,
+				8DC97D632AE670FF002CEA1E /* HomeView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,

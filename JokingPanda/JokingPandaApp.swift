@@ -13,7 +13,7 @@ struct JokingPandaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().statusBar(hidden: true)
+            HomeView().statusBar(hidden: true)
         }
     }
 }
