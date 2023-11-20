@@ -18,7 +18,8 @@ class ConversationManager: NSObject, ObservableObject {
         return conversations[conversationIndex].phrases[phraseIndex]
     }
     
-    private var audioPlayer: AVAudioPlayer? = nil
+    private let audioManager = AudioManager()
+    
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
     
@@ -30,12 +31,10 @@ class ConversationManager: NSObject, ObservableObject {
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
+    private let synthesizer = AVSpeechSynthesizer()
     
-    private let audioEngine = AVAudioEngine()
-    private let audioSession = AVAudioSession.sharedInstance()
     private let conversations: [Conversation] = Tool.load("conversationData.json")
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
-    private let synthesizer = AVSpeechSynthesizer()
     
     override init() {
         super.init()
@@ -46,25 +45,6 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     // MARK: - Setup
-    
-    private func activateAudioSession() {
-        do {
-            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-        }
-    }
-    
-    private func deactivateAudioSession() {
-        do {
-            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-        }
-    }
     
     private func setConversationIndexOfLastConversation() {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
@@ -82,7 +62,7 @@ class ConversationManager: NSObject, ObservableObject {
                 self.messageHistory += "\n"
             }
             
-            activateAudioSession()
+            audioManager.activateAudioSession()
             status = .botSpeaking
             converse()
             
@@ -137,7 +117,7 @@ class ConversationManager: NSObject, ObservableObject {
             
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
-                deactivateAudioSession()
+                audioManager.deactivateAudioSession()
             }
             
             UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
@@ -152,20 +132,9 @@ class ConversationManager: NSObject, ObservableObject {
             .replacingOccurrences(of: " ", with: "-")
         print(audioFileName)
         if let audioURL = Bundle.main.url(forResource: "\(audioFileName)", withExtension: "m4a") {
-            do {
-                audioPlayer = nil
-                audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
-                if let player = audioPlayer {
-                    player.delegate = self
-                    player.prepareToPlay()
-                    player.play()
-                }
-                
-                phraseBotIsSaying = currentPhrase
-                updateSpeechOrPhraseToDisplay()
-            } catch {
-                // FIXME: Handle error
-            }
+            audioManager.play(url: audioURL, delegate: self)
+            phraseBotIsSaying = currentPhrase
+            updateSpeechOrPhraseToDisplay()
         }
         else {
             // Fallback on voice synthesis if audio file doesn't exist
@@ -204,7 +173,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         speechRecognized = ""
         updateSpeechOrPhraseToDisplay()
         
-        let inputNode = audioEngine.inputNode
+        let inputNode = audioManager.audioEngine.inputNode
         
         // Create and configure the speech recognition request.
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
@@ -234,7 +203,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
             if error != nil || isFinal {
                 // FIXME: Handle error
                 // Stop recognizing speech if there is a problem.
-                self.audioEngine.stop()
+                self.audioManager.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 
                 self.recognitionRequest = nil
@@ -248,8 +217,8 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
             self.recognitionRequest?.append(buffer)
         }
         
-        audioEngine.prepare()
-        try audioEngine.start()
+        audioManager.audioEngine.prepare()
+        try audioManager.audioEngine.start()
     }
     
     private func stopRecordingAndHandleRecognizedPhrase() {
@@ -274,7 +243,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
     }
     
     private func stopRecording() {
-        audioEngine.stop()
+        audioManager.audioEngine.stop()
         recognitionRequest?.endAudio()
     }
     
@@ -306,20 +275,11 @@ extension ConversationManager: AVSpeechSynthesizerDelegate {
 }
 
 extension ConversationManager: AVAudioPlayerDelegate {
-    // MARK: - Actions
-    
-    private func deactivateAudioPlayer() {
-        if let player = audioPlayer {
-            player.delegate = nil
-        }
-        audioPlayer = nil
-    }
-    
     // MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
-        deactivateAudioPlayer()
+        audioManager.deactivateAudioPlayer()
         updateMessageHistoryForPanda()
         incrementPhraseIndex()
         converse()
