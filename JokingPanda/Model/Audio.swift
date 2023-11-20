@@ -1,5 +1,5 @@
 //
-//  AudioManager.swift
+//  Audio.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 11/20/23.
@@ -8,9 +8,8 @@
 import Foundation
 import Speech
 
-class AudioManager {
+class Audio {
     internal let audioEngine = AVAudioEngine()
-    
     private var audioPlayer: AVAudioPlayer? = nil
     private let audioSession = AVAudioSession.sharedInstance()
     

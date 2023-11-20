@@ -18,7 +18,7 @@ class ConversationManager: NSObject, ObservableObject {
         return conversations[conversationIndex].phrases[phraseIndex]
     }
     
-    private let audioManager = AudioManager()
+    private let audio = Audio()
     private let speechRecognizer = SpeechRecognizer()
     private let synthesizer = AVSpeechSynthesizer()
     
@@ -59,7 +59,7 @@ class ConversationManager: NSObject, ObservableObject {
                 self.messageHistory += "\n"
             }
             
-            audioManager.activateAudioSession()
+            audio.activateAudioSession()
             status = .botSpeaking
             converse()
             
@@ -114,7 +114,7 @@ class ConversationManager: NSObject, ObservableObject {
             
             if conversationIndex > (conversations.count - 1) {
                 conversationIndex = 0
-                audioManager.deactivateAudioSession()
+                audio.deactivateAudioSession()
             }
             
             UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
@@ -129,7 +129,7 @@ class ConversationManager: NSObject, ObservableObject {
             .replacingOccurrences(of: " ", with: "-")
         
         if let audioURL = Bundle.main.url(forResource: "\(audioFileName)", withExtension: "m4a") {
-            audioManager.play(url: audioURL, delegate: self)
+            audio.play(url: audioURL, delegate: self)
             phraseBotIsSaying = currentPhrase
             updateSpeechOrPhraseToDisplay()
         }
@@ -158,17 +158,17 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
         speechRecognized = ""
         updateSpeechOrPhraseToDisplay()
         
-        speechRecognizer.setInputNode(inputNode: audioManager.audioEngine.inputNode)
+        speechRecognizer.setInputNode(inputNode: audio.audioEngine.inputNode)
         speechRecognizer.configure(expectedPhrase: currentPhrase) { recognizedSpeech in
             self.speechRecognized = recognizedSpeech
             self.updateSpeechOrPhraseToDisplay()
         } errorCompletion: { error in
             // Stop recognizing speech if there is a problem.
-            self.audioManager.audioEngine.stop()
+            self.audio.audioEngine.stop()
         }
         
-        audioManager.audioEngine.prepare()
-        try audioManager.audioEngine.start()
+        audio.audioEngine.prepare()
+        try audio.audioEngine.start()
     }
     
     private func stopRecordingAndHandleRecognizedPhrase() {
@@ -193,7 +193,7 @@ extension ConversationManager: SFSpeechRecognizerDelegate {
     }
     
     private func stopRecording() {
-        audioManager.stopAudioEngine()
+        audio.stopAudioEngine()
         speechRecognizer.stop()
     }
     
@@ -229,7 +229,7 @@ extension ConversationManager: AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
-        audioManager.deactivateAudioPlayer()
+        audio.deactivateAudioPlayer()
         updateMessageHistoryForPanda()
         incrementPhraseIndex()
         converse()
