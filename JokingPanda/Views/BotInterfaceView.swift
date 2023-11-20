@@ -10,7 +10,6 @@ import SwiftUI
 struct BotInterfaceView: View {
     @Environment(\.scenePhase) var scenePhase
     
-    @State var showSheet = false
     @State var displayMessages = false
     @StateObject var conversationManager = ConversationManager()
     
