@@ -9,15 +9,26 @@ import Foundation
 import Mixpanel
 
 struct Event {
-    static func startConversation() {
-#if DEBUG
-        print("\(Constant.Event.conversationStarted) Event not tracked in DEBUG")
-#else
-        // Track conversation started
-        Mixpanel.mainInstance().track(event: Constant.Event.conversationStarted,
-                                      properties: [
-                                        Constant.Event.Property.conversationId: conversations[conversationIndex].id
-                                      ])
-#endif
+    static func configureEventTracking() {
+        #if DEBUG
+            print("Event tracking not enabled in DEBUG")
+        #else
+            if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"), let keys = NSDictionary(contentsOfFile: path),
+               let mixpanelProjectToken = keys[Constant.SensitiveKey.mixpanelProjectToken] as? String {
+                let mixpanel = Mixpanel.initialize(token: mixpanelProjectToken, trackAutomaticEvents: true)
+                mixpanel.serverURL = Constant.Url.mixpanelServerUrl
+            }
+            else {
+                // FIXME: Handle mixpanel not getting configured
+            }
+        #endif
+    }
+    
+    static func track(_ event: String, properties: Properties? = nil) {
+        #if DEBUG
+            print("\(event) Event not tracked in DEBUG")
+        #else
+            Mixpanel.mainInstance().track(event: event, properties: properties)
+        #endif
     }
 }
