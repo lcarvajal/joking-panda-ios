@@ -22,6 +22,7 @@ struct JokeManager {
     }
     
     private mutating func setIndexFromLastJokeHeard() {
+        // FIXME: Property should get set correctly for jokes
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
         if let index = knockKnockJokes.firstIndex(where: { $0.id == id }) {
             self.index = index
@@ -36,7 +37,7 @@ struct JokeManager {
         if index > (knockKnockJokes.count - 1) {
             index = 0
         }
-        
+        // FIXME: Property should get set correctly for jokes
         UserDefaults.standard.set(knockKnockJokes[index].id, forKey: Constant.UserDefault.conversationId)
     }
 }

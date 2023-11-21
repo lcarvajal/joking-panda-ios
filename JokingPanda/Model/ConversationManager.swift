@@ -50,6 +50,7 @@ class ConversationManager: NSObject, ObservableObject {
             audio.activateAudioSession()
             status = .botSpeaking
             converse()
+            // FIXME: Property should get set correctly for different conversation types
             Event.track(Constant.Event.conversationStarted, properties: [
                 Constant.Event.Property.conversationId: jokeManager.currentJoke.id
               ])
