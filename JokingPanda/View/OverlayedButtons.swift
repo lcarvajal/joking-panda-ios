@@ -7,7 +7,24 @@
 
 import SwiftUI
 
-struct PulsingFingerTapView: View {
+struct ExitButton: View {
+    @Binding var conversationType: ConversationType
+    
+    var body: some View {
+        Button(action: {
+            self.conversationType = .deciding
+        }) {
+            Label("", systemImage: "x.circle")
+                .symbolRenderingMode(.palette)
+                .font(.system(size: 20))
+                .foregroundStyle(.tappableAccent)
+                .padding()
+                .padding(.top, 10)
+        }
+    }
+}
+
+struct PulsingTappingFinger: View {
     internal let size: CGFloat
     
     var body: some View {
@@ -28,7 +45,7 @@ struct PulsingFingerTapView: View {
     }
 }
 
-struct SettingsButtonView: View {
+struct SettingsButton: View {
     @Binding var showSheet: Bool
     
     var body: some View {

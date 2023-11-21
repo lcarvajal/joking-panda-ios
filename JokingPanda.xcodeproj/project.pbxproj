@@ -21,6 +21,7 @@
 		8D0DDFF92B0CAB8000A3A8F8 /* DanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */; };
 		8D0DDFFB2B0CADDF00A3A8F8 /* JokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */; };
 		8D0DDFFD2B0CB4E000A3A8F8 /* SpeakAndListen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */; };
+		8D0DE0022B0CCA6E00A3A8F8 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
 		8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB22AFD66BE003E77B8 /* anita.m4a */; };
 		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
@@ -204,7 +205,7 @@
 		8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */; };
 		8D8EAF9E2AFFF27800F01B71 /* otto-know-i-forgot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
-		8DC97D632AE670FF002CEA1E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* HomeView.swift */; };
+		8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* BaseView.swift */; };
 		8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D642AE67101002CEA1E /* Assets.xcassets */; };
 		8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */; };
 		8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */; };
@@ -217,7 +218,6 @@
 		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
 		8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* MessagesView.swift */; };
 		8DE4C1DA2AFC335500B36205 /* OverlayedButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayedButtons.swift */; };
-		8DE4C1DC2AFC393700B36205 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DB2AFC393700B36205 /* ConversationView.swift */; };
 		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
@@ -252,6 +252,7 @@
 		8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceView.swift; sourceTree = "<group>"; };
 		8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeManager.swift; sourceTree = "<group>"; };
 		8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakAndListen.swift; sourceTree = "<group>"; };
+		8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
 		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
@@ -437,7 +438,7 @@
 		8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "otto-know-i-forgot.m4a"; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
-		8DC97D622AE670FF002CEA1E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8DC97D622AE670FF002CEA1E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		8DC97D642AE67101002CEA1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8DC97D672AE67101002CEA1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8DC97D6D2AE67101002CEA1E /* JokingPandaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JokingPandaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,7 +454,6 @@
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8DE4C1D72AFC312C00B36205 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		8DE4C1D92AFC335500B36205 /* OverlayedButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayedButtons.swift; sourceTree = "<group>"; };
-		8DE4C1DB2AFC393700B36205 /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -689,6 +689,16 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		8D0DDFFE2B0CC68B00A3A8F8 /* AudioAndSpeech */ = {
+			isa = PBXGroup;
+			children = (
+				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
+				8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */,
+				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
+			);
+			path = AudioAndSpeech;
+			sourceTree = "<group>";
+		};
 		8D2DFF5D2AFC4C4F003E77B8 /* Style */ = {
 			isa = PBXGroup;
 			children = (
@@ -762,14 +772,12 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8D0DDFFE2B0CC68B00A3A8F8 /* AudioAndSpeech */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
-				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
 				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
 				8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
-				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
-				8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -778,12 +786,12 @@
 			isa = PBXGroup;
 			children = (
 				8D2DFF5D2AFC4C4F003E77B8 /* Style */,
-				8DC97D622AE670FF002CEA1E /* HomeView.swift */,
-				8D0DDFF62B0C0B0100A3A8F8 /* MenuView.swift */,
-				8DE4C1D92AFC335500B36205 /* OverlayedButtons.swift */,
+				8DC97D622AE670FF002CEA1E /* BaseView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
 				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
-				8DE4C1DB2AFC393700B36205 /* ConversationView.swift */,
+				8D0DDFF62B0C0B0100A3A8F8 /* MenuView.swift */,
+				8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */,
+				8DE4C1D92AFC335500B36205 /* OverlayedButtons.swift */,
 				8DE4C1D72AFC312C00B36205 /* MessagesView.swift */,
 				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
 				8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */,
@@ -1121,12 +1129,11 @@
 			files = (
 				8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */,
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
-				8DC97D632AE670FF002CEA1E /* HomeView.swift in Sources */,
+				8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8D0DDFF92B0CAB8000A3A8F8 /* DanceView.swift in Sources */,
-				8DE4C1DC2AFC393700B36205 /* ConversationView.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* MenuView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
@@ -1140,6 +1147,7 @@
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,
 				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
+				8D0DE0022B0CCA6E00A3A8F8 /* MenuButtons.swift in Sources */,
 				8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognizer.swift in Sources */,
 				8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */,
 				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,

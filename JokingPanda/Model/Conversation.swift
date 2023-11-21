@@ -18,3 +18,10 @@ enum ConversationStatus {
     case noOneSpeaking
     case stopped
 }
+
+enum ConversationType {
+    case deciding
+    case dancing
+    case joking
+    case journaling
+}
