@@ -16,6 +16,7 @@ struct DanceView: View {
                 }
             }
         }
+        .background(Color.background)
     }
 }
 
