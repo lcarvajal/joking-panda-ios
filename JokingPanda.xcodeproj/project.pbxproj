@@ -19,6 +19,7 @@
 		8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */; };
 		8D0DDFF72B0C0B0100A3A8F8 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF62B0C0B0100A3A8F8 /* MenuView.swift */; };
 		8D0DDFF92B0CAB8000A3A8F8 /* DanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */; };
+		8D0DDFFB2B0CADDF00A3A8F8 /* JokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
 		8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB22AFD66BE003E77B8 /* anita.m4a */; };
 		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
@@ -211,7 +212,7 @@
 		8DC97D942AE80486002CEA1E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D932AE80486002CEA1E /* Person.swift */; };
 		8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Conversation.swift */; };
 		8DC97D982AE93285002CEA1E /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D972AE93284002CEA1E /* ConversationManager.swift */; };
-		8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D9A2AE98896002CEA1E /* conversationData.json */; };
+		8DC97D9B2AE98896002CEA1E /* knockKnockJokeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */; };
 		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
 		8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* MessagesView.swift */; };
 		8DE4C1DA2AFC335500B36205 /* OverlayedButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayedButtons.swift */; };
@@ -248,6 +249,7 @@
 		8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8D0DDFF62B0C0B0100A3A8F8 /* MenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceView.swift; sourceTree = "<group>"; };
+		8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeManager.swift; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
 		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
@@ -445,7 +447,7 @@
 		8DC97D932AE80486002CEA1E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8DC97D952AE92CB0002CEA1E /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		8DC97D972AE93284002CEA1E /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
-		8DC97D9A2AE98896002CEA1E /* conversationData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = conversationData.json; sourceTree = "<group>"; };
+		8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = knockKnockJokeData.json; sourceTree = "<group>"; };
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8DE4C1D72AFC312C00B36205 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		8DE4C1D92AFC335500B36205 /* OverlayedButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayedButtons.swift; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
 				8DC97D972AE93284002CEA1E /* ConversationManager.swift */,
+				8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
 			);
@@ -788,7 +791,7 @@
 		8DC97D992AE98856002CEA1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8DC97D9A2AE98896002CEA1E /* conversationData.json */,
+				8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */,
 				8D0A79182AFB8C4000317DAF /* Audio */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
@@ -986,7 +989,7 @@
 				8D8EAF712AFFF27800F01B71 /* ivor.m4a in Resources */,
 				8D2DFFF62AFD6780003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a in Resources */,
 				8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */,
-				8DC97D9B2AE98896002CEA1E /* conversationData.json in Resources */,
+				8DC97D9B2AE98896002CEA1E /* knockKnockJokeData.json in Resources */,
 				8D8EAF7E2AFFF27800F01B71 /* canoe-help-me-get-inside.m4a in Resources */,
 				8D8EAF972AFFF27800F01B71 /* alfie.m4a in Resources */,
 				8D2D00272AFD6780003E77B8 /* police.m4a in Resources */,
@@ -1125,6 +1128,7 @@
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
+				8D0DDFFB2B0CADDF00A3A8F8 /* JokeManager.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D0DDFEB2B0BE2B700A3A8F8 /* Audio.swift in Sources */,
 				8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */,
