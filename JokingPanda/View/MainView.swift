@@ -1,5 +1,5 @@
 //
-//  AuthorizationView.swift
+//  MainView.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 10/27/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MenuView: View {
+struct MainView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var conversationType: ConversationType
@@ -84,5 +84,5 @@ struct MenuView: View {
 }
 
 #Preview {
-    MenuView(conversationType: .deciding)
+    MainView(conversationType: .deciding)
 }
