@@ -6,6 +6,7 @@
 //
 // Manages Audio, Speech Synthesis, and Speech Recognition
 // Updates published properties so that they can be displayed in a UI
+// Override currentPhrase, converse(), and startNextPhraseInConversation() in subclasses
 
 import Foundation
 import Speech
@@ -16,16 +17,16 @@ class SpeakAndListen: NSObject, ObservableObject {
     @Published var speechOrPhraseToDisplay = " "
     
     internal var currentPhrase: String {
-        // FIXME: Require property to be overriden
+        // Override to display what's being said by either person and write to message history
         return ""
     }
+    
+    private var speechRecognized: String = ""
+    private var phraseBotIsSaying: String = ""
     
     private let audio = Audio()
     private let speechRecognizer = SpeechRecognizer()
     private let synthesizer = AVSpeechSynthesizer()
-    
-    private var speechRecognized: String = ""
-    private var phraseBotIsSaying: String = ""
     
     override init() {
         super.init()
@@ -54,16 +55,8 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     internal func converse() {
-        // FIXME: Require function to be overriden
-        // A recursive function called after the bot finishes speaking
-        // and after the recording stops for a user
+        fatalError("Subclasses of SpeakAndListen must implement converse()")
     }
-    
-    internal func startNextPhraseInConversation() {
-        // FIXME: Require function to be overriden
-        converse()
-    }
-    
     
     private func updateSpeechOrPhraseToDisplay() {
         switch status {
@@ -74,6 +67,13 @@ class SpeakAndListen: NSObject, ObservableObject {
         default:
             speechOrPhraseToDisplay = " "
         }
+    }
+    
+    // MARK: - Events
+    
+    internal func speechOrAudioDidFinish() {
+        // Creates a recursive function for conversation
+        converse()
     }
 }
 
@@ -115,7 +115,7 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
             
             self.stopRecording()
             self.updateSpeechOrPhraseToDisplay()
-            self.startNextPhraseInConversation()
+            self.speechOrAudioDidFinish()
         }
     }
     
@@ -155,7 +155,7 @@ extension SpeakAndListen: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
         updateconversationHistoryForBot()
-        startNextPhraseInConversation()
+        speechOrAudioDidFinish()
     }
 }
 
@@ -186,8 +186,6 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
         // FIXME: Handle successful and unsuccessful cases
         audio.deactivateAudioPlayer()
         updateconversationHistoryForBot()
-        startNextPhraseInConversation()
+        speechOrAudioDidFinish()
     }
 }
-
-
