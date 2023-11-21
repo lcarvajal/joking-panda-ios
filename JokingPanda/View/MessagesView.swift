@@ -56,10 +56,5 @@ struct MessagesView: View {
             }
         }
         .frame(maxHeight: displayMessages ? .infinity : 100)
-        .padding()
     }
 }
-
-//#Preview {
-//    MessageComposerView("Sample text")
-//}

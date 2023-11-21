@@ -8,62 +8,81 @@
 import SwiftUI
 
 struct MenuView: View {
+    @Environment(\.scenePhase) var scenePhase
+    
+    @State var conversationType: ConversationType
     @State var showSheet = false
+    @State var displayMessages = false
+    
+    @StateObject var conversationManager = ConversationManager()
     
     var body: some View {
-        NavigationView {
-            VStack {
-                GeometryReader { geometry in
-                    ZStack {
-                        AnimationView(geometry: .constant(geometry), status: Binding.constant(ConversationStatus.noOneSpeaking))
-                        VStack {
+        VStack(spacing: 0) {
+            GeometryReader { geometry in
+                ZStack {
+                    AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
+                    .background(getBackgroundColor())
+                    .onTapGesture {
+                        handleTapOnBot()
+                    }
+                    
+                    VStack {
+                        if conversationType == .deciding {
                             HStack {
                                 Spacer()
-                                SettingsButtonView(showSheet: $showSheet)
+                                SettingsButton(showSheet: $showSheet)
+                            }
+                            Spacer()
+                        }
+                        else {
+                            HStack {
+                                ExitButton(conversationType: $conversationType)
+                                Spacer()
                             }
                             Spacer()
                             HStack {
                                 Spacer()
-                                NavigationLink(destination: ConversationView()) {
-                                    Image(systemName: "book.closed.fill") // System icon
-                                                                .font(.system(size: 36))
-                                                                .foregroundColor(.tappableAccent)
-                                                                .symbolRenderingMode(.palette)
-                                }
-//                                Spacer()
-//                                NavigationLink(destination: ConversationView()) {
-//                                    Image(systemName: "music.quarternote.3") // System icon
-//                                                                .font(.system(size: 36))
-//                                                                .foregroundColor(.tappableAccent)
-//                                                                .symbolRenderingMode(.palette)
-//                                }
-                                Spacer()
-                                NavigationLink(destination: DanceView()) {
-                                    Image(systemName: "figure.socialdance") // System icon
-                                                                .font(.system(size: 36))
-                                                                .foregroundColor(.tappableAccent)
-                                                                .symbolRenderingMode(.palette)
-                                }
-                                Spacer()
-                                NavigationLink(destination: ConversationView()) {
-                                    Image(systemName: "face.smiling.fill") // System icon
-                                                                .font(.system(size: 36))
-                                                                .foregroundColor(.tappableAccent)
-                                                                .symbolRenderingMode(.palette)
-                                }
-                                Spacer()
+                                PulsingTappingFinger(size: 50)
                             }
-                            .padding()
-                            .padding(.bottom, 10)
+                            .padding(10)
                         }
                     }
                 }
             }
-            .background(Color.background)
+            
+            switch conversationType {
+            case .joking, .journaling:
+                MessagesView(displayMessages: $displayMessages, conversationManager: conversationManager)
+                    .background(Color.background)
+                    .padding()
+            default:
+                MenuButtons(conversationType: $conversationType)
+                    .frame(height: 100)
+                    .padding()
+            }
+        }
+        .background(Color.background)
+    }
+    
+    private func getBackgroundColor() -> Color {
+        switch conversationType {
+        case .deciding:
+            return Color.background
+        default:
+            return Color.tappableArea
+        }
+    }
+    
+    private func handleTapOnBot() {
+        switch conversationType {
+        case .joking:
+            conversationManager.startConversation()
+        default:
+            return
         }
     }
 }
 
 #Preview {
-    MenuView()
+    MenuView(conversationType: .deciding)
 }
