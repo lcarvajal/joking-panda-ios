@@ -14,40 +14,29 @@ class ConversationManager: NSObject, ObservableObject {
     @Published var speechOrPhraseToDisplay = " "
     
     internal var currentPhrase: String {
-        return conversations[conversationIndex].phrases[phraseIndex]
+        return jokeManager.currentJoke.phrases[phraseIndex]
     }
     
     private let audio = Audio()
+    private var jokeManager = JokeManager()
     private let speechRecognizer = SpeechRecognizer()
     private let synthesizer = AVSpeechSynthesizer()
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
     
-    private var conversationIndex = 0
     private var phraseIndex = 0
     private var personToStartTalking: Person {
         return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
     }
     
-    private let conversations: [Conversation] = Tool.load("conversationData.json")
-    
     override init() {
         super.init()
         synthesizer.delegate = self
         speechRecognizer.setDelegate(delegate: self)
-        
-        setConversationIndexOfLastConversation()
     }
     
     // MARK: - Setup
-    
-    private func setConversationIndexOfLastConversation() {
-        let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
-        if let index = conversations.firstIndex(where: { $0.id == id }) {
-            conversationIndex = index
-        }
-    }
     
     // MARK: - Actions
     
@@ -62,7 +51,7 @@ class ConversationManager: NSObject, ObservableObject {
             status = .botSpeaking
             converse()
             Event.track(Constant.Event.conversationStarted, properties: [
-                Constant.Event.Property.conversationId: conversations[conversationIndex].id
+                Constant.Event.Property.conversationId: jokeManager.currentJoke.id
               ])
         }
         else {
@@ -74,7 +63,7 @@ class ConversationManager: NSObject, ObservableObject {
         // converse() is a recursive function that gets called again after the bot finishes speaking (in SpeechSynthesizerDelegate)
         // it also gets called again after the recording stops for a user
         
-        if phraseIndex <= (conversations[conversationIndex].phrases.count - 1) && status != .stopped {
+        if phraseIndex <= (jokeManager.currentJoke.phrases.count - 1) && status != .stopped {
             if personToStartTalking == .bot {
                 speak(currentPhrase)
                 status = .botSpeaking
@@ -96,17 +85,12 @@ class ConversationManager: NSObject, ObservableObject {
         status = .noOneSpeaking
         phraseIndex += 1
         
-        if phraseIndex > (conversations[conversationIndex].phrases.count - 1) {
+        if phraseIndex > (jokeManager.currentJoke.phrases.count - 1) {
             phraseIndex = 0
-            conversationIndex += 1
             status = .stopped
             
-            if conversationIndex > (conversations.count - 1) {
-                conversationIndex = 0
-                audio.deactivateAudioSession()
-            }
-            
-            UserDefaults.standard.set(conversations[conversationIndex].id, forKey: Constant.UserDefault.conversationId)
+            jokeManager.currentJokeWasHeard()
+            //audio.deactivateAudioSession()
         }
     }
     
