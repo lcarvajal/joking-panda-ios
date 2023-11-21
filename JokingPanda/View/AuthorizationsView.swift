@@ -1,5 +1,5 @@
 //
-//  AuthorizationView.swift
+//  AuthorizationsView.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 10/27/23.
