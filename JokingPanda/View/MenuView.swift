@@ -38,7 +38,7 @@ struct MenuView: View {
 //                                                                .symbolRenderingMode(.palette)
 //                                }
                                 Spacer()
-                                NavigationLink(destination: ConversationView()) {
+                                NavigationLink(destination: DanceView()) {
                                     Image(systemName: "figure.socialdance") // System icon
                                                                 .font(.system(size: 36))
                                                                 .foregroundColor(.tappableAccent)
