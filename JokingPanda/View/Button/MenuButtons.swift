@@ -18,7 +18,7 @@ struct MenuButtons: View {
             }) {
                 Label("", systemImage: "book.closed.fill")
                     .symbolRenderingMode(.palette)
-                    .font(.system(size: 36))
+                    .font(.system(size: Constant.Size.button))
                     .foregroundStyle(.tappableAccent)
             }
             Spacer()
@@ -27,7 +27,7 @@ struct MenuButtons: View {
             }) {
                 Label("", systemImage: "figure.socialdance")
                     .symbolRenderingMode(.palette)
-                    .font(.system(size: 36))
+                    .font(.system(size: Constant.Size.button))
                     .foregroundStyle(.tappableAccent)
             }
             Spacer()
@@ -36,13 +36,11 @@ struct MenuButtons: View {
             }) {
                 Label("", systemImage: "face.smiling.fill")
                     .symbolRenderingMode(.palette)
-                    .font(.system(size: 36))
+                    .font(.system(size: Constant.Size.button))
                     .foregroundStyle(.tappableAccent)
             }
             Spacer()
         }
-        .padding()
-        .padding(.bottom, 10)
     }
 }
 
