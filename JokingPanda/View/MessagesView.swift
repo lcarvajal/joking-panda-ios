@@ -25,7 +25,7 @@ struct MessagesView: View {
             
             ScrollViewReader { proxy in
                 ScrollView {
-                    Text(conversationManager.messageHistory)
+                    Text(conversationManager.conversationHistory)
                         .id(1)            // this is where to add an id
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
@@ -34,7 +34,7 @@ struct MessagesView: View {
                                alignment: .leading)
                 }
                 .background(Color.background)
-                .onChange(of: conversationManager.messageHistory) { _ in
+                .onChange(of: conversationManager.conversationHistory) { _ in
                     proxy.scrollTo(1, anchor: .bottom)
                 }
                 .onChange(of: displayMessages) { _ in

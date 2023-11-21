@@ -14,7 +14,6 @@ class ConversationManager: SpeakAndListen {
     }
     
     private var jokeManager = JokeManager()
-    
     private var phraseIndex = 0
     private var personToStartTalking: Person {
         return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser
@@ -35,9 +34,6 @@ class ConversationManager: SpeakAndListen {
     }
     
     override func converse() {
-        // converse() is a recursive function that gets called again after the bot finishes speaking (in SpeechSynthesizerDelegate)
-        // it also gets called again after the recording stops for a user
-        
         if phraseIndex <= (jokeManager.currentJoke.phrases.count - 1) && status != .stopped {
             if personToStartTalking == .bot {
                 speak(currentPhrase)
@@ -54,9 +50,8 @@ class ConversationManager: SpeakAndListen {
         }
     }
     
-    override func incrementPhraseIndexAndConverse() {
+    override func startNextPhraseInConversation() {
         // If conversation is coming to an end, a new conversation is started by incrementing conversation index
-        
         status = .noOneSpeaking
         phraseIndex += 1
         
@@ -65,8 +60,7 @@ class ConversationManager: SpeakAndListen {
             status = .stopped
             
             jokeManager.currentJokeWasHeard()
-            //audio.deactivateAudioSession()
         }
-        converse()
+        super.startNextPhraseInConversation()
     }
 }

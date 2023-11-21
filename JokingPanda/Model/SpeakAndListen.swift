@@ -12,10 +12,11 @@ import Speech
 
 class SpeakAndListen: NSObject, ObservableObject {
     @Published var status: ConversationStatus = .stopped
-    @Published var messageHistory: String = ""
+    @Published var conversationHistory: String = ""
     @Published var speechOrPhraseToDisplay = " "
     
     internal var currentPhrase: String {
+        // FIXME: Require property to be overriden
         return ""
     }
     
@@ -25,8 +26,6 @@ class SpeakAndListen: NSObject, ObservableObject {
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
-    
-    private var personToStartTalking = Person.bot
     
     override init() {
         super.init()
@@ -41,8 +40,8 @@ class SpeakAndListen: NSObject, ObservableObject {
     internal func startConversation() {
         // Only start a new conversation if there is no ongoing conversation
         if status == .stopped {
-            if self.messageHistory != "" {
-                self.messageHistory += "\n"
+            if self.conversationHistory != "" {
+                self.conversationHistory += "\n"
             }
             
             audio.activateAudioSession()
@@ -55,12 +54,14 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     internal func converse() {
-        // converse() is a recursive function that gets called again after the bot finishes speaking (in SpeechSynthesizerDelegate)
-        // it also gets called again after the recording stops for a user
+        // FIXME: Require function to be overriden
+        // A recursive function called after the bot finishes speaking
+        // and after the recording stops for a user
     }
     
-    internal func incrementPhraseIndexAndConverse() {
-        
+    internal func startNextPhraseInConversation() {
+        // FIXME: Require function to be overriden
+        converse()
     }
     
     
@@ -108,16 +109,13 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
                 self.stopRecordingAndHandleRecognizedPhrase()
                 return
             }
-            else if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5 {
-                self.messageHistory += "\n🗣️ \(self.currentPhrase)"
-            }
             else {
-                self.messageHistory += "\n🗣️ \(self.speechRecognized)"
+                self.updateconversationHistoryForPerson()
             }
             
             self.stopRecording()
             self.updateSpeechOrPhraseToDisplay()
-            self.incrementPhraseIndexAndConverse()
+            self.startNextPhraseInConversation()
         }
     }
     
@@ -126,12 +124,21 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
         speechRecognizer.stop()
     }
     
-    private func updateMessageHistoryForPanda() {
-        if messageHistory == "" {
-            messageHistory += "🐼 \(currentPhrase)"
+    private func updateconversationHistoryForBot() {
+        if conversationHistory == "" {
+            conversationHistory += "🐼 \(currentPhrase)"
         }
         else {
-            messageHistory += "\n🐼 \(currentPhrase)"
+            conversationHistory += "\n🐼 \(currentPhrase)"
+        }
+    }
+    
+    private func updateconversationHistoryForPerson() {
+        if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5 {
+            self.conversationHistory += "\n🗣️ \(self.currentPhrase)"
+        }
+        else {
+            self.conversationHistory += "\n🗣️ \(self.speechRecognized)"
         }
     }
 }
@@ -147,8 +154,8 @@ extension SpeakAndListen: AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
-        updateMessageHistoryForPanda()
-        incrementPhraseIndexAndConverse()
+        updateconversationHistoryForBot()
+        startNextPhraseInConversation()
     }
 }
 
@@ -178,8 +185,8 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
         audio.deactivateAudioPlayer()
-        updateMessageHistoryForPanda()
-        incrementPhraseIndexAndConverse()
+        updateconversationHistoryForBot()
+        startNextPhraseInConversation()
     }
 }
 
