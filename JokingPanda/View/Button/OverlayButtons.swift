@@ -16,7 +16,7 @@ struct ExitButton: View {
         }) {
             Label("", systemImage: "x.circle")
                 .symbolRenderingMode(.palette)
-                .font(.system(size: 20))
+                .font(.system(size: Constant.Size.button))
                 .foregroundStyle(.tappableAccent)
                 .padding()
                 .padding(.top, 10)
@@ -54,7 +54,7 @@ struct SettingsButton: View {
         }) {
             Label("", systemImage: "gear")
                 .symbolRenderingMode(.palette)
-                .font(.system(size: 20))
+                .font(.system(size: Constant.Size.button))
                 .foregroundStyle(.tappableAccent)
                 .padding()
                 .padding(.top, 10)

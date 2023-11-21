@@ -34,29 +34,38 @@ struct MainView: View {
                             }
                             Spacer()
                         }
-                        else {
+                        else if conversationManager.status == .stopped {
                             HStack {
                                 ExitButton(conversationType: $conversationType)
                                 Spacer()
                             }
+                            
                             Spacer()
-                            HStack {
-                                Spacer()
-                                PulsingTappingFinger(size: 50)
+                            
+                            if conversationType == .joking {
+                                HStack {
+                                    Spacer()
+                                    PulsingTappingFinger(size: 50)
+                                }
+                                .padding(10)
                             }
-                            .padding(10)
                         }
                     }
                 }
             }
             
             switch conversationType {
-            case .joking, .journaling:
+            case .deciding:
+                MenuButtons(conversationType: $conversationType)
+                    .frame(height: 100)
+                    .padding()
+            case .joking:
                 MessagesView(displayMessages: $displayMessages, conversationManager: conversationManager)
                     .background(Color.background)
                     .padding()
             default:
-                MenuButtons(conversationType: $conversationType)
+                Rectangle()
+                    .foregroundColor(.clear)
                     .frame(height: 100)
                     .padding()
             }
@@ -66,10 +75,10 @@ struct MainView: View {
     
     private func getBackgroundColor() -> Color {
         switch conversationType {
-        case .deciding:
-            return Color.background
-        default:
+        case .joking:
             return Color.tappableArea
+        default:
+            return Color.background
         }
     }
     

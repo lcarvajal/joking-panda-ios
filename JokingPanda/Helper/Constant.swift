@@ -28,6 +28,10 @@ struct Constant {
         static let pandaDance = "panda-dance"
     }
     
+    struct Size {
+        static let button: CGFloat = 36
+    }
+    
     struct SensitiveKey {
         static let mixpanelProjectToken = "mixpanelProjectToken"
     }
