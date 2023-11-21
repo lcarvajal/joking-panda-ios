@@ -46,11 +46,14 @@ class ConversationManager: SpeakAndListen {
             }
         }
         else {
+            // When phrases for conversation are done, end recursive conversation.
             return
         }
     }
     
-    override func startNextPhraseInConversation() {
+    // MARK: - Events
+    
+    override func speechOrAudioDidFinish() {
         // If conversation is coming to an end, a new conversation is started by incrementing conversation index
         status = .noOneSpeaking
         phraseIndex += 1
@@ -61,6 +64,6 @@ class ConversationManager: SpeakAndListen {
             
             jokeManager.currentJokeWasHeard()
         }
-        super.startNextPhraseInConversation()
+        super.speechOrAudioDidFinish()
     }
 }
