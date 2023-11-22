@@ -29,8 +29,10 @@ class ConversationManager: NSObject, ObservableObject {
     
     // MARK: - Actions
     
-    internal func startConversation(type: ConversationType) {
-        selectedType = type
+    internal func startConversation(type: ConversationType? = nil) {
+        if let type = type {
+            selectedType = type
+        }
         
         if history != "" {
             history += "\n"
@@ -39,8 +41,13 @@ class ConversationManager: NSObject, ObservableObject {
         currentConversations.startConversation()
     }
     
+    internal func endConversation() {
+        currentConversations.endConversation()
+    }
+    
     internal func queueNextPhrase() {
         if currentConversations.personTalking == .currentUser,
+           selectedType == .deciding,
            let lastPhrase = phraseHistory.last,
            let trigger = getConversationShiftTrigger(phrase: lastPhrase),
            trigger != selectedType {
@@ -54,9 +61,17 @@ class ConversationManager: NSObject, ObservableObject {
     
     private func getConversationShiftTrigger(phrase: String) -> ConversationType? {
         let phraseToCheck = phrase.lowercased()
-        
-        if phrase.lowercased().contains("joke") {
+        print("Trigger check")
+        print(phraseToCheck)
+        if phraseToCheck.contains("joke") {
             return .joking
+        }
+        else if phraseToCheck.contains("journal") {
+            return .journaling
+        }
+        else if phraseToCheck.contains("danc") {
+            print("dance!")
+            return .dancing
         }
         else {
             return nil

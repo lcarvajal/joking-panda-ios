@@ -13,9 +13,7 @@ class Conversations {
     internal var currentPhrase: String { return currentConversation.phrases[phraseIndex] }
     
     internal var isStartOfConversation: Bool { return phraseIndex == 0 }
-    internal var isConversing: Bool {
-        return (phraseIndex <= (currentConversation.phrases.count - 1))
-    }
+    internal var isConversing = false
     internal var personTalking: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
     
     private let conversations: [Conversation]
@@ -27,11 +25,18 @@ class Conversations {
         
         switch type {
         case .deciding:
-            conversations = [Conversation(id: 1, phrases: ["What would you like to do? We can journal, dance, or I can tell you some jokes.", "Journal, Dance, Jokes"])]
+            conversations = [Conversation(id: 1, phrases: ["What would you like to do?", "", "We can journal, dance, or listen to some jokes.", ""])]
         case .joking:
             conversations = Tool.load("knockKnockJokeData.json")
-        default:
-            conversations = Tool.load("knockKnockJokeData.json")
+        case .dancing:
+            conversations = [
+                Conversation(id: 1, phrases: ["over the edge song"]),
+                Conversation(id: 2, phrases: ["run home vox song"]),
+                Conversation(id: 3, phrases: ["sublime song"]),
+                Conversation(id: 4, phrases: ["ya mama song"])
+            ]
+        case .journaling:
+            conversations = [Conversation(id: 1, phrases: ["While we're journaling, I'll write down what we're talking about so that you can take a look at our talk another day. How do you feel today?", "", "What have you been up to today?", "", "Anything else you want to add to your journal?", ""])]
         }
         
         pickUpLastConversation()
@@ -53,10 +58,16 @@ class Conversations {
     // MARK: - Actions
     
     internal func startConversation() {
+        isConversing = true
+        
         // FIXME: Property should get set correctly for different conversation types
         Event.track(Constant.Event.conversationStarted, properties: [
             Constant.Event.Property.conversationId: currentConversation.id
           ])
+    }
+    
+    internal func endConversation() {
+        queueNextConversation()
     }
     
     internal func queueNextPhrase() {
@@ -64,6 +75,7 @@ class Conversations {
         
         if phraseIndex > (currentConversation.phrases.count - 1) {
             phraseIndex = 0
+            isConversing = false
             queueNextConversation()
         }
     }
@@ -74,7 +86,13 @@ class Conversations {
         if index > (conversations.count - 1) {
             index = 0
         }
-        // FIXME: Property should get set correctly for conversation types
-        UserDefaults.standard.set(conversations[index].id, forKey: Constant.UserDefault.conversationId)
+        
+        switch type {
+        case .joking:
+            // FIXME: Property should get set correctly for conversation types
+            UserDefaults.standard.set(conversations[index].id, forKey: Constant.UserDefault.conversationId)
+        default:
+            return
+        }
     }
 }
