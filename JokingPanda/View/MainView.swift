@@ -14,13 +14,13 @@ struct MainView: View {
     @State var showSheet = false
     @State var displayMessages = false
     
-    @StateObject var conversationManager = SpeakAndListen()
+    @StateObject var speakAndListen = SpeakAndListen()
     
     var body: some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    AnimationView(geometry: .constant(geometry), status: $conversationManager.status)
+                    AnimationView(geometry: .constant(geometry), status: $speakAndListen.animationStatus)
                     .background(getBackgroundColor())
                     .onTapGesture {
                         handleTapOnBot()
@@ -34,7 +34,7 @@ struct MainView: View {
                             }
                             Spacer()
                         }
-                        else if conversationManager.status == .stopped {
+                        else if !speakAndListen.conversationManager.isConversing {
                             HStack {
                                 ExitButton(conversationType: $conversationType)
                                 Spacer()
@@ -60,7 +60,7 @@ struct MainView: View {
                     .frame(height: 100)
                     .padding()
             case .joking:
-                MessagesView(displayMessages: $displayMessages, conversationManager: conversationManager)
+                MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
                     .background(Color.background)
                     .padding()
             default:
@@ -85,7 +85,7 @@ struct MainView: View {
     private func handleTapOnBot() {
         switch conversationType {
         case .joking:
-            conversationManager.startConversation()
+            speakAndListen.startConversation()
         default:
             return
         }

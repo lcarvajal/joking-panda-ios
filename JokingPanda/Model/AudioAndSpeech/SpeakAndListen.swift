@@ -11,13 +11,11 @@ import Foundation
 import Speech
 
 class SpeakAndListen: NSObject, ObservableObject {
-    @Published var status: ConversationStatus = .stopped
-    @Published var conversationHistory: String = ""
+    @Published var animationStatus: ConversationStatus = .stopped
     @Published var speechOrPhraseToDisplay = " "
+    @Published var conversationManager = ConversationManager()
     
-    private var conversationManager = ConversationManager()
-    
-    private var speechRecognized: String = ""
+    private var recognizedSpeech: String = ""
     private var phraseBotIsSaying: String = ""
     
     private let audio = Audio()
@@ -36,10 +34,10 @@ class SpeakAndListen: NSObject, ObservableObject {
     
     internal func startConversation() {
         // Only start a new conversation if there is no ongoing conversation
-        if status == .stopped {
+        if !conversationManager.isConversing {
             conversationManager.startConversation()
             audio.activateAudioSession()
-            status = .botSpeaking
+            animationStatus = .botSpeaking
             converse()
         }
         else {
@@ -48,13 +46,13 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     internal func converse() {
-        if conversationManager.isConversing && status != .stopped {
+        if conversationManager.isConversing {
             if conversationManager.personTalking == .bot {
                 speak(conversationManager.currentPhrase)
-                status = .botSpeaking
+                animationStatus = .botSpeaking
             }
             else {
-                status = .currentUserSpeaking
+                animationStatus = .currentUserSpeaking
                 startRecording()
                 stopRecordingAndHandleRecognizedPhrase()
             }
@@ -66,28 +64,21 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     private func updateSpeechOrPhraseToDisplay() {
-        switch status {
-        case .botSpeaking:
+        if conversationManager.personTalking == .bot {
             speechOrPhraseToDisplay = "🐼 \(phraseBotIsSaying)"
-        case .currentUserSpeaking:
-            speechOrPhraseToDisplay = "🎙️ \(speechRecognized)"
-        default:
-            speechOrPhraseToDisplay = " "
         }
-    }
-    
-    private func updateConversationHistory(_ recognizedSpeech: String? = nil) {
-        conversationManager.updateConversationHistory(recognizedSpeech)
-        conversationHistory = conversationManager.conversationHistory
+        else {
+            speechOrPhraseToDisplay = "🎙️ \(recognizedSpeech)"
+        }
     }
     
     // MARK: - Events
     
     internal func speechOrAudioDidFinish() {
-        status = .noOneSpeaking
+        animationStatus = .noOneSpeaking
         conversationManager.queueNextPhrase()
         if conversationManager.isStartOfConversation {
-            status = .stopped
+            animationStatus = .stopped
         }
         
         // Creates a recursive function for conversation
@@ -100,12 +91,12 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
     
     internal func startRecording() {
         do {
-            speechRecognized = ""
+            recognizedSpeech = ""
             updateSpeechOrPhraseToDisplay()
             
             speechRecognizer.setInputNode(inputNode: audio.audioEngine.inputNode)
             speechRecognizer.configure(expectedPhrase: conversationManager.currentPhrase) { recognizedSpeech in
-                self.speechRecognized = recognizedSpeech
+                self.recognizedSpeech = recognizedSpeech
                 self.updateSpeechOrPhraseToDisplay()
             } errorCompletion: { error in
                 // Stop recognizing speech if there is a problem.
@@ -122,13 +113,13 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
     
     internal func stopRecordingAndHandleRecognizedPhrase() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            if self.speechRecognized.count < 1 {
+            if self.recognizedSpeech.count < 1 {
                 // If user hasn't said anything, wait on user input
                 self.stopRecordingAndHandleRecognizedPhrase()
                 return
             }
             else {
-                self.updateConversationHistory(self.speechRecognized)
+                self.conversationManager.updateConversationHistory(self.recognizedSpeech)
             }
             
             self.stopRecording()
@@ -154,7 +145,7 @@ extension SpeakAndListen: AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
-        updateConversationHistory()
+        conversationManager.updateConversationHistory()
         speechOrAudioDidFinish()
     }
 }
@@ -163,7 +154,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     // MARK: - Actions
     
     internal func speak(_ text: String) {
-        status = .botSpeaking
+        animationStatus = .botSpeaking
         
         let audioFileName = Tool.removePunctuation(from: text)
             .lowercased()
@@ -185,7 +176,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
         audio.deactivateAudioPlayer()
-        updateConversationHistory()
+        conversationManager.updateConversationHistory()
         speechOrAudioDidFinish()
     }
 }
