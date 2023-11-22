@@ -21,11 +21,11 @@ struct ConversationManager {
     // MARK: - Setup
     
     init() {
-        setIndexFromLastJokeHeard()
+        setIndexFromLastConversation()
     }
     
-    private mutating func setIndexFromLastJokeHeard() {
-        // FIXME: Property should get set correctly for jokes
+    private mutating func setIndexFromLastConversation() {
+        // FIXME: Property should get set correctly for conversation type
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
         if let index = knockKnockJokes.firstIndex(where: { $0.id == id }) {
             self.index = index
