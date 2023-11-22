@@ -15,7 +15,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     @Published var conversationHistory: String = ""
     @Published var speechOrPhraseToDisplay = " "
     
-    internal var jokeManager = ConversationManager()
+    private var conversationManager = ConversationManager()
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
@@ -37,15 +37,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     internal func startConversation() {
         // Only start a new conversation if there is no ongoing conversation
         if status == .stopped {
-            if self.conversationHistory != "" {
-                self.conversationHistory += "\n"
-            }
-            
-            // FIXME: Property should get set correctly for different conversation types
-//            Event.track(Constant.Event.conversationStarted, properties: [
-//                Constant.Event.Property.conversationId: jokeManager.currentJoke.id
-//              ])
-            
+            conversationManager.startConversation()
             audio.activateAudioSession()
             status = .botSpeaking
             converse()
@@ -56,9 +48,9 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     internal func converse() {
-        if jokeManager.isConversing && status != .stopped {
-            if jokeManager.personToStartTalking == .bot {
-                speak(jokeManager.currentPhrase)
+        if conversationManager.isConversing && status != .stopped {
+            if conversationManager.personTalking == .bot {
+                speak(conversationManager.currentPhrase)
                 status = .botSpeaking
             }
             else {
@@ -84,12 +76,17 @@ class SpeakAndListen: NSObject, ObservableObject {
         }
     }
     
+    private func updateConversationHistory(_ recognizedSpeech: String? = nil) {
+        conversationManager.updateConversationHistory(recognizedSpeech)
+        conversationHistory = conversationManager.conversationHistory
+    }
+    
     // MARK: - Events
     
     internal func speechOrAudioDidFinish() {
         status = .noOneSpeaking
-        jokeManager.queueNextPhrase()
-        if jokeManager.isStartOfConversation {
+        conversationManager.queueNextPhrase()
+        if conversationManager.isStartOfConversation {
             status = .stopped
         }
         
@@ -107,7 +104,7 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
             updateSpeechOrPhraseToDisplay()
             
             speechRecognizer.setInputNode(inputNode: audio.audioEngine.inputNode)
-            speechRecognizer.configure(expectedPhrase: jokeManager.currentPhrase) { recognizedSpeech in
+            speechRecognizer.configure(expectedPhrase: conversationManager.currentPhrase) { recognizedSpeech in
                 self.speechRecognized = recognizedSpeech
                 self.updateSpeechOrPhraseToDisplay()
             } errorCompletion: { error in
@@ -131,7 +128,7 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
                 return
             }
             else {
-                self.updateconversationHistoryForPerson()
+                self.updateConversationHistory(self.speechRecognized)
             }
             
             self.stopRecording()
@@ -143,24 +140,6 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
     private func stopRecording() {
         audio.stopAudioEngine()
         speechRecognizer.stop()
-    }
-    
-    private func updateconversationHistoryForBot() {
-        if conversationHistory == "" {
-            conversationHistory += "🐼 \(jokeManager.currentPhrase)"
-        }
-        else {
-            conversationHistory += "\n🐼 \(jokeManager.currentPhrase)"
-        }
-    }
-    
-    private func updateconversationHistoryForPerson() {
-        if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.jokeManager.currentPhrase) < 5 {
-            self.conversationHistory += "\n🗣️ \(self.jokeManager.currentPhrase)"
-        }
-        else {
-            self.conversationHistory += "\n🗣️ \(self.speechRecognized)"
-        }
     }
 }
 
@@ -175,7 +154,7 @@ extension SpeakAndListen: AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
-        updateconversationHistoryForBot()
+        updateConversationHistory()
         speechOrAudioDidFinish()
     }
 }
@@ -192,7 +171,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
         
         if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
             audio.play(url: audioURL, delegate: self)
-            phraseBotIsSaying = jokeManager.currentPhrase
+            phraseBotIsSaying = conversationManager.currentPhrase
             updateSpeechOrPhraseToDisplay()
         }
         else {
@@ -206,7 +185,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
         audio.deactivateAudioPlayer()
-        updateconversationHistoryForBot()
+        updateConversationHistory()
         speechOrAudioDidFinish()
     }
 }

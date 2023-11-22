@@ -11,7 +11,8 @@ struct ConversationManager {
     internal var currentPhrase: String { return currentConversation.phrases[phraseIndex] }
     internal var isStartOfConversation: Bool { return phraseIndex == 0 }
     internal var isConversing: Bool { return phraseIndex <= (currentConversation.phrases.count - 1) }
-    internal var personToStartTalking: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
+    internal var personTalking: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
+    internal var conversationHistory = ""
     
     private var currentConversation: Conversation { return knockKnockJokes[index] }
     private var index = 0
@@ -34,6 +35,17 @@ struct ConversationManager {
     
     // MARK: - Actions
     
+    internal mutating func startConversation() {
+        if conversationHistory != "" {
+            conversationHistory += "\n"
+        }
+        
+        // FIXME: Property should get set correctly for different conversation types
+        Event.track(Constant.Event.conversationStarted, properties: [
+            Constant.Event.Property.conversationId: currentConversation.id
+          ])
+    }
+    
     internal mutating func queueNextPhrase() {
         phraseIndex += 1
         
@@ -51,5 +63,24 @@ struct ConversationManager {
         }
         // FIXME: Property should get set correctly for jokes
         UserDefaults.standard.set(knockKnockJokes[index].id, forKey: Constant.UserDefault.conversationId)
+    }
+    
+    internal mutating func updateConversationHistory(_ recognizedSpeech: String? = nil) {
+        if conversationHistory != "" {
+            conversationHistory += "\n"
+        }
+        
+        var phraseToAdd = currentPhrase
+        if let speech = recognizedSpeech {
+            // Use recognized speech if it is very different from the current expected phrase
+            phraseToAdd = Tool.levenshtein(aStr: speech, bStr: currentPhrase) < 5 ? currentPhrase : speech
+        }
+        
+        switch personTalking {
+        case .bot:
+            conversationHistory += "🐼 \(phraseToAdd)"
+        case .currentUser:
+            conversationHistory += "🗣️ \(phraseToAdd)"
+        }
     }
 }
