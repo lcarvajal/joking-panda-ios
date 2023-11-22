@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MessagesView: View {
     @Binding var displayMessages: Bool
-    @ObservedObject var conversationManager: SpeakAndListen
+    @ObservedObject var speakAndListen: SpeakAndListen
     
     var body: some View {
         VStack {
@@ -25,7 +25,7 @@ struct MessagesView: View {
             
             ScrollViewReader { proxy in
                 ScrollView {
-                    Text(conversationManager.conversationHistory)
+                    Text(speakAndListen.conversationManager.conversationHistory)
                         .id(1)            // this is where to add an id
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
@@ -34,7 +34,7 @@ struct MessagesView: View {
                                alignment: .leading)
                 }
                 .background(Color.background)
-                .onChange(of: conversationManager.conversationHistory) { _ in
+                .onChange(of: speakAndListen.conversationManager.conversationHistory) { _ in
                     proxy.scrollTo(1, anchor: .bottom)
                 }
                 .onChange(of: displayMessages) { _ in
@@ -42,9 +42,9 @@ struct MessagesView: View {
                 }
             }
             
-            if conversationManager.status != .stopped {
+            if speakAndListen.conversationManager.isConversing {
                 HStack {
-                    Text(conversationManager.speechOrPhraseToDisplay)
+                    Text(speakAndListen.speechOrPhraseToDisplay)
                         .font(.system(size: 26, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity)

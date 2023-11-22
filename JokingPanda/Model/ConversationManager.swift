@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ConversationManager {
+class ConversationManager: NSObject, ObservableObject {
+    @Published var conversationHistory = ""
     internal var currentPhrase: String { return currentConversation.phrases[phraseIndex] }
     internal var isStartOfConversation: Bool { return phraseIndex == 0 }
     internal var isConversing: Bool { return phraseIndex <= (currentConversation.phrases.count - 1) }
     internal var personTalking: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
-    internal var conversationHistory = ""
     
     private var currentConversation: Conversation { return knockKnockJokes[index] }
     private var index = 0
@@ -21,11 +21,12 @@ struct ConversationManager {
     
     // MARK: - Setup
     
-    init() {
+    override init() {
+        super.init()
         setIndexFromLastConversation()
     }
     
-    private mutating func setIndexFromLastConversation() {
+    private func setIndexFromLastConversation() {
         // FIXME: Property should get set correctly for conversation type
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
         if let index = knockKnockJokes.firstIndex(where: { $0.id == id }) {
@@ -35,7 +36,7 @@ struct ConversationManager {
     
     // MARK: - Actions
     
-    internal mutating func startConversation() {
+    internal func startConversation() {
         if conversationHistory != "" {
             conversationHistory += "\n"
         }
@@ -46,7 +47,7 @@ struct ConversationManager {
           ])
     }
     
-    internal mutating func queueNextPhrase() {
+    internal func queueNextPhrase() {
         phraseIndex += 1
         
         if phraseIndex > (currentConversation.phrases.count - 1) {
@@ -55,7 +56,7 @@ struct ConversationManager {
         }
     }
     
-    private mutating func queueNextConversation() {
+    private func queueNextConversation() {
         index += 1
         
         if index > (knockKnockJokes.count - 1) {
@@ -65,7 +66,7 @@ struct ConversationManager {
         UserDefaults.standard.set(knockKnockJokes[index].id, forKey: Constant.UserDefault.conversationId)
     }
     
-    internal mutating func updateConversationHistory(_ recognizedSpeech: String? = nil) {
+    internal func updateConversationHistory(_ recognizedSpeech: String? = nil) {
         if conversationHistory != "" {
             conversationHistory += "\n"
         }
