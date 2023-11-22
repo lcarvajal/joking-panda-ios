@@ -23,6 +23,10 @@
 		8D0DDFFD2B0CB4E000A3A8F8 /* SpeakAndListen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */; };
 		8D0DE0022B0CCA6E00A3A8F8 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */; };
 		8D0DE0052B0E4CD900A3A8F8 /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */; };
+		8D0DE00B2B0EA02500A3A8F8 /* run-home-vox-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */; };
+		8D0DE00C2B0EA02500A3A8F8 /* ya-mama-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE0082B0EA02500A3A8F8 /* ya-mama-song.mp3 */; };
+		8D0DE00D2B0EA02500A3A8F8 /* sublime-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE0092B0EA02500A3A8F8 /* sublime-song.mp3 */; };
+		8D0DE00E2B0EA02500A3A8F8 /* over-the-edge-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE00A2B0EA02500A3A8F8 /* over-the-edge-song.mp3 */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
 		8D2D00012AFD6780003E77B8 /* anita.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB22AFD66BE003E77B8 /* anita.m4a */; };
 		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
@@ -254,6 +258,10 @@
 		8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakAndListen.swift; sourceTree = "<group>"; };
 		8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
 		8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
+		8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "run-home-vox-song.mp3"; sourceTree = "<group>"; };
+		8D0DE0082B0EA02500A3A8F8 /* ya-mama-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ya-mama-song.mp3"; sourceTree = "<group>"; };
+		8D0DE0092B0EA02500A3A8F8 /* sublime-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sublime-song.mp3"; sourceTree = "<group>"; };
+		8D0DE00A2B0EA02500A3A8F8 /* over-the-edge-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "over-the-edge-song.mp3"; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
 		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
@@ -483,7 +491,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D0A79182AFB8C4000317DAF /* Audio */ = {
+		8D0A79182AFB8C4000317DAF /* Phrases */ = {
 			isa = PBXGroup;
 			children = (
 				8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */,
@@ -668,7 +676,7 @@
 				8D8EAF122AFFF27600F01B71 /* yukon-say-that-again.m4a */,
 				8D8EAF4B2AFFF27800F01B71 /* yukon.m4a */,
 			);
-			path = Audio;
+			path = Phrases;
 			sourceTree = "<group>";
 		};
 		8D0DDFF02B0BEE2800A3A8F8 /* Extension */ = {
@@ -706,6 +714,17 @@
 				8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		8D0DE0062B0E9FFD00A3A8F8 /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				8D0DE00A2B0EA02500A3A8F8 /* over-the-edge-song.mp3 */,
+				8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */,
+				8D0DE0092B0EA02500A3A8F8 /* sublime-song.mp3 */,
+				8D0DE0082B0EA02500A3A8F8 /* ya-mama-song.mp3 */,
+			);
+			path = Songs;
 			sourceTree = "<group>";
 		};
 		8D2DFF5D2AFC4C4F003E77B8 /* Style */ = {
@@ -811,7 +830,8 @@
 			isa = PBXGroup;
 			children = (
 				8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */,
-				8D0A79182AFB8C4000317DAF /* Audio */,
+				8D0A79182AFB8C4000317DAF /* Phrases */,
+				8D0DE0062B0E9FFD00A3A8F8 /* Songs */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
 			path = Resources;
@@ -1004,12 +1024,15 @@
 				8D2D00222AFD6780003E77B8 /* ice-cream-if-you-dont-give-me-some-candy.m4a in Resources */,
 				8D2D000F2AFD6780003E77B8 /* dwayne.m4a in Resources */,
 				8D8EAF782AFFF27800F01B71 /* youre-not-a-shoe.m4a in Resources */,
+				8D0DE00C2B0EA02500A3A8F8 /* ya-mama-song.mp3 in Resources */,
 				8D2D000C2AFD6780003E77B8 /* snow.m4a in Resources */,
 				8D8EAF712AFFF27800F01B71 /* ivor.m4a in Resources */,
 				8D2DFFF62AFD6780003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a in Resources */,
 				8D0A791C2AFB8F7F00317DAF /* knock-knock.m4a in Resources */,
 				8DC97D9B2AE98896002CEA1E /* knockKnockJokeData.json in Resources */,
+				8D0DE00B2B0EA02500A3A8F8 /* run-home-vox-song.mp3 in Resources */,
 				8D8EAF7E2AFFF27800F01B71 /* canoe-help-me-get-inside.m4a in Resources */,
+				8D0DE00E2B0EA02500A3A8F8 /* over-the-edge-song.mp3 in Resources */,
 				8D8EAF972AFFF27800F01B71 /* alfie.m4a in Resources */,
 				8D2D00272AFD6780003E77B8 /* police.m4a in Resources */,
 				8D2DFFD22AFD6780003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a in Resources */,
@@ -1095,6 +1118,7 @@
 				8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */,
 				8D8EAF692AFFF27800F01B71 /* scold-enough-out-here-to-go-ice-skating.m4a in Resources */,
 				8D2D002E2AFD6780003E77B8 /* alexplain-later.m4a in Resources */,
+				8D0DE00D2B0EA02500A3A8F8 /* sublime-song.mp3 in Resources */,
 				8D2DFFFF2AFD6780003E77B8 /* actually-its-to-whom.m4a in Resources */,
 				8D8EAF8E2AFFF27800F01B71 /* dwayne-the-tub-im-dwowning.m4a in Resources */,
 				8D8EAF7C2AFFF27800F01B71 /* amish.m4a in Resources */,

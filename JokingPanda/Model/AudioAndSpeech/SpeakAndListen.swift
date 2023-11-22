@@ -32,8 +32,8 @@ class SpeakAndListen: NSObject, ObservableObject {
     
     // MARK: - Actions
     
-    internal func startConversation(type: ConversationType) {
-        if conversationManager.isStartOfConversation {
+    internal func startConversation(type: ConversationType? = nil) {
+        if !conversationManager.isConversing {
             conversationManager.startConversation(type: type)
             audio.activateAudioSession()
             animationStatus = .botSpeaking
@@ -42,6 +42,12 @@ class SpeakAndListen: NSObject, ObservableObject {
         else {
             return
         }
+    }
+    
+    internal func endConversation() {
+        conversationManager.endConversation()
+        audio.deactivateAudioPlayer()
+        stopRecording()
     }
     
     internal func converse() {
@@ -76,12 +82,14 @@ class SpeakAndListen: NSObject, ObservableObject {
     internal func speechOrAudioDidFinish() {
         animationStatus = .noOneSpeaking
         conversationManager.queueNextPhrase()
+        
         if conversationManager.isStartOfConversation {
             animationStatus = .stopped
         }
-        
-        // Creates a recursive function for conversation
-        converse()
+        else {
+            // Creates a recursive function for conversation
+            converse()
+        }
     }
 }
 
@@ -159,14 +167,27 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
             .lowercased()
             .replacingOccurrences(of: " ", with: "-")
         
-        if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
-            audio.play(url: audioURL, delegate: self)
-            phraseBotIsSaying = conversationManager.currentPhrase
-            updateSpeechOrPhraseToDisplay()
+        if conversationManager.selectedType == .dancing {
+            if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "mp3") {
+                audio.play(url: audioURL, delegate: self)
+                animationStatus = .noOneSpeaking
+            }
+            else {
+                // FIXME: Handle error
+                print("Problem playing song")
+                print(audioFileName)
+            }
         }
         else {
-            // Fallback on voice synthesis if audio file doesn't exist
-            self.synthesizer.botSpeak(string: text)
+            if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
+                audio.play(url: audioURL, delegate: self)
+                phraseBotIsSaying = conversationManager.currentPhrase
+                updateSpeechOrPhraseToDisplay()
+            }
+            else {
+                // Fallback on voice synthesis if audio file doesn't exist
+                self.synthesizer.botSpeak(string: text)
+            }
         }
     }
     

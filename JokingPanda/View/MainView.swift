@@ -41,7 +41,7 @@ struct MainView: View {
                             
                             Spacer()
                             
-                            if speakAndListen.conversationManager.selectedType == .joking {
+                            if speakAndListen.conversationManager.selectedType != .deciding {
                                 HStack {
                                     Spacer()
                                     PulsingTappingFinger(size: 50)
@@ -65,7 +65,7 @@ struct MainView: View {
                         .background(Color.background)
                         .padding()
                 }
-            case .joking:
+            case .joking, .journaling:
                 MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
                     .background(Color.background)
                     .padding()
@@ -81,7 +81,7 @@ struct MainView: View {
     
     private func getBackgroundColor() -> Color {
         switch speakAndListen.conversationManager.selectedType {
-        case .deciding, .joking:
+        case .deciding, .joking, .journaling, .dancing:
             return Color.tappableArea
         default:
             return Color.background
@@ -89,13 +89,11 @@ struct MainView: View {
     }
     
     private func handleTapOnBot() {
-        switch speakAndListen.conversationManager.selectedType {
-        case .deciding:
-            speakAndListen.startConversation(type: .deciding)
-        case .joking:
-            speakAndListen.startConversation(type: .joking)
-        default:
-            return
+        if speakAndListen.conversationManager.selectedType == .dancing && speakAndListen.conversationManager.isConversing {
+            speakAndListen.endConversation()
+        }
+        else {
+            speakAndListen.startConversation()
         }
     }
 }
