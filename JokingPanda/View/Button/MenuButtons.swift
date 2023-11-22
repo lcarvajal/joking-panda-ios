@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct MenuButtons: View {
-    @Binding var conversationType: ConversationType
+    @ObservedObject var speakAndListen: SpeakAndListen
     
     var body: some View {
         HStack {
             Spacer()
             Button(action: {
-                conversationType = .journaling
+                speakAndListen.startConversation(type: .journaling)
             }) {
                 Label("", systemImage: "book.closed.fill")
                     .symbolRenderingMode(.palette)
@@ -23,7 +23,7 @@ struct MenuButtons: View {
             }
             Spacer()
             Button(action: {
-                conversationType = .dancing
+                speakAndListen.startConversation(type: .dancing)
             }) {
                 Label("", systemImage: "figure.socialdance")
                     .symbolRenderingMode(.palette)
@@ -32,7 +32,7 @@ struct MenuButtons: View {
             }
             Spacer()
             Button(action: {
-                conversationType = .joking
+                speakAndListen.startConversation(type: .joking)
             }) {
                 Label("", systemImage: "face.smiling.fill")
                     .symbolRenderingMode(.palette)
@@ -42,8 +42,4 @@ struct MenuButtons: View {
             Spacer()
         }
     }
-}
-
-#Preview {
-    MenuButtons(conversationType: Binding.constant(ConversationType.deciding))
 }
