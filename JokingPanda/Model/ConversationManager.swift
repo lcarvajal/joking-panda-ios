@@ -48,7 +48,6 @@ class ConversationManager: NSObject, ObservableObject {
     
     internal func queueNextPhrase() {
         if currentConversations.personTalking == .currentUser,
-           selectedType == .deciding,
            let lastPhrase = phraseHistory.last,
            let trigger = getConversationShiftTrigger(phrase: lastPhrase),
            trigger != selectedType {
@@ -64,16 +63,21 @@ class ConversationManager: NSObject, ObservableObject {
     private func getConversationShiftTrigger(phrase: String) -> ConversationType? {
         let phraseToCheck = phrase.lowercased()
         
-        if phraseToCheck.contains("joke") {
-            return .joking
-        }
-        else if phraseToCheck.contains("journal") {
-            return .journaling
-        }
-        else if phraseToCheck.contains("danc") {
-            return .dancing
-        }
-        else {
+        switch selectedType {
+        case .deciding:
+            if phraseToCheck.contains("joke") {
+                return .joking
+            }
+            else if phraseToCheck.contains("journal") {
+                return .journaling
+            }
+            else if phraseToCheck.contains("danc") {
+                return .dancing
+            }
+            else {
+                return nil
+            }
+        default:
             return nil
         }
     }
