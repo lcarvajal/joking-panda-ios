@@ -16,10 +16,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     @Published var conversationHistory: String = ""
     @Published var speechOrPhraseToDisplay = " "
     
-    internal var currentPhrase: String {
-        // Override to display what's being said by either person and write to message history
-        return ""
-    }
+    internal var jokeManager = JokeManager()
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
@@ -45,6 +42,11 @@ class SpeakAndListen: NSObject, ObservableObject {
                 self.conversationHistory += "\n"
             }
             
+            // FIXME: Property should get set correctly for different conversation types
+//            Event.track(Constant.Event.conversationStarted, properties: [
+//                Constant.Event.Property.conversationId: jokeManager.currentJoke.id
+//              ])
+            
             audio.activateAudioSession()
             status = .botSpeaking
             converse()
@@ -55,7 +57,21 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     internal func converse() {
-        fatalError("Subclasses of SpeakAndListen must implement converse()")
+        if jokeManager.isConversing && status != .stopped {
+            if jokeManager.personToStartTalking == .bot {
+                speak(jokeManager.currentPhrase)
+                status = .botSpeaking
+            }
+            else {
+                status = .currentUserSpeaking
+                startRecording()
+                stopRecordingAndHandleRecognizedPhrase()
+            }
+        }
+        else {
+            // When phrases for conversation are done, end recursive conversation.
+            return
+        }
     }
     
     private func updateSpeechOrPhraseToDisplay() {
@@ -72,6 +88,12 @@ class SpeakAndListen: NSObject, ObservableObject {
     // MARK: - Events
     
     internal func speechOrAudioDidFinish() {
+        status = .noOneSpeaking
+        jokeManager.queueNextPhrase()
+        if jokeManager.isStartOfConversation {
+            status = .stopped
+        }
+        
         // Creates a recursive function for conversation
         converse()
     }
@@ -86,7 +108,7 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
             updateSpeechOrPhraseToDisplay()
             
             speechRecognizer.setInputNode(inputNode: audio.audioEngine.inputNode)
-            speechRecognizer.configure(expectedPhrase: currentPhrase) { recognizedSpeech in
+            speechRecognizer.configure(expectedPhrase: jokeManager.currentPhrase) { recognizedSpeech in
                 self.speechRecognized = recognizedSpeech
                 self.updateSpeechOrPhraseToDisplay()
             } errorCompletion: { error in
@@ -126,16 +148,16 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
     
     private func updateconversationHistoryForBot() {
         if conversationHistory == "" {
-            conversationHistory += "🐼 \(currentPhrase)"
+            conversationHistory += "🐼 \(jokeManager.currentPhrase)"
         }
         else {
-            conversationHistory += "\n🐼 \(currentPhrase)"
+            conversationHistory += "\n🐼 \(jokeManager.currentPhrase)"
         }
     }
     
     private func updateconversationHistoryForPerson() {
-        if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.currentPhrase) < 5 {
-            self.conversationHistory += "\n🗣️ \(self.currentPhrase)"
+        if Tool.levenshtein(aStr: self.speechRecognized, bStr: self.jokeManager.currentPhrase) < 5 {
+            self.conversationHistory += "\n🗣️ \(self.jokeManager.currentPhrase)"
         }
         else {
             self.conversationHistory += "\n🗣️ \(self.speechRecognized)"
@@ -171,7 +193,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
         
         if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
             audio.play(url: audioURL, delegate: self)
-            phraseBotIsSaying = currentPhrase
+            phraseBotIsSaying = jokeManager.currentPhrase
             updateSpeechOrPhraseToDisplay()
         }
         else {

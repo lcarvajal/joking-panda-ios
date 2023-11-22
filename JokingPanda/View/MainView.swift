@@ -14,7 +14,7 @@ struct MainView: View {
     @State var showSheet = false
     @State var displayMessages = false
     
-    @StateObject var conversationManager = ConversationManager()
+    @StateObject var conversationManager = SpeakAndListen()
     
     var body: some View {
         VStack(spacing: 0) {
