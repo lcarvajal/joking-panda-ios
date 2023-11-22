@@ -15,7 +15,7 @@ struct ExitButton: View {
             speakAndListen.conversationManager.selectedType = .deciding
             speakAndListen.animationStatus = .stopped
         }) {
-            Label("", systemImage: "x.circle")
+            Label("", systemImage: "house.circle")
                 .symbolRenderingMode(.palette)
                 .font(.system(size: Constant.Size.button))
                 .foregroundStyle(.tappableAccent)

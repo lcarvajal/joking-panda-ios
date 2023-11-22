@@ -66,7 +66,9 @@ class Conversations {
           ])
     }
     
-    internal func endConversation() {
+    internal func stopConversation() {
+        phraseIndex = 0
+        isConversing = false
         queueNextConversation()
     }
     
@@ -74,13 +76,11 @@ class Conversations {
         phraseIndex += 1
         
         if phraseIndex > (currentConversation.phrases.count - 1) {
-            phraseIndex = 0
-            isConversing = false
-            queueNextConversation()
+            stopConversation()
         }
     }
     
-    internal func queueNextConversation() {
+    private func queueNextConversation() {
         index += 1
         
         if index > (conversations.count - 1) {

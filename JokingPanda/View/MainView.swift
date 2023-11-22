@@ -89,8 +89,8 @@ struct MainView: View {
     }
     
     private func handleTapOnBot() {
-        if speakAndListen.conversationManager.selectedType == .dancing && speakAndListen.conversationManager.isConversing {
-            speakAndListen.endConversation()
+        if speakAndListen.conversationManager.isConversing {
+            speakAndListen.stopConversation()
         }
         else {
             speakAndListen.startConversation()
