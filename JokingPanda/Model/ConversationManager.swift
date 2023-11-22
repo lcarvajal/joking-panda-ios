@@ -1,5 +1,5 @@
 //
-//  JokeManager.swift
+//  ConversationManager.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 11/21/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct JokeManager {
+struct ConversationManager {
     internal var currentPhrase: String { return currentJoke.phrases[phraseIndex] }
     internal var isStartOfConversation: Bool { return phraseIndex == 0 }
     internal var isConversing: Bool { return phraseIndex <= (currentJoke.phrases.count - 1) }

@@ -19,7 +19,7 @@
 		8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */; };
 		8D0DDFF72B0C0B0100A3A8F8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */; };
 		8D0DDFF92B0CAB8000A3A8F8 /* DanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */; };
-		8D0DDFFB2B0CADDF00A3A8F8 /* JokeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */; };
+		8D0DDFFB2B0CADDF00A3A8F8 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */; };
 		8D0DDFFD2B0CB4E000A3A8F8 /* SpeakAndListen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */; };
 		8D0DE0022B0CCA6E00A3A8F8 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
@@ -249,7 +249,7 @@
 		8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceView.swift; sourceTree = "<group>"; };
-		8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeManager.swift; sourceTree = "<group>"; };
+		8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakAndListen.swift; sourceTree = "<group>"; };
 		8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
@@ -782,7 +782,7 @@
 				8D0DDFFE2B0CC68B00A3A8F8 /* AudioAndSpeech */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
-				8D0DDFFA2B0CADDF00A3A8F8 /* JokeManager.swift */,
+				8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
 			path = Model;
@@ -1143,7 +1143,7 @@
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
-				8D0DDFFB2B0CADDF00A3A8F8 /* JokeManager.swift in Sources */,
+				8D0DDFFB2B0CADDF00A3A8F8 /* ConversationManager.swift in Sources */,
 				8D0DDFFD2B0CB4E000A3A8F8 /* SpeakAndListen.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D0DDFEB2B0BE2B700A3A8F8 /* Audio.swift in Sources */,

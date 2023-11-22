@@ -5,8 +5,7 @@
 //  Created by Lukas Carvajal on 11/21/23.
 //
 // Manages Audio, Speech Synthesis, and Speech Recognition
-// Updates published properties so that they can be displayed in a UI
-// Override currentPhrase, converse(), and startNextPhraseInConversation() in subclasses
+// Updates UI based on conversation
 
 import Foundation
 import Speech
@@ -16,7 +15,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     @Published var conversationHistory: String = ""
     @Published var speechOrPhraseToDisplay = " "
     
-    internal var jokeManager = JokeManager()
+    internal var jokeManager = ConversationManager()
     
     private var speechRecognized: String = ""
     private var phraseBotIsSaying: String = ""
