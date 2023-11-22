@@ -23,6 +23,7 @@ class ConversationManager: NSObject, ObservableObject {
         .dancing: Conversations(type: .dancing),
         .journaling: Conversations(type: .journaling)
     ]
+    private var phraseHistory: [String] = []
     
     // MARK: - Setup
     
@@ -55,9 +56,12 @@ class ConversationManager: NSObject, ObservableObject {
         
         switch personTalking {
         case .bot:
-            history += "🐼 \(phraseToAdd)"
+            phraseToAdd += "🐼 "
         case .currentUser:
-            history += "🗣️ \(phraseToAdd)"
+            phraseToAdd += "🗣️ "
         }
+        
+        history += phraseToAdd
+        phraseHistory.append(phraseToAdd)
     }
 }
