@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     @Environment(\.scenePhase) var scenePhase
     
-    @State var conversationType: ConversationType
     @State var showSheet = false
     @State var displayMessages = false
     
@@ -27,7 +26,7 @@ struct MainView: View {
                     }
                     
                     VStack {
-                        if conversationType == .deciding {
+                        if speakAndListen.conversationManager.selectedType == .deciding {
                             HStack {
                                 Spacer()
                                 SettingsButton(showSheet: $showSheet)
@@ -36,13 +35,13 @@ struct MainView: View {
                         }
                         else if !speakAndListen.conversationManager.isConversing {
                             HStack {
-                                ExitButton(conversationType: $conversationType)
+                                ExitButton(conversationType: $speakAndListen.conversationManager.selectedType)
                                 Spacer()
                             }
                             
                             Spacer()
                             
-                            if conversationType == .joking {
+                            if speakAndListen.conversationManager.selectedType == .joking {
                                 HStack {
                                     Spacer()
                                     PulsingTappingFinger(size: 50)
@@ -54,9 +53,9 @@ struct MainView: View {
                 }
             }
             
-            switch conversationType {
+            switch speakAndListen.conversationManager.selectedType {
             case .deciding:
-                MenuButtons(conversationType: $conversationType)
+                MenuButtons(speakAndListen: speakAndListen)
                     .frame(height: 100)
                     .padding()
             case .joking:
@@ -74,8 +73,8 @@ struct MainView: View {
     }
     
     private func getBackgroundColor() -> Color {
-        switch conversationType {
-        case .joking:
+        switch speakAndListen.conversationManager.selectedType {
+        case .deciding, .joking:
             return Color.tappableArea
         default:
             return Color.background
@@ -83,9 +82,11 @@ struct MainView: View {
     }
     
     private func handleTapOnBot() {
-        switch conversationType {
+        switch speakAndListen.conversationManager.selectedType {
+        case .deciding:
+            speakAndListen.startConversation(type: .deciding)
         case .joking:
-            speakAndListen.startConversation()
+            speakAndListen.startConversation(type: .joking)
         default:
             return
         }
@@ -93,5 +94,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView(conversationType: .deciding)
+    MainView()
 }
