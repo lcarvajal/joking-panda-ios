@@ -33,8 +33,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     // MARK: - Actions
     
     internal func startConversation(type: ConversationType) {
-        // Only start a new conversation if there is no ongoing conversation
-        if !conversationManager.isConversing {
+        if conversationManager.isStartOfConversation {
             conversationManager.startConversation(type: type)
             audio.activateAudioSession()
             animationStatus = .botSpeaking
@@ -159,17 +158,15 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
         let audioFileName = Tool.removePunctuation(from: text)
             .lowercased()
             .replacingOccurrences(of: " ", with: "-")
-        print("Start speaking...")
+        
         if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
             audio.play(url: audioURL, delegate: self)
             phraseBotIsSaying = conversationManager.currentPhrase
             updateSpeechOrPhraseToDisplay()
-            print("Ausio url...")
         }
         else {
             // Fallback on voice synthesis if audio file doesn't exist
             self.synthesizer.botSpeak(string: text)
-            print("Synthesizer...")
         }
     }
     
@@ -177,7 +174,6 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
-        print("Finished audio")
         audio.deactivateAudioPlayer()
         conversationManager.updateConversationHistory()
         speechOrAudioDidFinish()

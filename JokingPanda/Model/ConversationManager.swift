@@ -40,7 +40,27 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     internal func queueNextPhrase() {
-        currentConversations.queueNextPhrase()
+        if currentConversations.personTalking == .currentUser,
+           let lastPhrase = phraseHistory.last,
+           let trigger = getConversationShiftTrigger(phrase: lastPhrase),
+           trigger != selectedType {
+            currentConversations.queueNextPhrase()
+            selectedType = trigger
+        }
+        else {
+            currentConversations.queueNextPhrase()
+        }
+    }
+    
+    private func getConversationShiftTrigger(phrase: String) -> ConversationType? {
+        let phraseToCheck = phrase.lowercased()
+        
+        if phrase.lowercased().contains("joke") {
+            return .joking
+        }
+        else {
+            return nil
+        }
     }
     
     internal func updateConversationHistory(_ recognizedSpeech: String? = nil) {
@@ -57,9 +77,9 @@ class ConversationManager: NSObject, ObservableObject {
         
         switch personTalking {
         case .bot:
-            phraseToAdd += "🐼 "
+            phraseToAdd = "🐼 " + phraseToAdd
         case .currentUser:
-            phraseToAdd += "🗣️ "
+            phraseToAdd = "🗣️ " + phraseToAdd
         }
         
         history += phraseToAdd

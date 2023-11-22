@@ -14,7 +14,7 @@ class Conversations {
     
     internal var isStartOfConversation: Bool { return phraseIndex == 0 }
     internal var isConversing: Bool {
-        return phraseIndex > 0 && (phraseIndex <= (currentConversation.phrases.count - 1))
+        return (phraseIndex <= (currentConversation.phrases.count - 1))
     }
     internal var personTalking: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
     

@@ -35,7 +35,7 @@ struct MainView: View {
                         }
                         else if !speakAndListen.conversationManager.isConversing {
                             HStack {
-                                ExitButton(conversationType: $speakAndListen.conversationManager.selectedType)
+                                ExitButton(speakAndListen: speakAndListen)
                                 Spacer()
                             }
                             
@@ -55,9 +55,16 @@ struct MainView: View {
             
             switch speakAndListen.conversationManager.selectedType {
             case .deciding:
-                MenuButtons(speakAndListen: speakAndListen)
-                    .frame(height: 100)
-                    .padding()
+                if !speakAndListen.conversationManager.isConversing {
+                    MenuButtons(speakAndListen: speakAndListen)
+                        .frame(height: 100)
+                        .padding()
+                }
+                else {
+                    MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
+                        .background(Color.background)
+                        .padding()
+                }
             case .joking:
                 MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
                     .background(Color.background)
