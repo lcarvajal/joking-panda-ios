@@ -53,6 +53,7 @@ class ConversationManager: NSObject, ObservableObject {
             // Use recognized speech if it is very different from the current expected phrase
             phraseToAdd = Tool.levenshtein(aStr: speech, bStr: currentPhrase) < 5 ? currentPhrase : speech
         }
+        phraseHistory.append(phraseToAdd)
         
         switch personTalking {
         case .bot:
@@ -62,6 +63,5 @@ class ConversationManager: NSObject, ObservableObject {
         }
         
         history += phraseToAdd
-        phraseHistory.append(phraseToAdd)
     }
 }
