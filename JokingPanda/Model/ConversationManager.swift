@@ -8,7 +8,9 @@
 import Foundation
 
 class ConversationManager: NSObject, ObservableObject {
-    @Published var conversationHistory = ""
+    @Published var history = ""
+    @Published var type: ConversationType = .deciding
+    
     internal var currentPhrase: String { return currentConversation.phrases[phraseIndex] }
     internal var isStartOfConversation: Bool { return phraseIndex == 0 }
     internal var isConversing: Bool { return phraseIndex <= (currentConversation.phrases.count - 1) }
@@ -17,11 +19,13 @@ class ConversationManager: NSObject, ObservableObject {
     private var currentConversation: Conversation { return knockKnockJokes[index] }
     private var index = 0
     private var phraseIndex = 0
+    
+    private let decidingConversations: [Conversation] = [Conversation(id: 1, phrases: ["What would you like to do? We can journal, dance, or I can tell you some jokes.", "Journal, Dance, Jokes"])]
     private let knockKnockJokes: [Conversation] = Tool.load("knockKnockJokeData.json")
     
     // MARK: - Setup
     
-    override init() {
+    init(type: ConversationType) {
         super.init()
         setIndexFromLastConversation()
     }
@@ -37,8 +41,8 @@ class ConversationManager: NSObject, ObservableObject {
     // MARK: - Actions
     
     internal func startConversation() {
-        if conversationHistory != "" {
-            conversationHistory += "\n"
+        if history != "" {
+            history += "\n"
         }
         
         // FIXME: Property should get set correctly for different conversation types
@@ -67,8 +71,8 @@ class ConversationManager: NSObject, ObservableObject {
     }
     
     internal func updateConversationHistory(_ recognizedSpeech: String? = nil) {
-        if conversationHistory != "" {
-            conversationHistory += "\n"
+        if history != "" {
+            history += "\n"
         }
         
         var phraseToAdd = currentPhrase
@@ -79,9 +83,9 @@ class ConversationManager: NSObject, ObservableObject {
         
         switch personTalking {
         case .bot:
-            conversationHistory += "🐼 \(phraseToAdd)"
+            history += "🐼 \(phraseToAdd)"
         case .currentUser:
-            conversationHistory += "🗣️ \(phraseToAdd)"
+            history += "🗣️ \(phraseToAdd)"
         }
     }
 }
