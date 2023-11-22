@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MessagesView: View {
     @Binding var displayMessages: Bool
-    @ObservedObject var conversationManager: ConversationManager
+    @ObservedObject var conversationManager: SpeakAndListen
     
     var body: some View {
         VStack {
