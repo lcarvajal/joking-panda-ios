@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ExitButton: View {
-    @Binding var conversationType: ConversationType
+    @ObservedObject var speakAndListen: SpeakAndListen
     
     var body: some View {
         Button(action: {
-            self.conversationType = .deciding
+            speakAndListen.conversationManager.selectedType = .deciding
+            speakAndListen.animationStatus = .stopped
         }) {
             Label("", systemImage: "x.circle")
                 .symbolRenderingMode(.palette)
