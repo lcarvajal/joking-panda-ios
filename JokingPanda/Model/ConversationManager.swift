@@ -31,6 +31,7 @@ class ConversationManager: NSObject, ObservableObject {
     
     internal func startConversation(type: ConversationType? = nil) {
         if let type = type {
+            print("Update selected type to: \(type)")
             selectedType = type
         }
         
@@ -41,8 +42,8 @@ class ConversationManager: NSObject, ObservableObject {
         currentConversations.startConversation()
     }
     
-    internal func endConversation() {
-        currentConversations.endConversation()
+    internal func stopConversation() {
+        currentConversations.stopConversation()
     }
     
     internal func queueNextPhrase() {
@@ -52,7 +53,8 @@ class ConversationManager: NSObject, ObservableObject {
            let trigger = getConversationShiftTrigger(phrase: lastPhrase),
            trigger != selectedType {
             currentConversations.queueNextPhrase()
-            selectedType = trigger
+            currentConversations.stopConversation()
+            startConversation(type: trigger)
         }
         else {
             currentConversations.queueNextPhrase()
@@ -61,8 +63,7 @@ class ConversationManager: NSObject, ObservableObject {
     
     private func getConversationShiftTrigger(phrase: String) -> ConversationType? {
         let phraseToCheck = phrase.lowercased()
-        print("Trigger check")
-        print(phraseToCheck)
+        
         if phraseToCheck.contains("joke") {
             return .joking
         }
@@ -70,7 +71,6 @@ class ConversationManager: NSObject, ObservableObject {
             return .journaling
         }
         else if phraseToCheck.contains("danc") {
-            print("dance!")
             return .dancing
         }
         else {
@@ -85,8 +85,13 @@ class ConversationManager: NSObject, ObservableObject {
         
         var phraseToAdd = currentPhrase
         if let speech = recognizedSpeech {
-            // Use recognized speech if it is very different from the current expected phrase
-            phraseToAdd = Tool.levenshtein(aStr: speech, bStr: currentPhrase) < 5 ? currentPhrase : speech
+            if selectedType == .joking {
+                // Use recognized speech if it is very different from the current expected phrase
+                phraseToAdd = Tool.levenshtein(aStr: speech, bStr: currentPhrase) < 5 ? currentPhrase : speech
+            }
+            else {
+                phraseToAdd = speech
+            }
         }
         phraseHistory.append(phraseToAdd)
         

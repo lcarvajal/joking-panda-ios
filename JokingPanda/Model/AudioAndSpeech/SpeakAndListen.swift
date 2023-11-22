@@ -44,19 +44,24 @@ class SpeakAndListen: NSObject, ObservableObject {
         }
     }
     
-    internal func endConversation() {
-        conversationManager.endConversation()
+    internal func stopConversation() {
+        conversationManager.stopConversation()
+        synthesizer.stopSpeaking(at: .immediate)
         audio.deactivateAudioPlayer()
         stopRecording()
+        animationStatus = .stopped
     }
     
     internal func converse() {
         if conversationManager.isConversing {
+            print("Is conversing")
             if conversationManager.personTalking == .bot {
+                print("Is conversing bot")
                 speak(conversationManager.currentPhrase)
                 animationStatus = .botSpeaking
             }
             else {
+                print("Is recording")
                 animationStatus = .currentUserSpeaking
                 startRecording()
                 stopRecordingAndHandleRecognizedPhrase()
@@ -83,12 +88,12 @@ class SpeakAndListen: NSObject, ObservableObject {
         animationStatus = .noOneSpeaking
         conversationManager.queueNextPhrase()
         
-        if conversationManager.isStartOfConversation {
-            animationStatus = .stopped
-        }
-        else {
+        if conversationManager.isConversing {
             // Creates a recursive function for conversation
             converse()
+        }
+        else {
+            animationStatus = .stopped
         }
     }
 }
@@ -120,18 +125,23 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
     
     internal func stopRecordingAndHandleRecognizedPhrase() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            if self.recognizedSpeech.count < 1 {
-                // If user hasn't said anything, wait on user input
-                self.stopRecordingAndHandleRecognizedPhrase()
-                return
+            if self.conversationManager.isConversing {
+                if self.recognizedSpeech.count < 1 {
+                    // If user hasn't said anything, wait on user input
+                    self.stopRecordingAndHandleRecognizedPhrase()
+                    return
+                }
+                else {
+                    self.conversationManager.updateConversationHistory(self.recognizedSpeech)
+                }
+                
+                self.stopRecording()
+                self.updateSpeechOrPhraseToDisplay()
+                self.speechOrAudioDidFinish()
             }
             else {
-                self.conversationManager.updateConversationHistory(self.recognizedSpeech)
+                return
             }
-            
-            self.stopRecording()
-            self.updateSpeechOrPhraseToDisplay()
-            self.speechOrAudioDidFinish()
         }
     }
     
