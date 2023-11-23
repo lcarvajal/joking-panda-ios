@@ -15,10 +15,10 @@ struct Animation {
         
         switch status {
         case .speaking:
-            imageNames = AnimationImages.talkingPandaImageNames
+            imageNames = AnimationImages.speakingPandaImageNames
             duration = 0.5
         case .listening:
-            imageNames = AnimationImages.restingPandaImageNames
+            imageNames = AnimationImages.listeningPandaImageNames
             duration = 2
         case .dancing, .stopped:
             imageNames = AnimationImages.dancingPandaImageNames
@@ -63,17 +63,17 @@ enum AnimationImages {
         Constant.ImageName.pandaMicUpMouthClosed,
     ]
     
-    static let restingPandaImageNames = [
+    static let listeningPandaImageNames = [
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicRestingEyesClosed
+        Constant.ImageName.pandaMqicRestingEyesClosed
     ]
     
-    static let talkingPandaImageNames = [
+    static let speakingPandaImageNames = [
         Constant.ImageName.pandaMicUpMouthOpen,
         Constant.ImageName.pandaMicUpMouthClosed
     ]
