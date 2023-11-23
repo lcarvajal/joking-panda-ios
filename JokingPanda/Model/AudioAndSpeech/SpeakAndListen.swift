@@ -36,7 +36,7 @@ class SpeakAndListen: NSObject, ObservableObject {
         if !conversationManager.isConversing {
             conversationManager.startConversation(type: type)
             audio.activateAudioSession()
-            animationStatus = .botSpeaking
+            animationStatus = .speaking
             speak(conversationManager.currentPhrase)
         }
         else {
@@ -58,11 +58,11 @@ class SpeakAndListen: NSObject, ObservableObject {
             if conversationManager.personTalking == .bot {
                 print("Is conversing bot")
                 speak(conversationManager.currentPhrase)
-                animationStatus = .botSpeaking
+                animationStatus = .speaking
             }
             else {
                 print("Is recording")
-                animationStatus = .currentUserSpeaking
+                animationStatus = .listening
                 startRecording()
                 stopRecordingAndHandleRecognizedPhrase()
             }
@@ -85,7 +85,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     // MARK: - Events
     
     internal func speechOrAudioDidFinish() {
-        animationStatus = .noOneSpeaking
+        animationStatus = .dancing
         conversationManager.queueNextPhrase()
         
         if conversationManager.isConversing {
@@ -171,7 +171,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     // MARK: - Actions
     
     internal func speak(_ text: String) {
-        animationStatus = .botSpeaking
+        animationStatus = .speaking
         
         let audioFileName = Tool.removePunctuation(from: text)
             .lowercased()
@@ -180,7 +180,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
         if conversationManager.selectedType == .dancing {
             if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "mp3") {
                 audio.play(url: audioURL, delegate: self)
-                animationStatus = .noOneSpeaking
+                animationStatus = .dancing
             }
             else {
                 // FIXME: Handle error
