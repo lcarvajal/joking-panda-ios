@@ -9,48 +9,19 @@ import Foundation
 import UIKit
 
 struct Animation {
-    static private let talkingPandaImageNames = [
-        Constant.ImageName.pandaMicUpMouthOpen,
-        Constant.ImageName.pandaMicUpMouthClosed
-    ]
-    
-    static private let dancingPandaImageNames = [
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicRestingEyesClosed,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicDown,
-        Constant.ImageName.pandaDance,
-        Constant.ImageName.pandaMicUpMouthClosed,
-    ]
-    
-    static private let restingPandaImageNames = [
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicRestingEyesClosed
-    ]
-    
     static func animationImageFor(status: AnimationStatus) -> UIImage {
         let imageNames: [String]
         let duration: TimeInterval
         
         switch status {
         case .speaking:
-            imageNames = talkingPandaImageNames
+            imageNames = AnimationImages.talkingPandaImageNames
             duration = 0.5
         case .listening:
-            imageNames = restingPandaImageNames
+            imageNames = AnimationImages.restingPandaImageNames
             duration = 2
         case .dancing, .stopped:
-            imageNames = dancingPandaImageNames
+            imageNames = AnimationImages.dancingPandaImageNames
             duration = 2
         }
         
@@ -75,6 +46,37 @@ struct Animation {
             return UIImage()
         }
     }
+}
+
+enum AnimationImages {
+    static let dancingPandaImageNames = [
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicRestingEyesClosed,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicDown,
+        Constant.ImageName.pandaDance,
+        Constant.ImageName.pandaMicUpMouthClosed,
+    ]
+    
+    static let restingPandaImageNames = [
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicResting,
+        Constant.ImageName.pandaMicRestingEyesClosed
+    ]
+    
+    static let talkingPandaImageNames = [
+        Constant.ImageName.pandaMicUpMouthOpen,
+        Constant.ImageName.pandaMicUpMouthClosed
+    ]
 }
 
 enum AnimationStatus {
