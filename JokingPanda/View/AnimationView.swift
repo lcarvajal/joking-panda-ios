@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimationView: UIViewRepresentable {
     @Binding var geometry: GeometryProxy
-    @Binding var status: ConversationStatus
+    @Binding var status: AnimationStatus
     
     internal func makeUIView(context: Self.Context) -> UIView {
         let parentView = UIView()
@@ -20,7 +20,7 @@ struct AnimationView: UIViewRepresentable {
     internal func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AnimationView>) {
         uiView.subviews.forEach { $0.removeFromSuperview() }
         
-        let image = Animation.animationImageFor(conversationStatus: status)
+        let image = Animation.animationImageFor(status: status)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
