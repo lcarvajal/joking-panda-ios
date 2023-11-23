@@ -54,14 +54,11 @@ class SpeakAndListen: NSObject, ObservableObject {
     
     internal func converse() {
         if conversationManager.isConversing {
-            print("Is conversing")
             if conversationManager.personTalking == .bot {
-                print("Is conversing bot")
                 speak(conversationManager.currentPhrase)
                 animationStatus = .speaking
             }
             else {
-                print("Is recording")
                 animationStatus = .listening
                 startRecording()
                 stopRecordingAndHandleRecognizedPhrase()
