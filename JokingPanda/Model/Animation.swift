@@ -38,11 +38,11 @@ struct Animation {
         Constant.ImageName.pandaMicRestingEyesClosed
     ]
     
-    static func animationImageFor(conversationStatus: ConversationStatus) -> UIImage {
+    static func animationImageFor(status: AnimationStatus) -> UIImage {
         let imageNames: [String]
         let duration: TimeInterval
         
-        switch conversationStatus {
+        switch status {
         case .botSpeaking:
             imageNames = talkingPandaImageNames
             duration = 0.5
