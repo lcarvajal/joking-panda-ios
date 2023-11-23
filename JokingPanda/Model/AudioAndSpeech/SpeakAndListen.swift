@@ -11,7 +11,7 @@ import Foundation
 import Speech
 
 class SpeakAndListen: NSObject, ObservableObject {
-    @Published var animationStatus: ConversationStatus = .stopped
+    @Published var animationStatus: AnimationStatus = .stopped
     @Published var speechOrPhraseToDisplay = " "
     @Published var conversationManager = ConversationManager()
     

@@ -76,3 +76,10 @@ struct Animation {
         }
     }
 }
+
+enum AnimationStatus {
+    case botSpeaking
+    case currentUserSpeaking
+    case noOneSpeaking
+    case stopped
+}
