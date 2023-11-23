@@ -43,13 +43,13 @@ struct Animation {
         let duration: TimeInterval
         
         switch status {
-        case .botSpeaking:
+        case .speaking:
             imageNames = talkingPandaImageNames
             duration = 0.5
-        case .currentUserSpeaking:
+        case .listening:
             imageNames = restingPandaImageNames
             duration = 2
-        case .noOneSpeaking, .stopped:
+        case .dancing, .stopped:
             imageNames = dancingPandaImageNames
             duration = 2
         }
@@ -78,8 +78,8 @@ struct Animation {
 }
 
 enum AnimationStatus {
-    case botSpeaking
-    case currentUserSpeaking
-    case noOneSpeaking
+    case speaking
+    case listening
+    case dancing
     case stopped
 }

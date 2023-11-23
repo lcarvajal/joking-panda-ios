@@ -34,7 +34,7 @@ struct AnimationView: UIViewRepresentable {
 #Preview {
     GeometryReader { geometry in
         VStack {
-//            AnimationView(geometry: .constant(geometry), status: .botSpeaking)
+//            AnimationView(geometry: .constant(geometry), status: .speaking)
 //                .background(Color.skyBlue)
         }
     }
