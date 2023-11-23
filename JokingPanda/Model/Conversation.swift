@@ -12,13 +12,6 @@ struct Conversation: Hashable, Codable, Identifiable {
     var phrases: [String]
 }
 
-enum ConversationStatus {
-    case botSpeaking
-    case currentUserSpeaking
-    case noOneSpeaking
-    case stopped
-}
-
 enum ConversationType {
     case deciding
     case dancing
