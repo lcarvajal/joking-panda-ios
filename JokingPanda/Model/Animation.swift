@@ -14,12 +14,14 @@ struct Animation {
         let duration: TimeInterval
         
         switch status {
-        case .speaking:
-            imageNames = AnimationImages.speakingPandaImageNames
-            duration = 0.5
+        case .knocking:
+            imageNames = AnimationImages.knockingPandaImages
         case .listening:
             imageNames = AnimationImages.listeningPandaImageNames
             duration = 2
+        case .speaking:
+            imageNames = AnimationImages.speakingPandaImageNames
+            duration = 0.5
         case .dancing, .stopped:
             imageNames = AnimationImages.dancingPandaImageNames
             duration = 2
@@ -46,6 +48,20 @@ struct Animation {
             return UIImage()
         }
     }
+    
+    static func animationStatusFor(person: Person, phrase: String) -> AnimationStatus {
+        switch person {
+        case .bot:
+            if phrase.contains("knock"){
+                return .knocking
+            }
+            else {
+                return .speaking
+            }
+        case .currentUser:
+            return .listening
+        }
+    }
 }
 
 enum AnimationImages {
@@ -63,6 +79,11 @@ enum AnimationImages {
         Constant.ImageName.pandaMicUpMouthClosed,
     ]
     
+    static let knockingPandaImages = [
+        Constant.ImageName.pandaMicDown
+        Constant.ImageName.pandaMicRestingEyesClosed
+    ]
+    
     static let listeningPandaImageNames = [
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
@@ -70,7 +91,7 @@ enum AnimationImages {
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
         Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMqicRestingEyesClosed
+        Constant.ImageName.pandaMicRestingEyesClosed
     ]
     
     static let speakingPandaImageNames = [
@@ -78,9 +99,10 @@ enum AnimationImages {
         Constant.ImageName.pandaMicUpMouthClosed
     ]
 }
-
+    
 enum AnimationStatus {
     case speaking
+    case knocking
     case listening
     case dancing
     case stopped
