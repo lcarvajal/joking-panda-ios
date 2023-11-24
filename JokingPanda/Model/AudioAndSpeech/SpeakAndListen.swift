@@ -11,6 +11,7 @@ import Foundation
 import Speech
 
 class SpeakAndListen: NSObject, ObservableObject {
+    @Published var animationCharacter: AnimationCharacter = .tuxedoPanda
     @Published var animationStatus: AnimationStatus = .stopped
     @Published var speechOrPhraseToDisplay = " "
     @Published var conversationManager = ConversationManager()
@@ -36,7 +37,7 @@ class SpeakAndListen: NSObject, ObservableObject {
         if !conversationManager.isConversing {
             conversationManager.startConversation(type: type)
             audio.activateAudioSession()
-            animationStatus = .speaking
+            updateAnimation(status: .speaking)
             speak(conversationManager.currentPhrase)
         }
         else {
@@ -49,17 +50,17 @@ class SpeakAndListen: NSObject, ObservableObject {
         synthesizer.stopSpeaking(at: .immediate)
         audio.deactivateAudioPlayer()
         stopRecording()
-        animationStatus = .stopped
+        updateAnimation(status: .stopped)
     }
     
     internal func converse() {
         if conversationManager.isConversing {
             if conversationManager.personTalking == .bot {
                 speak(conversationManager.currentPhrase)
-                animationStatus = .speaking
+                updateAnimation(status: .speaking)
             }
             else {
-                animationStatus = .listening
+                updateAnimation(status: .listening)
                 startRecording()
                 stopRecordingAndHandleRecognizedPhrase()
             }
@@ -79,6 +80,25 @@ class SpeakAndListen: NSObject, ObservableObject {
         }
     }
     
+    internal func updateAnimation(status: AnimationStatus) {
+        switch conversationManager.selectedType {
+        case .dancing:
+            animationCharacter = .coolPanda
+        case .deciding, .joking:
+            animationCharacter = .tuxedoPanda
+        case .journaling:
+            animationCharacter = .sittingPanda
+        }
+        
+        if conversationManager.isConversing && conversationManager.selectedType == .joking {
+            animationStatus = Animation.animationStatusFor(person: conversationManager.personTalking, phrase: conversationManager.currentPhrase)
+        }
+        else {
+            animationStatus = status
+        }
+        
+    }
+    
     // MARK: - Events
     
     internal func speechOrAudioDidFinish() {
@@ -90,7 +110,7 @@ class SpeakAndListen: NSObject, ObservableObject {
             converse()
         }
         else {
-            animationStatus = .stopped
+            updateAnimation(status: .stopped)
         }
     }
 }
@@ -168,7 +188,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
     // MARK: - Actions
     
     internal func speak(_ text: String) {
-        animationStatus = .speaking
+        updateAnimation(status: .speaking)
         
         let audioFileName = Tool.removePunctuation(from: text)
             .lowercased()
@@ -177,7 +197,7 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
         if conversationManager.selectedType == .dancing {
             if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "mp3") {
                 audio.play(url: audioURL, delegate: self)
-                animationStatus = .dancing
+                updateAnimation(status: .dancing)
             }
             else {
                 // FIXME: Handle error

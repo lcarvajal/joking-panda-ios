@@ -13,7 +13,7 @@ struct ExitButton: View {
     var body: some View {
         Button(action: {
             speakAndListen.conversationManager.selectedType = .deciding
-            speakAndListen.animationStatus = .stopped
+            speakAndListen.updateAnimation(status: .stopped)
         }) {
             Label("", systemImage: "house.circle")
                 .symbolRenderingMode(.palette)
