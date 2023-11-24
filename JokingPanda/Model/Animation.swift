@@ -15,15 +15,16 @@ struct Animation {
         
         switch status {
         case .knocking:
-            imageNames = AnimationImages.knockingPandaImages
+            imageNames = AnimationImages.TuxedoPanda.knocking
+            duration = 0.5
         case .listening:
-            imageNames = AnimationImages.listeningPandaImageNames
+            imageNames = AnimationImages.TuxedoPanda.listening
             duration = 2
         case .speaking:
-            imageNames = AnimationImages.speakingPandaImageNames
+            imageNames = AnimationImages.TuxedoPanda.speaking
             duration = 0.5
         case .dancing, .stopped:
-            imageNames = AnimationImages.dancingPandaImageNames
+            imageNames = AnimationImages.TuxedoPanda.dancing
             duration = 2
         }
         
@@ -65,41 +66,51 @@ struct Animation {
 }
 
 enum AnimationImages {
-    static let dancingPandaImageNames = [
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicRestingEyesClosed,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicDown,
-        Constant.ImageName.pandaDance,
-        Constant.ImageName.pandaMicUpMouthClosed,
-    ]
+    enum TuxedoPanda {
+        static let dancing = [
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micRestingEyesClosed,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micDown,
+            Constant.ImageName.TuxedoPanda.dance,
+            Constant.ImageName.TuxedoPanda.micUpMouthClosed,
+        ]
+        
+        static let knocking = [
+            Constant.ImageName.TuxedoPanda.micDown,
+            Constant.ImageName.TuxedoPanda.micRestingEyesClosed
+        ]
+        
+        static let listening = [
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micRestingEyesClosed
+        ]
+        
+        static let speaking = [
+            Constant.ImageName.TuxedoPanda.micUpMouthOpen,
+            Constant.ImageName.TuxedoPanda.micUpMouthClosed
+        ]
+    }
     
-    static let knockingPandaImages = [
-        Constant.ImageName.pandaMicDown
-        Constant.ImageName.pandaMicRestingEyesClosed
-    ]
     
-    static let listeningPandaImageNames = [
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicResting,
-        Constant.ImageName.pandaMicRestingEyesClosed
-    ]
-    
-    static let speakingPandaImageNames = [
-        Constant.ImageName.pandaMicUpMouthOpen,
-        Constant.ImageName.pandaMicUpMouthClosed
-    ]
 }
-    
+
+enum AnimationCharacter {
+    case coolPanda
+    case sittingPanda
+    case tuxedoPanda
+}
+
 enum AnimationStatus {
     case speaking
     case knocking
