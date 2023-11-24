@@ -18,14 +18,42 @@ struct Constant {
     }
     
     struct ImageName {
-        static let pandaMicUpMouthOpen = "panda-mic-up-mouth-open"
-        static let pandaMicUpMouthClosed = "panda-mic-up-mouth-closed"
-        static let pandaMicDown = "panda-mic-down"
-        static let pandaMicDownClosedEyes = "panda-mic-down-closed-eyes"
         
-        static let pandaMicResting = "panda-mic-resting"
-        static let pandaMicRestingEyesClosed = "panda-mic-resting-eyes-closed"
-        static let pandaDance = "panda-dance"
+        struct CoolPanda {
+            static let coolPanda = "cool-panda"
+            static let handsDown = "\(coolPanda)-hands-down"
+            static let oneArmWaveLeft = "\(coolPanda)-one-arm-wave-left"
+            static let oneArmWaveRight = "\(coolPanda)-one-arm-wave-right"
+            static let tiltLeft = "\(coolPanda)-tilt-left"
+            static let tiltRight = "\(coolPanda)-tilt-right"
+            static let twoArmWaveLeft = "\(coolPanda)-two-arm-wave-left"
+            static let twoArmWaveRight = "\(coolPanda)-two-arm-wave-right"
+            
+        }
+        
+        struct SittingPanda {
+            static let coolPanda = "cool-panda"
+            static let handsDown = "\(coolPanda)-hands-down"
+            static let oneArmWaveLeft = "\(coolPanda)-one-arm-wave-left"
+            static let oneArmWaveRight = "\(coolPanda)-one-arm-wave-right"
+            static let tiltLeft = "\(coolPanda)-tilt-left"
+            static let tiltRight = "\(coolPanda)-tilt-right"
+            static let twoArmWaveLeft = "\(coolPanda)-two-arm-wave-left"
+            static let twoArmWaveRight = "\(coolPanda)-two-arm-wave-right"
+        }
+        
+        struct TuxedoPanda {
+            static let tuxedoPanda = "tuxedo-panda"
+            static let armRaised = "\(tuxedoPanda)-arm-raised"
+            static let knock = "\(tuxedoPanda)-knock"
+            static let micUpMouthOpen = "\(tuxedoPanda)-mic-up-mouth-open"
+            static let micUpMouthClosed = "\(tuxedoPanda)-mic-up-mouth-closed"
+            static let micDown = "\(tuxedoPanda)-mic-down"
+            static let micDownClosedEyes = "\(tuxedoPanda)-mic-down-closed-eyes"
+            static let micResting = "\(tuxedoPanda)-mic-resting"
+            static let micRestingEyesClosed = "\(tuxedoPanda)-mic-resting-eyes-closed"
+            static let dance = "\(tuxedoPanda)-dance"
+        }
     }
     
     struct Size {

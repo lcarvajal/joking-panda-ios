@@ -12,7 +12,7 @@ struct DanceView: View {
         VStack {
             GeometryReader { geometry in
                 ZStack {
-                    AnimationView(geometry: .constant(geometry), status: Binding.constant(ConversationStatus.dancing))
+                    AnimationView(geometry: .constant(geometry), status: Binding.constant(AnimationStatus.dancing))
                 }
             }
         }
