@@ -20,7 +20,7 @@ struct Constant {
     struct ImageName {
         
         struct CoolPanda {
-            static let coolPanda = "cool-panda"
+            static private let coolPanda = "cool-panda"
             static let handsDown = "\(coolPanda)-hands-down"
             static let oneArmWaveLeft = "\(coolPanda)-one-arm-wave-left"
             static let oneArmWaveRight = "\(coolPanda)-one-arm-wave-right"
@@ -32,18 +32,16 @@ struct Constant {
         }
         
         struct SittingPanda {
-            static let coolPanda = "cool-panda"
-            static let handsDown = "\(coolPanda)-hands-down"
-            static let oneArmWaveLeft = "\(coolPanda)-one-arm-wave-left"
-            static let oneArmWaveRight = "\(coolPanda)-one-arm-wave-right"
-            static let tiltLeft = "\(coolPanda)-tilt-left"
-            static let tiltRight = "\(coolPanda)-tilt-right"
-            static let twoArmWaveLeft = "\(coolPanda)-two-arm-wave-left"
-            static let twoArmWaveRight = "\(coolPanda)-two-arm-wave-right"
+            static private let sittingPanda = "sitting-panda"
+            static let armRaisedMouthOpen = "\(sittingPanda)-arm-raised-mouth-open"
+            static let armRaised = "\(sittingPanda)-arm-raised"
+            static let armsDownHeadTilted = "\(sittingPanda)-arms-down-head-tilted"
+            static let armsDown = "\(sittingPanda)-arms-down"
+            static let eyesClosed = "\(sittingPanda)-eyes-closed"
         }
         
         struct TuxedoPanda {
-            static let tuxedoPanda = "tuxedo-panda"
+            static private let tuxedoPanda = "tuxedo-panda"
             static let armRaised = "\(tuxedoPanda)-arm-raised"
             static let knock = "\(tuxedoPanda)-knock"
             static let micUpMouthOpen = "\(tuxedoPanda)-mic-up-mouth-open"
