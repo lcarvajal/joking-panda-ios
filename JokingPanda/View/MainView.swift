@@ -56,9 +56,9 @@ struct MainView: View {
             switch speakAndListen.conversationManager.selectedType {
             case .deciding:
                 if !speakAndListen.conversationManager.isConversing {
-//                    MenuButtons(speakAndListen: speakAndListen)
-//                        .frame(height: 100)
-//                        .padding()
+                    MenuButtons(speakAndListen: speakAndListen)
+                        .frame(height: 100)
+                        .padding()
                 }
                 else {
                     MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
@@ -93,8 +93,7 @@ struct MainView: View {
             speakAndListen.stopConversation()
         }
         else {
-            speakAndListen.startConversation(type: .joking)
-//            speakAndListen.startConversation()
+            speakAndListen.startConversation()
         }
     }
 }
