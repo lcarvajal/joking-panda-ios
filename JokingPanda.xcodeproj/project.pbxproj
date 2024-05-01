@@ -78,6 +78,7 @@
 		8D2D00312AFD6780003E77B8 /* luke.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFA92AFD66BD003E77B8 /* luke.m4a */; };
 		8D2D00322AFD6780003E77B8 /* nana.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF7E2AFD66BA003E77B8 /* nana.m4a */; };
 		8D2D00332AFD6780003E77B8 /* cash.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF722AFD66B9003E77B8 /* cash.m4a */; };
+		8D2DB8672BE2DA7A0002F01E /* we-can-journal-dance-or-listen-to-some-jokes.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DB8662BE2DA7A0002F01E /* we-can-journal-dance-or-listen-to-some-jokes.m4a */; };
 		8D2DFFC92AFD6780003E77B8 /* snow-use-the-joke-is-over.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB52AFD66BE003E77B8 /* snow-use-the-joke-is-over.m4a */; };
 		8D2DFFCA2AFD6780003E77B8 /* mary-christmas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFB02AFD66BE003E77B8 /* mary-christmas.m4a */; };
 		8D2DFFCB2AFD6780003E77B8 /* theodore.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF832AFD66BA003E77B8 /* theodore.m4a */; };
@@ -209,6 +210,7 @@
 		8D8EAF9C2AFFF27800F01B71 /* norma-lee.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */; };
 		8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */; };
 		8D8EAF9E2AFFF27800F01B71 /* otto-know-i-forgot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */; };
+		8DC5939A2BE2D8660000661C /* what-would-you-like-to-do.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8DC593992BE2D8660000661C /* what-would-you-like-to-do.m4a */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
 		8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* BaseView.swift */; };
 		8DC97D652AE67101002CEA1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D642AE67101002CEA1E /* Assets.xcassets */; };
@@ -262,6 +264,7 @@
 		8D0DE0082B0EA02500A3A8F8 /* ya-mama-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ya-mama-song.mp3"; sourceTree = "<group>"; };
 		8D0DE0092B0EA02500A3A8F8 /* sublime-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sublime-song.mp3"; sourceTree = "<group>"; };
 		8D0DE00A2B0EA02500A3A8F8 /* over-the-edge-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "over-the-edge-song.mp3"; sourceTree = "<group>"; };
+		8D2DB8662BE2DA7A0002F01E /* we-can-journal-dance-or-listen-to-some-jokes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "we-can-journal-dance-or-listen-to-some-jokes.m4a"; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
 		8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ketchup-with-me-and-ill-tell-you.m4a"; sourceTree = "<group>"; };
@@ -445,6 +448,7 @@
 		8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee.m4a"; sourceTree = "<group>"; };
 		8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "harry-up-its-cold-outside.m4a"; sourceTree = "<group>"; };
 		8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "otto-know-i-forgot.m4a"; sourceTree = "<group>"; };
+		8DC593992BE2D8660000661C /* what-would-you-like-to-do.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "what-would-you-like-to-do.m4a"; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
 		8DC97D622AE670FF002CEA1E /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
@@ -668,6 +672,8 @@
 				8D2DFFA22AFD66BD003E77B8 /* water.m4a */,
 				8D8EAF292AFFF27700F01B71 /* watson-tv-right-now.m4a */,
 				8D8EAF2D2AFFF27700F01B71 /* watson.m4a */,
+				8D2DB8662BE2DA7A0002F01E /* we-can-journal-dance-or-listen-to-some-jokes.m4a */,
+				8DC593992BE2D8660000661C /* what-would-you-like-to-do.m4a */,
 				8D2DFF782AFD66B9003E77B8 /* who.m4a */,
 				8D2DFF752AFD66B9003E77B8 /* woo.m4a */,
 				8D8EAF372AFFF27700F01B71 /* you-dont-remember-me-im-the-guy-telling-you-funny-jokes.m4a */,
@@ -1036,6 +1042,7 @@
 				8D8EAF972AFFF27800F01B71 /* alfie.m4a in Resources */,
 				8D2D00272AFD6780003E77B8 /* police.m4a in Resources */,
 				8D2DFFD22AFD6780003E77B8 /* water-you-doing-telling-jokes-right-now-dont-you-have-things-to-do.m4a in Resources */,
+				8DC5939A2BE2D8660000661C /* what-would-you-like-to-do.m4a in Resources */,
 				8D2DFFFB2AFD6780003E77B8 /* canoe.m4a in Resources */,
 				8D8EAF762AFFF27800F01B71 /* watson.m4a in Resources */,
 				8DC97D682AE67101002CEA1E /* Preview Assets.xcassets in Resources */,
@@ -1083,6 +1090,7 @@
 				8D8EAF6F2AFFF27800F01B71 /* god-bless-you.m4a in Resources */,
 				8D2DFFE32AFD6780003E77B8 /* theodore-is-stuck-open-up.m4a in Resources */,
 				8D2D00322AFD6780003E77B8 /* nana.m4a in Resources */,
+				8D2DB8672BE2DA7A0002F01E /* we-can-journal-dance-or-listen-to-some-jokes.m4a in Resources */,
 				8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */,
 				8D8EAF872AFFF27800F01B71 /* sadie.m4a in Resources */,
 				8D2D00042AFD6780003E77B8 /* needle-little-help-right-now.m4a in Resources */,
@@ -1354,7 +1362,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Haha Panda";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1386,7 +1394,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "Haha Panda";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.kids-games";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
