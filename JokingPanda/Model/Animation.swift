@@ -9,13 +9,26 @@ import Foundation
 import UIKit
 
 struct Animation {
-    static func animationImageFor(character: AnimationCharacter, status: AnimationStatus) -> UIImage {
-        switch character {
-        case .coolPanda:
-            return animationImagesForCoolPanda(status: status)
-        case .tuxedoPanda:
-            return animationImagesForTuxedoPanda(status: status)
+    static func animationImageFor(status: AnimationStatus) -> UIImage {
+        let imageNames: [String]
+        let duration: TimeInterval
+        
+        switch status {
+        case .knocking:
+            imageNames = AnimationImages.TuxedoPanda.knocking
+            duration = 0.4
+        case .listening:
+            imageNames = AnimationImages.TuxedoPanda.listening
+            duration = 2
+        case .speaking:
+            imageNames = AnimationImages.TuxedoPanda.speaking
+            duration = 0.5
+        case .dancing, .stopped:
+            imageNames = AnimationImages.TuxedoPanda.dancing
+            duration = 2
         }
+        
+        return animationImageFor(imageNames: imageNames, duration: duration)
     }
     
     static private func animationImageFor(imageNames: [String], duration: TimeInterval) -> UIImage {
@@ -51,28 +64,6 @@ struct Animation {
         case .currentUser:
             return .listening
         }
-    }
-    
-    static private func animationImagesForTuxedoPanda(status: AnimationStatus) -> UIImage {
-        let imageNames: [String]
-        let duration: TimeInterval
-        
-        switch status {
-        case .knocking:
-            imageNames = AnimationImages.TuxedoPanda.knocking
-            duration = 0.4
-        case .listening:
-            imageNames = AnimationImages.TuxedoPanda.listening
-            duration = 2
-        case .speaking:
-            imageNames = AnimationImages.TuxedoPanda.speaking
-            duration = 0.5
-        case .dancing, .stopped:
-            imageNames = AnimationImages.TuxedoPanda.dancing
-            duration = 2
-        }
-        
-        return animationImageFor(imageNames: imageNames, duration: duration)
     }
 }
 
@@ -114,11 +105,6 @@ enum AnimationImages {
     }
     
     
-}
-
-enum AnimationCharacter {
-    case coolPanda
-    case tuxedoPanda
 }
 
 enum AnimationStatus {

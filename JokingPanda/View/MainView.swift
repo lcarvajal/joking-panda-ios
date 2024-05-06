@@ -19,7 +19,7 @@ struct MainView: View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    AnimationView(geometry: .constant(geometry), character: $speakAndListen.animationCharacter, status: $speakAndListen.animationStatus)
+                    AnimationView(geometry: .constant(geometry), status: $speakAndListen.animationStatus)
                     .background(Color.background)
                     .onTapGesture {
                         handleTapOnBot()

@@ -11,7 +11,6 @@ import Foundation
 import Speech
 
 class SpeakAndListen: NSObject, ObservableObject {
-    @Published var animationCharacter: AnimationCharacter = .tuxedoPanda
     @Published var animationStatus: AnimationStatus = .stopped
     @Published var speechOrPhraseToDisplay = " "
     @Published var conversationManager = ConversationManager()
@@ -81,11 +80,6 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
     
     internal func updateAnimation(status: AnimationStatus) {
-        switch conversationManager.selectedType {
-        case .deciding, .joking:
-            animationCharacter = .tuxedoPanda
-        }
-        
         if conversationManager.isConversing && conversationManager.selectedType == .joking {
             animationStatus = Animation.animationStatusFor(person: conversationManager.personTalking, phrase: conversationManager.currentPhrase)
         }
