@@ -31,15 +31,6 @@ struct Constant {
             
         }
         
-        struct SittingPanda {
-            static private let sittingPanda = "sitting-panda"
-            static let armRaisedMouthOpen = "\(sittingPanda)-arm-raised-mouth-open"
-            static let armRaised = "\(sittingPanda)-arm-raised"
-            static let armsDownHeadTilted = "\(sittingPanda)-arms-down-head-tilted"
-            static let armsDown = "\(sittingPanda)-arms-down"
-            static let eyesClosed = "\(sittingPanda)-eyes-closed"
-        }
-        
         struct TuxedoPanda {
             static private let tuxedoPanda = "tuxedo-panda"
             static let armRaised = "\(tuxedoPanda)-arm-raised"
