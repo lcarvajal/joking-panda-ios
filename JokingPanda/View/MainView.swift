@@ -25,56 +25,10 @@ struct MainView: View {
                         handleTapOnBot()
                     }
                     
-                    VStack {
-                        if speakAndListen.conversationManager.selectedType == .deciding {
-                            HStack {
-                                Spacer()
-                                SettingsButton(showSheet: $showSheet)
-                            }
-                            Spacer()
-                        }
-                        else if !speakAndListen.conversationManager.isConversing {
-                            HStack {
-                                ExitButton(speakAndListen: speakAndListen)
-                                Spacer()
-                            }
-                            
-                            Spacer()
-                            
-                            if speakAndListen.conversationManager.selectedType != .deciding {
-                                HStack {
-                                    Spacer()
-                                    PulsingTappingFinger(size: 50)
-                                }
-                                .padding(10)
-                            }
-                        }
-                    }
+                    OverlayButtons(showSheet: $showSheet, speakAndListen: speakAndListen, size: 50)
                 }
             }
-            
-            switch speakAndListen.conversationManager.selectedType {
-            case .deciding:
-                if !speakAndListen.conversationManager.isConversing {
-                    MenuButtons(speakAndListen: speakAndListen)
-                        .frame(height: 100)
-                        .padding()
-                }
-                else {
-                    MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
-                        .background(Color.background)
-                        .padding()
-                }
-            case .joking:
-                MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
-                    .background(Color.background)
-                    .padding()
-            default:
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(height: 100)
-                    .padding()
-            }
+            MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
         }
         .background(Color.background)
     }
