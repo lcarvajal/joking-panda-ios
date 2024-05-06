@@ -13,8 +13,6 @@ struct Animation {
         switch character {
         case .coolPanda:
             return animationImagesForCoolPanda(status: status)
-        case .sittingPanda:
-            return animationImagesForSittingPanda(status: status)
         case .tuxedoPanda:
             return animationImagesForTuxedoPanda(status: status)
         }
@@ -65,28 +63,6 @@ struct Animation {
             duration = 5
         case .stopped, .listening:
             imageNames = AnimationImages.CoolPanda.waiting
-            duration = 2
-        default:
-            imageNames = AnimationImages.SittingPanda.listening
-            duration = 2
-        }
-        
-        return animationImageFor(imageNames: imageNames, duration: duration)
-    }
-    
-    static private func animationImagesForSittingPanda(status: AnimationStatus) -> UIImage {
-        let imageNames: [String]
-        let duration: TimeInterval
-        
-        switch status {
-        case .listening:
-            imageNames = AnimationImages.SittingPanda.listening
-            duration = 2
-        case .speaking:
-            imageNames = AnimationImages.SittingPanda.speaking
-            duration = 0.5
-        default:
-            imageNames = AnimationImages.SittingPanda.listening
             duration = 2
         }
         
@@ -149,23 +125,6 @@ enum AnimationImages {
         ]
     }
     
-    enum SittingPanda {
-        static let listening = [
-            Constant.ImageName.SittingPanda.armsDown,
-            Constant.ImageName.SittingPanda.armsDown,
-            Constant.ImageName.SittingPanda.armsDownHeadTilted,
-            Constant.ImageName.SittingPanda.armsDown,
-            Constant.ImageName.SittingPanda.armsDown,
-            Constant.ImageName.SittingPanda.armsDown,
-            Constant.ImageName.SittingPanda.eyesClosed
-        ]
-        
-        static let speaking = [
-            Constant.ImageName.SittingPanda.armRaised,
-            Constant.ImageName.SittingPanda.armRaisedMouthOpen
-        ]
-    }
-    
     enum TuxedoPanda {
         static let dancing = [
             Constant.ImageName.TuxedoPanda.micResting,
@@ -207,7 +166,6 @@ enum AnimationImages {
 
 enum AnimationCharacter {
     case coolPanda
-    case sittingPanda
     case tuxedoPanda
 }
 
