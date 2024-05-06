@@ -20,7 +20,7 @@ struct MainView: View {
             GeometryReader { geometry in
                 ZStack {
                     AnimationView(geometry: .constant(geometry), character: $speakAndListen.animationCharacter, status: $speakAndListen.animationStatus)
-                    .background(getBackgroundColor())
+                    .background(Color.background)
                     .onTapGesture {
                         handleTapOnBot()
                     }
@@ -77,15 +77,6 @@ struct MainView: View {
             }
         }
         .background(Color.background)
-    }
-    
-    private func getBackgroundColor() -> Color {
-        switch speakAndListen.conversationManager.selectedType {
-        case .deciding, .joking, .dancing:
-            return Color.tappableArea
-        default:
-            return Color.background
-        }
     }
     
     private func handleTapOnBot() {

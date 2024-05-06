@@ -703,14 +703,17 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		8D0DDFFE2B0CC68B00A3A8F8 /* AudioAndSpeech */ = {
+		8D0DDFFE2B0CC68B00A3A8F8 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
+				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
+				8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */,
+				8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */,
 				8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */,
 				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
 			);
-			path = AudioAndSpeech;
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		8D0DE0032B0CD4C500A3A8F8 /* Button */ = {
@@ -806,11 +809,8 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DDFFE2B0CC68B00A3A8F8 /* AudioAndSpeech */,
+				8D0DDFFE2B0CC68B00A3A8F8 /* Conversation */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
-				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
-				8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */,
-				8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
 			path = Model;

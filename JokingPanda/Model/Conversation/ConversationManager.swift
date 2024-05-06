@@ -30,7 +30,6 @@ class ConversationManager: NSObject, ObservableObject {
     
     internal func startConversation(type: ConversationType? = nil) {
         if let type = type {
-            print("Update selected type to: \(type)")
             selectedType = type
         }
         
