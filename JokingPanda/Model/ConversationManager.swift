@@ -20,8 +20,7 @@ class ConversationManager: NSObject, ObservableObject {
     private let conversations: [ConversationType: Conversations] = [
         .deciding : Conversations(type: .deciding),
         .joking: Conversations(type: .joking),
-        .dancing: Conversations(type: .dancing),
-        .journaling: Conversations(type: .journaling)
+        .dancing: Conversations(type: .dancing)
     ]
     private var phraseHistory: [String] = []
     
@@ -67,9 +66,6 @@ class ConversationManager: NSObject, ObservableObject {
         case .deciding:
             if phraseToCheck.contains("joke") {
                 return .joking
-            }
-            else if phraseToCheck.contains("journal") {
-                return .journaling
             }
             else if phraseToCheck.contains("danc") {
                 return .dancing

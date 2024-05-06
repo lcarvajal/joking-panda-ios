@@ -25,7 +25,7 @@ class Conversations {
         
         switch type {
         case .deciding:
-            conversations = [Conversation(id: 1, phrases: ["What would you like to do?", "", "We can journal, dance, or listen to some jokes.", ""])]
+            conversations = [Conversation(id: 1, phrases: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         case .joking:
             conversations = Tool.load("knockKnockJokeData.json")
         case .dancing:
@@ -35,8 +35,6 @@ class Conversations {
                 Conversation(id: 3, phrases: ["sublime song"]),
                 Conversation(id: 4, phrases: ["ya mama song"])
             ]
-        case .journaling:
-            conversations = [Conversation(id: 1, phrases: ["While we're journaling, I'll write down what we're talking about so that you can take a look at our talk another day. How do you feel today?", "", "What have you been up to today?", "", "Anything else you want to add to your journal?", ""])]
         }
         
         pickUpLastConversation()

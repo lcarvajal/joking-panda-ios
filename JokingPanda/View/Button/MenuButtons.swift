@@ -14,15 +14,6 @@ struct MenuButtons: View {
         HStack {
             Spacer()
             Button(action: {
-                speakAndListen.startConversation(type: .journaling)
-            }) {
-                Label("", systemImage: "book.closed.fill")
-                    .symbolRenderingMode(.palette)
-                    .font(.system(size: Constant.Size.button))
-                    .foregroundStyle(.tappableAccent)
-            }
-            Spacer()
-            Button(action: {
                 speakAndListen.startConversation(type: .dancing)
             }) {
                 Label("", systemImage: "figure.socialdance")

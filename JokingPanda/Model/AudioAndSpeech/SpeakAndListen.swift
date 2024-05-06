@@ -86,8 +86,6 @@ class SpeakAndListen: NSObject, ObservableObject {
             animationCharacter = .coolPanda
         case .deciding, .joking:
             animationCharacter = .tuxedoPanda
-        case .journaling:
-            animationCharacter = .sittingPanda
         }
         
         if conversationManager.isConversing && conversationManager.selectedType == .joking {

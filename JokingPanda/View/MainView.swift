@@ -65,7 +65,7 @@ struct MainView: View {
                         .background(Color.background)
                         .padding()
                 }
-            case .joking, .journaling:
+            case .joking:
                 MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
                     .background(Color.background)
                     .padding()
@@ -81,7 +81,7 @@ struct MainView: View {
     
     private func getBackgroundColor() -> Color {
         switch speakAndListen.conversationManager.selectedType {
-        case .deciding, .joking, .journaling, .dancing:
+        case .deciding, .joking, .dancing:
             return Color.tappableArea
         default:
             return Color.background
