@@ -14,6 +14,5 @@ struct Conversation: Hashable, Codable, Identifiable {
 
 enum ConversationType {
     case deciding
-    case dancing
     case joking
 }

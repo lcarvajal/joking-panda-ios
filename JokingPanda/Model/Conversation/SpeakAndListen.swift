@@ -82,8 +82,6 @@ class SpeakAndListen: NSObject, ObservableObject {
     
     internal func updateAnimation(status: AnimationStatus) {
         switch conversationManager.selectedType {
-        case .dancing:
-            animationCharacter = .coolPanda
         case .deciding, .joking:
             animationCharacter = .tuxedoPanda
         }
@@ -192,27 +190,14 @@ extension SpeakAndListen: AVAudioPlayerDelegate {
             .lowercased()
             .replacingOccurrences(of: " ", with: "-")
         
-        if conversationManager.selectedType == .dancing {
-            if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "mp3") {
-                audio.play(url: audioURL, delegate: self)
-                updateAnimation(status: .dancing)
-            }
-            else {
-                // FIXME: Handle error
-                print("Problem playing song")
-                print(audioFileName)
-            }
+        if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
+            audio.play(url: audioURL, delegate: self)
+            phraseBotIsSaying = conversationManager.currentPhrase
+            updateSpeechOrPhraseToDisplay()
         }
         else {
-            if let audioURL = Bundle.main.url(forResource: audioFileName, withExtension: "m4a") {
-                audio.play(url: audioURL, delegate: self)
-                phraseBotIsSaying = conversationManager.currentPhrase
-                updateSpeechOrPhraseToDisplay()
-            }
-            else {
-                // Fallback on voice synthesis if audio file doesn't exist
-                self.synthesizer.botSpeak(string: text)
-            }
+            // Fallback on voice synthesis if audio file doesn't exist
+            self.synthesizer.botSpeak(string: text)
         }
     }
     

@@ -53,25 +53,6 @@ struct Animation {
         }
     }
     
-    static private func animationImagesForCoolPanda(status: AnimationStatus) -> UIImage {
-        let imageNames: [String]
-        let duration: TimeInterval
-        
-        switch status {
-        case .dancing:
-            imageNames = AnimationImages.CoolPanda.dancing
-            duration = 5
-        case .stopped, .listening:
-            imageNames = AnimationImages.CoolPanda.waiting
-            duration = 2
-        default:
-            imageNames = AnimationImages.CoolPanda.waiting
-            duration = 2
-        }
-        
-        return animationImageFor(imageNames: imageNames, duration: duration)
-    }
-    
     static private func animationImagesForTuxedoPanda(status: AnimationStatus) -> UIImage {
         let imageNames: [String]
         let duration: TimeInterval
@@ -96,38 +77,6 @@ struct Animation {
 }
 
 enum AnimationImages {
-    enum CoolPanda {
-        static let dancing = [
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.oneArmWaveLeft,
-            Constant.ImageName.CoolPanda.oneArmWaveRight,
-            Constant.ImageName.CoolPanda.oneArmWaveLeft,
-            Constant.ImageName.CoolPanda.oneArmWaveRight,
-            Constant.ImageName.CoolPanda.oneArmWaveLeft,
-            Constant.ImageName.CoolPanda.oneArmWaveRight,
-            Constant.ImageName.CoolPanda.tiltLeft,
-            Constant.ImageName.CoolPanda.tiltRight,
-            Constant.ImageName.CoolPanda.twoArmWaveLeft,
-            Constant.ImageName.CoolPanda.twoArmWaveRight,
-            Constant.ImageName.CoolPanda.twoArmWaveLeft,
-            Constant.ImageName.CoolPanda.twoArmWaveRight,
-            Constant.ImageName.CoolPanda.twoArmWaveLeft,
-            Constant.ImageName.CoolPanda.twoArmWaveRight,
-            Constant.ImageName.CoolPanda.tiltLeft,
-            Constant.ImageName.CoolPanda.tiltRight
-        ]
-        
-        static let waiting = [
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.handsDown,
-            Constant.ImageName.CoolPanda.tiltLeft
-        ]
-    }
-    
     enum TuxedoPanda {
         static let dancing = [
             Constant.ImageName.TuxedoPanda.micResting,

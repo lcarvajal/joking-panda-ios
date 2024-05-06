@@ -18,10 +18,8 @@
 		8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */; };
 		8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */; };
 		8D0DDFF72B0C0B0100A3A8F8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */; };
-		8D0DDFF92B0CAB8000A3A8F8 /* DanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */; };
 		8D0DDFFB2B0CADDF00A3A8F8 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */; };
 		8D0DDFFD2B0CB4E000A3A8F8 /* SpeakAndListen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */; };
-		8D0DE0022B0CCA6E00A3A8F8 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */; };
 		8D0DE0052B0E4CD900A3A8F8 /* Conversations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */; };
 		8D0DE00B2B0EA02500A3A8F8 /* run-home-vox-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */; };
 		8D0DE00C2B0EA02500A3A8F8 /* ya-mama-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE0082B0EA02500A3A8F8 /* ya-mama-song.mp3 */; };
@@ -255,10 +253,8 @@
 		8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceView.swift; sourceTree = "<group>"; };
 		8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
 		8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakAndListen.swift; sourceTree = "<group>"; };
-		8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
 		8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversations.swift; sourceTree = "<group>"; };
 		8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "run-home-vox-song.mp3"; sourceTree = "<group>"; };
 		8D0DE0082B0EA02500A3A8F8 /* ya-mama-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ya-mama-song.mp3"; sourceTree = "<group>"; };
@@ -719,7 +715,6 @@
 		8D0DE0032B0CD4C500A3A8F8 /* Button */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DE0012B0CCA6E00A3A8F8 /* MenuButtons.swift */,
 				8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */,
 			);
 			path = Button;
@@ -827,7 +822,6 @@
 				8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */,
 				8DE4C1D72AFC312C00B36205 /* MessagesView.swift */,
 				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
-				8D0DDFF82B0CAB8000A3A8F8 /* DanceView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1174,7 +1168,6 @@
 				8D0DE0052B0E4CD900A3A8F8 /* Conversations.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
-				8D0DDFF92B0CAB8000A3A8F8 /* DanceView.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* MainView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
@@ -1188,7 +1181,6 @@
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,
 				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
-				8D0DE0022B0CCA6E00A3A8F8 /* MenuButtons.swift in Sources */,
 				8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognizer.swift in Sources */,
 				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,
 			);
