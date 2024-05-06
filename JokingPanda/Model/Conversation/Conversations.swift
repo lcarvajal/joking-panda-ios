@@ -28,13 +28,6 @@ class Conversations {
             conversations = [Conversation(id: 1, phrases: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         case .joking:
             conversations = Tool.load("knockKnockJokeData.json")
-        case .dancing:
-            conversations = [
-                Conversation(id: 1, phrases: ["over the edge song"]),
-                Conversation(id: 2, phrases: ["run home vox song"]),
-                Conversation(id: 3, phrases: ["sublime song"]),
-                Conversation(id: 4, phrases: ["ya mama song"])
-            ]
         }
         
         pickUpLastConversation()

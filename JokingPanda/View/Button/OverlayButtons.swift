@@ -14,21 +14,12 @@ struct OverlayButtons: View {
     
     var body: some View {
         VStack {
-            if speakAndListen.conversationManager.selectedType == .deciding {
+            if !speakAndListen.conversationManager.isConversing {
                 HStack {
                     Spacer()
                     SettingsButton(showSheet: $showSheet)
                 }
                 Spacer()
-            }
-            else if !speakAndListen.conversationManager.isConversing {
-                HStack {
-                    ExitButton(speakAndListen: speakAndListen)
-                    Spacer()
-                }
-                
-                Spacer()
-                
                 if speakAndListen.conversationManager.selectedType != .deciding {
                     HStack {
                         Spacer()
@@ -37,24 +28,6 @@ struct OverlayButtons: View {
                     .padding(10)
                 }
             }
-        }
-    }
-}
-
-struct ExitButton: View {
-    @ObservedObject var speakAndListen: SpeakAndListen
-    
-    var body: some View {
-        Button(action: {
-            speakAndListen.conversationManager.selectedType = .deciding
-            speakAndListen.updateAnimation(status: .stopped)
-        }) {
-            Label("", systemImage: "house.circle")
-                .symbolRenderingMode(.palette)
-                .font(.system(size: Constant.Size.button))
-                .foregroundStyle(.tappableAccent)
-                .padding()
-                .padding(.top, 10)
         }
     }
 }
