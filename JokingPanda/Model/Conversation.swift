@@ -16,5 +16,4 @@ enum ConversationType {
     case deciding
     case dancing
     case joking
-    case journaling
 }
