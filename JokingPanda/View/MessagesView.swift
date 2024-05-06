@@ -12,6 +12,31 @@ struct MessagesView: View {
     @ObservedObject var speakAndListen: SpeakAndListen
     
     var body: some View {
+        switch speakAndListen.conversationManager.selectedType {
+        case .deciding:
+            if !speakAndListen.conversationManager.isConversing {
+                MenuButtons(speakAndListen: speakAndListen)
+                    .frame(height: 100)
+                    .padding()
+            }
+            else {
+                getMessagesView()
+                    .background(Color.background)
+                    .padding()
+            }
+        case .joking:
+            getMessagesView()
+                .background(Color.background)
+                .padding()
+        default:
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(height: 100)
+                .padding()
+        }
+    }
+    
+    private func getMessagesView() -> some View {
         VStack {
             Button {
                 displayMessages.toggle()

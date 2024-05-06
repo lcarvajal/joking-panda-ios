@@ -64,6 +64,9 @@ struct Animation {
         case .stopped, .listening:
             imageNames = AnimationImages.CoolPanda.waiting
             duration = 2
+        default:
+            imageNames = AnimationImages.CoolPanda.waiting
+            duration = 2
         }
         
         return animationImageFor(imageNames: imageNames, duration: duration)

@@ -7,6 +7,40 @@
 
 import SwiftUI
 
+struct OverlayButtons: View {
+    @Binding var showSheet: Bool
+    @ObservedObject var speakAndListen: SpeakAndListen
+    internal let size: CGFloat
+    
+    var body: some View {
+        VStack {
+            if speakAndListen.conversationManager.selectedType == .deciding {
+                HStack {
+                    Spacer()
+                    SettingsButton(showSheet: $showSheet)
+                }
+                Spacer()
+            }
+            else if !speakAndListen.conversationManager.isConversing {
+                HStack {
+                    ExitButton(speakAndListen: speakAndListen)
+                    Spacer()
+                }
+                
+                Spacer()
+                
+                if speakAndListen.conversationManager.selectedType != .deciding {
+                    HStack {
+                        Spacer()
+                        PulsingTappingFinger(size: size)
+                    }
+                    .padding(10)
+                }
+            }
+        }
+    }
+}
+
 struct ExitButton: View {
     @ObservedObject var speakAndListen: SpeakAndListen
     
