@@ -10,8 +10,8 @@
 import Foundation
 import Speech
 
-class SpeakAndListen: NSObject, ObservableObject {
-    @Published var animationStatus: AnimationStatus = .stopped
+class SpeakAndListens: NSObject, ObservableObject {
+    @Published var animationStatus: AnimationAction = .stopped
     @Published var speechOrPhraseToDisplay = " "
     @Published var conversationManager = ConversationManager()
     
@@ -79,7 +79,7 @@ class SpeakAndListen: NSObject, ObservableObject {
         }
     }
     
-    internal func updateAnimation(status: AnimationStatus) {
+    internal func updateAnimation(status: AnimationAction) {
         if conversationManager.isConversing && conversationManager.selectedType == .joking {
             animationStatus = Animation.animationStatusFor(person: conversationManager.personTalking, phrase: conversationManager.currentPhrase)
         }
@@ -105,7 +105,7 @@ class SpeakAndListen: NSObject, ObservableObject {
     }
 }
 
-extension SpeakAndListen: SFSpeechRecognizerDelegate {
+extension SpeakAndListens: SFSpeechRecognizerDelegate {
     // MARK: - Actions
     
     internal func startRecording() {
@@ -158,7 +158,7 @@ extension SpeakAndListen: SFSpeechRecognizerDelegate {
     }
 }
 
-extension SpeakAndListen: AVSpeechSynthesizerDelegate {
+extension SpeakAndListens: AVSpeechSynthesizerDelegate {
     
     // MARK: - AVSpeechSynthesizerDelegate
     
@@ -174,7 +174,7 @@ extension SpeakAndListen: AVSpeechSynthesizerDelegate {
     }
 }
 
-extension SpeakAndListen: AVAudioPlayerDelegate {
+extension SpeakAndListens: AVAudioPlayerDelegate {
     // MARK: - Actions
     
     internal func speak(_ text: String) {

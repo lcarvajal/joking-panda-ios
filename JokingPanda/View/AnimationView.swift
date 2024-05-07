@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AnimationView: UIViewRepresentable {
     @Binding var geometry: GeometryProxy
-    @Binding var status: AnimationStatus
+    @Binding var status: AnimationAction
     
     internal func makeUIView(context: Self.Context) -> UIView {
         let parentView = UIView()

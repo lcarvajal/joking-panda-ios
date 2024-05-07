@@ -2,8 +2,11 @@
 //  Mouth.swift
 //  JokingPanda
 //
-//  Created by Lukas Carvajal on 5/7/24.
-//
+/*
+ Tries to play an audio file based on the phrase. For example, "Hello, world!" searches for `hello-world.m4a.
+ If the file isn't found, a speech synthesizer tries saying the phrase out loud.
+ As either method says the phrase outloud, `phraseSaid` is updated with what's being said.
+ */
 
 import Foundation
 import Speech
@@ -12,14 +15,14 @@ class Mouth: NSObject, ObservableObject {
     @Published var phraseSaid: String = ""
     
     private let audio: Audio
-    private var speakCompletion: ((String) -> Void)?
+    private var speakCompletion: (() -> Void)?
     private let synthesizer = AVSpeechSynthesizer()
     
     init(audio: Audio) {
         self.audio = audio
     }
     
-    internal func speak(phrase: String, completion: ((String) -> Void)?) {
+    internal func speak(phrase: String, completion: (() -> Void)?) {
         phraseSaid = ""
         speakCompletion = completion
         
@@ -54,6 +57,9 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
         audio.deactivateAudioPlayer()
+        if let completion = speakCompletion {
+            completion()
+        }
     }
     
     // MARK: - AVSpeechSynthesizerDelegate
@@ -65,5 +71,8 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
+        if let completion = speakCompletion {
+            completion()
+        }
     }
 }
