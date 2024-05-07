@@ -2,8 +2,9 @@
 //  Ear.swift
 //  JokingPanda
 //
-//  Created by Lukas Carvajal on 5/7/24.
-//
+/*
+ Uses speech recognition to 'hear' what a user says and updates `phraseHeard` as a user says something.
+ */
 
 import Foundation
 import Speech

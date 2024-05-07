@@ -2,14 +2,12 @@
 //  Animation.swift
 //  JokingPanda
 //
-//  Created by Lukas Carvajal on 10/28/23.
-//
 
 import Foundation
 import UIKit
 
 struct Animation {
-    static func animationImageFor(status: AnimationStatus) -> UIImage {
+    static func animationImageFor(status: AnimationAction) -> UIImage {
         let imageNames: [String]
         let duration: TimeInterval
         
@@ -50,7 +48,7 @@ struct Animation {
         }
     }
     
-    static func animationStatusFor(person: Person, phrase: String) -> AnimationStatus {
+    static func animationStatusFor(person: Person, phrase: String) -> AnimationAction {
         switch person {
         case .bot:
             if phrase.contains("knock"){
@@ -107,7 +105,7 @@ enum AnimationImages {
     
 }
 
-enum AnimationStatus {
+enum AnimationAction {
     case speaking
     case knocking
     case listening

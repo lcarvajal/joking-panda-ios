@@ -15,7 +15,7 @@ struct AuthorizationsView: View {
     var body: some View {
         VStack {
             GeometryReader { geometry in
-                AnimationView(geometry: .constant(geometry), status: Binding.constant(AnimationStatus.listening))
+                AnimationView(geometry: .constant(geometry), status: Binding.constant(AnimationAction.listening))
             }
             
             Spacer()

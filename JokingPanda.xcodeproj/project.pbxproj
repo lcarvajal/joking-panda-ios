@@ -226,6 +226,7 @@
 		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
 		8DE87AAC2BEA8C4B008E6AF2 /* Ear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */; };
 		8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */; };
+		8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AB02BEA9646008E6AF2 /* Brain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -469,6 +470,7 @@
 		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
 		8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ear.swift; sourceTree = "<group>"; };
 		8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
+		8DE87AB02BEA9646008E6AF2 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -708,12 +710,11 @@
 		8D0DDFFE2B0CC68B00A3A8F8 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
 				8DC97D952AE92CB0002CEA1E /* Conversation.swift */,
 				8D0DE0042B0E4CD900A3A8F8 /* Conversations.swift */,
 				8D0DDFFA2B0CADDF00A3A8F8 /* ConversationManager.swift */,
 				8D0DDFFC2B0CB4E000A3A8F8 /* SpeakAndListen.swift */,
-				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
+				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -810,12 +811,8 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8DE87AAF2BEA9610008E6AF2 /* Bot */,
 				8D0DDFFE2B0CC68B00A3A8F8 /* Conversation */,
-				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
-				8DC97D932AE80486002CEA1E /* Person.swift */,
-				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
-				8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */,
-				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -844,6 +841,28 @@
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8DE87AAF2BEA9610008E6AF2 /* Bot */ = {
+			isa = PBXGroup;
+			children = (
+				8DE87AB22BEAC2CA008E6AF2 /* Config */,
+				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
+				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
+				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
+				8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */,
+				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
+			);
+			path = Bot;
+			sourceTree = "<group>";
+		};
+		8DE87AB22BEAC2CA008E6AF2 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				8D0DDFEA2B0BE2B700A3A8F8 /* Audio.swift */,
+				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1174,6 +1193,7 @@
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Conversation.swift in Sources */,
+				8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */,
 				8D0DE0052B0E4CD900A3A8F8 /* Conversations.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
