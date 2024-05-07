@@ -33,28 +33,28 @@ class SpeechRecognizer {
         }
     }
     
-    private func configureRecognitionRequest(expectedPhrase: String) {
+    private func configureRecognitionRequest(expectedPhrase: String?) {
         guard let inputNode = inputNode else { return }
         
         // Create and configure the speech recognition request.
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
         recognitionRequest.shouldReportPartialResults = true
-        recognitionRequest.contextualStrings = expectedPhrase.components(separatedBy: " ")
+        
+        if let expectedPhrase = expectedPhrase {
+            recognitionRequest.contextualStrings = expectedPhrase.components(separatedBy: " ")
+        }
         
         // Keep speech recognition data on device
         if #available(iOS 13, *) {
             recognitionRequest.requiresOnDeviceRecognition = true
-            if #available(iOS 17, *) {
-                //                recognitionRequest.customizedLanguageModel = self.lmConfiguration
-            }
         }
         
     }
     
     // MARK: - Actions
     
-    internal func configure(expectedPhrase: String, completion: @escaping ((String) -> Void), errorCompletion: @escaping ((any Error)?) -> Void) {
+    internal func configure(expectedPhrase: String?, completion: @escaping ((String) -> Void), errorCompletion: @escaping ((any Error)?) -> Void) {
         cancelCurrentRecognitionTask()
         configureRecognitionRequest(expectedPhrase: expectedPhrase)
         setRecognitionTask(completion: completion, errorCompletion: errorCompletion)
