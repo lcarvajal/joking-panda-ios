@@ -223,6 +223,7 @@
 		8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* MessagesView.swift */; };
 		8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */; };
 		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
+		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -463,6 +464,7 @@
 		8DE4C1D72AFC312C00B36205 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
 		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
+		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -807,6 +809,7 @@
 				8D0DDFFE2B0CC68B00A3A8F8 /* Conversation */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
+				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
 				8D0A79102AF15A6100317DAF /* Constant.swift in Sources */,
 				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
+				8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */,
 				8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognizer.swift in Sources */,
 				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,
 			);
