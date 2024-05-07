@@ -11,29 +11,28 @@ import Speech
 
 class Bot: NSObject, ObservableObject  {
     @Published var action: AnimationAction = .stopped   // Animate based on current action
-    @Published var mouth: Mouth // Says phrases outloud
-    @Published var ear: Ear // Listens to phrases said by user
-    @Published var brain: Brain // Decides what to say and remembers what was said / heard
-    
-    private let audio: Audio
-    
-    override init() {
-        audio = Audio()
-        mouth = Mouth(audio: audio)
-        ear = Ear(audio: audio)
-        brain = Brain()
-        super.init()
-    }
+    @Published var mouth: Mouth = Mouth() // Says phrases outloud
+    @Published var ear: Ear = Ear() // Listens to phrases said by user
+    @Published var brain: Brain = Brain() // Decides what to say and remembers what was said / heard
     
     /**
      Recursive function where the bot starts to speak, listens to a response, and speaks again if needed.
      */
     internal func converse(phrase: String) {
         self.speak(phrase: phrase) {
-            self.listen(expectedPhrase: nil) { phraseHeard in
+            self.listen(expectedPhrase: "Continue") { phraseHeard in
                 self.respond(to: phraseHeard)
             }
         }
+    }
+    
+    /**
+     Stops speaking and listening.
+     */
+    internal func stopEverything() {
+        action = .stopped
+        mouth.stopSpeaking()
+        ear.stopListening()
     }
     
     /**
@@ -54,7 +53,7 @@ class Bot: NSObject, ObservableObject  {
         action = .listening
         ear.listen(expectedPhrase: expectedPhrase) { phraseHeard in
             let interpretedPhrase = self.brain.interpret(phraseHeard: phraseHeard, phraseExpected: phraseHeard)
-            self.brain.remember(interpretedPhrase, saidBy: .bot)
+            self.brain.remember(interpretedPhrase, saidBy: .currentUser)
             completion(interpretedPhrase)
         }
     }

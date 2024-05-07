@@ -9,7 +9,9 @@ import SwiftUI
 
 struct MessagesView: View {
     @Binding var displayMessages: Bool
-    @ObservedObject var speakAndListen: SpeakAndListen
+    @ObservedObject var bot: Bot
+    @ObservedObject var ear: Ear
+    @ObservedObject var mouth: Mouth
     
     var body: some View {
         VStack {
@@ -25,7 +27,7 @@ struct MessagesView: View {
             
             ScrollViewReader { proxy in
                 ScrollView {
-                    Text(speakAndListen.conversationManager.history)
+                    Text(bot.brain.phraseHistory)
                         .id(1)            // this is where to add an id
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
@@ -34,7 +36,7 @@ struct MessagesView: View {
                                alignment: .leading)
                 }
                 .background(Color.background)
-                .onChange(of: speakAndListen.conversationManager.history) { _ in
+                .onChange(of: bot.brain.phraseHistory) { _ in
                     proxy.scrollTo(1, anchor: .bottom)
                 }
                 .onChange(of: displayMessages) { _ in
@@ -42,9 +44,10 @@ struct MessagesView: View {
                 }
             }
             
-            if speakAndListen.conversationManager.isConversing {
+            switch bot.action {
+            case .speaking:
                 HStack {
-                    Text(speakAndListen.speechOrPhraseToDisplay)
+                    Text("🐼 " + mouth.phraseSaid)
                         .font(.system(size: 26, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity)
@@ -53,6 +56,18 @@ struct MessagesView: View {
                 .background(Color.backgroundLighter)
                 .cornerRadius(10)
                 .padding(.top, 0)
+            case .listening:
+                HStack {
+                    Text("🎙️ " + bot.ear.phraseHeard)
+                        .font(.system(size: 26, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
+                        .padding(10)
+                }
+                .background(Color.backgroundLighter)
+                .cornerRadius(10)
+                .padding(.top, 0)
+            default: EmptyView()
             }
         }
         .frame(maxHeight: displayMessages ? .infinity : 100)

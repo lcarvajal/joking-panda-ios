@@ -52,11 +52,9 @@ struct Animation {
         switch person {
         case .bot:
             if phrase.contains("knock"){
-                print("Should knock!")
                 return .knocking
             }
             else {
-                print("Just speaking!")
                 return .speaking
             }
         case .currentUser:
