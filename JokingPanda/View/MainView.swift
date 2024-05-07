@@ -13,32 +13,32 @@ struct MainView: View {
     @State var showSheet = false
     @State var displayMessages = false
     
-    @StateObject var speakAndListen = SpeakAndListen()
+    @StateObject var bot = Bot()
     
     var body: some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    AnimationView(geometry: .constant(geometry), status: $speakAndListen.animationStatus)
-                    .background(Color.background)
+                    AnimationView(geometry: .constant(geometry), status: $bot.action)
+                    .background(Color.tappableArea)
                     .onTapGesture {
                         handleTapOnBot()
                     }
                     
-                    OverlayButtons(showSheet: $showSheet, speakAndListen: speakAndListen, size: 50)
+                    OverlayButtons(showSheet: $showSheet, bot: bot, size: 50)
                 }
             }
-            MessagesView(displayMessages: $displayMessages, speakAndListen: speakAndListen)
+            MessagesView(displayMessages: $displayMessages, bot: bot, ear: bot.ear, mouth: bot.mouth)
         }
         .background(Color.background)
     }
     
     private func handleTapOnBot() {
-        if speakAndListen.conversationManager.isConversing {
-            speakAndListen.stopConversation()
+        if bot.action == .stopped {
+            bot.converse(phrase: "a herd you were home so here i a")
         }
         else {
-            speakAndListen.startConversation()
+            bot.stopEverything()
         }
     }
 }

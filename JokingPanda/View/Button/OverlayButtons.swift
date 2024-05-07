@@ -9,24 +9,22 @@ import SwiftUI
 
 struct OverlayButtons: View {
     @Binding var showSheet: Bool
-    @ObservedObject var speakAndListen: SpeakAndListen
+    @ObservedObject var bot: Bot
     internal let size: CGFloat
     
     var body: some View {
         VStack {
-            if !speakAndListen.conversationManager.isConversing {
+            if bot.action == .stopped {
                 HStack {
                     Spacer()
                     SettingsButton(showSheet: $showSheet)
                 }
                 Spacer()
-                if speakAndListen.conversationManager.selectedType != .deciding {
-                    HStack {
-                        Spacer()
-                        PulsingTappingFinger(size: size)
-                    }
-                    .padding(10)
+                HStack {
+                    Spacer()
+                    PulsingTappingFinger(size: size)
                 }
+                .padding(10)
             }
         }
     }

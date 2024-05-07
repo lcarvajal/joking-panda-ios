@@ -14,32 +14,33 @@ import Speech
 class Mouth: NSObject, ObservableObject {
     @Published var phraseSaid: String = ""
     
-    private let audio: Audio
     private var speakCompletion: (() -> Void)?
     private let synthesizer = AVSpeechSynthesizer()
     
-    init(audio: Audio) {
-        self.audio = audio
+    override init() {
+        super.init()
+        synthesizer.delegate = self
     }
     
-    internal func speak(phrase: String, completion: (() -> Void)?) {
+    internal func speak(phrase: String, completion: @escaping (() -> Void)) {
         phraseSaid = ""
         speakCompletion = completion
-        
-        audio.activateAudioSession()
+        AudioManager.shared.activateAudioSession()
         playAudio(for: phrase)
+    }
+    
+    internal func stopSpeaking() {
+        AudioManager.shared.deactivateAudioPlayer()
     }
 }
 
 extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
-    // MARK: - Speech Actions
-    
     // MARK: - AVAudioPlayerDelegate
     
     private func playAudio(for phrase: String) {
         if let url = getAudioURL(for: phrase) {
             phraseSaid = phrase
-            audio.play(url: url, delegate: self)
+            AudioManager.shared.play(url: url, delegate: self)
         }
         else {
             // Fallback on voice synthesis if audio file doesn't exist
@@ -56,7 +57,7 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
-        audio.deactivateAudioPlayer()
+        stopSpeaking()
         if let completion = speakCompletion {
             completion()
         }
@@ -66,7 +67,8 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         let phrase = (utterance.speechString as NSString).substring(with: characterRange)
-        phraseSaid = phrase
+        self.phraseSaid = phrase
+        objectWillChange.send() 
     }
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {

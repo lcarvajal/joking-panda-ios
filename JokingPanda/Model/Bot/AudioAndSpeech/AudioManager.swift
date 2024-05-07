@@ -8,7 +8,9 @@
 import Foundation
 import Speech
 
-class Audio {
+class AudioManager {
+    static let shared = AudioManager()
+    
     internal let audioEngine = AVAudioEngine()
     private var audioPlayer: AVAudioPlayer? = nil
     private let audioSession = AVAudioSession.sharedInstance()
