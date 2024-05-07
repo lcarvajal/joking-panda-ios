@@ -224,6 +224,8 @@
 		8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */; };
 		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
 		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
+		8DE87AAC2BEA8C4B008E6AF2 /* Ear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */; };
+		8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -465,6 +467,8 @@
 		8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
 		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
 		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
+		8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ear.swift; sourceTree = "<group>"; };
+		8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -810,6 +814,8 @@
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
+				8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */,
+				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1173,9 +1179,11 @@
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* MainView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
+				8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
 				8D0DDFFB2B0CADDF00A3A8F8 /* ConversationManager.swift in Sources */,
+				8DE87AAC2BEA8C4B008E6AF2 /* Ear.swift in Sources */,
 				8D0DDFFD2B0CB4E000A3A8F8 /* SpeakAndListen.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D0DDFEB2B0BE2B700A3A8F8 /* Audio.swift in Sources */,
