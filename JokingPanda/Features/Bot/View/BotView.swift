@@ -27,7 +27,8 @@ struct BotView: View {
                     OverlayButtons(showSheet: $showSheet, botViewModel: botViewModel, size: 50)
                 }
             }
-            MessagesView(displayMessages: $displayMessages, botViewModel: botViewModel)
+            MessagesView(displayMessages: $displayMessages, botViewModel: botViewModel).padding()
+            
         }
         .background(Color.background)
     }

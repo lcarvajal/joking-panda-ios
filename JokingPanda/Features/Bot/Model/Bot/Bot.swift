@@ -122,7 +122,6 @@ extension Bot: EarDelegate {
         brain.remember(interpretedPhrase, saidBy: .currentUser)
         brain.moveOnInConversation()
         
-//        triggerCurrentPhraseUpdate(phrase: "", person: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
@@ -141,12 +140,13 @@ extension Bot: MouthDelegate {
         brain.remember(phrase, saidBy: .bot)
         brain.moveOnInConversation()
         
-//        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
         triggerActionUpdate()
         
-        listen(expectedPhrase: "Continue")
+        if !brain.wantsToStartNewJoke {
+            listen(expectedPhrase: brain.getExpectedUserResponse())
+        }
     }
 }

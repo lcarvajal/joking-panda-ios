@@ -7,6 +7,9 @@ import Foundation
 
 class Brain {
     internal var phraseHistory = ""
+    internal var wantsToStartNewJoke: Bool {
+        return stageManager.isStartOfAct
+    }
     
     private let stageManager: StageManager = StageManager()
     
@@ -28,6 +31,10 @@ class Brain {
     }
     
     internal func getInitalPhrase() -> String {
+        return stageManager.currentLine
+    }
+    
+    internal func getExpectedUserResponse() -> String {
         return stageManager.currentLine
     }
     
