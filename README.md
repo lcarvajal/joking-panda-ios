@@ -8,7 +8,5 @@ Author: Lukas Carvajal
 2. Add the key `mixpanelProjectToken` with the Mixpanel project token
 
 ## Todos
-- Add more jokes
-- Write tests for jokes and bot
-- Track furthest joke heard to figure out if user should jump to end
-- Record voice for missing text
+- Record voice for new jokes and phrases
+- Write tests for jokes

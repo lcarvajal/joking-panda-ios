@@ -81,6 +81,13 @@ struct Tool {
 
         return cleanedText
     }
+    
+    static func getAudioURL(for line: String) -> URL? {
+        let audioFileName = Tool.removePunctuation(from: line)
+            .lowercased()
+            .replacingOccurrences(of: " ", with: "-")
+        return Bundle.main.url(forResource: audioFileName, withExtension: "m4a")
+    }
 }
 
 class Array2D {

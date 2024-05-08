@@ -42,7 +42,7 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     // MARK: - AVAudioPlayerDelegate
     
     private func playAudio(for phrase: String) {
-        if let url = getAudioURL(for: phrase) {
+        if let url = Tool.getAudioURL(for: phrase) {
             phraseSaid = phrase
             delegate?.isSayingPhrase(self.phraseSaid)
             AudioManager.shared.play(url: url, delegate: self)
@@ -51,13 +51,6 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
             // Fallback on voice synthesis if audio file doesn't exist
             self.synthesizer.botSpeak(string: phrase)
         }
-    }
-    
-    private func getAudioURL(for phrase: String) -> URL? {
-        let audioFileName = Tool.removePunctuation(from: phrase)
-            .lowercased()
-            .replacingOccurrences(of: " ", with: "-")
-        return Bundle.main.url(forResource: audioFileName, withExtension: "m4a")
     }
     
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
