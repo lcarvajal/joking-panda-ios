@@ -83,12 +83,14 @@ class Bot: NSObject, ObservableObject  {
      */
     private func triggerCurrentPhraseUpdate(phrase: String, person: Person) {
         let currentPhrase: String
+        
         switch person {
         case .bot:
             currentPhrase = "🐼 \(phrase)"
         case .currentUser:
             currentPhrase = "🎙️ \(phrase)"
         }
+        
         delegate?.currentPhraseDidUpdate(phrase: currentPhrase)
     }
     
@@ -117,7 +119,7 @@ extension Bot: EarDelegate {
         let interpretedPhrase = self.brain.interpret(phraseHeard: phrase, phraseExpected: phrase)
         brain.remember(interpretedPhrase, saidBy: .currentUser)
         
-        triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
+        triggerCurrentPhraseUpdate(phrase: "", person: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
@@ -135,7 +137,7 @@ extension Bot: MouthDelegate {
     func didSayPhrase(_ phrase: String) {
         brain.remember(phrase, saidBy: .bot)
         
-        triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
+        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
