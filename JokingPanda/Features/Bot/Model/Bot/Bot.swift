@@ -11,7 +11,7 @@ import Speech
 
 protocol BotDelegate: AnyObject {
     func actionDidUpdate(action: AnimationAction)
-    func currentPhraseDidUpdate(phrase: String, person: Person)
+    func currentPhraseDidUpdate(phrase: String)
     func phraseHistoryDidUpdate(phraseHistory: String)
 }
 
@@ -41,7 +41,8 @@ class Bot: NSObject, ObservableObject  {
      Stops speaking and listening.
      */
     internal func stopEverything() {
-        updateAction(.stopped)
+        action = .stopped
+        triggerActionUpdate()
         mouth.stopSpeaking()
         ear.stopListening()
     }
@@ -50,7 +51,8 @@ class Bot: NSObject, ObservableObject  {
      Recursive function where the bot starts to speak, listens to a response, and speaks again if needed.
      */
     private func speak(phrase: String) {
-        updateAction(.speaking)
+        action = .speaking
+        triggerActionUpdate()
         mouth.speak(phrase: phrase)
     }
     
@@ -58,7 +60,8 @@ class Bot: NSObject, ObservableObject  {
      Sets action to listening, captures what a user says, adjusts it based on expected phrase, and remembers the phrase heard.
      */
     private func listen(expectedPhrase: String?) {
-        updateAction(.listening)
+        action = .listening
+        triggerActionUpdate()
         ear.listen(expectedPhrase: expectedPhrase)
     }
     
@@ -67,44 +70,77 @@ class Bot: NSObject, ObservableObject  {
      */
     private func respond(to phraseHeard: String) {
         if let response = brain.getResponsePhrase(for: phraseHeard) {
-            self.speak(phrase: response)
+            speak(phrase: response)
         }
         else {
-            self.updateAction(.stopped)
+            action = .stopped
+            triggerActionUpdate()
         }
     }
     
-    private func updateAction(_ updatedAction: AnimationAction) {
-        action = updatedAction
-        delegate?.actionDidUpdate(action: updatedAction)
+    /**
+     Trigger current phrase update for view model to show what is being said / heard.
+     */
+    private func triggerCurrentPhraseUpdate(phrase: String, person: Person) {
+        let currentPhrase: String
+        switch person {
+        case .bot:
+            currentPhrase = "🐼 \(phrase)"
+        case .currentUser:
+            currentPhrase = "🎙️ \(phrase)"
+        }
+        delegate?.currentPhraseDidUpdate(phrase: currentPhrase)
+    }
+    
+    /**
+     Trigger action update for view model to show different animations based on actions.
+     */
+    private func triggerActionUpdate() {
+        delegate?.actionDidUpdate(action: action)
+    }
+    
+    /**
+     Trigger phrase history update for view model to show all phrases said / heard.
+     */
+    private func triggerPhraseHistoryUpdate() {
+        delegate?.phraseHistoryDidUpdate(phraseHistory: brain.getPhraseHistory())
     }
 }
 
 extension Bot: EarDelegate {
     func isHearingPhrase(_ phrase: String) {
-        delegate?.currentPhraseDidUpdate(phrase: phrase, person: .currentUser)
+        triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
     }
     
     func didHearPhrase(_ phrase: String) {
+        
         let interpretedPhrase = self.brain.interpret(phraseHeard: phrase, phraseExpected: phrase)
         brain.remember(interpretedPhrase, saidBy: .currentUser)
-        delegate?.currentPhraseDidUpdate(phrase: "", person: .currentUser)
-        delegate?.phraseHistoryDidUpdate(phraseHistory: brain.getPhraseHistory())
-        updateAction(.stopped)
+        
+        triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
+        triggerPhraseHistoryUpdate()
+        
+        action = .stopped
+        triggerActionUpdate()
+        
         respond(to: interpretedPhrase)
     }
 }
 
 extension Bot: MouthDelegate {
     func isSayingPhrase(_ phrase: String) {
-        delegate?.currentPhraseDidUpdate(phrase: phrase, person: .bot)
+        triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
     }
     
     func didSayPhrase(_ phrase: String) {
         brain.remember(phrase, saidBy: .bot)
-        delegate?.currentPhraseDidUpdate(phrase: "", person: .currentUser)
-        delegate?.phraseHistoryDidUpdate(phraseHistory: brain.getPhraseHistory())
-        updateAction(.stopped)
+        
+        triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
+        triggerPhraseHistoryUpdate()
+        
+        action = .stopped
+        triggerActionUpdate()
+        
         listen(expectedPhrase: "Continue")
     }
 }
