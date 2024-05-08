@@ -9,7 +9,7 @@ import Foundation
 
 struct Act: Hashable, Codable, Identifiable {
     var id: Int
-    var phrases: [String]
+    var lines: [String]
 }
 
 enum ActType {

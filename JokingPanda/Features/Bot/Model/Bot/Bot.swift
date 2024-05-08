@@ -33,6 +33,7 @@ class Bot: NSObject, ObservableObject  {
     Kick off conversation.
      */
     internal func startConversation() {
+        brain.startConversation()
         let initalPhrase = brain.getInitalPhrase()
         speak(phrase: initalPhrase)
     }
@@ -42,6 +43,7 @@ class Bot: NSObject, ObservableObject  {
      */
     internal func stopEverything() {
         action = .stopped
+        brain.stopConversation()
         triggerActionUpdate()
         mouth.stopSpeaking()
         ear.stopListening()
@@ -53,6 +55,7 @@ class Bot: NSObject, ObservableObject  {
     private func speak(phrase: String) {
         action = .speaking
         triggerActionUpdate()
+        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
         mouth.speak(phrase: phrase)
     }
     
@@ -62,6 +65,7 @@ class Bot: NSObject, ObservableObject  {
     private func listen(expectedPhrase: String?) {
         action = .listening
         triggerActionUpdate()
+        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
         ear.listen(expectedPhrase: expectedPhrase)
     }
     
@@ -90,7 +94,6 @@ class Bot: NSObject, ObservableObject  {
         case .currentUser:
             currentPhrase = "🎙️ \(phrase)"
         }
-        
         delegate?.currentPhraseDidUpdate(phrase: currentPhrase)
     }
     
@@ -115,11 +118,11 @@ extension Bot: EarDelegate {
     }
     
     func didHearPhrase(_ phrase: String) {
-        
         let interpretedPhrase = self.brain.interpret(phraseHeard: phrase, phraseExpected: phrase)
         brain.remember(interpretedPhrase, saidBy: .currentUser)
+        brain.moveOnInConversation()
         
-        triggerCurrentPhraseUpdate(phrase: "", person: .bot)
+//        triggerCurrentPhraseUpdate(phrase: "", person: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
@@ -136,8 +139,9 @@ extension Bot: MouthDelegate {
     
     func didSayPhrase(_ phrase: String) {
         brain.remember(phrase, saidBy: .bot)
+        brain.moveOnInConversation()
         
-        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
+//        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
         triggerPhraseHistoryUpdate()
         
         action = .stopped

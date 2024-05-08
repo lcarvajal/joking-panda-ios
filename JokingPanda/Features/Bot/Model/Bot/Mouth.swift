@@ -44,6 +44,7 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     private func playAudio(for phrase: String) {
         if let url = getAudioURL(for: phrase) {
             phraseSaid = phrase
+            delegate?.isSayingPhrase(self.phraseSaid)
             AudioManager.shared.play(url: url, delegate: self)
         }
         else {
