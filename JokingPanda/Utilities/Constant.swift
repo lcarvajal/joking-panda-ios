@@ -13,24 +13,11 @@ struct Constant {
         static let conversationStarted = "Conversation Started"
         
         struct Property {
-            static let conversationId = "Conversation Id"
+            static let actId = "Conversation Id"
         }
     }
     
-    struct ImageName {
-        
-        struct CoolPanda {
-            static private let coolPanda = "cool-panda"
-            static let handsDown = "\(coolPanda)-hands-down"
-            static let oneArmWaveLeft = "\(coolPanda)-one-arm-wave-left"
-            static let oneArmWaveRight = "\(coolPanda)-one-arm-wave-right"
-            static let tiltLeft = "\(coolPanda)-tilt-left"
-            static let tiltRight = "\(coolPanda)-tilt-right"
-            static let twoArmWaveLeft = "\(coolPanda)-two-arm-wave-left"
-            static let twoArmWaveRight = "\(coolPanda)-two-arm-wave-right"
-            
-        }
-        
+    struct ImageName {        
         struct TuxedoPanda {
             static private let tuxedoPanda = "tuxedo-panda"
             static let armRaised = "\(tuxedoPanda)-arm-raised"
@@ -54,7 +41,8 @@ struct Constant {
     }
     
     struct UserDefault {
-        static let conversationId = "conversationId"
+        static let appVersion = "appVersion"
+        static let actId = "conversationId"
     }
     
     struct Url {

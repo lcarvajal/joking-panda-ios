@@ -131,6 +131,7 @@
 		8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
 		8D5946082BEBC78B00EAF79A /* BotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946072BEBC78B00EAF79A /* BotViewModel.swift */; };
+		8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59460A2BEC139E00EAF79A /* ConstantLine.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -366,7 +367,7 @@
 		8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8D5946072BEBC78B00EAF79A /* BotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotViewModel.swift; sourceTree = "<group>"; };
-		8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "knock-knock.m4a"; path = "../../../../../Desktop/panda audio files/1 round/knock-knock.m4a"; sourceTree = "<group>"; };
+		8D59460A2BEC139E00EAF79A /* ConstantLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantLine.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -491,7 +492,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8D0A79182AFB8C4000317DAF /* Phrases */ = {
+		8D0A79182AFB8C4000317DAF /* Lines */ = {
 			isa = PBXGroup;
 			children = (
 				8D8EAF3B2AFFF27700F01B71 /* a-herd-you-were-home-so-here-i-am.m4a */,
@@ -597,7 +598,6 @@
 				8D2DFF602AFD66B8003E77B8 /* ketchup-with-me-and-ill-tell-you.m4a */,
 				8D2DFF9A2AFD66BC003E77B8 /* ketchup.m4a */,
 				8D8EAF272AFFF27700F01B71 /* kirtch.m4a */,
-				8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */,
 				8D0A791B2AFB8F7F00317DAF /* knock-knock.m4a */,
 				8D2DFF712AFD66B9003E77B8 /* leaf-me-alone.m4a */,
 				8D2DFF7D2AFD66BA003E77B8 /* leaf.m4a */,
@@ -678,25 +678,18 @@
 				8D8EAF122AFFF27600F01B71 /* yukon-say-that-again.m4a */,
 				8D8EAF4B2AFFF27800F01B71 /* yukon.m4a */,
 			);
-			path = Phrases;
+			path = Lines;
 			sourceTree = "<group>";
 		};
 		8D0DDFF02B0BEE2800A3A8F8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DDFF12B0BEE4000A3A8F8 /* Helper */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		8D0DDFF12B0BEE4000A3A8F8 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
 				8D0A790F2AF15A6100317DAF /* Constant.swift */,
+				8D59460A2BEC139E00EAF79A /* ConstantLine.swift */,
 				8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */,
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 			);
-			path = Helper;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		8D5945FE2BEBA84800EAF79A /* Theater */ = {
@@ -704,6 +697,7 @@
 			children = (
 				8DC97D952AE92CB0002CEA1E /* Act.swift */,
 				8D0DE0042B0E4CD900A3A8F8 /* Play.swift */,
+				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
 			);
 			path = Theater;
 			sourceTree = "<group>";
@@ -870,7 +864,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */,
-				8D0A79182AFB8C4000317DAF /* Phrases */,
+				8D0A79182AFB8C4000317DAF /* Lines */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
 			path = Resources;
@@ -885,7 +879,6 @@
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 				8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */,
 				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
-				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
 				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
@@ -1238,6 +1231,7 @@
 				8DE87AAC2BEA8C4B008E6AF2 /* Ear.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D0DDFEB2B0BE2B700A3A8F8 /* AudioManager.swift in Sources */,
+				8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */,
 				8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */,
 				8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */,
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,
@@ -1429,7 +1423,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPanda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1465,7 +1459,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JokingPanda;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

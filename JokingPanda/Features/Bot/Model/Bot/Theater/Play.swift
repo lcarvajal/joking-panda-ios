@@ -45,7 +45,7 @@ class Play {
         switch type {
         case .joking:
             // FIXME: Property should get set correctly for conversation type
-            let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
+            let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
             if let index = acts.firstIndex(where: { $0.id == id }) {
                 self.actIndex = index
             }
@@ -61,7 +61,7 @@ class Play {
         
         // FIXME: Property should get set correctly for different conversation types
         Event.track(Constant.Event.conversationStarted, properties: [
-            Constant.Event.Property.conversationId: currentAct.id
+            Constant.Event.Property.actId: currentAct.id
           ])
     }
     
@@ -89,7 +89,7 @@ class Play {
         switch type {
         case .joking:
             // FIXME: Property should get set correctly for conversation types
-            UserDefaults.standard.set(acts[actIndex].id, forKey: Constant.UserDefault.conversationId)
+            UserDefaults.standard.set(acts[actIndex].id, forKey: Constant.UserDefault.actId)
         default:
             return
         }

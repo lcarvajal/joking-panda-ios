@@ -76,10 +76,10 @@ class Brain {
     
     private func getClarificationResponse() -> String {
         switch stageManager.currentLine {
-        case "Who’s there?":
-            return "Let's try that again. When I say 'Knock, knock.' you say 'Who's there'? Knock knock."
+        case ConstantLine.whosThere:
+            return ConstantLine.explainKnockKnock
         default:
-            return "I'm sorry, could you say that again?"
+            return ConstantLine.couldYouRepeatWhatYouSaid
         }
     }
 }
