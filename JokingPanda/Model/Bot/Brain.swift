@@ -25,6 +25,10 @@ class Brain: NSObject, ObservableObject {
         }
     }
     
+    internal func getInitalPhrase() -> String {
+        return "Hello, world!"
+    }
+    
     internal func getResponsePhrase(for phraseHeard: String?) -> String? {
         if phraseHeard == "Continue" {
             return "Okay, we can continue."

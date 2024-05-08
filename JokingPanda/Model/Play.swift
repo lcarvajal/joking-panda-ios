@@ -7,27 +7,27 @@
 
 import Foundation
 
-class Conversations {
-    internal let type: ConversationType
-    internal var currentConversation: Conversation { return conversations[index] }
-    internal var currentPhrase: String { return currentConversation.phrases[phraseIndex] }
+class Play {
+    internal let type: ActType
+    internal var currentAct: Act { return acts[index] }
+    internal var currentLine: String { return currentAct.phrases[phraseIndex] }
     
-    internal var isStartOfConversation: Bool { return phraseIndex == 0 }
-    internal var isConversing = false
-    internal var personTalking: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
+    internal var isStartOfAct: Bool { return phraseIndex == 0 }
+    internal var isActing = false
+    internal var personActing: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
     
-    private let conversations: [Conversation]
+    private let acts: [Act]
     private var index = 0
     private var phraseIndex = 0
     
-    init(type: ConversationType) {
+    init(type: ActType) {
         self.type = type
         
         switch type {
         case .deciding:
-            conversations = [Conversation(id: 1, phrases: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
+            acts = [Act(id: 1, phrases: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         case .joking:
-            conversations = Tool.load("knockKnockJokeData.json")
+            acts = Tool.load("knockKnockJokeData.json")
         }
         
         pickUpLastConversation()
@@ -38,7 +38,7 @@ class Conversations {
         case .joking:
             // FIXME: Property should get set correctly for conversation type
             let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.conversationId)
-            if let index = conversations.firstIndex(where: { $0.id == id }) {
+            if let index = acts.firstIndex(where: { $0.id == id }) {
                 self.index = index
             }
         default:
@@ -49,24 +49,24 @@ class Conversations {
     // MARK: - Actions
     
     internal func startConversation() {
-        isConversing = true
+        isActing = true
         
         // FIXME: Property should get set correctly for different conversation types
         Event.track(Constant.Event.conversationStarted, properties: [
-            Constant.Event.Property.conversationId: currentConversation.id
+            Constant.Event.Property.conversationId: currentAct.id
           ])
     }
     
     internal func stopConversation() {
         phraseIndex = 0
-        isConversing = false
+        isActing = false
         queueNextConversation()
     }
     
     internal func queueNextPhrase() {
         phraseIndex += 1
         
-        if phraseIndex > (currentConversation.phrases.count - 1) {
+        if phraseIndex > (currentAct.phrases.count - 1) {
             stopConversation()
         }
     }
@@ -74,14 +74,14 @@ class Conversations {
     private func queueNextConversation() {
         index += 1
         
-        if index > (conversations.count - 1) {
+        if index > (acts.count - 1) {
             index = 0
         }
         
         switch type {
         case .joking:
             // FIXME: Property should get set correctly for conversation types
-            UserDefaults.standard.set(conversations[index].id, forKey: Constant.UserDefault.conversationId)
+            UserDefaults.standard.set(acts[index].id, forKey: Constant.UserDefault.conversationId)
         default:
             return
         }

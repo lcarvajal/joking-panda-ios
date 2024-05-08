@@ -7,19 +7,19 @@
 
 import Foundation
 
-class ConversationManager: NSObject, ObservableObject {
+class StageManager: NSObject, ObservableObject {
     @Published var history = ""
-    @Published var selectedType: ConversationType = .deciding
+    @Published var selectedType: ActType = .deciding
     
-    internal var currentConversations: Conversations { return conversations[selectedType]! }
-    internal var currentPhrase: String { return currentConversations.currentPhrase }
-    internal var isStartOfConversation: Bool { return currentConversations.isStartOfConversation }
-    internal var isConversing: Bool { return currentConversations.isConversing }
-    internal var personTalking: Person { return currentConversations.personTalking }
+    internal var currentPlay: Play { return plays[selectedType]! }
+    internal var currentLine: String { return currentPlay.currentLine }
+    internal var isStartOfAct: Bool { return currentPlay.isStartOfAct }
+    internal var isActing: Bool { return currentPlay.isActing }
+    internal var personActing: Person { return currentPlay.personActing }
     
-    private let conversations: [ConversationType: Conversations] = [
-        .deciding : Conversations(type: .deciding),
-        .joking: Conversations(type: .joking)
+    private let plays: [ActType: Play] = [
+        .deciding : Play(type: .deciding),
+        .joking: Play(type: .joking)
     ]
     private var phraseHistory: [String] = []
     
@@ -27,7 +27,7 @@ class ConversationManager: NSObject, ObservableObject {
     
     // MARK: - Actions
     
-    internal func startConversation(type: ConversationType? = nil) {
+    internal func startConversation(type: ActType? = nil) {
         if let type = type {
             selectedType = type
         }
@@ -36,28 +36,28 @@ class ConversationManager: NSObject, ObservableObject {
             history += "\n"
         }
         
-        currentConversations.startConversation()
+        currentPlay.startConversation()
     }
     
     internal func stopConversation() {
-        currentConversations.stopConversation()
+        currentPlay.stopConversation()
     }
     
     internal func queueNextPhrase() {
-        if currentConversations.personTalking == .currentUser,
+        if currentPlay.personActing == .currentUser,
            let lastPhrase = phraseHistory.last,
            let trigger = getConversationShiftTrigger(phrase: lastPhrase),
            trigger != selectedType {
-            currentConversations.queueNextPhrase()
-            currentConversations.stopConversation()
+            currentPlay.queueNextPhrase()
+            currentPlay.stopConversation()
             startConversation(type: trigger)
         }
         else {
-            currentConversations.queueNextPhrase()
+            currentPlay.queueNextPhrase()
         }
     }
     
-    private func getConversationShiftTrigger(phrase: String) -> ConversationType? {
+    private func getConversationShiftTrigger(phrase: String) -> ActType? {
         let phraseToCheck = phrase.lowercased()
         
         switch selectedType {
@@ -78,11 +78,11 @@ class ConversationManager: NSObject, ObservableObject {
             history += "\n"
         }
         
-        var phraseToAdd = currentPhrase
+        var phraseToAdd = currentLine
         if let speech = recognizedSpeech {
             if selectedType == .joking {
                 // Use recognized speech if it is very different from the current expected phrase
-                phraseToAdd = Tool.levenshtein(aStr: speech, bStr: currentPhrase) < 5 ? currentPhrase : speech
+                phraseToAdd = Tool.levenshtein(aStr: speech, bStr: currentLine) < 5 ? currentLine : speech
             }
             else {
                 phraseToAdd = speech
@@ -90,7 +90,7 @@ class ConversationManager: NSObject, ObservableObject {
         }
         phraseHistory.append(phraseToAdd)
         
-        switch personTalking {
+        switch personActing {
         case .bot:
             phraseToAdd = "🐼 " + phraseToAdd
         case .currentUser:
