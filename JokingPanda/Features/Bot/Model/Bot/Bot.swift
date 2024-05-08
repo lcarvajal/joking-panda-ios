@@ -35,7 +35,7 @@ class Bot: NSObject, ObservableObject  {
     internal func startConversation() {
         brain.startConversation()
         let initalPhrase = brain.getInitalPhrase()
-        speak(phrase: initalPhrase)
+        speak(initalPhrase)
     }
     
     /**
@@ -52,7 +52,7 @@ class Bot: NSObject, ObservableObject  {
     /**
      Recursive function where the bot starts to speak, listens to a response, and speaks again if needed.
      */
-    private func speak(phrase: String) {
+    private func speak(_ phrase: String) {
         action = .speaking
         triggerActionUpdate()
         triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
@@ -72,9 +72,9 @@ class Bot: NSObject, ObservableObject  {
     /**
      Depending on the conversation history and current conversation, this function calls `speak()` again or sets action to stop since the conversation is over.
      */
-    private func respond(to phraseHeard: String) {
-        if let response = brain.getResponsePhrase(for: phraseHeard) {
-            speak(phrase: response)
+    private func respond() {
+        if let phrase = brain.getResponse() {
+            speak(phrase)
         }
         else {
             action = .stopped
@@ -118,16 +118,14 @@ extension Bot: EarDelegate {
     }
     
     func didHearPhrase(_ phrase: String) {
-        let interpretedPhrase = self.brain.interpret(phraseHeard: phrase, phraseExpected: phrase)
-        brain.remember(interpretedPhrase, saidBy: .currentUser)
-        brain.moveOnInConversation()
+        brain.remember(phrase, saidBy: .currentUser)
         
         triggerPhraseHistoryUpdate()
         
         action = .stopped
         triggerActionUpdate()
         
-        respond(to: interpretedPhrase)
+        respond()
     }
 }
 
@@ -138,7 +136,6 @@ extension Bot: MouthDelegate {
     
     func didSayPhrase(_ phrase: String) {
         brain.remember(phrase, saidBy: .bot)
-        brain.moveOnInConversation()
         
         triggerPhraseHistoryUpdate()
         
