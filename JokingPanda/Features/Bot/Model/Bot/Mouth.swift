@@ -11,10 +11,15 @@
 import Foundation
 import Speech
 
-class Mouth: NSObject, ObservableObject {
-    @Published var phraseSaid: String = ""
+protocol MouthDelegate: AnyObject {
+    func isSayingPhrase(_ phrase: String)
+    func didSayPhrase(_ phrase: String)
+}
+
+class Mouth: NSObject {
+    weak var delegate: MouthDelegate?
     
-    private var speakCompletion: (() -> Void)?
+    private var phraseSaid: String = ""
     private let synthesizer = AVSpeechSynthesizer()
     
     override init() {
@@ -22,9 +27,8 @@ class Mouth: NSObject, ObservableObject {
         synthesizer.delegate = self
     }
     
-    internal func speak(phrase: String, completion: @escaping (() -> Void)) {
+    internal func speak(phrase: String) {
         phraseSaid = ""
-        speakCompletion = completion
         AudioManager.shared.activateAudioSession()
         playAudio(for: phrase)
     }
@@ -58,9 +62,7 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // FIXME: Handle successful and unsuccessful cases
         stopSpeaking()
-        if let completion = speakCompletion {
-            completion()
-        }
+        delegate?.didSayPhrase(self.phraseSaid)
     }
     
     // MARK: - AVSpeechSynthesizerDelegate
@@ -68,13 +70,11 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         let phrase = (utterance.speechString as NSString).substring(with: characterRange)
         self.phraseSaid = phrase
-        objectWillChange.send() 
+        delegate?.isSayingPhrase(self.phraseSaid)
     }
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
-        if let completion = speakCompletion {
-            completion()
-        }
+        delegate?.didSayPhrase(self.phraseSaid)
     }
 }

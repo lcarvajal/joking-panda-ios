@@ -9,10 +9,14 @@
 import Foundation
 import Speech
 
-class Ear: NSObject, ObservableObject {
-    @Published var phraseHeard: String = ""
-    
-    private var listenCompletion: ((String) -> Void)?
+protocol EarDelegate: AnyObject {
+    func isHearingPhrase(_ phrase: String)
+    func didHearPhrase(_ phrase: String)
+}
+
+class Ear: NSObject {
+    internal weak var delegate: EarDelegate?
+    private var phraseHeard: String = ""
     private let speechRecognizer = SpeechRecognizer()
     
     override init() {
@@ -20,9 +24,8 @@ class Ear: NSObject, ObservableObject {
         speechRecognizer.setDelegate(delegate: self)
     }
     
-    internal func listen(expectedPhrase: String?, completion: @escaping (_ phraseHeard: String) -> Void) {
+    internal func listen(expectedPhrase: String?) {
         phraseHeard = ""
-        listenCompletion = completion
         setUpSpeechRecognizer(expectedPhrase: expectedPhrase)
         activateSpeechRecognizer()
         stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: .seconds(3))
@@ -41,6 +44,7 @@ extension Ear: SFSpeechRecognizerDelegate {
         speechRecognizer.setInputNode(inputNode: AudioManager.shared.audioEngine.inputNode)
         speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
             self.phraseHeard = phraseHeard
+            self.delegate?.isHearingPhrase(phraseHeard)
         } errorCompletion: { error in
             debugPrint("Error capturing speech: \(error.debugDescription)")
             self.stopListening()
@@ -64,9 +68,7 @@ extension Ear: SFSpeechRecognizerDelegate {
                 self.stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: intervalsToRecognizeSpeech)
             }
             else {
-                if let completion = self.listenCompletion {
-                    completion(self.phraseHeard)
-                }
+                self.delegate?.didHearPhrase(self.phraseHeard)
                 self.stopListening()
             }
         }
