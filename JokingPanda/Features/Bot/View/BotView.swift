@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct BotView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var showSheet = false
@@ -44,5 +44,5 @@ struct MainView: View {
 }
 
 #Preview {
-    MainView()
+    BotView()
 }
