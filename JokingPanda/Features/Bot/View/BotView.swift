@@ -10,35 +10,34 @@ import SwiftUI
 struct BotView: View {
     @Environment(\.scenePhase) var scenePhase
     
-    @State var showSheet = false
+    @State var botViewModel = BotViewModel()
     @State var displayMessages = false
-    
-    @StateObject var bot = Bot()
+    @State var showSheet = false
     
     var body: some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
-                    AnimationView(geometry: .constant(geometry), status: $bot.action)
+                    AnimationView(geometry: .constant(geometry), status: $botViewModel.action)
                     .background(Color.tappableArea)
                     .onTapGesture {
                         handleTapOnBot()
                     }
                     
-                    OverlayButtons(showSheet: $showSheet, bot: bot, size: 50)
+                    OverlayButtons(showSheet: $showSheet, botViewModel: botViewModel, size: 50)
                 }
             }
-            MessagesView(displayMessages: $displayMessages, bot: bot, ear: bot.ear, mouth: bot.mouth)
+            MessagesView(displayMessages: $displayMessages, botViewModel: botViewModel)
         }
         .background(Color.background)
     }
     
     private func handleTapOnBot() {
-        if bot.action == .stopped {
-            bot.startConversation()
+        if botViewModel.action == .stopped {
+            botViewModel.startConversation()
         }
         else {
-            bot.stopEverything()
+            botViewModel.stopEverything()
         }
     }
 }

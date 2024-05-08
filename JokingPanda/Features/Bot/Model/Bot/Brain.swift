@@ -5,8 +5,8 @@
 
 import Foundation
 
-class Brain: NSObject, ObservableObject {
-    @Published var phraseHistory = ""
+class Brain {
+    internal var phraseHistory = ""
     
     internal func interpret(phraseHeard: String, phraseExpected: String) -> String {
         return Tool.levenshtein(aStr: phraseHeard, bStr: phraseExpected) < 5 ? phraseExpected : phraseHeard
@@ -36,5 +36,9 @@ class Brain: NSObject, ObservableObject {
         else {
             return nil
         }
+    }
+    
+    internal func getPhraseHistory() -> String {
+        return phraseHistory
     }
 }

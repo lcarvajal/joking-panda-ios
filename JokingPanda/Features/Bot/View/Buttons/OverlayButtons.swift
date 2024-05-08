@@ -9,12 +9,12 @@ import SwiftUI
 
 struct OverlayButtons: View {
     @Binding var showSheet: Bool
-    @ObservedObject var bot: Bot
+    internal var botViewModel: BotViewModel
     internal let size: CGFloat
     
     var body: some View {
         VStack {
-            if bot.action == .stopped {
+            if botViewModel.action == .stopped {
                 HStack {
                     Spacer()
                     SettingsButton(showSheet: $showSheet)

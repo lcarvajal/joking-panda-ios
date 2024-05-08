@@ -9,9 +9,7 @@ import SwiftUI
 
 struct MessagesView: View {
     @Binding var displayMessages: Bool
-    @ObservedObject var bot: Bot
-    @ObservedObject var ear: Ear
-    @ObservedObject var mouth: Mouth
+    internal var botViewModel: BotViewModel
     
     var body: some View {
         VStack {
@@ -27,7 +25,7 @@ struct MessagesView: View {
             
             ScrollViewReader { proxy in
                 ScrollView {
-                    Text(bot.brain.phraseHistory)
+                    Text(botViewModel.phraseHistory)
                         .id(1)            // this is where to add an id
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
@@ -36,7 +34,7 @@ struct MessagesView: View {
                                alignment: .leading)
                 }
                 .background(Color.background)
-                .onChange(of: bot.brain.phraseHistory) { _ in
+                .onChange(of: botViewModel.phraseHistory) { _ in
                     proxy.scrollTo(1, anchor: .bottom)
                 }
                 .onChange(of: displayMessages) { _ in
@@ -44,10 +42,9 @@ struct MessagesView: View {
                 }
             }
             
-            switch bot.action {
-            case .speaking:
+            if botViewModel.action != .stopped {
                 HStack {
-                    Text("🐼 " + mouth.phraseSaid)
+                    Text(botViewModel.currentPhrase)
                         .font(.system(size: 26, design: .rounded))
                         .fixedSize(horizontal: false, vertical: true)
                         .frame(maxWidth: .infinity)
@@ -56,18 +53,6 @@ struct MessagesView: View {
                 .background(Color.backgroundLighter)
                 .cornerRadius(10)
                 .padding(.top, 0)
-            case .listening:
-                HStack {
-                    Text("🎙️ " + bot.ear.phraseHeard)
-                        .font(.system(size: 26, design: .rounded))
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity)
-                        .padding(10)
-                }
-                .background(Color.backgroundLighter)
-                .cornerRadius(10)
-                .padding(.top, 0)
-            default: EmptyView()
             }
         }
         .frame(maxHeight: displayMessages ? .infinity : 100)
