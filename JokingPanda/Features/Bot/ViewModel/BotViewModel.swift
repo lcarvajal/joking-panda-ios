@@ -32,13 +32,8 @@ extension BotViewModel: BotDelegate {
         self.action = action
     }
     
-    func currentPhraseDidUpdate(phrase: String, person: Person) {
-        switch person {
-        case .bot:
-            currentPhrase = "🐼 \(phrase)"
-        case .currentUser:
-            currentPhrase = "🎙️ \(phrase)"
-        }
+    func currentPhraseDidUpdate(phrase: String) {
+        self.currentPhrase = phrase
     }
     
     func phraseHistoryDidUpdate(phraseHistory: String) {
