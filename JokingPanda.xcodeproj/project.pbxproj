@@ -17,7 +17,7 @@
 		8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */; };
 		8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */; };
 		8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */; };
-		8D0DDFF72B0C0B0100A3A8F8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */; };
+		8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF62B0C0B0100A3A8F8 /* BotView.swift */; };
 		8D0DDFFB2B0CADDF00A3A8F8 /* StageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */; };
 		8D0DE0052B0E4CD900A3A8F8 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0042B0E4CD900A3A8F8 /* Play.swift */; };
 		8D0DE00B2B0EA02500A3A8F8 /* run-home-vox-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */; };
@@ -134,6 +134,7 @@
 		8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */; };
 		8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
+		8D5946082BEBC78B00EAF79A /* BotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946072BEBC78B00EAF79A /* BotViewModel.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -255,7 +256,7 @@
 		8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
 		8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVSpeechSynthesizer.swift; sourceTree = "<group>"; };
 		8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		8D0DDFF62B0C0B0100A3A8F8 /* BotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotView.swift; sourceTree = "<group>"; };
 		8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageManager.swift; sourceTree = "<group>"; };
 		8D0DE0042B0E4CD900A3A8F8 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		8D0DE0072B0EA02500A3A8F8 /* run-home-vox-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "run-home-vox-song.mp3"; sourceTree = "<group>"; };
@@ -372,6 +373,7 @@
 		8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsView.swift; sourceTree = "<group>"; };
 		8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		8D5946072BEBC78B00EAF79A /* BotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotViewModel.swift; sourceTree = "<group>"; };
 		8D8EAF0C2AFD6A1200F01B71 /* knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "knock-knock.m4a"; path = "../../../../../Desktop/panda audio files/1 round/knock-knock.m4a"; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
@@ -687,12 +689,12 @@
 			path = Phrases;
 			sourceTree = "<group>";
 		};
-		8D0DDFF02B0BEE2800A3A8F8 /* Extension */ = {
+		8D0DDFF02B0BEE2800A3A8F8 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */,
+				8D0DDFF12B0BEE4000A3A8F8 /* Helper */,
 			);
-			path = Extension;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		8D0DDFF12B0BEE4000A3A8F8 /* Helper */ = {
@@ -703,14 +705,6 @@
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 			);
 			path = Helper;
-			sourceTree = "<group>";
-		};
-		8D0DE0032B0CD4C500A3A8F8 /* Button */ = {
-			isa = PBXGroup;
-			children = (
-				8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */,
-			);
-			path = Button;
 			sourceTree = "<group>";
 		};
 		8D0DE0062B0E9FFD00A3A8F8 /* Songs */ = {
@@ -724,12 +718,92 @@
 			path = Songs;
 			sourceTree = "<group>";
 		};
-		8D2DFF5D2AFC4C4F003E77B8 /* Style */ = {
+		8D5945FE2BEBA84800EAF79A /* Theater */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D952AE92CB0002CEA1E /* Act.swift */,
+				8D0DE0042B0E4CD900A3A8F8 /* Play.swift */,
+				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
+			);
+			path = Theater;
+			sourceTree = "<group>";
+		};
+		8D5945FF2BEBC4A200EAF79A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D622AE670FF002CEA1E /* BaseView.swift */,
+				8D5946022BEBC59E00EAF79A /* Onboarding */,
+				8D5946012BEBC57400EAF79A /* Bot */,
+				8D5946032BEBC5E900EAF79A /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		8D5946002BEBC56300EAF79A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8D0DDFEE2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8D5946012BEBC57400EAF79A /* Bot */ = {
+			isa = PBXGroup;
+			children = (
+				8DC97D8A2AE673C0002CEA1E /* Model */,
+				8DC97D8B2AE673CB002CEA1E /* View */,
+				8D5946052BEBC6D000EAF79A /* ViewModel */,
+			);
+			path = Bot;
+			sourceTree = "<group>";
+		};
+		8D5946022BEBC59E00EAF79A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8D5946032BEBC5E900EAF79A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8D5946042BEBC64A00EAF79A /* Styles */ = {
 			isa = PBXGroup;
 			children = (
 				8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */,
 			);
-			path = Style;
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		8D5946052BEBC6D000EAF79A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8D5946072BEBC78B00EAF79A /* BotViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8D5946062BEBC73F00EAF79A /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		8D5946092BEBC8AE00EAF79A /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				8D0A79142AF3B02B00317DAF /* AppDelegate.swift */,
+				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
+			);
+			path = Lifecycle;
 			sourceTree = "<group>";
 		};
 		8DC97D542AE670FF002CEA1E = {
@@ -756,12 +830,11 @@
 		8DC97D5F2AE670FF002CEA1E /* JokingPanda */ = {
 			isa = PBXGroup;
 			children = (
-				8D0A79142AF3B02B00317DAF /* AppDelegate.swift */,
-				8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */,
-				8DC97D8A2AE673C0002CEA1E /* Model */,
-				8DC97D8B2AE673CB002CEA1E /* View */,
-				8D0DDFF02B0BEE2800A3A8F8 /* Extension */,
-				8D0DDFF12B0BEE4000A3A8F8 /* Helper */,
+				8D5946092BEBC8AE00EAF79A /* Lifecycle */,
+				8D5945FF2BEBC4A200EAF79A /* Features */,
+				8D5946042BEBC64A00EAF79A /* Styles */,
+				8D5946002BEBC56300EAF79A /* Extensions */,
+				8D0DDFF02B0BEE2800A3A8F8 /* Utilities */,
 				8DC97D992AE98856002CEA1E /* Resources */,
 				8DC97D642AE67101002CEA1E /* Assets.xcassets */,
 				8DC97D662AE67101002CEA1E /* Preview Content */,
@@ -798,9 +871,7 @@
 			isa = PBXGroup;
 			children = (
 				8DE87AAF2BEA9610008E6AF2 /* Bot */,
-				8DC97D952AE92CB0002CEA1E /* Act.swift */,
-				8D0DE0042B0E4CD900A3A8F8 /* Play.swift */,
-				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
+				8D5945FE2BEBA84800EAF79A /* Theater */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
 			path = Model;
@@ -809,14 +880,10 @@
 		8DC97D8B2AE673CB002CEA1E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DE0032B0CD4C500A3A8F8 /* Button */,
-				8D2DFF5D2AFC4C4F003E77B8 /* Style */,
-				8DC97D622AE670FF002CEA1E /* BaseView.swift */,
+				8D5946062BEBC73F00EAF79A /* Buttons */,
+				8D0DDFF62B0C0B0100A3A8F8 /* BotView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
-				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
-				8D0DDFF62B0C0B0100A3A8F8 /* MainView.swift */,
 				8DE4C1D72AFC312C00B36205 /* MessagesView.swift */,
-				8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1186,7 +1253,7 @@
 				8D0DE0052B0E4CD900A3A8F8 /* Play.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
-				8D0DDFF72B0C0B0100A3A8F8 /* MainView.swift in Sources */,
+				8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
@@ -1202,6 +1269,7 @@
 				8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */,
 				8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */,
 				8D0DDFED2B0BE90900A3A8F8 /* SpeechRecognizer.swift in Sources */,
+				8D5946082BEBC78B00EAF79A /* BotViewModel.swift in Sources */,
 				8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1380,7 +1448,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1416,7 +1484,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

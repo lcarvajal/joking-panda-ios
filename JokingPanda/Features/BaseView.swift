@@ -17,7 +17,7 @@ struct BaseView: View {
             AuthorizationsView(speechStatus: $speechStatus, microphoneStatus: $microphoneStatus)
         }
         else {
-            MainView()
+            BotView()
         }
     }
 }
