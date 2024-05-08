@@ -99,8 +99,6 @@ enum AnimationImages {
             Constant.ImageName.TuxedoPanda.micUpMouthClosed
         ]
     }
-    
-    
 }
 
 enum AnimationAction {

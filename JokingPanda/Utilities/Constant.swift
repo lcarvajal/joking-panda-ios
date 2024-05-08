@@ -17,7 +17,11 @@ struct Constant {
         }
     }
     
-    struct ImageName {        
+    struct FileName {
+        static let knockKnockJokesJSON = "knockKnockJokeData.json"
+    }
+    
+    struct ImageName {
         struct TuxedoPanda {
             static private let tuxedoPanda = "tuxedo-panda"
             static let armRaised = "\(tuxedoPanda)-arm-raised"

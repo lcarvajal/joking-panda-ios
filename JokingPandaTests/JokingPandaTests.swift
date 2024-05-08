@@ -25,6 +25,31 @@ final class JokingPandaTests: XCTestCase {
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
+    
+    func testKnockKnockAudioFilesExist() {
+        if let acts: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON) {
+            for act in acts {
+                for index in 0..<act.lines.count {
+                    if index % 2 == 0 {
+                        let fileName = Tool.removePunctuation(from: act.lines[index])
+                            .lowercased()
+                            .replacingOccurrences(of: " ", with: "-")
+                            + ".m4a"
+                        
+                        let bundle = Bundle.main
+                        if let path = bundle.path(forResource: fileName, ofType: nil) {
+                            XCTAssertTrue(FileManager.default.fileExists(atPath: path), "File \(fileName) should exist")
+                        } else {
+                            XCTFail("File \(fileName) does not exist")
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            XCTFail("Error loading \(Constant.FileName.knockKnockJokesJSON)")
+        }
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

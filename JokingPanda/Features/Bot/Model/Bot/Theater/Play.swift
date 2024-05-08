@@ -35,7 +35,7 @@ class Play {
         case .deciding:
             acts = [Act(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         case .joking:
-            acts = Tool.load("knockKnockJokeData.json")
+            acts = Tool.load(Constant.FileName.knockKnockJokesJSON)
         }
         
         pickUpLastAct()
