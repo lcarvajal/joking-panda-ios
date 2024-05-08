@@ -10,7 +10,7 @@ import SwiftUI
 @Observable class BotViewModel {
     internal var action: AnimationAction = .stopped
     internal var currentPhrase: String = ""
-    internal var phraseHistory: String = ""
+    internal var phraseHistory: String = "Tap the panda to get started!"
     
     private var bot: Bot = Bot()
     
@@ -19,6 +19,7 @@ import SwiftUI
     }
     
     internal func startConversation() {
+        phraseHistory = ""
         bot.startConversation()
     }
     

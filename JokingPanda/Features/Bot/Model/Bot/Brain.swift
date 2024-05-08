@@ -12,21 +12,33 @@ class Brain {
     }
     
     private let stageManager: StageManager = StageManager()
+    private var lastPhrase = ""
+    private var lastPhraseWasExpected = true
     
-    internal func interpret(phraseHeard: String, phraseExpected: String) -> String {
-        return Tool.levenshtein(aStr: phraseHeard, bStr: phraseExpected) < 5 ? phraseExpected : phraseHeard
+    private func interpret(phraseHeard: String) -> String {
+        let expectedPhrase = stageManager.currentLine
+        return Tool.levenshtein(aStr: phraseHeard, bStr: expectedPhrase) < 5 ? expectedPhrase : phraseHeard
     }
     
     internal func remember(_ phrase: String, saidBy personTalking: Person) {
+        let interpretedPhrase = interpret(phraseHeard: phrase)
+        
         if phraseHistory != "" {
             phraseHistory += "\n"
         }
         
         switch personTalking {
         case .bot:
-            phraseHistory += "🐼 " + phrase
+            phraseHistory += "🐼 " + interpretedPhrase
         case .currentUser:
-            phraseHistory += "🗣️ " + phrase
+            phraseHistory += "🗣️ " + interpretedPhrase
+        }
+        
+        lastPhrase = interpretedPhrase
+        lastPhraseWasExpected = (Tool.levenshtein(aStr: interpretedPhrase, bStr: stageManager.currentLine) < 2)
+        
+        if lastPhraseWasExpected {
+            stageManager.queueNextLine()
         }
     }
     
@@ -38,15 +50,6 @@ class Brain {
         return stageManager.currentLine
     }
     
-    internal func getResponsePhrase(for phraseHeard: String?) -> String? {
-        if stageManager.isRunningAnAct {
-            return stageManager.currentLine
-        }
-        else {
-            return nil
-        }
-    }
-    
     internal func getPhraseHistory() -> String {
         return phraseHistory
     }
@@ -55,11 +58,28 @@ class Brain {
         stageManager.startAct()
     }
     
-    internal func moveOnInConversation() {
-        stageManager.queueNextLine()
-    }
-    
     internal func stopConversation() {
         stageManager.stopAct()
+    }
+    
+    internal func getResponse() -> String? {
+        if lastPhraseWasExpected && stageManager.isRunningAnAct {
+            return stageManager.currentLine
+        }
+        else if stageManager.isRunningAnAct {
+            return getClarificationResponse()
+        }
+        else {
+            return nil
+        }
+    }
+    
+    private func getClarificationResponse() -> String {
+        switch stageManager.currentLine {
+        case "Who’s there?":
+            return "Let's try that again. When I say 'Knock, knock.' you say 'Who's there'? Knock knock."
+        default:
+            return "I'm sorry, could you say that again?"
+        }
     }
 }
