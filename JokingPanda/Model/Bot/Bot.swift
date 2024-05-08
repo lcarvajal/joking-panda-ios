@@ -16,14 +16,11 @@ class Bot: NSObject, ObservableObject  {
     @Published var brain: Brain = Brain() // Decides what to say and remembers what was said / heard
     
     /**
-     Recursive function where the bot starts to speak, listens to a response, and speaks again if needed.
+    Kick off conversation.
      */
-    internal func converse(phrase: String) {
-        self.speak(phrase: phrase) {
-            self.listen(expectedPhrase: "Continue") { phraseHeard in
-                self.respond(to: phraseHeard)
-            }
-        }
+    internal func startConversation() {
+        let initalPhrase = brain.getInitalPhrase()
+        converse(phrase: initalPhrase)
     }
     
     /**
@@ -33,6 +30,17 @@ class Bot: NSObject, ObservableObject  {
         action = .stopped
         mouth.stopSpeaking()
         ear.stopListening()
+    }
+    
+    /**
+     Recursive function where the bot starts to speak, listens to a response, and speaks again if needed.
+     */
+    private func converse(phrase: String) {
+        self.speak(phrase: phrase) {
+            self.listen(expectedPhrase: "Continue") { phraseHeard in
+                self.respond(to: phraseHeard)
+            }
+        }
     }
     
     /**

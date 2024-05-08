@@ -35,7 +35,7 @@ struct MainView: View {
     
     private func handleTapOnBot() {
         if bot.action == .stopped {
-            bot.converse(phrase: "a herd you were home so here i a")
+            bot.startConversation()
         }
         else {
             bot.stopEverything()
