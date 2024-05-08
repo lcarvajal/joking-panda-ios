@@ -871,8 +871,6 @@
 			isa = PBXGroup;
 			children = (
 				8DE87AAF2BEA9610008E6AF2 /* Bot */,
-				8D5945FE2BEBA84800EAF79A /* Theater */,
-				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -903,11 +901,13 @@
 			isa = PBXGroup;
 			children = (
 				8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */,
+				8D5945FE2BEBA84800EAF79A /* Theater */,
 				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
 				8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */,
 				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
+				8DC97D932AE80486002CEA1E /* Person.swift */,
 			);
 			path = Bot;
 			sourceTree = "<group>";

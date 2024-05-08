@@ -18,6 +18,7 @@ class Ear: NSObject {
     internal weak var delegate: EarDelegate?
     private var phraseHeard: String = ""
     private let speechRecognizer = SpeechRecognizer()
+    private var isListening = false
     
     override init() {
         super.init()
@@ -26,12 +27,13 @@ class Ear: NSObject {
     
     internal func listen(expectedPhrase: String?) {
         phraseHeard = ""
-        setUpSpeechRecognizer(expectedPhrase: expectedPhrase)
-        activateSpeechRecognizer()
+        isListening = true
+        startSpeechRecognizer(expectedPhrase: expectedPhrase)
         stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: .seconds(3))
     }
     
     internal func stopListening() {
+        isListening = false
         AudioManager.shared.stopAudioEngine()
         speechRecognizer.stop()
     }
@@ -39,21 +41,19 @@ class Ear: NSObject {
 
 extension Ear: SFSpeechRecognizerDelegate {
     // MARK: - Listen Actions
-    
-    private func setUpSpeechRecognizer(expectedPhrase: String?) {
-        speechRecognizer.setInputNode(inputNode: AudioManager.shared.audioEngine.inputNode)
-        speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
-            self.phraseHeard = phraseHeard
-            self.delegate?.isHearingPhrase(phraseHeard)
-        } errorCompletion: { error in
-            debugPrint("Error capturing speech: \(error.debugDescription)")
-            self.stopListening()
-        }
-        AudioManager.shared.audioEngine.prepare()
-    }
-    
-    private func activateSpeechRecognizer() {
+    private func startSpeechRecognizer(expectedPhrase: String?) {
         do {
+            speechRecognizer.setInputNode(inputNode: AudioManager.shared.audioEngine.inputNode)
+            speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
+                if self.isListening {
+                    self.phraseHeard = phraseHeard
+                    self.delegate?.isHearingPhrase(phraseHeard)
+                }
+            } errorCompletion: { error in
+                debugPrint("Error capturing speech: \(error.debugDescription)")
+                self.stopListening()
+            }
+            AudioManager.shared.audioEngine.prepare()
             try AudioManager.shared.audioEngine.start()
         }
         catch {
