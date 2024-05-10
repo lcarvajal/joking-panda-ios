@@ -100,7 +100,6 @@ extension Ear: SFSpeechRecognizerDelegate {
     // MARK: - Listen Actions
     private func startSpeechRecognizer(expectedPhrase: String?) {
         do {
-            AudioManager.shared.activateAudioSpeechRecognitionSession()
             speechRecognizer.setInputNode(inputNode: AudioManager.shared.audioEngine.inputNode)
             speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
                 if self.isListening {
@@ -116,6 +115,7 @@ extension Ear: SFSpeechRecognizerDelegate {
         }
         catch {
             // FIXME: - Handle Error
+            debugPrint("Error setting up speech recognizer audio engine: \(error)")
         }
     }
     

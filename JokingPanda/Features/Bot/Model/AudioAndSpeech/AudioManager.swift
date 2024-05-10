@@ -19,7 +19,7 @@ class AudioManager {
     
     internal func activateAudioPlaybackSession() {
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         }
         catch {
@@ -28,20 +28,9 @@ class AudioManager {
         }
     }
     
-    internal func activateAudioSpeechRecognitionSession() {
-        do {
-            try audioSession.setCategory(.record, mode: .default)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-            print("Speech recognition error setting audio session category: \(error.localizedDescription)")
-        }
-    }
-    
     internal func activateAudioSpeechSynthesizerSession() {
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         }
         catch {
