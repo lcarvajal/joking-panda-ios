@@ -133,6 +133,7 @@
 		8D5946082BEBC78B00EAF79A /* BotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946072BEBC78B00EAF79A /* BotViewModel.swift */; };
 		8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59460A2BEC139E00EAF79A /* ConstantLine.swift */; };
 		8D5946122BEE611500EAF79A /* AuthorizationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946112BEE611500EAF79A /* AuthorizationsViewModel.swift */; };
+		8D5946142BEE8C0D00EAF79A /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946132BEE8C0D00EAF79A /* GaugeView.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -371,6 +372,7 @@
 		8D59460A2BEC139E00EAF79A /* ConstantLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantLine.swift; sourceTree = "<group>"; };
 		8D59460E2BEE182B00EAF79A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D5946112BEE611500EAF79A /* AuthorizationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsViewModel.swift; sourceTree = "<group>"; };
+		8D5946132BEE8C0D00EAF79A /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 				8D0DDFF62B0C0B0100A3A8F8 /* BotView.swift */,
 				8D0A790D2AF1571500317DAF /* AnimationView.swift */,
 				8DE4C1D72AFC312C00B36205 /* MessagesView.swift */,
+				8D5946132BEE8C0D00EAF79A /* GaugeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1220,6 +1223,7 @@
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */,
+				8D5946142BEE8C0D00EAF79A /* GaugeView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
 				8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
