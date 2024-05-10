@@ -10,7 +10,7 @@ import SwiftUI
 struct BotView: View {
     @Environment(\.scenePhase) var scenePhase
     
-    @State var botViewModel = BotViewModel()
+    @State var botViewModel: BotViewModel
     @State var displayMessages = false
     @State var showSheet = false
     
@@ -41,8 +41,4 @@ struct BotView: View {
             botViewModel.stopEverything()
         }
     }
-}
-
-#Preview {
-    BotView()
 }
