@@ -10,6 +10,7 @@ import SwiftUI
 @Observable class BotViewModel {
     internal var action: AnimationAction = .stopped
     internal var currentPhrase: String = ""
+    internal var laughLoudness: Float = 0
     internal var phraseHistory: String = "Tap the panda to get started!"
     
     private var bot: Bot = Bot()
@@ -30,14 +31,26 @@ import SwiftUI
 
 extension BotViewModel: BotDelegate {
     func actionDidUpdate(action: AnimationAction) {
-        self.action = action
+        DispatchQueue.main.async {
+            self.action = action
+        }
     }
     
     func currentPhraseDidUpdate(phrase: String) {
-        self.currentPhrase = phrase
+        DispatchQueue.main.async {
+            self.currentPhrase = phrase
+        }
+    }
+    
+    func laughLoudnessDidUpdate(loudness: Float) {
+        DispatchQueue.main.async {
+            self.currentPhrase = "Laugh meter: \(loudness)"
+        }
     }
     
     func phraseHistoryDidUpdate(phraseHistory: String) {
-        self.phraseHistory = phraseHistory
+        DispatchQueue.main.async {
+            self.phraseHistory = phraseHistory
+        }
     }
 }

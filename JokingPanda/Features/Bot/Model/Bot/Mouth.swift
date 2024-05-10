@@ -19,6 +19,7 @@ protocol MouthDelegate: AnyObject {
 class Mouth: NSObject {
     weak var delegate: MouthDelegate?
     
+    private var isSpeaking = false
     private var phraseSaid: String = ""
     private let synthesizer = AVSpeechSynthesizer()
     
@@ -29,12 +30,12 @@ class Mouth: NSObject {
     
     internal func speak(phrase: String) {
         phraseSaid = ""
-        AudioManager.shared.activateAudioSession()
         playAudio(for: phrase)
     }
     
     internal func stopSpeaking() {
         AudioManager.shared.deactivateAudioPlayer()
+        isSpeaking = false
     }
 }
 
@@ -42,13 +43,17 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     // MARK: - AVAudioPlayerDelegate
     
     private func playAudio(for phrase: String) {
+        isSpeaking = true
+        
         if let url = Tool.getAudioURL(for: phrase) {
             phraseSaid = phrase
             delegate?.isSayingPhrase(self.phraseSaid)
+            AudioManager.shared.activateAudioPlaybackSession()
             AudioManager.shared.play(url: url, delegate: self)
         }
         else {
             // Fallback on voice synthesis if audio file doesn't exist
+            AudioManager.shared.activateAudioSpeechSynthesizerSession()
             self.synthesizer.botSpeak(string: phrase)
         }
     }
@@ -62,13 +67,18 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     // MARK: - AVSpeechSynthesizerDelegate
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
-        let phrase = (utterance.speechString as NSString).substring(with: characterRange)
-        self.phraseSaid = phrase
-        delegate?.isSayingPhrase(self.phraseSaid)
+        if isSpeaking {
+            let phrase = (utterance.speechString as NSString).substring(with: characterRange)
+            self.phraseSaid = phrase
+            delegate?.isSayingPhrase(self.phraseSaid)
+        }
     }
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
-        delegate?.didSayPhrase(self.phraseSaid)
+        stopSpeaking()
+        let phrase = utterance.speechString
+        self.phraseSaid = phrase
+        delegate?.didSayPhrase(phrase)
     }
 }
