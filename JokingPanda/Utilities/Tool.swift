@@ -88,6 +88,11 @@ struct Tool {
             .replacingOccurrences(of: " ", with: "-")
         return Bundle.main.url(forResource: audioFileName, withExtension: "m4a")
     }
+    
+    static func getDocumentsDirectory() -> URL? {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths.first
+    }
 }
 
 class Array2D {

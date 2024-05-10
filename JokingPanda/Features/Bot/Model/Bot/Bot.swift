@@ -13,6 +13,7 @@ protocol BotDelegate: AnyObject {
     func actionDidUpdate(action: AnimationAction)
     func currentPhraseDidUpdate(phrase: String)
     func phraseHistoryDidUpdate(phraseHistory: String)
+    func laughLoudnessDidUpdate(loudness: Float)
 }
 
 class Bot: NSObject, ObservableObject  {
@@ -69,6 +70,13 @@ class Bot: NSObject, ObservableObject  {
         ear.listen(expectedPhrase: expectedPhrase)
     }
     
+    private func listenForLaughter() {
+        action = .listeningToLaugher
+        triggerActionUpdate()
+        triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
+        ear.listenForLaughter()
+    }
+    
     /**
      Depending on the conversation history and current conversation, this function calls `speak()` again or sets action to stop since the conversation is over.
      */
@@ -113,19 +121,30 @@ class Bot: NSObject, ObservableObject  {
 }
 
 extension Bot: EarDelegate {
-    func isHearingPhrase(_ phrase: String) {
-        triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
+    func isHearing(_ phrase: String?, loudness: Float?) {
+        if let phrase = phrase {
+            triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
+        }
+        else if let loudness = loudness {
+            delegate?.laughLoudnessDidUpdate(loudness: loudness)
+        }
     }
     
-    func didHearPhrase(_ phrase: String) {
-        brain.remember(phrase, saidBy: .currentUser)
-        
-        triggerPhraseHistoryUpdate()
-        
-        action = .stopped
-        triggerActionUpdate()
-        
-        respond()
+    func didHear(_ phrase: String?, loudness: Float?) {
+        if let phrase = phrase {
+            brain.remember(phrase, saidBy: .currentUser)
+            
+            triggerPhraseHistoryUpdate()
+            
+            action = .stopped
+            triggerActionUpdate()
+            
+            respond()
+        }
+        else {
+            action = .stopped
+            triggerActionUpdate()
+        }
     }
 }
 
@@ -144,6 +163,9 @@ extension Bot: MouthDelegate {
         
         if !brain.wantsToStartNewJoke {
             listen(expectedPhrase: brain.getExpectedUserResponse())
+        }
+        else {
+            listenForLaughter()
         }
     }
 }

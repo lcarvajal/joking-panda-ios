@@ -9,4 +9,3 @@ Author: Lukas Carvajal
 
 ## Todos
 - Record voice for new jokes and phrases
-- Write tests for jokes

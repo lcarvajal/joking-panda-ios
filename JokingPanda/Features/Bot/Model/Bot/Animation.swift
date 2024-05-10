@@ -18,6 +18,9 @@ struct Animation {
         case .listening:
             imageNames = AnimationImages.TuxedoPanda.listening
             duration = 2
+        case .listeningToLaugher:
+            imageNames = AnimationImages.TuxedoPanda.listeningToLaughter
+            duration = 2
         case .speaking:
             imageNames = AnimationImages.TuxedoPanda.speaking
             duration = 0.5
@@ -94,6 +97,16 @@ enum AnimationImages {
             Constant.ImageName.TuxedoPanda.micRestingEyesClosed
         ]
         
+        static let listeningToLaughter = [
+            Constant.ImageName.TuxedoPanda.micDown,
+            Constant.ImageName.TuxedoPanda.dance,
+            Constant.ImageName.TuxedoPanda.micDown,
+            Constant.ImageName.TuxedoPanda.dance,
+            Constant.ImageName.TuxedoPanda.micResting,
+            Constant.ImageName.TuxedoPanda.micDown,
+            Constant.ImageName.TuxedoPanda.dance,
+        ]
+        
         static let speaking = [
             Constant.ImageName.TuxedoPanda.micUpMouthOpen,
             Constant.ImageName.TuxedoPanda.micUpMouthClosed
@@ -105,6 +118,7 @@ enum AnimationAction {
     case speaking
     case knocking
     case listening
+    case listeningToLaugher
     case dancing
     case stopped
 }

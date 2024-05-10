@@ -17,13 +17,48 @@ class AudioManager {
     
     // MARK: - Setup
     
-    internal func activateAudioSession() {
+    internal func activateAudioPlaybackSession() {
         do {
-            try audioSession.setCategory(.playAndRecord, mode: .videoChat, options: .duckOthers)
+            try audioSession.setCategory(.playAndRecord, mode: .default)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         }
         catch {
             // FIXME: Handle error
+            print("Audio Playback error setting audio session category: \(error.localizedDescription)")
+        }
+    }
+    
+    internal func activateAudioSpeechRecognitionSession() {
+        do {
+            try audioSession.setCategory(.record, mode: .default)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
+            print("Speech recognition error setting audio session category: \(error.localizedDescription)")
+        }
+    }
+    
+    internal func activateAudioSpeechSynthesizerSession() {
+        do {
+            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
+            print("Speech synthesis error setting audio session category: \(error.localizedDescription)")
+        }
+    }
+    
+    // laughter
+    internal func activateRecordingAudioSession() {
+        do {
+            try audioSession.setCategory(.record, mode: .measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
+            print("Laugh capture setting audio session category: \(error.localizedDescription)")
         }
     }
     
@@ -56,6 +91,7 @@ class AudioManager {
             }
         } catch {
             // FIXME: Handle error
+            print("attdmpt to play file: \(error.localizedDescription)")
         }
     }
     

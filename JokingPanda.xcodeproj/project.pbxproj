@@ -132,6 +132,7 @@
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
 		8D5946082BEBC78B00EAF79A /* BotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946072BEBC78B00EAF79A /* BotViewModel.swift */; };
 		8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59460A2BEC139E00EAF79A /* ConstantLine.swift */; };
+		8D5946102BEE328700EAF79A /* AuthorizationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59460F2BEE328700EAF79A /* AuthorizationsModel.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -368,6 +369,8 @@
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8D5946072BEBC78B00EAF79A /* BotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotViewModel.swift; sourceTree = "<group>"; };
 		8D59460A2BEC139E00EAF79A /* ConstantLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantLine.swift; sourceTree = "<group>"; };
+		8D59460E2BEE182B00EAF79A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D59460F2BEE328700EAF79A /* AuthorizationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsModel.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -734,6 +737,7 @@
 		8D5946022BEBC59E00EAF79A /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				8D59460F2BEE328700EAF79A /* AuthorizationsModel.swift */,
 				8D4CB9E92AEBFD8700B7A00F /* AuthorizationsView.swift */,
 			);
 			path = Onboarding;
@@ -804,6 +808,7 @@
 		8DC97D5F2AE670FF002CEA1E /* JokingPanda */ = {
 			isa = PBXGroup;
 			children = (
+				8D59460E2BEE182B00EAF79A /* Info.plist */,
 				8D5946092BEBC8AE00EAF79A /* Lifecycle */,
 				8D5945FF2BEBC4A200EAF79A /* Features */,
 				8D5946042BEBC64A00EAF79A /* Styles */,
@@ -1215,6 +1220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */,
+				8D5946102BEE328700EAF79A /* AuthorizationsModel.swift in Sources */,
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Act.swift in Sources */,
@@ -1411,8 +1417,11 @@
 				DEVELOPMENT_TEAM = B96QXD8K8E;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JokingPanda/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Haha Panda";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "In order to speak to the panda, please enable your microphone";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "In order to speak to the Panda, please enable speech recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1447,8 +1456,11 @@
 				DEVELOPMENT_TEAM = B96QXD8K8E;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = JokingPanda/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Haha Panda";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "In order to speak to the panda, please enable your microphone";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "In order to speak to the Panda, please enable speech recognition";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
