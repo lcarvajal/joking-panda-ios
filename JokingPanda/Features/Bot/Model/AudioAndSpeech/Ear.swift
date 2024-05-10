@@ -76,7 +76,7 @@ extension Ear: AVAudioRecorderDelegate {
                 self.delegate?.isHearing(nil, loudness: self.loudness)
             }
         } catch {
-            print("Error recording audio: \(error.localizedDescription)")
+            debugPrint("Error recording audio: \(error.localizedDescription)")
         }
     }
     
