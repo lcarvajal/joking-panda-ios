@@ -9,8 +9,7 @@ import SwiftUI
 import Speech
 
 struct AuthorizationsView: View {
-    @Binding var speechStatus: SFSpeechRecognizerAuthorizationStatus
-    @Binding var microphoneStatus: AVAuthorizationStatus
+    internal var authorizationsViewModel: AuthorizationsViewModel
     
     var body: some View {
         VStack {
@@ -24,23 +23,10 @@ struct AuthorizationsView: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            switch microphoneStatus {
-            case .notDetermined:
+            switch authorizationsViewModel.microphoneStatus {
+            case .notDetermined, .denied:
                 Button("Turn on microphone") {
-                    // Request access to microphone
-                    AVCaptureDevice.requestAccess(for: .audio) { status in
-                        microphoneStatus = AVCaptureDevice.authorizationStatus(for: .audio)
-                    }
-                }
-                .buttonStyle(BigButtonStyle())
-            case .denied:
-                Button("Turn on microphone") {
-                    // Open app settings
-                    if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: {_ in
-                            speechStatus = SFSpeechRecognizer.authorizationStatus()
-                        })
-                    }
+                    authorizationsViewModel.requestMicrophoneAccess()
                 }
                 .buttonStyle(BigButtonStyle())
             case .restricted:
@@ -51,23 +37,10 @@ struct AuthorizationsView: View {
                 Text("Unable to determine your microphone status.")
             }
             
-            switch speechStatus {
-            case .notDetermined:
+            switch authorizationsViewModel.speechRecognizerStatus {
+            case .notDetermined, .denied:
                 Button("Turn on speech recognition") {
-                    // Request access to speech recognition
-                    SFSpeechRecognizer.requestAuthorization { status in
-                        speechStatus = SFSpeechRecognizer.authorizationStatus()
-                    }
-                }
-                .buttonStyle(BigButtonStyle())
-            case .denied:
-                Button("Turn on speech recognition") {
-                    // Open app settings
-                    if let url = URL.init(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(url, options: [:], completionHandler: {_ in
-                            speechStatus = SFSpeechRecognizer.authorizationStatus()
-                        })
-                    }
+                    authorizationsViewModel.requestSpeechRecognizerAccess()
                 }
                 .buttonStyle(BigButtonStyle())
             case .restricted:
@@ -84,6 +57,3 @@ struct AuthorizationsView: View {
     }
 }
 
-#Preview {
-    AuthorizationsView(speechStatus: Binding.constant(SFSpeechRecognizerAuthorizationStatus.notDetermined), microphoneStatus: Binding.constant(AVAuthorizationStatus.notDetermined)).preferredColorScheme(.dark)
-}

@@ -9,20 +9,15 @@ import SwiftUI
 import Speech
 
 struct BaseView: View {
-    @State var speechStatus = SFSpeechRecognizer.authorizationStatus()
-    @State var microphoneStatus = AVCaptureDevice.authorizationStatus(for: .audio)
+    @State var authorizationsViewModel: AuthorizationsViewModel
      
     var body: some View {
-        if microphoneStatus != .authorized || speechStatus != .authorized {
-            AuthorizationsView(speechStatus: $speechStatus, microphoneStatus: $microphoneStatus)
+        if authorizationsViewModel.isAuthorizationRequired {
+            AuthorizationsView(authorizationsViewModel: authorizationsViewModel)
         }
         else {
-            BotView()
+            let viewModel = BotViewModel()
+            BotView(botViewModel: viewModel)
         }
     }
-}
-
-#Preview {
-    BaseView(speechStatus: .authorized)
-        .preferredColorScheme(.dark)
 }
