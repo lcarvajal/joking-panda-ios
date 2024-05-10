@@ -24,7 +24,7 @@ class AudioManager {
         }
         catch {
             // FIXME: Handle error
-            print("Audio Playback error setting audio session category: \(error.localizedDescription)")
+            debugPrint("Audio Playback error setting audio session category: \(error.localizedDescription)")
         }
     }
     
@@ -35,7 +35,7 @@ class AudioManager {
         }
         catch {
             // FIXME: Handle error
-            print("Speech synthesis error setting audio session category: \(error.localizedDescription)")
+            debugPrint("Speech synthesis error setting audio session category: \(error.localizedDescription)")
         }
     }
     
@@ -47,7 +47,7 @@ class AudioManager {
         }
         catch {
             // FIXME: Handle error
-            print("Laugh capture setting audio session category: \(error.localizedDescription)")
+            debugPrint("Laugh capture setting audio session category: \(error.localizedDescription)")
         }
     }
     
@@ -80,7 +80,7 @@ class AudioManager {
             }
         } catch {
             // FIXME: Handle error
-            print("attdmpt to play file: \(error.localizedDescription)")
+            debugPrint("Attempted to play file but got error: \(error.localizedDescription)")
         }
     }
     

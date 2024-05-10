@@ -64,7 +64,6 @@ class Bot: NSObject, ObservableObject  {
      Sets action to listening, captures what a user says, adjusts it based on expected phrase, and remembers the phrase heard.
      */
     private func listen(expectedPhrase: String?) {
-        print("Should listen again...")
         action = .listening
         triggerActionUpdate()
         triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
