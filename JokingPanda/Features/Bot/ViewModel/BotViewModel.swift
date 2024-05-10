@@ -44,6 +44,7 @@ extension BotViewModel: BotDelegate {
     
     func laughLoudnessDidUpdate(loudness: Float) {
         DispatchQueue.main.async {
+            print("Shouldn't this update?")
             self.currentPhrase = "Laugh meter: \(loudness)"
         }
     }

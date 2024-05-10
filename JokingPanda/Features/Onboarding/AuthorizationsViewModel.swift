@@ -14,7 +14,7 @@ import UIKit
     internal var microphoneStatus = AVCaptureDevice.authorizationStatus(for: .audio)
     internal var speechRecognizerStatus = SFSpeechRecognizer.authorizationStatus()
     internal var isAuthorizationRequired: Bool {
-        return speechRecognizerStatus == .authorized && microphoneStatus == .authorized
+        return speechRecognizerStatus != .authorized || microphoneStatus != .authorized
     }
     
     internal func requestMicrophoneAccess() {
