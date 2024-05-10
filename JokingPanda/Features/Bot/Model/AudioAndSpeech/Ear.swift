@@ -20,9 +20,10 @@ class Ear: NSObject {
     private let speechRecognizer = SpeechRecognizer()
     private var isListening = false
     
-    private var audioRecorder: AVAudioRecorder!
+    private var audioRecorder: AVAudioRecorder?
     private var isRecording = false
     private var loudness: Float = 0.0
+    private var laughRecordingTimer:Timer?
     
     override init() {
         super.init()
@@ -38,7 +39,7 @@ class Ear: NSObject {
     
     internal func listenForLaughter() {
         startLaughRecognizer()
-        stopLaughRecognizer(after: .seconds(4))
+        stopLaughRecognizer(after: .seconds(2))
     }
     
     internal func stopListening() {
@@ -51,6 +52,7 @@ extension Ear: AVAudioRecorderDelegate {
     // MARK: - Listen to Laughter
     private func startLaughRecognizer() {
         do {
+            self.loudness = 0
             AudioManager.shared.activateRecordingAudioSession()
 
             // Example usage:
@@ -63,17 +65,45 @@ extension Ear: AVAudioRecorderDelegate {
                     AVLinearPCMBitDepthKey: 16,
                     AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
                 ])
-                self.audioRecorder.delegate = self
-                self.audioRecorder.prepareToRecord()
-                self.audioRecorder.isMeteringEnabled = true
-                self.audioRecorder.record()
+                self.audioRecorder?.delegate = self
+                self.audioRecorder?.prepareToRecord()
+                self.audioRecorder?.isMeteringEnabled = true
+                self.audioRecorder?.record()
                 self.isRecording = true
             }
             
-            Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-                self.audioRecorder.updateMeters()
-                self.loudness = self.audioRecorder.averagePower(forChannel: 0)
-                self.delegate?.isHearing(nil, loudness: self.loudness)
+            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] timer in
+                guard let self = self else {
+                    timer.invalidate() // Stop the timer if self is deallocated
+                    return
+                }
+                
+                laughRecordingTimer = timer
+                
+                self.audioRecorder?.updateMeters()
+                if let recorder = self.audioRecorder {
+                    let averagePower = recorder.averagePower(forChannel: 0)
+                    if averagePower > -70 {
+                        var weightedloudness = ((averagePower + 70) / 60) * 5
+                        if weightedloudness < 1 {
+                            weightedloudness = floor(weightedloudness)
+                        }
+                        else if weightedloudness > 4.4 {
+                            weightedloudness = ceil(weightedloudness)
+                        }
+                        else {
+                            weightedloudness = round(weightedloudness)
+                        }
+                        
+                        if weightedloudness > self.loudness {
+                            self.loudness = weightedloudness
+                        }
+                    }
+                    else {
+                        self.loudness = 0
+                    }
+                    self.delegate?.isHearing(nil, loudness: self.loudness)
+                }
             }
         } catch {
             debugPrint("Error recording audio: \(error.localizedDescription)")
@@ -87,11 +117,15 @@ extension Ear: AVAudioRecorderDelegate {
     }
     
     private func stopLaughRecognizer() {
-        audioRecorder.stop()
+        laughRecordingTimer?.invalidate()
+        laughRecordingTimer = nil
+        audioRecorder?.stop()
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         isRecording = false
+        print("Last loudness score")
+        print(self.loudness)
         self.delegate?.didHear(nil, loudness: self.loudness)
     }
 }

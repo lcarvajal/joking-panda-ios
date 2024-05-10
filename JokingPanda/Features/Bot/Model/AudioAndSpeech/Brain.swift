@@ -35,7 +35,7 @@ class Brain {
         }
         
         lastPhrase = interpretedPhrase
-        lastPhraseWasExpected = (Tool.levenshtein(aStr: interpretedPhrase, bStr: stageManager.currentLine) < 10)
+        lastPhraseWasExpected = (Tool.levenshtein(aStr: interpretedPhrase, bStr: stageManager.currentLine) < 7)
         
         if lastPhraseWasExpected {
             stageManager.queueNextLine()
