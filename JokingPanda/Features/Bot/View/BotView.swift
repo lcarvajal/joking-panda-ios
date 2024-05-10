@@ -27,7 +27,15 @@ struct BotView: View {
                     OverlayButtons(showSheet: $showSheet, botViewModel: botViewModel, size: 50)
                 }
             }
-            MessagesView(displayMessages: $displayMessages, botViewModel: botViewModel).padding()
+            
+            if botViewModel.action == .listeningToLaugher {
+                GaugeView(value: botViewModel.laughLoudness, maxValue: 5)
+                    .padding()
+            }
+            else {
+                MessagesView(displayMessages: $displayMessages, botViewModel: botViewModel)
+                    .padding()
+            }
             
         }
         .background(Color.background)
@@ -41,4 +49,8 @@ struct BotView: View {
             botViewModel.stopEverything()
         }
     }
+}
+
+#Preview {
+    BotView(botViewModel: BotViewModel())
 }

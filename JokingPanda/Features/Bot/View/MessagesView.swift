@@ -44,16 +44,11 @@ struct MessagesView: View {
             
             if botViewModel.action != .stopped {
                 HStack {
-                    if botViewModel.action == .listeningToLaugher {
-                        GaugeView(value: botViewModel.laughLoudness, maxValue: 100)
-                    }
-                    else {
-                        Text(botViewModel.currentPhrase)
-                            .font(.system(size: 26, design: .rounded))
-                            .fixedSize(horizontal: false, vertical: true)
-                            .frame(maxWidth: .infinity)
-                            .padding(10)
-                    }
+                    Text(botViewModel.currentPhrase)
+                        .font(.system(size: 26, design: .rounded))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
+                        .padding(10)
                 }
                 .background(Color.backgroundLighter)
                 .cornerRadius(10)
@@ -62,4 +57,8 @@ struct MessagesView: View {
         }
         .frame(maxHeight: displayMessages ? .infinity : 100)
     }
+}
+
+#Preview {
+    MessagesView(displayMessages: .constant(true), botViewModel: BotViewModel())
 }

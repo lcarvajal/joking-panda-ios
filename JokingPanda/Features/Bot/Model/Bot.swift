@@ -56,7 +56,7 @@ class Bot: NSObject, ObservableObject  {
     private func speak(_ phrase: String) {
         action = .speaking
         triggerActionUpdate()
-        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
+        triggerCurrentPhraseUpdate(phrase: "", person: .bot)
         mouth.speak(phrase: phrase)
     }
     
@@ -133,7 +133,6 @@ extension Bot: EarDelegate {
     func didHear(_ phrase: String?, loudness: Float?) {
         if let phrase = phrase {
             brain.remember(phrase, saidBy: .currentUser)
-            
             triggerPhraseHistoryUpdate()
             
             action = .stopped
@@ -141,7 +140,11 @@ extension Bot: EarDelegate {
             
             respond()
         }
-        else {
+        else if let loudness = loudness {
+            brain.remember("Laugh score: \(Int(loudness)) / 5", saidBy: .currentUser)
+            triggerPhraseHistoryUpdate()
+            
+            delegate?.laughLoudnessDidUpdate(loudness: loudness)
             action = .stopped
             triggerActionUpdate()
         }
