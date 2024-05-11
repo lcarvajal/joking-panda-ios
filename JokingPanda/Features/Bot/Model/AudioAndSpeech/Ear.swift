@@ -155,11 +155,11 @@ extension Ear: SFSpeechRecognizerDelegate {
     
     private func stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: DispatchTimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + intervalsToRecognizeSpeech) {
-            if self.phraseHeard.isEmpty {
+            if self.phraseHeard.isEmpty && self.isListening {
                 // If user hasn't said anything, delay stopping speech recognizer
                 self.stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: intervalsToRecognizeSpeech)
             }
-            else {
+            else if self.isListening {
                 self.delegate?.didHear(self.phraseHeard, loudness: nil)
                 self.stopSpeechRecognizer()
             }
