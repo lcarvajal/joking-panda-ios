@@ -141,7 +141,7 @@ extension Bot: EarDelegate {
             respond()
         }
         else if let loudness = loudness {
-            brain.remember("Laugh score: \(Int(loudness)) / 5", saidBy: .currentUser)
+            brain.rememberLaughter(loudness: Int(loudness))
             
             delegate?.laughLoudnessDidUpdate(loudness: loudness)
             action = .stopped

@@ -11,9 +11,11 @@ struct Constant {
     struct Event {
         static let appOpended = "App Opened"
         static let conversationStarted = "Conversation Started"
+        static let laughCaptured = "Laugh Captured"
         
         struct Property {
             static let actId = "Conversation Id"
+            static let laughScore = "Laugh Score"
         }
     }
     

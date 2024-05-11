@@ -40,6 +40,9 @@ struct MessagesView: View {
                 .onChange(of: displayMessages, { oldValue, newValue in
                     proxy.scrollTo(1, anchor: .bottom)
                 })
+                .onAppear {
+                    proxy.scrollTo(1, anchor: .bottom)
+                }
             }
             
             if botViewModel.action != .stopped {
