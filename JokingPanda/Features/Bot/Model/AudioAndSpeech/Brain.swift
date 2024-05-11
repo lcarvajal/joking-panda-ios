@@ -68,6 +68,7 @@ class Brain {
     
     internal func stopConversation() {
         stageManager.stopAct()
+        lastPhrase = ""
     }
     
     internal func getResponse() -> String? {
