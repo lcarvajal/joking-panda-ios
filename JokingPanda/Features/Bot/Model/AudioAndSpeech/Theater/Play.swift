@@ -10,6 +10,7 @@ import Foundation
 class Play {
     internal let type: ActType
     internal var currentAct: Act { return acts[actIndex] }
+    internal var lastAct: Act { return acts[actIndex - 1]}
     internal var currentLine: String { return currentAct.lines[lineIndex] }
     internal var previousLine: String? {
         if lineIndex > 0 {

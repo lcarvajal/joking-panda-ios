@@ -42,6 +42,14 @@ class Brain {
         }
     }
     
+    internal func rememberLaughter(loudness: Int) {
+        phraseHistory += "\n🗣️ Laugh score: \(loudness) / 5"
+        Event.track(Constant.Event.laughCaptured, properties: [
+            Constant.Event.Property.actId: stageManager.lastAct.id,
+            Constant.Event.Property.laughScore: loudness
+          ])
+    }
+    
     internal func getInitalPhrase() -> String {
         return stageManager.currentLine
     }

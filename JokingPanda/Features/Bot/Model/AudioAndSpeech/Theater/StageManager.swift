@@ -12,6 +12,7 @@ class StageManager {
     internal var isRunningAnAct: Bool { return currentPlay.isActing }
     internal var currentLine: String { return currentPlay.currentLine }
     internal var previousLine: String? { return currentPlay.previousLine }
+    internal var lastAct: Act { return currentPlay.lastAct }
     
     private var selectedType: ActType = .joking
     private var currentPlay: Play { return plays[selectedType]! }
