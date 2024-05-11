@@ -34,12 +34,12 @@ struct MessagesView: View {
                                alignment: .leading)
                 }
                 .background(Color.background)
-                .onChange(of: botViewModel.phraseHistory) { _ in
+                .onChange(of: botViewModel.phraseHistory, { oldValue, newValue in
                     proxy.scrollTo(1, anchor: .bottom)
-                }
-                .onChange(of: displayMessages) { _ in
+                })
+                .onChange(of: displayMessages, { oldValue, newValue in
                     proxy.scrollTo(1, anchor: .bottom)
-                }
+                })
             }
             
             if botViewModel.action != .stopped {

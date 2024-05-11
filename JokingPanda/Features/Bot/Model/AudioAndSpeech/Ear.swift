@@ -39,7 +39,7 @@ class Ear: NSObject {
     
     internal func listenForLaughter() {
         startLaughRecognizer()
-        stopLaughRecognizer(after: .seconds(2))
+        stopLaughRecognizer(after: .seconds(3))
     }
     
     internal func stopListening() {

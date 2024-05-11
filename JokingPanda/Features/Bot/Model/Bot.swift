@@ -133,20 +133,20 @@ extension Bot: EarDelegate {
     func didHear(_ phrase: String?, loudness: Float?) {
         if let phrase = phrase {
             brain.remember(phrase, saidBy: .currentUser)
-            triggerPhraseHistoryUpdate()
             
             action = .stopped
             triggerActionUpdate()
+            triggerPhraseHistoryUpdate()
             
             respond()
         }
         else if let loudness = loudness {
             brain.remember("Laugh score: \(Int(loudness)) / 5", saidBy: .currentUser)
-            triggerPhraseHistoryUpdate()
             
             delegate?.laughLoudnessDidUpdate(loudness: loudness)
             action = .stopped
             triggerActionUpdate()
+            triggerPhraseHistoryUpdate()
         }
     }
 }
