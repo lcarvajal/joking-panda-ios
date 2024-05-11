@@ -50,6 +50,28 @@ final class JokingPandaTests: XCTestCase {
             XCTFail("Error loading \(Constant.FileName.knockKnockJokesJSON)")
         }
     }
+    
+    func testConstantLineAudioFilesExist() {
+        let constantLines = [
+            ConstantLine.couldYouRepeatWhatYouSaid,
+            ConstantLine.explainKnockKnock,
+            ConstantLine.whosThere
+        ]
+        
+        for line in constantLines {
+            let fileName = Tool.removePunctuation(from: line)
+                .lowercased()
+                .replacingOccurrences(of: " ", with: "-")
+                + ".m4a"
+            
+            let bundle = Bundle.main
+            if let path = bundle.path(forResource: fileName, ofType: nil) {
+                XCTAssertTrue(FileManager.default.fileExists(atPath: path), "File \(fileName) should exist")
+            } else {
+                XCTFail("File \(fileName) does not exist")
+            }
+        }
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
