@@ -248,6 +248,9 @@
 		8D5947B02BEF8EF700EAF79A /* im-sorry-could-you-say-that-again.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947AF2BEF8EF700EAF79A /* im-sorry-could-you-say-that-again.m4a */; };
 		8D5947B22BEF8F0700EAF79A /* lets-try-that-again-when-i-say-knock-knock-you-say-whos-there-knock-knock.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B12BEF8F0700EAF79A /* lets-try-that-again-when-i-say-knock-knock-you-say-whos-there-knock-knock.m4a */; };
 		8D5947B42BEF8F2400EAF79A /* whos-there.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B32BEF8F2400EAF79A /* whos-there.m4a */; };
+		8D5947B82BEF9DA700EAF79A /* low-c-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B62BEF9DA700EAF79A /* low-c-piano.m4a */; };
+		8D5947B92BEF9DA700EAF79A /* success-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B72BEF9DA700EAF79A /* success-piano.m4a */; };
+		8D5947BB2BEF9DB600EAF79A /* high-c-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -598,6 +601,9 @@
 		8D5947AF2BEF8EF700EAF79A /* im-sorry-could-you-say-that-again.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "im-sorry-could-you-say-that-again.m4a"; sourceTree = "<group>"; };
 		8D5947B12BEF8F0700EAF79A /* lets-try-that-again-when-i-say-knock-knock-you-say-whos-there-knock-knock.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "lets-try-that-again-when-i-say-knock-knock-you-say-whos-there-knock-knock.m4a"; sourceTree = "<group>"; };
 		8D5947B32BEF8F2400EAF79A /* whos-there.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "whos-there.m4a"; sourceTree = "<group>"; };
+		8D5947B62BEF9DA700EAF79A /* low-c-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "low-c-piano.m4a"; sourceTree = "<group>"; };
+		8D5947B72BEF9DA700EAF79A /* success-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "success-piano.m4a"; sourceTree = "<group>"; };
+		8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "high-c-piano.m4a"; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -1135,6 +1141,16 @@
 			path = "v1-2";
 			sourceTree = "<group>";
 		};
+		8D5947B52BEF9D8700EAF79A /* SoundEffects */ = {
+			isa = PBXGroup;
+			children = (
+				8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */,
+				8D5947B62BEF9DA700EAF79A /* low-c-piano.m4a */,
+				8D5947B72BEF9DA700EAF79A /* success-piano.m4a */,
+			);
+			path = SoundEffects;
+			sourceTree = "<group>";
+		};
 		8DC97D542AE670FF002CEA1E = {
 			isa = PBXGroup;
 			children = (
@@ -1225,6 +1241,7 @@
 			children = (
 				8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */,
 				8D0A79182AFB8C4000317DAF /* Lines */,
+				8D5947B52BEF9D8700EAF79A /* SoundEffects */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
 			path = Resources;
@@ -1374,6 +1391,7 @@
 				8D2DFFC92AFD6780003E77B8 /* snow-use-the-joke-is-over.m4a in Resources */,
 				8D59474B2BEF89D400EAF79A /* anita.m4a in Resources */,
 				8D5947712BEF89D400EAF79A /* froget-about-it.m4a in Resources */,
+				8D5947B82BEF9DA700EAF79A /* low-c-piano.m4a in Resources */,
 				8D2D002F2AFD6780003E77B8 /* im-good-hawaii-you.m4a in Resources */,
 				8D59479E2BEF89D400EAF79A /* hoho.m4a in Resources */,
 				8D8EAF622AFFF27800F01B71 /* claire-a-path-im-coming-through.m4a in Resources */,
@@ -1424,6 +1442,7 @@
 				8D2D001B2AFD6780003E77B8 /* stopwatch.m4a in Resources */,
 				8D2D000D2AFD6780003E77B8 /* euripides.m4a in Resources */,
 				8D5947632BEF89D400EAF79A /* joe-mamma.m4a in Resources */,
+				8D5947B92BEF9DA700EAF79A /* success-piano.m4a in Resources */,
 				8D2D001A2AFD6780003E77B8 /* says-me.m4a in Resources */,
 				8D59476E2BEF89D400EAF79A /* nobel.m4a in Resources */,
 				8D2D00152AFD6780003E77B8 /* amos.m4a in Resources */,
@@ -1443,6 +1462,7 @@
 				8D2DFFD32AFD6780003E77B8 /* annie.m4a in Resources */,
 				8D59475D2BEF89D400EAF79A /* bless-you.m4a in Resources */,
 				8D2DFFDA2AFD6780003E77B8 /* razor.m4a in Resources */,
+				8D5947BB2BEF9DB600EAF79A /* high-c-piano.m4a in Resources */,
 				8D2D00052AFD6780003E77B8 /* glad-youre-excited-too.m4a in Resources */,
 				8D8EAF952AFFF27800F01B71 /* avenue.m4a in Resources */,
 				8D59477E2BEF89D400EAF79A /* theres-no-bell-thats-why-i-knocked.m4a in Resources */,
