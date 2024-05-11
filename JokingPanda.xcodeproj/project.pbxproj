@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790D2AF1571500317DAF /* AnimationView.swift */; };
 		8D0A79102AF15A6100317DAF /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790F2AF15A6100317DAF /* Constant.swift */; };
-		8D0A79132AF3AFCA00317DAF /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8D0A79122AF3AFCA00317DAF /* Mixpanel */; };
 		8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A79142AF3B02B00317DAF /* AppDelegate.swift */; };
 		8D0A79172AF3B40800317DAF /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D0A79162AF3B40800317DAF /* Keys.plist */; };
 		8D0DDFEB2B0BE2B700A3A8F8 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFEA2B0BE2B700A3A8F8 /* AudioManager.swift */; };
@@ -251,6 +250,7 @@
 		8D5947B82BEF9DA700EAF79A /* low-c-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B62BEF9DA700EAF79A /* low-c-piano.m4a */; };
 		8D5947B92BEF9DA700EAF79A /* success-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B72BEF9DA700EAF79A /* success-piano.m4a */; };
 		8D5947BB2BEF9DB600EAF79A /* high-c-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */; };
+		8D5947BD2BEFAABD00EAF79A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5947BC2BEFAABD00EAF79A /* Mixpanel */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -704,7 +704,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D0A79132AF3AFCA00317DAF /* Mixpanel in Frameworks */,
+				8D5947BD2BEFAABD00EAF79A /* Mixpanel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1277,7 +1277,7 @@
 			);
 			name = JokingPanda;
 			packageProductDependencies = (
-				8D0A79122AF3AFCA00317DAF /* Mixpanel */,
+				8D5947BC2BEFAABD00EAF79A /* Mixpanel */,
 			);
 			productName = JokingPanda;
 			productReference = 8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */;
@@ -2097,7 +2097,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8D0A79122AF3AFCA00317DAF /* Mixpanel */ = {
+		8D5947BC2BEFAABD00EAF79A /* Mixpanel */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8D0A79112AF3AFCA00317DAF /* XCRemoteSwiftPackageReference "mixpanel-swift" */;
 			productName = Mixpanel;
