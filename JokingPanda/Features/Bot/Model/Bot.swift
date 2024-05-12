@@ -26,7 +26,18 @@ class Bot: NSObject, ObservableObject  {
     
     init(ear: Ear = Ear(), mouth: Mouth = Mouth()) {
         // FIXME: - Not sure this is the best way to do dependency injection.
-        self.brain = Brain(stageManager: StageManager.shared)
+        let decidingActs = [Act(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
+        let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON)
+        
+        let plays = [
+            ActType.deciding : Play(type: .deciding, acts: decidingActs),
+            ActType.joking: Play(type: .joking, acts: jokingActs)
+        ]
+        
+        let stageManager = StageManager(plays: plays)
+        self.brain = Brain(stageManager: stageManager)
+        
+        
         self.ear = ear
         self.mouth = mouth
         
