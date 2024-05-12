@@ -17,15 +17,19 @@ protocol EarDelegate: AnyObject {
 class Ear: NSObject {
     internal weak var delegate: EarDelegate?
     private var phraseHeard: String = ""
-    private let speechRecognizer = SpeechRecognizer()
+    private let speechRecognizer: SpeechRecognizer
     private var isListening = false
     
     private var audioRecorder: AVAudioRecorder?
+    private let audioEngine: AVAudioEngine
     private var isRecording = false
     private var loudness: Float = 0.0
     private var laughRecordingTimer:Timer?
     
-    override init() {
+    init(audioEngine: AVAudioEngine = AVAudioEngine(), speechRecognizer: SpeechRecognizer = SpeechRecognizer()) {
+        self.audioEngine = audioEngine
+        self.speechRecognizer = speechRecognizer
+        
         super.init()
         speechRecognizer.setDelegate(delegate: self)
     }
@@ -53,7 +57,8 @@ extension Ear: AVAudioRecorderDelegate {
     private func startLaughRecognizer() {
         do {
             self.loudness = 0
-            AudioManager.shared.activateRecordingAudioSession()
+            try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement)
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
 
             // Example usage:
             if let documentsDirectory = Tool.getDocumentsDirectory() {
@@ -134,7 +139,7 @@ extension Ear: SFSpeechRecognizerDelegate {
     // MARK: - Listen Actions
     private func startSpeechRecognizer(expectedPhrase: String?) {
         do {
-            speechRecognizer.setInputNode(inputNode: AudioManager.shared.audioEngine.inputNode)
+            speechRecognizer.setInputNode(inputNode: audioEngine.inputNode)
             speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
                 if self.isListening {
                     self.phraseHeard = phraseHeard
@@ -144,8 +149,8 @@ extension Ear: SFSpeechRecognizerDelegate {
                 debugPrint("Error capturing speech: \(error.debugDescription)")
                 self.stopSpeechRecognizer()
             }
-            AudioManager.shared.audioEngine.prepare()
-            try AudioManager.shared.audioEngine.start()
+            audioEngine.prepare()
+            try audioEngine.start()
         }
         catch {
             // FIXME: - Handle Error
@@ -168,7 +173,7 @@ extension Ear: SFSpeechRecognizerDelegate {
     
     private func stopSpeechRecognizer() {
         isListening = false
-        AudioManager.shared.stopAudioEngine()
+        audioEngine.stop()
         speechRecognizer.stop()
     }
 }

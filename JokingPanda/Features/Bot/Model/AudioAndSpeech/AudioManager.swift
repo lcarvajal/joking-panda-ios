@@ -10,8 +10,6 @@ import Speech
 
 class AudioManager {
     static let shared = AudioManager()
-    
-    internal let audioEngine = AVAudioEngine()
     private var audioPlayer: AVAudioPlayer? = nil
     private let audioSession = AVAudioSession.sharedInstance()
     
@@ -39,18 +37,6 @@ class AudioManager {
         }
     }
     
-    // laughter
-    internal func activateRecordingAudioSession() {
-        do {
-            try audioSession.setCategory(.record, mode: .measurement)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-            debugPrint("Laugh capture setting audio session category: \(error.localizedDescription)")
-        }
-    }
-    
     internal func deactivateAudioSession() {
         do {
             try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
@@ -67,8 +53,6 @@ class AudioManager {
         audioPlayer = nil
     }
     
-    // MARK: - Actions
-    
     internal func play(url: URL, delegate: AVAudioPlayerDelegate) {
         do {
             audioPlayer = nil
@@ -82,9 +66,5 @@ class AudioManager {
             // FIXME: Handle error
             debugPrint("Attempted to play file but got error: \(error.localizedDescription)")
         }
-    }
-    
-    internal func stopAudioEngine() {
-        audioEngine.stop()
     }
 }

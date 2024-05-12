@@ -11,9 +11,13 @@ class Brain {
         return stageManager.isStartOfAct
     }
     
-    private let stageManager: StageManager = StageManager()
+    private let stageManager: StageManager
     private var lastPhrase = ""
     private var lastPhraseWasExpected = true
+    
+    init(stageManager: StageManager = StageManager()) {
+        self.stageManager = stageManager
+    }
     
     private func interpret(phraseHeard: String) -> String {
         let expectedPhrase = stageManager.currentLine

@@ -21,9 +21,10 @@ class Mouth: NSObject {
     
     private var isSpeaking = false
     private var phraseSaid: String = ""
-    private let synthesizer = AVSpeechSynthesizer()
+    private let synthesizer: AVSpeechSynthesizer
     
-    override init() {
+    init(synthesizer: AVSpeechSynthesizer = AVSpeechSynthesizer()) {
+        self.synthesizer = synthesizer
         super.init()
         synthesizer.delegate = self
     }

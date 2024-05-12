@@ -20,11 +20,15 @@ class Bot: NSObject, ObservableObject  {
     internal weak var delegate: BotDelegate?
     
     private var action: AnimationAction = .stopped   // Animate based on current action
-    private var brain: Brain = Brain() // Decides what to say and remembers what was said / heard
-    private let ear: Ear = Ear() // Listens to phrases said by user
-    private var mouth: Mouth = Mouth() // Says phrases outloud
+    private var brain: Brain    // Decides what to say and remembers what was said / heard
+    private let ear: Ear    // Listens to phrases said by user
+    private var mouth: Mouth    // Says phrases outloud
     
-    override init() {
+    init(brain: Brain = Brain(), ear: Ear = Ear(), mouth: Mouth = Mouth()) {
+        self.brain = brain
+        self.ear = ear
+        self.mouth = mouth
+        
         super.init()
         ear.delegate = self
         mouth.delegate = self
