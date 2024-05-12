@@ -15,7 +15,7 @@ class Brain {
     private var lastPhrase = ""
     private var lastPhraseWasExpected = true
     
-    init(stageManager: StageManager = StageManager()) {
+    init(stageManager: StageManager) {
         self.stageManager = stageManager
     }
     

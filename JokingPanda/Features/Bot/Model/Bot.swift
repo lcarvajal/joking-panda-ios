@@ -24,14 +24,22 @@ class Bot: NSObject, ObservableObject  {
     private let ear: Ear    // Listens to phrases said by user
     private var mouth: Mouth    // Says phrases outloud
     
-    init(brain: Brain = Brain(), ear: Ear = Ear(), mouth: Mouth = Mouth()) {
-        self.brain = brain
+    init(ear: Ear = Ear(), mouth: Mouth = Mouth()) {
+        // FIXME: - Not sure this is the best way to do dependency injection.
+        self.brain = Brain(stageManager: StageManager.shared)
         self.ear = ear
         self.mouth = mouth
         
         super.init()
         ear.delegate = self
         mouth.delegate = self
+    }
+    
+    /*
+     Only needed if you don't want to use the default brain for the app.
+     */
+    internal func setBrain(_ brain: Brain) {
+        self.brain = brain
     }
     
     /**

@@ -37,7 +37,8 @@ class Ear: NSObject {
     internal func listen(expectedPhrase: String?) {
         phraseHeard = ""
         isListening = true
-        startSpeechRecognizer(expectedPhrase: expectedPhrase)
+        setUpSpeechRecognizer(expectedPhrase: expectedPhrase)
+        startSpeechRecognizer()
         stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: .seconds(3))
     }
     
@@ -137,24 +138,27 @@ extension Ear: AVAudioRecorderDelegate {
 
 extension Ear: SFSpeechRecognizerDelegate {
     // MARK: - Listen Actions
-    private func startSpeechRecognizer(expectedPhrase: String?) {
+    private func startSpeechRecognizer() {
         do {
-            speechRecognizer.setInputNode(inputNode: audioEngine.inputNode)
-            speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
-                if self.isListening {
-                    self.phraseHeard = phraseHeard
-                    self.delegate?.isHearing(phraseHeard, loudness: nil)
-                }
-            } errorCompletion: { error in
-                debugPrint("Error capturing speech: \(error.debugDescription)")
-                self.stopSpeechRecognizer()
-            }
             audioEngine.prepare()
             try audioEngine.start()
         }
         catch {
             // FIXME: - Handle Error
             debugPrint("Error setting up speech recognizer audio engine: \(error)")
+        }
+    }
+    
+    private func setUpSpeechRecognizer(expectedPhrase: String?) {
+        speechRecognizer.setInputNode(inputNode: audioEngine.inputNode)
+        speechRecognizer.configure(expectedPhrase: expectedPhrase) { phraseHeard in
+            if self.isListening {
+                self.phraseHeard = phraseHeard
+                self.delegate?.isHearing(phraseHeard, loudness: nil)
+            }
+        } errorCompletion: { error in
+            debugPrint("Error capturing speech: \(error.debugDescription)")
+            self.stopSpeechRecognizer()
         }
     }
     

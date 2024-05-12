@@ -13,10 +13,11 @@ import SwiftUI
     internal var laughLoudness: Float = 0
     internal var phraseHistory: String = "Tap the panda to get started!"
     
-    private var bot: Bot = Bot()
+    private var bot: Bot
     
-    init() {
-        bot.delegate = self
+    init(bot: Bot = Bot()) {
+        self.bot = bot
+        self.bot.delegate = self
     }
     
     internal func startConversation() {
