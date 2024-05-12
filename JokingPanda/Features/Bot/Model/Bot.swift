@@ -52,6 +52,16 @@ class Bot: NSObject, ObservableObject  {
         triggerActionUpdate()
         mouth.stopSpeaking()
         ear.stopListening()
+        deactivateAudioSession()
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
+        }
     }
     
     /**
@@ -144,13 +154,14 @@ extension Bot: EarDelegate {
             
             respond()
         }
-        else if let loudness = loudness {
+        else if let loudness = loudness {   // Last logic after conversation ends.
             brain.rememberLaughter(loudness: Int(loudness))
             
             delegate?.laughLoudnessDidUpdate(loudness: loudness)
             action = .stopped
             triggerActionUpdate()
             triggerPhraseHistoryUpdate()
+            deactivateAudioSession()
         }
     }
 }

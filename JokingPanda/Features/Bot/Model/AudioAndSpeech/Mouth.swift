@@ -19,6 +19,7 @@ protocol MouthDelegate: AnyObject {
 class Mouth: NSObject {
     weak var delegate: MouthDelegate?
     
+    private var audioPlayer: AVAudioPlayer? = nil
     private var isSpeaking = false
     private var phraseSaid: String = ""
     private let synthesizer: AVSpeechSynthesizer
@@ -31,11 +32,11 @@ class Mouth: NSObject {
     
     internal func speak(phrase: String) {
         phraseSaid = ""
-        playAudio(for: phrase)
+        playPhraseOutloud(phrase)
     }
     
     internal func stopSpeaking() {
-        AudioManager.shared.deactivateAudioPlayer()
+        deactivateAudioPlayer()
         isSpeaking = false
     }
 }
@@ -43,20 +44,50 @@ class Mouth: NSObject {
 extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
     // MARK: - AVAudioPlayerDelegate
     
-    private func playAudio(for phrase: String) {
+    private func playPhraseOutloud(_ phrase: String) {
         isSpeaking = true
         
         if let url = Tool.getAudioURL(for: phrase) {
             phraseSaid = phrase
             delegate?.isSayingPhrase(self.phraseSaid)
-            AudioManager.shared.activateAudioPlaybackSession()
-            AudioManager.shared.play(url: url, delegate: self)
+            playAudio(url: url)
         }
         else {
             // Fallback on voice synthesis if audio file doesn't exist
-            AudioManager.shared.activateAudioSpeechSynthesizerSession()
-            self.synthesizer.botSpeak(string: phrase)
+            do {
+                try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
+                try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+                self.synthesizer.botSpeak(string: phrase)
+            }
+            catch {
+                // FIXME: Handle error
+                debugPrint("Speech synthesis error setting audio session category: \(error.localizedDescription)")
+            }
         }
+    }
+    
+    private func playAudio(url: URL) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            audioPlayer = nil
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            if let player = audioPlayer {
+                player.delegate = self
+                player.prepareToPlay()
+                player.play()
+            }
+        } catch {
+            // FIXME: Handle error
+            debugPrint("Attempted to play file but got error: \(error.localizedDescription)")
+        }
+    }
+    
+    private func deactivateAudioPlayer() {
+        if let player = audioPlayer {
+            player.delegate = nil
+        }
+        audioPlayer = nil
     }
     
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
