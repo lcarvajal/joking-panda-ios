@@ -2,27 +2,48 @@
 //  SpeechRecognitionManager.swift
 //  JokingPanda
 //
-//  Created by Lukas Carvajal on 11/20/23.
-//
 
 import Foundation
 import Speech
 
-class SpeechRecognizer {
+protocol SpeechRecognizerDelegate: AnyObject {
+    func isRecognizing(_ phrase: String)
+    func didRecognize(_ phrase: String)
+}
+
+class SpeechRecognizer: NSObject {
+    internal weak var delegate: SpeechRecognizerDelegate?
+    
     private var inputNode: AVAudioInputNode?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
+    private var phraseHeard: String = ""
+    private var isListening = false
+    private let audioEngine: AVAudioEngine
+    
+    init(audioEngine: AVAudioEngine = AVAudioEngine()) {
+        self.audioEngine = audioEngine
+        super.init()
+        speechRecognizer.delegate = self
+    }
+    
+    internal func listen(expectedPhrase: String?) {
+        phraseHeard = ""
+        isListening = true
+        setUpSpeechRecognizer(expectedPhrase: expectedPhrase)
+        startSpeechRecognizer()
+        stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: .seconds(3))
+    }
+    
+    internal func stop() {
+        isListening = false
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+    }
+    
     // MARK: - Setup
-    
-    internal func setDelegate(delegate: SFSpeechRecognizerDelegate) {
-        speechRecognizer.delegate = delegate
-    }
-    
-    internal func setInputNode(inputNode: AVAudioInputNode) {
-        self.inputNode = inputNode
-    }
     
     private func configureMicrophoneInput() {
         guard let inputNode = inputNode else { return }
@@ -61,10 +82,6 @@ class SpeechRecognizer {
         configureMicrophoneInput()
     }
     
-    internal func stop() {
-        recognitionRequest?.endAudio()
-    }
-    
     private func cancelCurrentRecognitionTask() {
         // Cancel the previous task if it's running.
         if let recognitionTask = recognitionTask {
@@ -93,4 +110,49 @@ class SpeechRecognizer {
             }
         }
     }
+    
+    // MARK: - Listen Actions
+    private func startSpeechRecognizer() {
+        do {
+            audioEngine.prepare()
+            try audioEngine.start()
+        }
+        catch {
+            // FIXME: - Handle Error
+            debugPrint("Error setting up speech recognizer audio engine: \(error)")
+        }
+    }
+    
+    private func setUpSpeechRecognizer(expectedPhrase: String?) {
+        inputNode = audioEngine.inputNode
+        configure(expectedPhrase: expectedPhrase) { phraseHeard in
+            if self.isListening {
+                self.phraseHeard = phraseHeard
+                self.delegate?.isRecognizing(phraseHeard)
+            }
+        } errorCompletion: { error in
+            debugPrint("Error capturing speech: \(error.debugDescription)")
+            self.stop()
+        }
+    }
+    
+    private func stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: DispatchTimeInterval) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + intervalsToRecognizeSpeech) {
+            if self.phraseHeard.isEmpty && self.isListening {
+                // If user hasn't said anything, delay stopping speech recognizer
+                self.stopSpeechRecognizerAfterSpeechRecognized(intervalsToRecognizeSpeech: intervalsToRecognizeSpeech)
+            }
+            else if self.isListening {
+                self.delegate?.didRecognize(self.phraseHeard)
+                self.stop()
+            }
+        }
+    }
 }
+
+extension SpeechRecognizer: SFSpeechRecognizerDelegate {
+//    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+//        <#code#>
+//    }
+}
+

@@ -21,10 +21,11 @@ class Bot: NSObject, ObservableObject  {
     
     private var action: AnimationAction = .stopped   // Animate based on current action
     private var brain: Brain    // Decides what to say and remembers what was said / heard
-    private let ear: Ear    // Listens to phrases said by user
+    private let laughRecognizer: LaughRecognizer
+    private let speechRecognizer: SpeechRecognizer
     private var mouth: Mouth    // Says phrases outloud
     
-    init(ear: Ear = Ear(), mouth: Mouth = Mouth()) {
+    init(laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: Mouth = Mouth()) {
         // FIXME: - Not sure this is the best way to do dependency injection.
         let decidingActs = [Act(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON)
@@ -38,11 +39,13 @@ class Bot: NSObject, ObservableObject  {
         self.brain = Brain(stageManager: stageManager)
         
         
-        self.ear = ear
+        self.laughRecognizer = laughRecognizer
+        self.speechRecognizer = speechRecognizer
         self.mouth = mouth
         
         super.init()
-        ear.delegate = self
+        laughRecognizer.delegate = self
+        speechRecognizer.delegate = self
         mouth.delegate = self
     }
     
@@ -70,7 +73,8 @@ class Bot: NSObject, ObservableObject  {
         brain.stopConversation()
         triggerActionUpdate()
         mouth.stopSpeaking()
-        ear.stopListening()
+        laughRecognizer.stop()
+        speechRecognizer.stop()
         deactivateAudioSession()
     }
     
@@ -100,14 +104,14 @@ class Bot: NSObject, ObservableObject  {
         action = .listening
         triggerActionUpdate()
         triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
-        ear.listen(expectedPhrase: expectedPhrase)
+        speechRecognizer.listen(expectedPhrase: expectedPhrase)
     }
     
     private func listenForLaughter() {
         action = .listeningToLaugher
         triggerActionUpdate()
         triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
-        ear.listenForLaughter()
+        laughRecognizer.listen()
     }
     
     /**
@@ -153,36 +157,38 @@ class Bot: NSObject, ObservableObject  {
     }
 }
 
-extension Bot: EarDelegate {
-    func isHearing(_ phrase: String?, loudness: Float?) {
-        if let phrase = phrase {
-            triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
-        }
-        else if let loudness = loudness {
-            delegate?.laughLoudnessDidUpdate(loudness: loudness)
-        }
+extension Bot: LaughRecognizerDelegate {
+    func isRecognizing(loudness: Float) {
+        delegate?.laughLoudnessDidUpdate(loudness: loudness)
     }
     
-    func didHear(_ phrase: String?, loudness: Float?) {
-        if let phrase = phrase {
-            brain.remember(phrase, saidBy: .currentUser)
-            
-            action = .stopped
-            triggerActionUpdate()
-            triggerPhraseHistoryUpdate()
-            
-            respond()
-        }
-        else if let loudness = loudness {   // Last logic after conversation ends.
-            brain.rememberLaughter(loudness: Int(loudness))
-            
-            delegate?.laughLoudnessDidUpdate(loudness: loudness)
-            action = .stopped
-            triggerActionUpdate()
-            triggerPhraseHistoryUpdate()
-            deactivateAudioSession()
-        }
+    func didRecognize(loudness: Float) {
+        brain.rememberLaughter(loudness: Int(loudness))
+        
+        delegate?.laughLoudnessDidUpdate(loudness: loudness)
+        action = .stopped
+        triggerActionUpdate()
+        triggerPhraseHistoryUpdate()
+        deactivateAudioSession()
     }
+}
+
+extension Bot: SpeechRecognizerDelegate {
+    func isRecognizing(_ phrase: String) {
+        triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
+    }
+    
+    func didRecognize(_ phrase: String) {
+        brain.remember(phrase, saidBy: .currentUser)
+        
+        action = .stopped
+        triggerActionUpdate()
+        triggerPhraseHistoryUpdate()
+        
+        respond()
+    }
+    
+    
 }
 
 extension Bot: MouthDelegate {

@@ -336,7 +336,7 @@
 		8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */; };
 		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
 		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
-		8DE87AAC2BEA8C4B008E6AF2 /* Ear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */; };
+		8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */; };
 		8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */; };
 		8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AB02BEA9646008E6AF2 /* Brain.swift */; };
 /* End PBXBuildFile section */
@@ -692,7 +692,7 @@
 		8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
 		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
 		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
-		8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ear.swift; sourceTree = "<group>"; };
+		8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizer.swift; sourceTree = "<group>"; };
 		8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
 		8DE87AB02BEA9646008E6AF2 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -743,14 +743,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		8D5945FE2BEBA84800EAF79A /* Theater */ = {
+		8D5945FE2BEBA84800EAF79A /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
 				8DC97D952AE92CB0002CEA1E /* Act.swift */,
 				8D0DE0042B0E4CD900A3A8F8 /* Play.swift */,
 				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
+				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
 			);
-			path = Theater;
+			path = Conversation;
 			sourceTree = "<group>";
 		};
 		8D5945FF2BEBC4A200EAF79A /* Features */ = {
@@ -1214,6 +1215,7 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8D5945FE2BEBA84800EAF79A /* Conversation */,
 				8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */,
 				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
@@ -1248,11 +1250,9 @@
 		8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */ = {
 			isa = PBXGroup;
 			children = (
-				8D5945FE2BEBA84800EAF79A /* Theater */,
 				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
-				8DE87AAB2BEA8C4B008E6AF2 /* Ear.swift */,
+				8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */,
 				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
-				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
 			);
 			path = AudioAndSpeech;
 			sourceTree = "<group>";
@@ -1706,7 +1706,7 @@
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
 				8D0DDFFB2B0CADDF00A3A8F8 /* StageManager.swift in Sources */,
-				8DE87AAC2BEA8C4B008E6AF2 /* Ear.swift in Sources */,
+				8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */,
 				8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */,
