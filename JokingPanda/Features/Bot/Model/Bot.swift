@@ -13,6 +13,7 @@ import Speech
 protocol BotDelegate: AnyObject {
     func actionDidUpdate(action: AnimationAction)
     func currentPhraseDidUpdate(phrase: String)
+    func errorOccured(error: Error)
     func phraseHistoryDidUpdate(phraseHistory: String)
     func laughLoudnessDidUpdate(loudness: Float)
 }
@@ -97,7 +98,7 @@ class Bot: NSObject, ObservableObject  {
                 triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
             }
             catch {
-                // FIXME: - Display error message to user saying audio isn't working
+                delegate?.errorOccured(error: error)
             }
         }
         else {

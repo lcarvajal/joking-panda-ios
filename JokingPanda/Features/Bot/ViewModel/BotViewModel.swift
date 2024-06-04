@@ -29,6 +29,10 @@ import SwiftUI
     internal func stopEverything() {
         bot.stopEverything()
     }
+    
+    internal func eraseError() {
+        error = nil
+    }
 }
 
 extension BotViewModel: BotDelegate {
@@ -41,6 +45,12 @@ extension BotViewModel: BotDelegate {
     func currentPhraseDidUpdate(phrase: String) {
         DispatchQueue.main.async {
             self.currentPhrase = phrase
+        }
+    }
+    
+    func errorOccured(error: Error) {
+        DispatchQueue.main.async {
+            self.error = error
         }
     }
     
