@@ -1,4 +1,7 @@
 <img src="https://lcarvajal.github.io/img/haha-panda.jpg" height=200>
+<br>
+<a href="https://apps.apple.com/us/app/snapchat/id447188370?itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83&amp;releaseDate=1310515200" alt="Download on the App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
+<!-- <a href="" class="btn btn-primary btn-sm" role="button" target="_blank">Download on the App Store</a> -->
 
 #  Joking Panda on iOS
 
@@ -19,6 +22,11 @@ An iOS app with an animated panda that says knock-knock jokes out-loud and requi
 The 9-year-old had an iPhone so I thought I'd develop an iOS app. 
 
 My goal was really to build something that engaged kids in conversation rather than having them tap at a screen or hear a knock-knock joke said outloud the boring way ChatGPT does.
+
+### Technologies
+- AVFAudio - plays audio files
+- Speech - speech-to-text, captures laughter loudness, and synthesizes speech when audio file isn't available
+- Mixpanel - event tracking
 
 ## Support
 - Knock knock jokes
