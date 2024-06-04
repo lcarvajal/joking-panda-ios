@@ -11,8 +11,26 @@ import Foundation
 import Speech
 
 protocol LaughRecognizerDelegate: AnyObject {
-    func isRecognizing(loudness: Float)
-    func didRecognize(loudness: Float)
+    func laughRecognizerIsRecognizing(loudness: Float)
+    func laughRecognizerDidRecognize(loudness: Float)
+    func laughRecognizerErrorDidOccur(error: Error)
+}
+
+enum LaughRecognizerError: LocalizedError {
+    case recorderSetupDidFail
+    case sessionSetupDidFail
+    case recordingInterupted
+    
+    var errorDescription: String? {
+        switch self {
+        case .recorderSetupDidFail:
+            return "Could Not Start Audio Recorder"
+        case .sessionSetupDidFail:
+            return "Could Not Set Up Audio Session"
+        case .recordingInterupted:
+            return "Laugh Capture Interupted"
+        }
+    }
 }
 
 class LaughRecognizer: NSObject {
@@ -23,17 +41,22 @@ class LaughRecognizer: NSObject {
     private var weightedLoudness: Float = 0.0
     private var laughRecordingTimer:Timer?
     
-    internal func start() throws {
-        self.weightedLoudness = 0
-        try startLaughRecognizer()
-        stopLaughRecognizer(after: .seconds(3))
+    internal func start() {
+        do {
+            self.weightedLoudness = 0
+            try startLaughRecognizer()
+            stopLaughRecognizer(after: .seconds(3))
+        }
+        catch {
+            delegate?.laughRecognizerErrorDidOccur(error: error)
+        }
     }
     
-    internal func stop() throws {
+    internal func stop() {
         laughRecordingTimer?.invalidate()
         laughRecordingTimer = nil
         audioRecorder?.stop()
-        try deactivateAudioSession()
+        try? deactivateAudioSession()
     }
     
     // MARK: - Setup
@@ -46,9 +69,13 @@ class LaughRecognizer: NSObject {
     }
     
     private func setUpAudioSession() throws {
-        self.weightedLoudness = 0
-        try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement)
-        try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+        do {
+            self.weightedLoudness = 0
+            try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement)
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+        } catch {
+            throw LaughRecognizerError.sessionSetupDidFail
+        }
     }
     
     private func setUpAudioRecorder() throws {
@@ -57,17 +84,22 @@ class LaughRecognizer: NSObject {
             return
         }
         
-        let audioFilename = documentsDirectory.appendingPathComponent("tempLaughterRecording.wav")
-        self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: [
-            AVFormatIDKey: kAudioFormatLinearPCM,
-            AVSampleRateKey: 44100.0,
-            AVNumberOfChannelsKey: 1,
-            AVLinearPCMBitDepthKey: 16,
-            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-        ])
-        self.audioRecorder?.delegate = self
-        self.audioRecorder?.prepareToRecord()
-        self.audioRecorder?.isMeteringEnabled = true
+        do {
+            let audioFilename = documentsDirectory.appendingPathComponent("tempLaughterRecording.wav")
+            self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: [
+                AVFormatIDKey: kAudioFormatLinearPCM,
+                AVSampleRateKey: 44100.0,
+                AVNumberOfChannelsKey: 1,
+                AVLinearPCMBitDepthKey: 16,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ])
+            self.audioRecorder?.delegate = self
+            self.audioRecorder?.prepareToRecord()
+            self.audioRecorder?.isMeteringEnabled = true
+        }
+        catch {
+            throw LaughRecognizerError.recorderSetupDidFail
+        }
     }
     
     // MARK: - Actions
@@ -95,7 +127,7 @@ class LaughRecognizer: NSObject {
             updateWeightedLoudness(audioPower: averagePower)
             audioRecorder.updateMeters()
             
-            self.delegate?.isRecognizing(loudness: self.weightedLoudness)
+            self.delegate?.laughRecognizerIsRecognizing(loudness: self.weightedLoudness)
         }
     }
     
@@ -123,7 +155,7 @@ class LaughRecognizer: NSObject {
     
     private func stopLaughRecognizer(after time: DispatchTimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time) {
-            try? self.stop()
+            self.stop()
         }
     }
     
@@ -133,13 +165,13 @@ class LaughRecognizer: NSObject {
 }
 
 extension LaughRecognizer: AVAudioRecorderDelegate {
-    func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: (any Error)?) {
-        // FIXME: - Handle errors
-    }
-    
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        // FIXME: - Handle errors
         isRecording = false
-        delegate?.didRecognize(loudness: self.weightedLoudness)
+        
+        if flag {
+            delegate?.laughRecognizerDidRecognize(loudness: self.weightedLoudness)
+        } else {
+            delegate?.laughRecognizerErrorDidOccur(error: LaughRecognizerError.recordingInterupted)
+        }
     }
 }

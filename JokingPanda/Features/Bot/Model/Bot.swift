@@ -167,17 +167,21 @@ class Bot: NSObject, ObservableObject  {
 }
 
 extension Bot: LaughRecognizerDelegate {
-    func isRecognizing(loudness: Float) {
+    func laughRecognizerIsRecognizing(loudness: Float) {
         delegate?.laughLoudnessDidUpdate(loudness: loudness)
     }
     
-    func didRecognize(loudness: Float) {
+    func laughRecognizerDidRecognize(loudness: Float) {
         brain.rememberLaughter(loudness: Int(loudness))
         
         delegate?.laughLoudnessDidUpdate(loudness: loudness)
         action = .stopped
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
+    }
+    
+    func laughRecognizerErrorDidOccur(error: any Error) {
+        delegate?.errorDidOccur(error: error)
     }
 }
 
