@@ -4,7 +4,7 @@ Author: Lukas Carvajal
 
 ## About
 
-<img src="https://lcarvajal.github.io/haha-panda/img/panda-dance.png" height=200>
+<img src="https://lcarvajal.github.io/img/haha-panda.jpg" height=200>
 
 An iOS app with an animated panda that says knock-knock jokes out-loud and requires the user to talk back to it.
 
