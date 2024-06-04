@@ -20,9 +20,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         // Track if new version is opened
         let storedVersion = defaults.string(forKey: Constant.UserDefault.appVersion)
         if storedVersion == nil || storedVersion != currentVersion {
-            // FIXME: - Comment out after publishing
-            // Set latest jokes for Elena
-            UserDefaults.standard.set(1102, forKey: Constant.UserDefault.actId)
+            // Set latest jokes for new users
+            // UserDefaults.standard.set(1102, forKey: Constant.UserDefault.actId)
         }
         
         // Store current version
