@@ -76,7 +76,8 @@ class Bot: NSObject, ObservableObject  {
         action = .stopped
         brain.stopConversation()
         triggerActionUpdate()
-        speechSynthesizer.stopSpeaking()
+        
+        speechSynthesizer.stop()
         laughRecognizer.stop()
         speechRecognizer.stop()
         deactivateAudioSession()

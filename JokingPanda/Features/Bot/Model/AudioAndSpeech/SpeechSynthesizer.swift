@@ -33,10 +33,10 @@ class SpeechSynthesizer: NSObject {
         phraseSaid = ""
         isSpeaking = true
         setUpAudioSession()
-        self.synthesizer.botSpeak(string: phrase)
+        synthesizer.botSpeak(string: phrase)
     }
     
-    internal func stopSpeaking() {
+    internal func stop() {
         isSpeaking = false
     }
     
@@ -65,7 +65,7 @@ extension SpeechSynthesizer: AVSpeechSynthesizerDelegate {
     
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         synthesizer.stopSpeaking(at: .immediate)
-        stopSpeaking()
+        stop()
         let phrase = utterance.speechString
         self.phraseSaid = phrase
         delegate?.didSayPhrase(phrase)
