@@ -3,7 +3,8 @@
 //  JokingPanda
 //
 /*
- A bot holds all of the different components of haha panda together. It speaks, listens to user, then speaks again if needed, all while remembering the conversation.
+ A bot holds all of the different components of haha panda together.
+ It speaks, listens to user, then speaks again if needed, all while remembering the conversation.
  */
 
 import Foundation
@@ -59,7 +60,7 @@ class Bot: NSObject, ObservableObject  {
     }
     
     /**
-    Kick off conversation.
+     Kick off conversation.
      */
     internal func startConversation() {
         brain.startConversation()
@@ -196,8 +197,6 @@ extension Bot: SpeechRecognizerDelegate {
         
         respond()
     }
-    
-    
 }
 
 extension Bot: MouthDelegate {
