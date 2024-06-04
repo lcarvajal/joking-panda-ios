@@ -13,16 +13,17 @@ struct BotView: View {
     @State var botViewModel: BotViewModel
     @State var expandMessages = false
     @State var showSheet = false
+    @State var showAlert = false
     
     var body: some View {
         VStack(spacing: 0) {
             GeometryReader { geometry in
                 ZStack {
                     AnimationView(geometry: .constant(geometry), status: $botViewModel.action)
-                    .background(Color.tappableArea)
-                    .onTapGesture {
-                        handleTapOnBot()
-                    }
+                        .background(Color.tappableArea)
+                        .onTapGesture {
+                            handleTapOnBot()
+                        }
                     
                     OverlayButtons(showSheet: $showSheet, botViewModel: botViewModel, size: 50)
                 }
@@ -39,6 +40,21 @@ struct BotView: View {
             
         }
         .background(Color.background)
+        .alert(isPresented: $showAlert) {
+            // FIXME: - Alert is deprecated
+            Alert(
+                title: Text("Error"),
+                message: Text(botViewModel.errorMessage),
+                dismissButton: .default(Text("OK")) {
+                    botViewModel.resetErrorMessage()
+                }
+            )
+        }
+        .onChange(of: botViewModel.errorMessage, { oldValue, newValue in
+            if newValue.count > 0 {
+                showAlert = true
+            }
+        })
     }
     
     private func handleTapOnBot() {
