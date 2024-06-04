@@ -23,60 +23,51 @@ class LaughRecognizer: NSObject {
     private var weightedLoudness: Float = 0.0
     private var laughRecordingTimer:Timer?
     
-    internal func start() {
+    internal func start() throws {
         self.weightedLoudness = 0
-        startLaughRecognizer()
+        try startLaughRecognizer()
         stopLaughRecognizer(after: .seconds(3))
     }
     
-    internal func stop() {
+    internal func stop() throws {
         laughRecordingTimer?.invalidate()
         laughRecordingTimer = nil
         audioRecorder?.stop()
-        deactivateAudioSession()
+        try deactivateAudioSession()
     }
     
     // MARK: - Setup
     
-    private func startLaughRecognizer() {
-        setUpAudioSession()
-        setUpAudioRecorder()
+    private func startLaughRecognizer() throws {
+        try setUpAudioSession()
+        try setUpAudioRecorder()
         startAudioRecorder()
         captureLaughter(withTimeInteval: 0.2)
     }
     
-    private func setUpAudioSession() {
-        do {
-            self.weightedLoudness = 0
-            try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement)
-            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-        } catch {
-            debugPrint("Error setting up audio session: \(error.localizedDescription)")
-        }
+    private func setUpAudioSession() throws {
+        self.weightedLoudness = 0
+        try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement)
+        try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
     }
     
-    private func setUpAudioRecorder() {
+    private func setUpAudioRecorder() throws {
         guard let documentsDirectory = Tool.getDocumentsDirectory() else {
             debugPrint("Error getting documents directory")
             return
         }
         
-        do {
-            let audioFilename = documentsDirectory.appendingPathComponent("tempLaughterRecording.wav")
-            self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: [
-                AVFormatIDKey: kAudioFormatLinearPCM,
-                AVSampleRateKey: 44100.0,
-                AVNumberOfChannelsKey: 1,
-                AVLinearPCMBitDepthKey: 16,
-                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-            ])
-            self.audioRecorder?.delegate = self
-            self.audioRecorder?.prepareToRecord()
-            self.audioRecorder?.isMeteringEnabled = true
-        }
-        catch {
-            debugPrint("Error setting up audio recorder: \(error.localizedDescription)")
-        }
+        let audioFilename = documentsDirectory.appendingPathComponent("tempLaughterRecording.wav")
+        self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: [
+            AVFormatIDKey: kAudioFormatLinearPCM,
+            AVSampleRateKey: 44100.0,
+            AVNumberOfChannelsKey: 1,
+            AVLinearPCMBitDepthKey: 16,
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+        ])
+        self.audioRecorder?.delegate = self
+        self.audioRecorder?.prepareToRecord()
+        self.audioRecorder?.isMeteringEnabled = true
     }
     
     // MARK: - Actions
@@ -132,17 +123,12 @@ class LaughRecognizer: NSObject {
     
     private func stopLaughRecognizer(after time: DispatchTimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time) {
-            self.stop()
+            try? self.stop()
         }
     }
     
-    private func deactivateAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-        }
+    private func deactivateAudioSession() throws {
+        try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }
 

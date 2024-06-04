@@ -50,7 +50,7 @@ extension BotViewModel: BotDelegate {
     
     func errorOccured(error: Error) {
         DispatchQueue.main.async {
-            self.error = error
+            self.errorMessage = error.localizedDescription
         }
     }
     

@@ -79,7 +79,7 @@ class Bot: NSObject, ObservableObject  {
         triggerActionUpdate()
         
         try? audioPlayer.stop()
-        laughRecognizer.stop()
+        try? laughRecognizer.stop()
         speechSynthesizer.stop()
         speechRecognizer.stop()
     }
@@ -117,10 +117,15 @@ class Bot: NSObject, ObservableObject  {
     }
     
     private func listenForLaughter() {
-        action = .listeningToLaugher
-        triggerActionUpdate()
-        triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
-        laughRecognizer.start()
+        do {
+            action = .listeningToLaugher
+            triggerActionUpdate()
+            triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
+            try laughRecognizer.start()
+        }
+        catch {
+            delegate?.errorOccured(error: error)
+        }
     }
     
     /**
