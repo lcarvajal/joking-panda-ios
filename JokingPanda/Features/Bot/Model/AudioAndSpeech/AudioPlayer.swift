@@ -41,7 +41,7 @@ class AudioPlayer: NSObject {
                 try startAudioPlayer()
             }
             catch {
-                delegate?.errorDidOccur(error: error)
+                delegate?.audioPlayerErrorDidOccur(error: error)
             }
         }
         else {
@@ -98,9 +98,9 @@ extension AudioPlayer: AVAudioPlayerDelegate {
         guard let delegate = self.delegate else { return }
         
         if flag {
-            delegate.didPlay()
+            delegate.audioPlayerDidPlay()
         } else {
-            delegate.errorDidOccur(error: AudioPlayerError.didNotFinishAudio)
+            delegate.audioPlayerErrorDidOccur(error: AudioPlayerError.didNotFinishAudio)
         }
     }
 }

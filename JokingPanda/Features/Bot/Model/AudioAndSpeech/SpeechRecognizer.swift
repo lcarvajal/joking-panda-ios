@@ -65,7 +65,7 @@ class SpeechRecognizer: NSObject {
                 try setUpSpeechRecognizer()
                 captureSpeech(repeatedInterval: .seconds(3))
             } catch {
-                delegate?.errorDidOccur(error: error)
+                delegate?.speechRecognizerErrorDidOccur(error: error)
             }
         }
         else {
@@ -120,7 +120,7 @@ class SpeechRecognizer: NSObject {
         setRecognitionTask { phraseHeard in
             if self.isListening {
                 self.phraseHeard = phraseHeard
-                self.delegate?.isRecognizing(phraseHeard)
+                self.delegate?.speechRecognizerIsRecognizing(phraseHeard)
             }
         } errorCompletion: { error in
             self.stop()
@@ -151,7 +151,7 @@ class SpeechRecognizer: NSObject {
                 self.captureSpeech(repeatedInterval: repeatedInterval)
             }
             else if self.isListening {
-                self.delegate?.didRecognize(self.phraseHeard)
+                self.delegate?.speechRecognizerDidRecognize(self.phraseHeard)
                 self.stop()
             }
         }
