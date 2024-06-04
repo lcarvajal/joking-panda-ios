@@ -45,10 +45,6 @@ struct Animation {
         if let animatedImage = UIImage.animatedImage(with: images, duration: duration) {
             return animatedImage
         }
-        else {
-            // FIXME: Not the most graceful solution to an image not existing
-            return UIImage()
-        }
     }
     
     static func animationStatusFor(person: Person, phrase: String) -> AnimationAction {

@@ -60,7 +60,7 @@ class SpeechRecognizer: NSObject {
             self.expectedPhrase = expectedPhrase
             
             do {
-                cancelRecognitionTask() // FIXME: - We probably can use isListening to rewrite this better
+                cancelRecognitionTask()
                 inputNode = audioEngine.inputNode
                 try setUpSpeechRecognizer()
                 captureSpeech(repeatedInterval: .seconds(3))
@@ -125,7 +125,6 @@ class SpeechRecognizer: NSObject {
         } errorCompletion: { error in
             self.stop()
             if error != nil {
-                // FIXME: - Handle error
                 debugPrint("Error capturing speech: \(error.debugDescription)")
             }
         }
@@ -176,7 +175,6 @@ class SpeechRecognizer: NSObject {
             }
             
             if error != nil || isFinal {
-                // FIXME: Handle error
                 inputNode.removeTap(onBus: 0)
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
