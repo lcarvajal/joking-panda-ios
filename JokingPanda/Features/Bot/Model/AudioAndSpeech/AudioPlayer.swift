@@ -51,6 +51,8 @@ class AudioPlayer: NSObject {
         }
     }
     
+    // MARK: - Actions
+    
     private func startAudioPlayer() {
         guard let audioPlayer = self.audioPlayer else { return }
         audioPlayer.prepareToPlay()
