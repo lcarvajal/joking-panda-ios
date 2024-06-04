@@ -19,10 +19,11 @@ class LaughRecognizer: NSObject {
     
     private var audioRecorder: AVAudioRecorder?
     private var isRecording = false
-    private var loudness: Float = 0.0
+    private var weightedLoudness: Float = 0.0
     private var laughRecordingTimer:Timer?
     
     internal func listen() {
+        self.weightedLoudness = 0
         startLaughRecognizer()
         stopLaughRecognizer(after: .seconds(3))
     }
@@ -33,63 +34,97 @@ class LaughRecognizer: NSObject {
         self.audioRecorder?.stop()
     }
     
+    // MARK: - Setup
+    
     private func startLaughRecognizer() {
+        setUpAudioSession()
+        setUpAudioRecorder()
+        startAudioRecorder()
+        captureLaughter(withTimeInteval: 0.2)
+    }
+    
+    private func setUpAudioSession() {
         do {
-            self.loudness = 0
+            self.weightedLoudness = 0
             try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement)
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
-            
-            if let documentsDirectory = Tool.getDocumentsDirectory() {
-                let audioFilename = documentsDirectory.appendingPathComponent("tempLaughterRecording.wav")
-                self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: [
-                    AVFormatIDKey: kAudioFormatLinearPCM,
-                    AVSampleRateKey: 44100.0,
-                    AVNumberOfChannelsKey: 1,
-                    AVLinearPCMBitDepthKey: 16,
-                    AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-                ])
-                self.audioRecorder?.delegate = self
-                self.audioRecorder?.prepareToRecord()
-                self.audioRecorder?.isMeteringEnabled = true
-                self.audioRecorder?.record()
-                self.isRecording = true
-            }
-            
-            Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] timer in
-                guard let self = self else {
-                    timer.invalidate() // Stop the timer if self is deallocated
-                    return
-                }
-                
-                laughRecordingTimer = timer
-                
-                self.audioRecorder?.updateMeters()
-                if let recorder = self.audioRecorder {
-                    let averagePower = recorder.averagePower(forChannel: 0)
-                    if averagePower > -70 {
-                        var weightedloudness = ((averagePower + 70) / 60) * 5
-                        if weightedloudness < 1 {
-                            weightedloudness = floor(weightedloudness)
-                        }
-                        else if weightedloudness > 4.4 {
-                            weightedloudness = ceil(weightedloudness)
-                        }
-                        else {
-                            weightedloudness = round(weightedloudness)
-                        }
-                        
-                        if weightedloudness > self.loudness {
-                            self.loudness = weightedloudness
-                        }
-                    }
-                    else {
-                        self.loudness = 0
-                    }
-                    self.delegate?.isRecognizing(loudness: self.loudness)
-                }
-            }
         } catch {
-            debugPrint("Error recording audio: \(error.localizedDescription)")
+            debugPrint("Error setting up audio session: \(error.localizedDescription)")
+        }
+    }
+    
+    private func setUpAudioRecorder() {
+        guard let documentsDirectory = Tool.getDocumentsDirectory() else {
+            debugPrint("Error getting documents directory")
+            return
+        }
+        
+        do {
+            let audioFilename = documentsDirectory.appendingPathComponent("tempLaughterRecording.wav")
+            self.audioRecorder = try AVAudioRecorder(url: audioFilename, settings: [
+                AVFormatIDKey: kAudioFormatLinearPCM,
+                AVSampleRateKey: 44100.0,
+                AVNumberOfChannelsKey: 1,
+                AVLinearPCMBitDepthKey: 16,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ])
+            self.audioRecorder?.delegate = self
+            self.audioRecorder?.prepareToRecord()
+            self.audioRecorder?.isMeteringEnabled = true
+        }
+        catch {
+            debugPrint("Error setting up audio recorder: \(error.localizedDescription)")
+        }
+    }
+    
+    // MARK: - Actions
+    
+    private func startAudioRecorder() {
+        guard let audioRecorder = self.audioRecorder else {
+            debugPrint("Attempting to start audio recorder before initializing")
+            return
+        }
+        audioRecorder.record()
+        self.isRecording = true
+    }
+    
+    private func captureLaughter(withTimeInteval timeInterval: TimeInterval) {
+        guard let audioRecorder = self.audioRecorder else { return }
+        
+        Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate() // Stop the timer if self is deallocated
+                return
+            }
+            
+            laughRecordingTimer = timer
+            let averagePower = audioRecorder.averagePower(forChannel: 0)
+            updateWeightedLoudness(audioPower: averagePower)
+            audioRecorder.updateMeters()
+            
+            self.delegate?.isRecognizing(loudness: self.weightedLoudness)
+        }
+    }
+    
+    private func updateWeightedLoudness(audioPower: Float) {
+        if audioPower > -70 {
+            var weightedloudness = ((audioPower + 70) / 60) * 5
+            if weightedloudness < 1 {
+                weightedloudness = floor(weightedloudness)
+            }
+            else if weightedloudness > 4.4 {
+                weightedloudness = ceil(weightedloudness)
+            }
+            else {
+                weightedloudness = round(weightedloudness)
+            }
+            
+            if weightedloudness > self.weightedLoudness {
+                self.weightedLoudness = weightedloudness
+            }
+        }
+        else {
+            self.weightedLoudness = 0
         }
     }
     
@@ -108,6 +143,6 @@ extension LaughRecognizer: AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         // FIXME: - Handle errors
         isRecording = false
-        delegate?.didRecognize(loudness: self.loudness)
+        delegate?.didRecognize(loudness: self.weightedLoudness)
     }
 }
