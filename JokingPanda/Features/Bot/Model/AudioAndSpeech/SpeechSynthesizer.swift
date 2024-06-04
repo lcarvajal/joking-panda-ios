@@ -16,7 +16,7 @@ protocol MouthDelegate: AnyObject {
     func didSayPhrase(_ phrase: String)
 }
 
-class Mouth: NSObject {
+class SpeechSynthesizer: NSObject {
     weak var delegate: MouthDelegate?
     
     private var isSpeaking = false
@@ -54,7 +54,7 @@ class Mouth: NSObject {
     }
 }
 
-extension Mouth: AVSpeechSynthesizerDelegate {
+extension SpeechSynthesizer: AVSpeechSynthesizerDelegate {
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
         if isSpeaking {
             let phrase = (utterance.speechString as NSString).substring(with: characterRange)

@@ -338,7 +338,7 @@
 		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
 		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
 		8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */; };
-		8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */; };
+		8DE87AAE2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */; };
 		8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AB02BEA9646008E6AF2 /* Brain.swift */; };
 /* End PBXBuildFile section */
 
@@ -695,7 +695,7 @@
 		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
 		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
 		8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizer.swift; sourceTree = "<group>"; };
-		8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouth.swift; sourceTree = "<group>"; };
+		8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		8DE87AB02BEA9646008E6AF2 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1252,10 +1252,10 @@
 		8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
-				8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */,
-				8DE87AAD2BEA8FFB008E6AF2 /* Mouth.swift */,
 				8D2EFD392C0EF4E5006AC2F2 /* AudioPlayer.swift */,
+				8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */,
+				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
+				8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */,
 			);
 			path = AudioAndSpeech;
 			sourceTree = "<group>";
@@ -1705,7 +1705,7 @@
 				8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */,
 				8D5946142BEE8C0D00EAF79A /* GaugeView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
-				8DE87AAE2BEA8FFB008E6AF2 /* Mouth.swift in Sources */,
+				8DE87AAE2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
 				8D0DDFFB2B0CADDF00A3A8F8 /* StageManager.swift in Sources */,

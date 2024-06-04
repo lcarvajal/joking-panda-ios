@@ -24,9 +24,9 @@ class Bot: NSObject, ObservableObject  {
     private let audioPlayer: AudioPlayer = AudioPlayer()
     private let laughRecognizer: LaughRecognizer
     private let speechRecognizer: SpeechRecognizer
-    private var mouth: Mouth    // Says phrases outloud
+    private var speechSynthesizer: SpeechSynthesizer    // Says phrases outloud
     
-    init(laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: Mouth = Mouth()) {
+    init(laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
         // FIXME: - Not sure this is the best way to do dependency injection.
         let decidingActs = [Act(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON)
@@ -42,7 +42,7 @@ class Bot: NSObject, ObservableObject  {
         
         self.laughRecognizer = laughRecognizer
         self.speechRecognizer = speechRecognizer
-        self.mouth = mouth
+        self.speechSynthesizer = mouth
         
         super.init()
         audioPlayer.delegate = self
@@ -74,7 +74,7 @@ class Bot: NSObject, ObservableObject  {
         action = .stopped
         brain.stopConversation()
         triggerActionUpdate()
-        mouth.stopSpeaking()
+        speechSynthesizer.stopSpeaking()
         laughRecognizer.stop()
         speechRecognizer.stop()
         deactivateAudioSession()
@@ -102,7 +102,7 @@ class Bot: NSObject, ObservableObject  {
             triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
         }
         else {
-            mouth.speak(phrase: phrase)
+            speechSynthesizer.speak(phrase: phrase)
         }
     }
     
