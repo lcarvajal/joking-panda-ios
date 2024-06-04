@@ -2,6 +2,9 @@
 //  SpeechRecognitionManager.swift
 //  JokingPanda
 //
+/*
+ Sets up an instance of SFSpeechRecognizer, passing `phraseHeard` through `isRecognizing()` and `didRecognize()` protocal methods.
+ */
 
 import Foundation
 import Speech
@@ -71,7 +74,10 @@ class SpeechRecognizer: NSObject {
         guard inputNode != nil else { return }
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        guard let recognitionRequest = recognitionRequest else { fatalError("Unable to created a SFSpeechAudioBufferRecognitionRequest object") }
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Unable to create a SFSpeechAudioBufferRecognitionRequest object")
+        }
+        
         recognitionRequest.shouldReportPartialResults = true
         
         if let expectedPhrase = self.expectedPhrase {

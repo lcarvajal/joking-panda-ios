@@ -3,7 +3,8 @@
 //  JokingPanda
 //
 /*
- Uses speech recognition to 'hear' what a user says and updates `phraseHeard` as a user says something.
+ Sets up an instance of AVAudioRecorder, passing `weightedLoudness` through `isRecognizing()` and `didRecognize()` protocal methods.
+ `weightedLoudness` stores an adjusted value for the loudness of volume captured chosen based on manual testing with phones.
  */
 
 import Foundation
