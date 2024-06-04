@@ -38,6 +38,7 @@ class SpeechSynthesizer: NSObject {
     
     internal func stop() {
         isSpeaking = false
+        deactivateAudioSession()
     }
     
     // MARK: - Set up
@@ -50,6 +51,15 @@ class SpeechSynthesizer: NSObject {
         catch {
             // FIXME: Handle error
             debugPrint("Speech synthesis error setting audio session category: \(error.localizedDescription)")
+        }
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
         }
     }
 }

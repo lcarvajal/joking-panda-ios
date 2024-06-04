@@ -30,9 +30,10 @@ class LaughRecognizer: NSObject {
     }
     
     internal func stop() {
-        self.laughRecordingTimer?.invalidate()
-        self.laughRecordingTimer = nil
-        self.audioRecorder?.stop()
+        laughRecordingTimer?.invalidate()
+        laughRecordingTimer = nil
+        audioRecorder?.stop()
+        deactivateAudioSession()
     }
     
     // MARK: - Setup
@@ -132,6 +133,15 @@ class LaughRecognizer: NSObject {
     private func stopLaughRecognizer(after time: DispatchTimeInterval) {
         DispatchQueue.main.asyncAfter(deadline: .now() + time) {
             self.stop()
+        }
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
         }
     }
 }

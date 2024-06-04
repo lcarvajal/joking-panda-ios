@@ -77,19 +77,10 @@ class Bot: NSObject, ObservableObject  {
         brain.stopConversation()
         triggerActionUpdate()
         
-        speechSynthesizer.stop()
+        audioPlayer.stop()
         laughRecognizer.stop()
+        speechSynthesizer.stop()
         speechRecognizer.stop()
-        deactivateAudioSession()
-    }
-    
-    private func deactivateAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-        }
     }
     
     /**
@@ -181,7 +172,6 @@ extension Bot: LaughRecognizerDelegate {
         action = .stopped
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
-        deactivateAudioSession()
     }
 }
 

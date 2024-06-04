@@ -22,10 +22,9 @@ class AudioPlayer: NSObject {
     }
     
     internal func stop() {
-        guard let audioPlayer = self.audioPlayer else { return }
-        
-        audioPlayer.delegate = nil
+        audioPlayer?.delegate = nil
         self.audioPlayer = nil
+        deactivateAudioSession()
     }
     
     // MARK: - Set up
@@ -57,6 +56,15 @@ class AudioPlayer: NSObject {
         guard let audioPlayer = self.audioPlayer else { return }
         audioPlayer.prepareToPlay()
         audioPlayer.play()
+    }
+    
+    private func deactivateAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
+        }
+        catch {
+            // FIXME: Handle error
+        }
     }
 }
 
