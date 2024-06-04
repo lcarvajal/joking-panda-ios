@@ -11,7 +11,7 @@ struct BotView: View {
     @Environment(\.scenePhase) var scenePhase
     
     @State var botViewModel: BotViewModel
-    @State var displayMessages = false
+    @State var expandMessages = false
     @State var showSheet = false
     
     var body: some View {
@@ -33,7 +33,7 @@ struct BotView: View {
                     .padding()
             }
             else {
-                MessagesView(displayMessages: $displayMessages, botViewModel: botViewModel)
+                MessagesView(displayMessages: $expandMessages, botViewModel: botViewModel)
                     .padding()
             }
             

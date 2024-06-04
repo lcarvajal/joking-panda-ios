@@ -9,6 +9,7 @@ import SwiftUI
 
 @Observable class BotViewModel {
     internal var action: AnimationAction = .stopped
+    internal var error: Error?
     internal var currentPhrase: String = ""
     internal var laughLoudness: Float = 0
     internal var phraseHistory: String = "Tap the panda to get started!"
