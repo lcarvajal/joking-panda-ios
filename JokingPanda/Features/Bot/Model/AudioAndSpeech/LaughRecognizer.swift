@@ -16,8 +16,6 @@ protocol LaughRecognizerDelegate: AnyObject {
 
 class LaughRecognizer: NSObject {
     internal weak var delegate: LaughRecognizerDelegate?
-    private var phraseHeard: String = ""
-    private var isListening = false
     
     private var audioRecorder: AVAudioRecorder?
     private var isRecording = false
