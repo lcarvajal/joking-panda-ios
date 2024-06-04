@@ -35,7 +35,7 @@ class SpeechRecognizer: NSObject {
         speechRecognizer.delegate = self
     }
     
-    internal func listen(expectedPhrase: String?) {
+    internal func start(expectedPhrase: String?) {
         phraseHeard = ""
         isListening = true
         self.expectedPhrase = expectedPhrase

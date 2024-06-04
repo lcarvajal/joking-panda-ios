@@ -36,7 +36,10 @@ class Mouth: NSObject {
     }
     
     internal func stopSpeaking() {
-        deactivateAudioPlayer()
+        if let player = audioPlayer {
+            player.delegate = nil
+        }
+        audioPlayer = nil
         isSpeaking = false
     }
 }
@@ -81,13 +84,6 @@ extension Mouth: AVAudioPlayerDelegate, AVSpeechSynthesizerDelegate {
             // FIXME: Handle error
             debugPrint("Attempted to play file but got error: \(error.localizedDescription)")
         }
-    }
-    
-    private func deactivateAudioPlayer() {
-        if let player = audioPlayer {
-            player.delegate = nil
-        }
-        audioPlayer = nil
     }
     
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {

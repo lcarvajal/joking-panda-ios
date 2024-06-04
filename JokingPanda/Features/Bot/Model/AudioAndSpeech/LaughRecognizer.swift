@@ -23,7 +23,7 @@ class LaughRecognizer: NSObject {
     private var weightedLoudness: Float = 0.0
     private var laughRecordingTimer:Timer?
     
-    internal func listen() {
+    internal func start() {
         self.weightedLoudness = 0
         startLaughRecognizer()
         stopLaughRecognizer(after: .seconds(3))
