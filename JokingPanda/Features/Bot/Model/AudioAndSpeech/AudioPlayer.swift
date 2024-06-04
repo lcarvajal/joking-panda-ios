@@ -12,13 +12,13 @@ protocol AudioPlayerDelegate: AnyObject {
 }
 
 enum AudioPlayerError: LocalizedError {
-    case audioPlaybackFailed
+    case didNotFinishAudio
     case playerSetupFailed
     case sessionSetupFailed
     
     var errorDescription: String? {
         switch self {
-        case .audioPlaybackFailed:
+        case .didNotFinishAudio:
             return "Could not play audio."
         case .playerSetupFailed:
             return "Audio player setup failed."
@@ -95,11 +95,12 @@ extension AudioPlayer: AVAudioPlayerDelegate {
     internal func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         stop()
         
-        if flag {
-            delegate?.didPlay()
-        } else {
-            delegate?.errorDidOccur(error: AudioPlayerError.audioPlaybackFailed)
-        }
+        guard let delegate = self.delegate else { return }
         
+        if flag {
+            delegate.didPlay()
+        } else {
+            delegate.errorDidOccur(error: AudioPlayerError.didNotFinishAudio)
+        }
     }
 }
