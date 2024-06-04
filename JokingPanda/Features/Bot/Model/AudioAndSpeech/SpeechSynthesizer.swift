@@ -11,13 +11,25 @@
 import Foundation
 import Speech
 
-protocol MouthDelegate: AnyObject {
-    func isSayingPhrase(_ phrase: String)
-    func didSayPhrase(_ phrase: String)
+protocol SpeechSynthesizerDelegate: AnyObject {
+    func speechSynthesizerIsSayingPhrase(_ phrase: String)
+    func speechSynthesizerDidSayPhrase(_ phrase: String)
+    func speechSynthesizerErrorDidOccur(error: Error)
+}
+
+enum SpeechSynthesizerError: LocalizedError {
+    case sessionSetupDidFail
+    
+    var errorDescription: String? {
+        switch self {
+        case .sessionSetupDidFail:
+            return "Could Not Set Up Audio Session"
+        }
+    }
 }
 
 class SpeechSynthesizer: NSObject {
-    weak var delegate: MouthDelegate?
+    weak var delegate: SpeechSynthesizerDelegate?
     
     private var isSpeaking = false
     private var phraseSaid: String = ""
@@ -30,37 +42,39 @@ class SpeechSynthesizer: NSObject {
     }
     
     internal func speak(phrase: String) {
-        phraseSaid = ""
-        isSpeaking = true
-        setUpAudioSession()
-        synthesizer.botSpeak(string: phrase)
+        if !isSpeaking {
+            phraseSaid = ""
+            isSpeaking = true
+            
+            do {
+                try setUpAudioSession()
+                synthesizer.botSpeak(string: phrase)
+            }
+            catch {
+                delegate?.speechSynthesizerErrorDidOccur(error: error)
+            }
+        }
     }
     
     internal func stop() {
         isSpeaking = false
-        deactivateAudioSession()
+        try? deactivateAudioSession()
     }
     
     // MARK: - Set up
     
-    private func setUpAudioSession() {
+    private func setUpAudioSession() throws {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker])
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
         }
         catch {
-            // FIXME: Handle error
-            debugPrint("Speech synthesis error setting audio session category: \(error.localizedDescription)")
+            throw SpeechSynthesizerError.sessionSetupDidFail
         }
     }
     
-    private func deactivateAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-        }
-        catch {
-            // FIXME: Handle error
-        }
+    private func deactivateAudioSession() throws {
+        try AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
     }
 }
 
@@ -69,7 +83,7 @@ extension SpeechSynthesizer: AVSpeechSynthesizerDelegate {
         if isSpeaking {
             let phrase = (utterance.speechString as NSString).substring(with: characterRange)
             self.phraseSaid = phrase
-            delegate?.isSayingPhrase(self.phraseSaid)
+            delegate?.speechSynthesizerIsSayingPhrase(self.phraseSaid)
         }
     }
     
@@ -78,6 +92,6 @@ extension SpeechSynthesizer: AVSpeechSynthesizerDelegate {
         stop()
         let phrase = utterance.speechString
         self.phraseSaid = phrase
-        delegate?.didSayPhrase(phrase)
+        delegate?.speechSynthesizerDidSayPhrase(phrase)
     }
 }

@@ -205,12 +205,12 @@ extension Bot: SpeechRecognizerDelegate {
     }
 }
 
-extension Bot: MouthDelegate {
-    func isSayingPhrase(_ phrase: String) {
+extension Bot: SpeechSynthesizerDelegate {
+    func speechSynthesizerIsSayingPhrase(_ phrase: String) {
         triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
     }
     
-    func didSayPhrase(_ phrase: String) {
+    func speechSynthesizerDidSayPhrase(_ phrase: String) {
         brain.remember(phrase, saidBy: .bot)
         
         triggerPhraseHistoryUpdate()
@@ -224,6 +224,10 @@ extension Bot: MouthDelegate {
         else {
             listenForLaughter()
         }
+    }
+    
+    func speechSynthesizerErrorDidOccur(error: any Error) {
+        delegate?.errorDidOccur(error: error)
     }
 }
 
