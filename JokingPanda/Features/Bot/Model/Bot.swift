@@ -21,6 +21,7 @@ class Bot: NSObject, ObservableObject  {
     
     private var action: AnimationAction = .stopped   // Animate based on current action
     private var brain: Brain    // Decides what to say and remembers what was said / heard
+    private let audioPlayer: AudioPlayer = AudioPlayer()
     private let laughRecognizer: LaughRecognizer
     private let speechRecognizer: SpeechRecognizer
     private var mouth: Mouth    // Says phrases outloud
@@ -44,6 +45,7 @@ class Bot: NSObject, ObservableObject  {
         self.mouth = mouth
         
         super.init()
+        audioPlayer.delegate = self
         laughRecognizer.delegate = self
         speechRecognizer.delegate = self
         mouth.delegate = self
@@ -94,7 +96,14 @@ class Bot: NSObject, ObservableObject  {
         action = .speaking
         triggerActionUpdate()
         triggerCurrentPhraseUpdate(phrase: "", person: .bot)
-        mouth.speak(phrase: phrase)
+        
+        if let url = Tool.getAudioURL(for: phrase) {
+            audioPlayer.start(url: url)
+            triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
+        }
+        else {
+            mouth.speak(phrase: phrase)
+        }
     }
     
     /**
@@ -200,6 +209,25 @@ extension Bot: MouthDelegate {
         brain.remember(phrase, saidBy: .bot)
         
         triggerPhraseHistoryUpdate()
+        
+        action = .stopped
+        triggerActionUpdate()
+        
+        if !brain.wantsToStartNewJoke {
+            listen(expectedPhrase: brain.getExpectedUserResponse())
+        }
+        else {
+            listenForLaughter()
+        }
+    }
+}
+
+extension Bot: AudioPlayerDelegate {
+    func didPlay() {
+        if let phrase = brain.getResponse() {
+            brain.remember(phrase, saidBy: .bot)
+            triggerPhraseHistoryUpdate()
+        }
         
         action = .stopped
         triggerActionUpdate()
