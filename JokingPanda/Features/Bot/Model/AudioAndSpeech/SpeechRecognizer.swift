@@ -10,8 +10,26 @@ import Foundation
 import Speech
 
 protocol SpeechRecognizerDelegate: AnyObject {
-    func isRecognizing(_ phrase: String)
-    func didRecognize(_ phrase: String)
+    func speechRecognizerIsRecognizing(_ phrase: String)
+    func speechRecognizerDidRecognize(_ phrase: String)
+    func speechRecognizerErrorDidOccur(error: Error)
+}
+
+enum SpeechRecognizerError: LocalizedError {
+    case audioEngineDidNotStart
+    case initializeAudioBufferDidFail
+    case noMicrophoneAccess
+    
+    var errorDescription: String? {
+        switch self {
+        case .audioEngineDidNotStart:
+            return "Could Not Start Audio Engine"
+        case .initializeAudioBufferDidFail:
+            return "Could Not Create Audio Buffer"
+        case .noMicrophoneAccess:
+            return "Could Not Access Microphone"
+        }
+    }
 }
 
 class SpeechRecognizer: NSObject {
@@ -36,12 +54,23 @@ class SpeechRecognizer: NSObject {
     }
     
     internal func start(expectedPhrase: String?) {
-        phraseHeard = ""
-        isListening = true
-        self.expectedPhrase = expectedPhrase
-        
-        setUpSpeechRecognizer()
-        captureSpeech(repeatedInterval: .seconds(3))
+        if !isListening {
+            phraseHeard = ""
+            isListening = true
+            self.expectedPhrase = expectedPhrase
+            
+            do {
+                cancelRecognitionTask() // FIXME: - We probably can use isListening to rewrite this better
+                inputNode = audioEngine.inputNode
+                try setUpSpeechRecognizer()
+                captureSpeech(repeatedInterval: .seconds(3))
+            } catch {
+                delegate?.errorDidOccur(error: error)
+            }
+        }
+        else {
+            debugPrint("Attempting to start speech recognizer while it's already running.")
+        }
     }
     
     internal func stop() {
@@ -52,30 +81,27 @@ class SpeechRecognizer: NSObject {
     
     // MARK: - Setup
     
-    private func setUpSpeechRecognizer() {
+    private func setUpSpeechRecognizer() throws {
+        try setUpRecognitionRequest()
+        setUpRecognitionTask()
+        try setUpMicrophoneInput()
+        
+        audioEngine.prepare()
+        
         do {
-            cancelRecognitionTask() // FIXME: - We probably can use isListening to rewrite this better
-            inputNode = audioEngine.inputNode
-            
-            setUpRecognitionRequest()
-            setUpRecognitionTask()
-            setUpMicrophoneInput()
-            
-            audioEngine.prepare()
             try audioEngine.start()
         }
         catch {
-            // FIXME: - Handle Error
-            debugPrint("Error setting up speech recognizer audio engine: \(error)")
+            throw SpeechRecognizerError.audioEngineDidNotStart
         }
     }
     
-    private func setUpRecognitionRequest() {
+    private func setUpRecognitionRequest() throws {
         guard inputNode != nil else { return }
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else {
-            fatalError("Unable to create a SFSpeechAudioBufferRecognitionRequest object")
+            throw SpeechRecognizerError.initializeAudioBufferDidFail
         }
         
         recognitionRequest.shouldReportPartialResults = true
@@ -97,13 +123,18 @@ class SpeechRecognizer: NSObject {
                 self.delegate?.isRecognizing(phraseHeard)
             }
         } errorCompletion: { error in
-            debugPrint("Error capturing speech: \(error.debugDescription)")
             self.stop()
+            if error != nil {
+                // FIXME: - Handle error
+                debugPrint("Error capturing speech: \(error.debugDescription)")
+            }
         }
     }
     
-    private func setUpMicrophoneInput() {
-        guard let inputNode = inputNode else { return }
+    private func setUpMicrophoneInput() throws {
+        guard let inputNode = inputNode else {
+            throw SpeechRecognizerError.noMicrophoneAccess
+        }
         
         let recordingFormat = inputNode.outputFormat(forBus: 0)
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in

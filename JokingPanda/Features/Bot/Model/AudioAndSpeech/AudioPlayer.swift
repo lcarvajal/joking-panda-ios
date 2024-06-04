@@ -7,8 +7,8 @@ import Foundation
 import AVFAudio
 
 protocol AudioPlayerDelegate: AnyObject {
-    func didPlay()
-    func errorDidOccur(error: Error)
+    func audioPlayerDidPlay()
+    func audioPlayerErrorDidOccur(error: Error)
 }
 
 enum AudioPlayerError: LocalizedError {
@@ -19,11 +19,11 @@ enum AudioPlayerError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .didNotFinishAudio:
-            return "Could not play audio."
+            return "Could Not Play Audio"
         case .playerSetupFailed:
-            return "Audio player setup failed."
+            return "Audio Player Setup Failed"
         case .sessionSetupFailed:
-            return "Audio session setup failed."
+            return "Audio Session Setup Failed."
         }
     }
 }

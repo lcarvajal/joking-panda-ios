@@ -13,7 +13,7 @@ import Speech
 protocol BotDelegate: AnyObject {
     func actionDidUpdate(action: AnimationAction)
     func currentPhraseDidUpdate(phrase: String)
-    func errorOccured(error: Error)
+    func errorDidOccur(error: Error)
     func phraseHistoryDidUpdate(phraseHistory: String)
     func laughLoudnessDidUpdate(loudness: Float)
 }
@@ -78,7 +78,7 @@ class Bot: NSObject, ObservableObject  {
         brain.stopConversation()
         triggerActionUpdate()
         
-        try? audioPlayer.stop()
+        audioPlayer.stop()
         try? laughRecognizer.stop()
         speechSynthesizer.stop()
         speechRecognizer.stop()
@@ -93,13 +93,8 @@ class Bot: NSObject, ObservableObject  {
         triggerCurrentPhraseUpdate(phrase: "", person: .bot)
         
         if let url = Tool.getAudioURL(for: phrase) {
-            do {
-                try audioPlayer.start(url: url)
-                triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
-            }
-            catch {
-                delegate?.errorOccured(error: error)
-            }
+            audioPlayer.start(url: url)
+            triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
         }
         else {
             speechSynthesizer.speak(phrase: phrase)
@@ -124,7 +119,7 @@ class Bot: NSObject, ObservableObject  {
             try laughRecognizer.start()
         }
         catch {
-            delegate?.errorOccured(error: error)
+            delegate?.errorDidOccur(error: error)
         }
     }
     
@@ -187,11 +182,11 @@ extension Bot: LaughRecognizerDelegate {
 }
 
 extension Bot: SpeechRecognizerDelegate {
-    func isRecognizing(_ phrase: String) {
+    func speechRecognizerIsRecognizing(_ phrase: String) {
         triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
     }
     
-    func didRecognize(_ phrase: String) {
+    func speechRecognizerDidRecognize(_ phrase: String) {
         brain.remember(phrase, saidBy: .currentUser)
         
         action = .stopped
@@ -199,6 +194,10 @@ extension Bot: SpeechRecognizerDelegate {
         triggerPhraseHistoryUpdate()
         
         respond()
+    }
+    
+    func speechRecognizerErrorDidOccur(error: any Error) {
+        delegate?.errorDidOccur(error: error)
     }
 }
 
@@ -225,7 +224,7 @@ extension Bot: MouthDelegate {
 }
 
 extension Bot: AudioPlayerDelegate {
-    func didPlay() {
+    func audioPlayerDidPlay() {
         if let phrase = brain.getResponse() {
             brain.remember(phrase, saidBy: .bot)
             triggerPhraseHistoryUpdate()
@@ -240,5 +239,9 @@ extension Bot: AudioPlayerDelegate {
         else {
             listenForLaughter()
         }
+    }
+    
+    func audioPlayerErrorDidOccur(error: Error) {
+        delegate?.errorDidOccur(error: error)
     }
 }
