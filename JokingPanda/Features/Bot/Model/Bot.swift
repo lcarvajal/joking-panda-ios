@@ -77,7 +77,7 @@ class Bot: NSObject, ObservableObject  {
         brain.stopConversation()
         triggerActionUpdate()
         
-        audioPlayer.stop()
+        try? audioPlayer.stop()
         laughRecognizer.stop()
         speechSynthesizer.stop()
         speechRecognizer.stop()
@@ -92,8 +92,13 @@ class Bot: NSObject, ObservableObject  {
         triggerCurrentPhraseUpdate(phrase: "", person: .bot)
         
         if let url = Tool.getAudioURL(for: phrase) {
-            audioPlayer.start(url: url)
-            triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
+            do {
+                try audioPlayer.start(url: url)
+                triggerCurrentPhraseUpdate(phrase: phrase, person: .bot)
+            }
+            catch {
+                // FIXME: - Display error message to user saying audio isn't working
+            }
         }
         else {
             speechSynthesizer.speak(phrase: phrase)
