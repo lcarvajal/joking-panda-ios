@@ -11,14 +11,14 @@ import AVFAudio
 
 final class MockAudioPlayerDelegate: AudioPlayerDelegate {
     var didPlay = false
-    var didError: Error? = nil
+    var error: Error? = nil
     
     func audioPlayerDidPlay() {
         didPlay = true
     }
     
     func audioPlayerErrorDidOccur(error: any Error) {
-        didError = error
+        self.error = error
     }
 }
 
@@ -41,12 +41,11 @@ final class AudioPlayerTests: XCTestCase {
         testURL = nil
         super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_audioPlayer_withValidURL_shouldCallDidPlay() {
+        audioPlayer.start(url: testURL)
+        audioPlayer.stop()
+        XCTAssertTrue(mockDelegate.didPlay)
+        XCTAssertNil(mockDelegate.error)
     }
 }
