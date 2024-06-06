@@ -45,6 +45,9 @@ struct Animation {
         if let animatedImage = UIImage.animatedImage(with: images, duration: duration) {
             return animatedImage
         }
+        else {
+            return UIImage()
+        }
     }
     
     static func animationStatusFor(person: Person, phrase: String) -> AnimationAction {
