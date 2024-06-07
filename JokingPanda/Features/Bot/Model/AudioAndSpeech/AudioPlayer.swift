@@ -2,6 +2,9 @@
 //  AudioPlayer.swift
 //  JokingPanda
 //
+/*
+ Sets up an instance of AVAudioPlayer.
+ */
 
 import Foundation
 import AVFAudio

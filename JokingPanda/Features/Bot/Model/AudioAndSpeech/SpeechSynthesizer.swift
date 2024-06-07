@@ -3,9 +3,7 @@
 //  JokingPanda
 //
 /*
- Tries to play an audio file based on the phrase. For example, "Hello, world!" searches for `hello-world.m4a.
- If the file isn't found, a speech synthesizer tries saying the phrase out loud.
- As either method says the phrase outloud, `phraseSaid` is updated with what's being said.
+ Sets up an instance of AVSpeechSynthesizer.
  */
 
 import Foundation
