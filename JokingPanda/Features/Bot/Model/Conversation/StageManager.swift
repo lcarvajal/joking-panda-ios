@@ -21,7 +21,7 @@ class StageManager {
     
     static func loadedWithJokes() -> StageManager {
         let decidingActs = [Act(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
-        let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON)
+        let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
         
         let plays = [
             ActType.deciding : Play(type: .deciding, acts: decidingActs),
