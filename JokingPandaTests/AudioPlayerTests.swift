@@ -10,15 +10,36 @@ import AVFAudio
 @testable import JokingPanda
 
 final class MockAudioPlayerDelegate: AudioPlayerDelegate {
-    var didPlay = false
-    var error: Error? = nil
+    internal var didPlay = false
+    internal var error: Error? = nil
+    
+    private var expectation: XCTestExpectation?
+    private let testCase: XCTestCase
+    
+    init(testCase: XCTestCase) {
+        self.testCase = testCase
+    }
+    
+    internal func expectPlayAudio() {
+        expectation = testCase.expectation(description: "Expect audio to play")
+    }
+    
+    // MARK: - AudioPlayer delegate methods
     
     func audioPlayerDidPlay() {
-        didPlay = true
+        if expectation != nil {
+            didPlay = true
+        }
+        expectation?.fulfill()
+        expectation = nil
     }
     
     func audioPlayerErrorDidOccur(error: any Error) {
-        self.error = error
+        if expectation != nil {
+            self.error = error
+        }
+        expectation?.fulfill()
+        expectation = nil
     }
 }
 
@@ -30,7 +51,7 @@ final class AudioPlayerTests: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         audioPlayer = AudioPlayer()
-        mockDelegate = MockAudioPlayerDelegate()
+        mockDelegate = MockAudioPlayerDelegate(testCase: self)
         audioPlayer.delegate = mockDelegate
         
         guard let url = Bundle.main.url(forResource: "knock-knock", withExtension: "m4a") else {
@@ -46,17 +67,25 @@ final class AudioPlayerTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_audioPlayer_withValidURL_shouldCallDidPlay() {
+    func test_audioPlayer_withValidURL_shouldCallDidPlay() throws {
+        mockDelegate.expectPlayAudio()
         audioPlayer.start(url: testURL)
-        XCTAssertTrue(mockDelegate.didPlay)
+        waitForExpectations(timeout: 1)
+        
+        let didPlay = try XCTUnwrap(mockDelegate.didPlay)
+        XCTAssertTrue(didPlay)
         XCTAssertNil(mockDelegate.error)
     }
     
-    func test_audioPlayer_withInvalidURL_shouldCallErrorDidOccur() {
+    func test_audioPlayer_withInvalidURL_shouldCallErrorDidOccur() throws {
         let invalidURL = URL(fileURLWithPath: "/invalid/path")
+        mockDelegate.expectPlayAudio()
         audioPlayer.start(url: invalidURL)
+        waitForExpectations(timeout: 1)
+        
+        let error = try XCTUnwrap(mockDelegate.error)
+        XCTAssertNotNil(error)
         XCTAssertFalse(mockDelegate.didPlay)
-        XCTAssertNotNil(mockDelegate.error)
         XCTAssertEqual(mockDelegate.error as? AudioPlayerError, AudioPlayerError.playerSetupFailed)
     }
 }

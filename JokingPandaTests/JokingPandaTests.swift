@@ -27,7 +27,7 @@ final class JokingPandaTests: XCTestCase {
     }
     
     func testKnockKnockAudioFilesExist() {
-        if let acts: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON) {
+        if let acts: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil) {
             for act in acts {
                 for index in 0..<act.lines.count {
                     if index % 2 == 0 {
