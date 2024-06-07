@@ -88,4 +88,15 @@ final class AudioPlayerTests: XCTestCase {
         XCTAssertFalse(mockDelegate.didPlay)
         XCTAssertEqual(mockDelegate.error as? AudioPlayerError, AudioPlayerError.playerSetupFailed)
     }
+    
+    func test_audioPlayer_withAudioAlreadyPlaying_shouldNotThrowError() throws {
+        mockDelegate.expectPlayAudio()
+        audioPlayer.start(url: testURL)
+        audioPlayer.start(url: testURL)
+        waitForExpectations(timeout: 1)
+        
+        let didPlay = try XCTUnwrap(mockDelegate.didPlay)
+        XCTAssertTrue(didPlay)
+        XCTAssertNil(mockDelegate.error)
+    }
 }
