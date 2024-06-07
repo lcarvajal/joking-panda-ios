@@ -50,6 +50,9 @@ class SpeechSynthesizer: NSObject {
                 delegate?.speechSynthesizerErrorDidOccur(error: error)
             }
         }
+        else {
+            debugPrint("Attempting to start speech synthesizer after already starting.")
+        }
     }
     
     internal func stop() {
