@@ -67,6 +67,11 @@ final class AudioPlayerTests: XCTestCase {
         try super.tearDownWithError()
     }
     
+    func test_audioPlayer_withInitialization_shouldNotBeNil() throws {
+        XCTAssertNotNil(audioPlayer)
+        XCTAssertNotNil(audioPlayer.delegate)
+    }
+    
     func test_audioPlayer_withValidURL_shouldCallDidPlay() throws {
         mockDelegate.expectPlayAudio()
         audioPlayer.start(url: testURL)
