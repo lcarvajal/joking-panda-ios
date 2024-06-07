@@ -23,6 +23,10 @@ struct Constant {
         static let knockKnockJokesJSON = "knockKnockJokeData.json"
     }
     
+    struct FilePath {
+        static let tempCustomLLMData = "/var/tmp/CustomLMData.bin"
+    }
+    
     struct ImageName {
         struct TuxedoPanda {
             static private let tuxedoPanda = "tuxedo-panda"

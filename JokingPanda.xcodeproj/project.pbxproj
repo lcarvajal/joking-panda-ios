@@ -322,6 +322,7 @@
 		8D8EAF9C2AFFF27800F01B71 /* norma-lee.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */; };
 		8D8EAF9D2AFFF27800F01B71 /* harry-up-its-cold-outside.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */; };
 		8D8EAF9E2AFFF27800F01B71 /* otto-know-i-forgot.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */; };
+		8DB559052C132285002FC27D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB559042C132285002FC27D /* main.swift */; };
 		8DC5939A2BE2D8660000661C /* what-would-you-like-to-do.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8DC593992BE2D8660000661C /* what-would-you-like-to-do.m4a */; };
 		8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */; };
 		8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D622AE670FF002CEA1E /* BaseView.swift */; };
@@ -332,7 +333,11 @@
 		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
 		8DC97D942AE80486002CEA1E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D932AE80486002CEA1E /* Person.swift */; };
 		8DC97D962AE92CB0002CEA1E /* Act.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Act.swift */; };
-		8DC97D9B2AE98896002CEA1E /* knockKnockJokeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */; };
+		8DDFEF9A2C1343C000EBE2CD /* knockKnockJokeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */; };
+		8DDFEF9B2C1343E800EBE2CD /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
+		8DDFEF9C2C13441700EBE2CD /* Act.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Act.swift */; };
+		8DDFEF9D2C13442100EBE2CD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790F2AF15A6100317DAF /* Constant.swift */; };
+		8DDFEF9E2C13482800EBE2CD /* knockKnockJokeData.json in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */; };
 		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
 		8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* MessagesView.swift */; };
 		8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */; };
@@ -359,6 +364,20 @@
 			remoteInfo = JokingPanda;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DB559002C132285002FC27D /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+				8DDFEF9E2C13482800EBE2CD /* knockKnockJokeData.json in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		8D0A790D2AF1571500317DAF /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
@@ -676,6 +695,8 @@
 		8D8EAF532AFFF27800F01B71 /* norma-lee.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee.m4a"; sourceTree = "<group>"; };
 		8D8EAF542AFFF27800F01B71 /* harry-up-its-cold-outside.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "harry-up-its-cold-outside.m4a"; sourceTree = "<group>"; };
 		8D8EAF552AFFF27800F01B71 /* otto-know-i-forgot.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "otto-know-i-forgot.m4a"; sourceTree = "<group>"; };
+		8DB559022C132285002FC27D /* DataGenerator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DataGenerator; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DB559042C132285002FC27D /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		8DC593992BE2D8660000661C /* what-would-you-like-to-do.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "what-would-you-like-to-do.m4a"; sourceTree = "<group>"; };
 		8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JokingPanda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DC97D602AE670FF002CEA1E /* JokingPandaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaApp.swift; sourceTree = "<group>"; };
@@ -690,7 +711,7 @@
 		8DC97D8E2AE6BE11002CEA1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8DC97D932AE80486002CEA1E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8DC97D952AE92CB0002CEA1E /* Act.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Act.swift; sourceTree = "<group>"; };
-		8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = knockKnockJokeData.json; sourceTree = "<group>"; };
+		8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = knockKnockJokeData.json; sourceTree = "<group>"; };
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8DE4C1D72AFC312C00B36205 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
@@ -702,6 +723,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8DB558FF2C132285002FC27D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC97D5A2AE670FF002CEA1E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1154,6 +1182,14 @@
 			path = SoundEffects;
 			sourceTree = "<group>";
 		};
+		8DB559032C132285002FC27D /* DataGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				8DB559042C132285002FC27D /* main.swift */,
+			);
+			path = DataGenerator;
+			sourceTree = "<group>";
+		};
 		8DC97D542AE670FF002CEA1E = {
 			isa = PBXGroup;
 			children = (
@@ -1161,6 +1197,7 @@
 				8DC97D5F2AE670FF002CEA1E /* JokingPanda */,
 				8DC97D702AE67101002CEA1E /* JokingPandaTests */,
 				8DC97D7A2AE67101002CEA1E /* JokingPandaUITests */,
+				8DB559032C132285002FC27D /* DataGenerator */,
 				8DC97D5E2AE670FF002CEA1E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1171,6 +1208,7 @@
 				8DC97D5D2AE670FF002CEA1E /* JokingPanda.app */,
 				8DC97D6D2AE67101002CEA1E /* JokingPandaTests.xctest */,
 				8DC97D772AE67101002CEA1E /* JokingPandaUITests.xctest */,
+				8DB559022C132285002FC27D /* DataGenerator */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1244,7 +1282,7 @@
 		8DC97D992AE98856002CEA1E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8DC97D9A2AE98896002CEA1E /* knockKnockJokeData.json */,
+				8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */,
 				8D0A79182AFB8C4000317DAF /* Lines */,
 				8D5947B52BEF9D8700EAF79A /* SoundEffects */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
@@ -1266,6 +1304,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8DB559012C132285002FC27D /* DataGenerator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DB559082C132285002FC27D /* Build configuration list for PBXNativeTarget "DataGenerator" */;
+			buildPhases = (
+				8DB558FE2C132285002FC27D /* Sources */,
+				8DB558FF2C132285002FC27D /* Frameworks */,
+				8DB559002C132285002FC27D /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DataGenerator;
+			productName = DataGenerator;
+			productReference = 8DB559022C132285002FC27D /* DataGenerator */;
+			productType = "com.apple.product-type.tool";
+		};
 		8DC97D5C2AE670FF002CEA1E /* JokingPanda */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8DC97D812AE67101002CEA1E /* Build configuration list for PBXNativeTarget "JokingPanda" */;
@@ -1329,9 +1384,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					8DB559012C132285002FC27D = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					8DC97D5C2AE670FF002CEA1E = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -1364,6 +1422,7 @@
 				8DC97D5C2AE670FF002CEA1E /* JokingPanda */,
 				8DC97D6C2AE67101002CEA1E /* JokingPandaTests */,
 				8DC97D762AE67101002CEA1E /* JokingPandaUITests */,
+				8DB559012C132285002FC27D /* DataGenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -1415,6 +1474,7 @@
 				8D59479F2BEF89D400EAF79A /* iva-a-sore-hand-from-knocking.m4a in Resources */,
 				8D8EAF5D2AFFF27800F01B71 /* adore.m4a in Resources */,
 				8D2DFFEC2AFD6780003E77B8 /* says.m4a in Resources */,
+				8DDFEF9A2C1343C000EBE2CD /* knockKnockJokeData.json in Resources */,
 				8D5947922BEF89D400EAF79A /* knock-knock.m4a in Resources */,
 				8D59478E2BEF89D400EAF79A /* a-baby-panda-who-cant-reach-the-door-bell.m4a in Resources */,
 				8D2DFFE82AFD6780003E77B8 /* orange.m4a in Resources */,
@@ -1486,7 +1546,6 @@
 				8D59477A2BEF89D400EAF79A /* car-go-beep-beep.m4a in Resources */,
 				8D2D000C2AFD6780003E77B8 /* snow.m4a in Resources */,
 				8D2DFFF62AFD6780003E77B8 /* sure-would-be-nice-if-you-opened-the-door.m4a in Resources */,
-				8DC97D9B2AE98896002CEA1E /* knockKnockJokeData.json in Resources */,
 				8D59473F2BEF89D400EAF79A /* alpaca.m4a in Resources */,
 				8D59477C2BEF89D400EAF79A /* oink-oink.m4a in Resources */,
 				8D8EAF7E2AFFF27800F01B71 /* canoe-help-me-get-inside.m4a in Resources */,
@@ -1693,6 +1752,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8DB558FE2C132285002FC27D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DDFEF9C2C13441700EBE2CD /* Act.swift in Sources */,
+				8DB559052C132285002FC27D /* main.swift in Sources */,
+				8DDFEF9B2C1343E800EBE2CD /* Tool.swift in Sources */,
+				8DDFEF9D2C13442100EBE2CD /* Constant.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8DC97D592AE670FF002CEA1E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1763,6 +1833,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		8DB559062C132285002FC27D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		8DB559072C132285002FC27D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B96QXD8K8E;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.5;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		8DC97D7F2AE67101002CEA1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2051,6 +2147,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8DB559082C132285002FC27D /* Build configuration list for PBXNativeTarget "DataGenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DB559062C132285002FC27D /* Debug */,
+				8DB559072C132285002FC27D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8DC97D582AE670FF002CEA1E /* Build configuration list for PBXProject "JokingPanda" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

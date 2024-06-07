@@ -46,16 +46,22 @@ struct Tool {
     }
     
     // Load data from a file
-    static func load<T: Decodable>(_ filename: String) -> T {
+    static func load<T: Decodable>(_ filename: String, url: URL?) -> T {
         let data: Data
+        let validURL: URL
         
-        guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+        if let url = url {
+            validURL = url
+        }
+        else if let url = Bundle.main.url(forResource: filename, withExtension: nil) {
+            validURL = url
+        }
         else {
             fatalError("Couldn't find \(filename) in main bundle.")
         }
         
         do {
-            data = try Data(contentsOf: file)
+            data = try Data(contentsOf: validURL)
         } catch {
             fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
         }
