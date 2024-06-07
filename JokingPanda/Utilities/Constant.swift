@@ -24,7 +24,7 @@ struct Constant {
     }
     
     struct FilePath {
-        static let tempCustomLLMData = "/var/tmp/CustomLMData.bin"
+        static let tempCustomLLMData = "/var/tmp/CustomLMDataForJokes.bin"
     }
     
     struct ImageName {
