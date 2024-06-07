@@ -93,7 +93,7 @@ class SpeechRecognizer: NSObject {
     private func setUpLLM() {
         Task.detached {
             do {
-                if let assetUrl = Bundle.main.url(forResource: "CustomLMDataForJokes.bin", withExtension: nil) {
+                if let assetUrl = Bundle.main.url(forResource: Constant.FileName.customLLM, withExtension: nil) {
                     try await SFSpeechLanguageModel.prepareCustomLanguageModel(for: assetUrl,
                                                                                clientIdentifier: Constant.AppProperty.bundleIdentifier,
                                                                                configuration: self.lmConfiguration)

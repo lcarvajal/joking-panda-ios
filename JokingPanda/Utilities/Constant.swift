@@ -25,10 +25,11 @@ struct Constant {
     
     struct FileName {
         static let knockKnockJokesJSON = "knockKnockJokeData.json"
+        static let customLLM = "CustomLMDataForJokes.bin"
     }
     
     struct FilePath {
-        static let tempCustomLLMData = "/var/tmp/CustomLMDataForJokes.bin"
+        static let tempCustomLLMData = "/var/tmp/\(Constant.FileName.customLLM)"
     }
     
     struct ImageName {

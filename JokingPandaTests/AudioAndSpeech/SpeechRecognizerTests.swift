@@ -72,7 +72,7 @@ final class SpeechRecognizerTests: XCTestCase {
     }
 
     func test_speechRecognizer_customLLMFile_shouldExist() throws {
-        let assetURL = Bundle.main.url(forResource: "CustomLMDataForJokes.bin", withExtension: nil)
+        let assetURL = Bundle.main.url(forResource: Constant.FileName.customLLM, withExtension: nil)
         XCTAssertNotNil(assetURL)
     }
 }
