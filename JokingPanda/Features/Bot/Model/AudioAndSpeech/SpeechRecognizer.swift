@@ -93,11 +93,15 @@ class SpeechRecognizer: NSObject {
     private func setUpLLM() {
         Task.detached {
             do {
-                let assetPath = Bundle.main.path(forResource: "CustomLMData", ofType: "bin", inDirectory: "customlm/en_US")!
-                let assetUrl = URL(fileURLWithPath: assetPath)
-                try await SFSpeechLanguageModel.prepareCustomLanguageModel(for: assetUrl,
-                                                                           clientIdentifier: Constant.AppProperty.bundleIdentifier,
-                                                                           configuration: self.lmConfiguration)
+                if let assetUrl = Bundle.main.url(forResource: "CustomLMDataForJokes.bin", withExtension: nil) {
+                    try await SFSpeechLanguageModel.prepareCustomLanguageModel(for: assetUrl,
+                                                                               clientIdentifier: Constant.AppProperty.bundleIdentifier,
+                                                                               configuration: self.lmConfiguration)
+                }
+                else {
+                    debugPrint("Error loading custom language model data file.")
+                }
+                
             } catch {
                 NSLog("Failed to prepare custom LM: \(error.localizedDescription)")
             }

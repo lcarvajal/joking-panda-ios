@@ -338,6 +338,7 @@
 		8DDFEF9C2C13441700EBE2CD /* Act.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Act.swift */; };
 		8DDFEF9D2C13442100EBE2CD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790F2AF15A6100317DAF /* Constant.swift */; };
 		8DDFEF9E2C13482800EBE2CD /* knockKnockJokeData.json in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */; };
+		8DDFEFA22C135C3D00EBE2CD /* CustomLMDataForJokes.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8DDFEFA12C135C3D00EBE2CD /* CustomLMDataForJokes.bin */; };
 		8DE4C1D22AFC1BC700B36205 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */; };
 		8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D72AFC312C00B36205 /* MessagesView.swift */; };
 		8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */; };
@@ -712,6 +713,7 @@
 		8DC97D932AE80486002CEA1E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8DC97D952AE92CB0002CEA1E /* Act.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Act.swift; sourceTree = "<group>"; };
 		8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = knockKnockJokeData.json; sourceTree = "<group>"; };
+		8DDFEFA12C135C3D00EBE2CD /* CustomLMDataForJokes.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = CustomLMDataForJokes.bin; sourceTree = "<group>"; };
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8DE4C1D72AFC312C00B36205 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
@@ -1283,11 +1285,28 @@
 			isa = PBXGroup;
 			children = (
 				8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */,
+				8DDFEF9F2C135C0C00EBE2CD /* CustomLM */,
 				8D0A79182AFB8C4000317DAF /* Lines */,
 				8D5947B52BEF9D8700EAF79A /* SoundEffects */,
 				8D0A79162AF3B40800317DAF /* Keys.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8DDFEF9F2C135C0C00EBE2CD /* CustomLM */ = {
+			isa = PBXGroup;
+			children = (
+				8DDFEFA02C135C1E00EBE2CD /* en_US */,
+			);
+			path = CustomLM;
+			sourceTree = "<group>";
+		};
+		8DDFEFA02C135C1E00EBE2CD /* en_US */ = {
+			isa = PBXGroup;
+			children = (
+				8DDFEFA12C135C3D00EBE2CD /* CustomLMDataForJokes.bin */,
+			);
+			path = en_US;
 			sourceTree = "<group>";
 		};
 		8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */ = {
@@ -1512,6 +1531,7 @@
 				8D2D001F2AFD6780003E77B8 /* orange-you-glad-i-didnt-say-banana.m4a in Resources */,
 				8D8EAF672AFFF27800F01B71 /* roach-you-a-text-did-you-get-it.m4a in Resources */,
 				8D5947932BEF89D400EAF79A /* santa-email-reminding-you-id-be-here-and-you-still-make-me-wait-in-the-cold.m4a in Resources */,
+				8DDFEFA22C135C3D00EBE2CD /* CustomLMDataForJokes.bin in Resources */,
 				8D2DFFCA2AFD6780003E77B8 /* mary-christmas.m4a in Resources */,
 				8D5947762BEF89D400EAF79A /* wendy-bell-gonna-start-working-again.m4a in Resources */,
 				8D2D00062AFD6780003E77B8 /* figs-the-doorbell-its-not-working.m4a in Resources */,
