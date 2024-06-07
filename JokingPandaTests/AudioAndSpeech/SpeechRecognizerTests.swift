@@ -70,9 +70,4 @@ final class SpeechRecognizerTests: XCTestCase {
         XCTAssertNotNil(speechRecognizer)
         XCTAssertNotNil(speechRecognizer.delegate)
     }
-
-    func test_speechRecognizer_customLLMFile_shouldExist() throws {
-        let assetURL = Bundle.main.url(forResource: Constant.FileName.customLLM, withExtension: nil)
-        XCTAssertNotNil(assetURL)
-    }
 }

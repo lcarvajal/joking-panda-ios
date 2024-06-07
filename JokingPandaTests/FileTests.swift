@@ -8,25 +8,8 @@
 import XCTest
 @testable import JokingPanda
 
-final class JokingPandaTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-    
-    func testKnockKnockAudioFilesExist() {
+final class FileTests: XCTestCase {    
+    func test_jokeAudioFiles_shouldExist() {
         if let acts: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil) {
             for act in acts {
                 for index in 0..<act.lines.count {
@@ -51,7 +34,7 @@ final class JokingPandaTests: XCTestCase {
         }
     }
     
-    func testConstantLineAudioFilesExist() {
+    func test_constantAudioFiles_shouldExist() {
         let constantLines = [
             ConstantLine.couldYouRepeatWhatYouSaid,
             ConstantLine.explainKnockKnock,
@@ -73,11 +56,8 @@ final class JokingPandaTests: XCTestCase {
         }
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func test_customLLMFile_shouldExist() throws {
+        let assetURL = Bundle.main.url(forResource: Constant.FileName.customLLM, withExtension: nil)
+        XCTAssertNotNil(assetURL)
     }
-
 }
