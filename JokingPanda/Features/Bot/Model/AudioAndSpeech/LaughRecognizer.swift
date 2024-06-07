@@ -41,14 +41,19 @@ class LaughRecognizer: NSObject {
     private var weightedLoudness: Float = 0.0
     private var laughRecordingTimer:Timer?
     
-    internal func start() {
-        do {
-            self.weightedLoudness = 0
-            try startLaughRecognizer()
-            stopLaughRecognizer(after: .seconds(3))
+    internal func start(for timeInterval: DispatchTimeInterval) {
+        if !isRecording {
+            do {
+                self.weightedLoudness = 0
+                try startLaughRecognizer()
+                stopLaughRecognizer(after: timeInterval)
+            }
+            catch {
+                delegate?.laughRecognizerErrorDidOccur(error: error)
+            }
         }
-        catch {
-            delegate?.laughRecognizerErrorDidOccur(error: error)
+        else {
+            debugPrint("Attempting to start laugh recognizer after already started.")
         }
     }
     

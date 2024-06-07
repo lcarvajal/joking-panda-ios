@@ -9,7 +9,7 @@ import XCTest
 @testable import JokingPanda
 
 final class MockLaughRecognizerDelegate: LaughRecognizerDelegate {
-    internal var loudness: Float = 0
+    internal var loudness: Float? = nil
     internal var error: Error? = nil
     
     private var expectation: XCTestExpectation?
@@ -19,8 +19,8 @@ final class MockLaughRecognizerDelegate: LaughRecognizerDelegate {
         self.testCase = testCase
     }
     
-    internal func expectPlayAudio() {
-        expectation = testCase.expectation(description: "Expect audio to play")
+    internal func expectRecognizeLaughter() {
+        expectation = testCase.expectation(description: "Expect recognized laughter")
     }
     
     // MARK: - AudioPlayer delegate methods
@@ -68,5 +68,17 @@ final class LaughRecognizerTests: XCTestCase {
     func test_laughRecognizer_withInitialization_shouldNotBeNil() throws {
         XCTAssertNotNil(laughRecognizer)
         XCTAssertNotNil(laughRecognizer.delegate)
+    }
+    
+    func test_laughRecognizer_startWhileRecognizing_shouldNotThrowError() throws {
+        mockDelegate.expectRecognizeLaughter()
+        laughRecognizer.start(for: .seconds(2))
+        laughRecognizer.start(for: .seconds(2))
+        
+        waitForExpectations(timeout: 2)
+        
+        let loudness = try XCTUnwrap(mockDelegate.loudness)
+        XCTAssertNotNil(loudness)
+        XCTAssertNil(mockDelegate.error)
     }
 }

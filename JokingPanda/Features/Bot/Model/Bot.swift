@@ -103,15 +103,10 @@ class Bot: NSObject, ObservableObject  {
     }
     
     private func listenForLaughter() {
-        do {
-            action = .listeningToLaugher
-            triggerActionUpdate()
-            triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
-            try laughRecognizer.start()
-        }
-        catch {
-            delegate?.errorDidOccur(error: error)
-        }
+        action = .listeningToLaugher
+        triggerActionUpdate()
+        triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
+        laughRecognizer.start(for: .seconds(3))
     }
     
     /**
