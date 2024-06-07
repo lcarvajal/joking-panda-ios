@@ -8,6 +8,10 @@
 import Foundation
 
 struct Constant {
+    struct AppProperty {
+        static bundleIdentifier = "com.JokingPanda"
+    }
+    
     struct Event {
         static let appOpended = "App Opened"
         static let conversationStarted = "Conversation Started"
