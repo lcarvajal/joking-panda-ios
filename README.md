@@ -22,7 +22,10 @@ The 9-year-old had an iPhone so I thought I'd develop an iOS app.
 
 My goal was really to build something that engaged kids in conversation rather than having them tap at a screen or hear a knock-knock joke said outloud the boring way ChatGPT does.
 
-### Technologies
+### AI Technologies
+- Trains a large language model using responses to knock knock jokes using SFCustomLanguageModelData. For example, 'I dunapo' is a hilarious response to a knock knock joke that normally doesn't get detected by the speech framework.
+
+### Other Technologies
 - AVFAudio - plays audio files
 - Speech - speech-to-text, captures laughter loudness, and synthesizes speech when audio file isn't available
 - Mixpanel - event tracking
