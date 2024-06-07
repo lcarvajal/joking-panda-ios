@@ -9,7 +9,7 @@ import Foundation
 
 struct Constant {
     struct AppProperty {
-        static bundleIdentifier = "com.JokingPanda"
+        static let bundleIdentifier = "com.JokingPanda"
     }
     
     struct Event {
