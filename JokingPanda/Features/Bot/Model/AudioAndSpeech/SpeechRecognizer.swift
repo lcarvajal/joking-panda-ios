@@ -41,6 +41,14 @@ class SpeechRecognizer: NSObject {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let speechRecognizer: SFSpeechRecognizer
     
+    @available(iOS 17, *)
+    private var lmConfiguration: SFSpeechLanguageModel.Configuration {
+        let outputDir = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!
+        let dynamicLanguageModel = outputDir.appendingPathComponent("LM")
+        let dynamicVocabulary = outputDir.appendingPathComponent("Vocab")
+        return SFSpeechLanguageModel.Configuration(languageModel: dynamicLanguageModel, vocabulary: dynamicVocabulary)
+    }
+    
     private var expectedPhrase: String? = ""
     private var phraseHeard: String = ""
     private var isListening = false
@@ -51,6 +59,7 @@ class SpeechRecognizer: NSObject {
         
         super.init()
         speechRecognizer.delegate = self
+        setUpLLM()
     }
     
     internal func start(expectedPhrase: String?) {
@@ -80,6 +89,20 @@ class SpeechRecognizer: NSObject {
     }
     
     // MARK: - Setup
+    
+    private func setUpLLM() {
+        Task.detached {
+            do {
+                let assetPath = Bundle.main.path(forResource: "CustomLMData", ofType: "bin", inDirectory: "customlm/en_US")!
+                let assetUrl = URL(fileURLWithPath: assetPath)
+                try await SFSpeechLanguageModel.prepareCustomLanguageModel(for: assetUrl,
+                                                                           clientIdentifier: Constant.AppProperty.bundleIdentifier,
+                                                                           configuration: self.lmConfiguration)
+            } catch {
+                NSLog("Failed to prepare custom LM: \(error.localizedDescription)")
+            }
+        }
+    }
     
     private func setUpSpeechRecognizer() throws {
         try setUpRecognitionRequest()
@@ -113,6 +136,10 @@ class SpeechRecognizer: NSObject {
         // Keep speech recognition data on device
         if #available(iOS 13, *) {
             recognitionRequest.requiresOnDeviceRecognition = true
+            
+            if #available(iOS 17, *) {
+                recognitionRequest.customizedLanguageModel = self.lmConfiguration
+            }
         }
     }
     
@@ -185,8 +212,8 @@ class SpeechRecognizer: NSObject {
 }
 
 extension SpeechRecognizer: SFSpeechRecognizerDelegate {
-//    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-//        <#code#>
-//    }
+    //    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+    //        <#code#>
+    //    }
 }
 

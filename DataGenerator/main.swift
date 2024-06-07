@@ -46,7 +46,7 @@ private func loadUniqueUserLinesFromJokes() -> [String] {
  Configures a custom language model so that lines a user is expected to say (f.e. 'I dunnapo') is recognized.
  */
 internal func getCustomLanguageModelData(userLines: [String]) -> SFCustomLanguageModelData {
-    let data = SFCustomLanguageModelData(locale: Locale(identifier: "en_US"), identifier: "com.JokingPanda", version: "1.1") {
+    let data = SFCustomLanguageModelData(locale: Locale(identifier: "en_US"), identifier: Constant.AppProperty.bundleIdentifier, version: "1.1") {
         //
         for line in userLines {
             SFCustomLanguageModelData.PhraseCount(phrase: line, count: 10)
