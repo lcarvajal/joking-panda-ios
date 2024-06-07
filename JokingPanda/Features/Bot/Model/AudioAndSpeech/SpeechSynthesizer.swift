@@ -29,7 +29,6 @@ enum SpeechSynthesizerError: LocalizedError {
 class SpeechSynthesizer: NSObject {
     weak var delegate: SpeechSynthesizerDelegate?
     
-    private var isSpeaking = false
     private var phraseSaid: String = ""
     private let synthesizer: AVSpeechSynthesizer
     
@@ -40,9 +39,8 @@ class SpeechSynthesizer: NSObject {
     }
     
     internal func speak(phrase: String) {
-        if !isSpeaking {
+        if !synthesizer.isSpeaking {
             phraseSaid = ""
-            isSpeaking = true
             
             do {
                 try setUpAudioSession()
@@ -55,7 +53,6 @@ class SpeechSynthesizer: NSObject {
     }
     
     internal func stop() {
-        isSpeaking = false
         try? deactivateAudioSession()
     }
     
@@ -78,7 +75,7 @@ class SpeechSynthesizer: NSObject {
 
 extension SpeechSynthesizer: AVSpeechSynthesizerDelegate {
     internal func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance) {
-        if isSpeaking {
+        if synthesizer.isSpeaking {
             let phrase = (utterance.speechString as NSString).substring(with: characterRange)
             self.phraseSaid = phrase
             delegate?.speechSynthesizerIsSayingPhrase(self.phraseSaid)
