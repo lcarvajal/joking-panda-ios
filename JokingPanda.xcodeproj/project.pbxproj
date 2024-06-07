@@ -252,6 +252,7 @@
 		8D5947B92BEF9DA700EAF79A /* success-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B72BEF9DA700EAF79A /* success-piano.m4a */; };
 		8D5947BB2BEF9DB600EAF79A /* high-c-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */; };
 		8D5947BD2BEFAABD00EAF79A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5947BC2BEFAABD00EAF79A /* Mixpanel */; };
+		8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -626,6 +627,7 @@
 		8D5947B62BEF9DA700EAF79A /* low-c-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "low-c-piano.m4a"; sourceTree = "<group>"; };
 		8D5947B72BEF9DA700EAF79A /* success-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "success-piano.m4a"; sourceTree = "<group>"; };
 		8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "high-c-piano.m4a"; sourceTree = "<group>"; };
+		8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizerTests.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -1184,6 +1186,15 @@
 			path = SoundEffects;
 			sourceTree = "<group>";
 		};
+		8D70B2052C13A918009ACEAA /* AudioAndSpeech */ = {
+			isa = PBXGroup;
+			children = (
+				8D2EFD3B2C124787006AC2F2 /* AudioPlayerTests.swift */,
+				8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */,
+			);
+			path = AudioAndSpeech;
+			sourceTree = "<group>";
+		};
 		8DB559032C132285002FC27D /* DataGenerator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1242,8 +1253,8 @@
 		8DC97D702AE67101002CEA1E /* JokingPandaTests */ = {
 			isa = PBXGroup;
 			children = (
+				8D70B2052C13A918009ACEAA /* AudioAndSpeech */,
 				8DC97D712AE67101002CEA1E /* JokingPandaTests.swift */,
-				8D2EFD3B2C124787006AC2F2 /* AudioPlayerTests.swift */,
 			);
 			path = JokingPandaTests;
 			sourceTree = "<group>";
@@ -1824,6 +1835,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC97D722AE67101002CEA1E /* JokingPandaTests.swift in Sources */,
+				8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */,
 				8D2EFD3C2C124787006AC2F2 /* AudioPlayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
