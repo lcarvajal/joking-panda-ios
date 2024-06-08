@@ -11,11 +11,11 @@ class Brain {
         return stageManager.isStartOfAct
     }
     
-    private let stageManager: StageManager
+    private let stageManager: DialogueManager
     private var lastPhrase = ""
     private var lastPhraseWasExpected = true
     
-    init(stageManager: StageManager) {
+    init(stageManager: DialogueManager) {
         self.stageManager = stageManager
     }
     
@@ -76,10 +76,10 @@ class Brain {
     }
     
     internal func getResponse() -> String? {
-        if lastPhraseWasExpected && stageManager.isRunningAnAct {
+        if lastPhraseWasExpected && stageManager.isActing {
             return stageManager.currentLine
         }
-        else if stageManager.isRunningAnAct {
+        else if stageManager.isActing {
             return getClarificationResponse()
         }
         else {

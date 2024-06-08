@@ -29,7 +29,7 @@ class Bot: NSObject, ObservableObject  {
     private var speechSynthesizer: SpeechSynthesizer    // Says phrases outloud
     
     init(audioPlayer: AudioPlayer = AudioPlayer(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
-        let stageManager = StageManager.loadedWithJokes()
+        let stageManager = DialogueManager.knockKnockJokesInstance()
         self.brain = Brain(stageManager: stageManager)
         
         self.audioPlayer = audioPlayer

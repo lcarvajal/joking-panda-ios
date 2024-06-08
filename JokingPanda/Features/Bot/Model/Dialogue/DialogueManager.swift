@@ -28,6 +28,11 @@ class DialogueManager {
     private var actIndex = 0
     private var lineIndex = 0
     
+    static func knockKnockJokesInstance() -> DialogueManager {
+        let jokingActs: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
+        return DialogueManager(acts: jokingActs)
+    }
+    
     init(acts: [Dialogue]) {
         self.acts = acts
         pickUpLastAct()
