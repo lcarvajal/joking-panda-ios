@@ -67,12 +67,12 @@ final class AudioPlayerTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-    func test_audioPlayer_withInitialization_shouldNotBeNil() throws {
+    func test_initialization_shouldNotBeNil() throws {
         XCTAssertNotNil(audioPlayer)
         XCTAssertNotNil(audioPlayer.delegate)
     }
     
-    func test_audioPlayer_withValidURL_shouldCallDidPlay() throws {
+    func test_start_withValidURL_shouldCallDidPlay() throws {
         mockDelegate.expectPlayAudio()
         audioPlayer.start(url: testURL)
         waitForExpectations(timeout: 1)
@@ -82,7 +82,7 @@ final class AudioPlayerTests: XCTestCase {
         XCTAssertNil(mockDelegate.error)
     }
     
-    func test_audioPlayer_withInvalidURL_shouldCallErrorDidOccur() throws {
+    func test_start_withInvalidURL_shouldCallErrorDidOccur() throws {
         let invalidURL = URL(fileURLWithPath: "/invalid/path")
         mockDelegate.expectPlayAudio()
         audioPlayer.start(url: invalidURL)
@@ -94,7 +94,7 @@ final class AudioPlayerTests: XCTestCase {
         XCTAssertEqual(mockDelegate.error as? AudioPlayerError, AudioPlayerError.playerSetupFailed)
     }
     
-    func test_audioPlayer_withAudioAlreadyPlaying_shouldNotThrowError() throws {
+    func test_start_withAudioAlreadyPlaying_shouldNotThrowError() throws {
         mockDelegate.expectPlayAudio()
         audioPlayer.start(url: testURL)
         audioPlayer.start(url: testURL)
