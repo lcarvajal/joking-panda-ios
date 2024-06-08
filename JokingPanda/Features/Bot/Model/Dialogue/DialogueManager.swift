@@ -29,7 +29,6 @@ class DialogueManager {
     
     init(dialogues: [Dialogue]) {
         self.dialogues = dialogues
-        pickUpLastDialogueFromUserDefaults()
     }
     
     /**
