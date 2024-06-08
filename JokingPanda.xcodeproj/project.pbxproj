@@ -788,12 +788,12 @@
 		8D5945FE2BEBA84800EAF79A /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
-				8DC97D932AE80486002CEA1E /* Person.swift */,
-				8DC97D952AE92CB0002CEA1E /* Dialogue.swift */,
 				8D70B20E2C147550009ACEAA /* BotResponse.swift */,
+				8DC97D952AE92CB0002CEA1E /* Dialogue.swift */,
+				8D0DE0042B0E4CD900A3A8F8 /* DialogueManager.swift */,
+				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8DE87AB02BEA9646008E6AF2 /* PhraseHistory.swift */,
 				8D70B20C2C146A6A009ACEAA /* PhraseManager.swift */,
-				8D0DE0042B0E4CD900A3A8F8 /* DialogueManager.swift */,
 			);
 			path = Dialogue;
 			sourceTree = "<group>";
