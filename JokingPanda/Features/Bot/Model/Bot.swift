@@ -200,14 +200,14 @@ extension Bot: SpeechSynthesizerDelegate {
     }
     
     func speechSynthesizerDidSayPhrase(_ phrase: String) {
-        dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.currentLine, saidBy: .bot)
+        dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
         triggerActionUpdate()
         
         dialogueManager.queueNextLineIfNeeded()
-        if !dialogueManager.isStartOfAct {
+        if !dialogueManager.isStartOfDialogue {
             listen(expectedPhrase: dialogueManager.getCurrentPhrase())
         }
         else {
@@ -231,7 +231,7 @@ extension Bot: AudioPlayerDelegate {
         triggerActionUpdate()
         
         dialogueManager.queueNextLineIfNeeded()
-        if !dialogueManager.isStartOfAct {
+        if !dialogueManager.isStartOfDialogue {
             listen(expectedPhrase: dialogueManager.getCurrentPhrase())
         }
         else {

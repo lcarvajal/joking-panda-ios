@@ -9,76 +9,68 @@
 import Foundation
 
 class DialogueManager {
-    internal var currentAct: Dialogue { return acts[actIndex] }
-    internal var lastAct: Dialogue { return acts[actIndex - 1]}
-    internal var lastPhraseSaidOrHeard = ""
-    internal var currentLine: String { return currentAct.phrases[lineIndex] }
-    internal var previousLine: String? {
-        if lineIndex > 0 {
-            return currentAct.phrases[lineIndex - 1]
-        }
-        else {
-            return nil
-        }
-    }
+    private var currentDialogue: Dialogue { return dialogues[dialogueIndex] }
+    private var isDialogging = false
+    private let dialogues: [Dialogue]
+    private var dialogueIndex = 0
     
-    internal var isStartOfAct: Bool { return lineIndex == 0 }
-    internal var isActing = false
-    internal var personActing: Person { return lineIndex % 2 == 0 ? Person.bot : Person.currentUser }
-    
-    private let acts: [Dialogue]
-    private var actIndex = 0
+    private var currentPhrase: String { return currentDialogue.phrases[phraseIndex] }
+    private var lastPhraseSaidOrHeard = ""
     private var lastPhraseExpected: Bool {
         if lastPhraseSaidOrHeard.isEmpty {
             return true
         }
         else {
-            return Tool.levenshtein(aStr: lastPhraseSaidOrHeard, bStr: currentLine) < 7
+            return Tool.levenshtein(aStr: lastPhraseSaidOrHeard, bStr: currentPhrase) < 7
         }
     }
-    private var lineIndex = 0
+    private var phraseIndex = 0
+    
+    internal var isStartOfDialogue: Bool { return phraseIndex == 0 }
+    internal var personWhoShouldSpeakPhrase: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
+    
     
     static func knockKnockJokesInstance() -> DialogueManager {
         let jokingActs: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
-        return DialogueManager(acts: jokingActs)
+        return DialogueManager(dialogues: jokingActs)
     }
     
-    init(acts: [Dialogue]) {
-        self.acts = acts
+    init(dialogues: [Dialogue]) {
+        self.dialogues = dialogues
         pickUpLastAct()
     }
     
     private func pickUpLastAct() {
         // FIXME: Property should get set correctly for conversation type
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
-        if let index = acts.firstIndex(where: { $0.id == id }) {
-            self.actIndex = index
+        if let index = dialogues.firstIndex(where: { $0.id == id }) {
+            self.dialogueIndex = index
         }
     }
     
     // MARK: - Actions
     
     internal func startDialogue() {
-        isActing = true
+        isDialogging = true
         
         // FIXME: Property should get set correctly for different conversation types
         Event.track(Constant.Event.conversationStarted, properties: [
-            Constant.Event.Property.actId: currentAct.id
+            Constant.Event.Property.actId: currentDialogue.id
           ])
     }
     
     internal func stopDialogue() {
-        lineIndex = 0
-        isActing = false
+        phraseIndex = 0
+        isDialogging = false
         lastPhraseSaidOrHeard = ""
         queueNextAct()
     }
     
     internal func queueNextLineIfNeeded() {
         if lastPhraseExpected {
-            lineIndex += 1
+            phraseIndex += 1
             
-            if lineIndex > (currentAct.phrases.count - 1) {
+            if phraseIndex > (currentDialogue.phrases.count - 1) {
                 stopDialogue()
             }
         }
@@ -88,25 +80,25 @@ class DialogueManager {
     }
     
     private func queueNextAct() {
-        actIndex += 1
+        dialogueIndex += 1
         
-        if actIndex > (acts.count - 1) {
-            actIndex = 0
+        if dialogueIndex > (dialogues.count - 1) {
+            dialogueIndex = 0
         }
         
         // FIXME: Property should get set correctly for conversation types
-        UserDefaults.standard.set(acts[actIndex].id, forKey: Constant.UserDefault.actId)
+        UserDefaults.standard.set(dialogues[dialogueIndex].id, forKey: Constant.UserDefault.actId)
     }
     
     internal func getCurrentPhrase() -> String {
-        return currentLine
+        return currentPhrase
     }
     
     internal func getResponse() -> String? {
-        if lastPhraseExpected && isActing {
-            return currentLine
+        if lastPhraseExpected && isDialogging {
+            return currentPhrase
         }
-        else if isActing {
+        else if isDialogging {
             return getClarificationResponse()
         }
         else {
@@ -115,7 +107,7 @@ class DialogueManager {
     }
     
     private func getClarificationResponse() -> String {
-        switch currentLine {
+        switch currentPhrase {
         case ConstantLine.whosThere:
             return ConstantLine.explainKnockKnock
         default:
