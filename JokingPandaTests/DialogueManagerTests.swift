@@ -1,5 +1,5 @@
 //
-//  DialogueTests.swift
+//  DialogueManagerTests.swift
 //  JokingPandaTests
 //
 //  Created by Lukas Carvajal on 6/8/24.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import JokingPanda
 
-final class DialogueTests: XCTestCase {
+final class DialogueManagerTests: XCTestCase {
     private var mockDialogues: [Dialogue]!
     private var dialogueManager: DialogueManager!
 
