@@ -10,24 +10,12 @@ import Foundation
 
 class DialogueManager {
     private var currentDialogue: Dialogue { return dialogues[dialogueIndex] }
-    private var isDialogging = false
     private let dialogues: [Dialogue]
     private var dialogueIndex = 0
+    private var isDialogging = false
+    private var phraseManager: PhraseManager?
     
-    private var currentPhrase: String { return currentDialogue.phrases[phraseIndex] }
-    private var lastPhraseSaidOrHeard = ""
-    private var lastPhraseExpected: Bool {
-        if lastPhraseSaidOrHeard.isEmpty {
-            return true
-        }
-        else {
-            return Tool.levenshtein(aStr: lastPhraseSaidOrHeard, bStr: currentPhrase) < 7
-        }
-    }
-    private var phraseIndex = 0
-    
-    internal var isStartOfDialogue: Bool { return phraseIndex == 0 }
-    internal var personWhoShouldSpeakPhrase: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
+    internal var isStartOfDialogue: Bool { return phraseManager?.currentIndex == 0 }
     
     static func knockKnockJokesInstance() -> DialogueManager {
         let jokingActs: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
@@ -36,11 +24,12 @@ class DialogueManager {
     
     init(dialogues: [Dialogue]) {
         self.dialogues = dialogues
-        pickUpLastAct()
+        pickUpLastDialogueFromUserDefaults()
     }
     
     internal func startDialogue() {
         isDialogging = true
+        phraseManager = PhraseManager(phrases: currentDialogue.phrases)
         
         Event.track(Constant.Event.conversationStarted, properties: [
             Constant.Event.Property.actId: currentDialogue.id
@@ -48,51 +37,41 @@ class DialogueManager {
     }
     
     internal func stopDialogue() {
-        phraseIndex = 0
         isDialogging = false
-        lastPhraseSaidOrHeard = ""
-        queueNextAct()
+        queueNextDialogue()
     }
     
-    internal func queueNextLineIfNeeded() {
-        if lastPhraseExpected {
-            phraseIndex += 1
-            
-            if phraseIndex > (currentDialogue.phrases.count - 1) {
-                stopDialogue()
-            }
-        }
-        else {
-            debugPrint("Not queing next line in dialogue since last phrase was not expected.")
+    internal func queueNextPhraseIfNeeded() {
+        guard let phraseManager = phraseManager else { return }
+        
+        phraseManager.queueNextPhraseIfNeeded()
+        if phraseManager.noMorePhrasesToQueue {
+            stopDialogue()
         }
     }
     
     internal func getCurrentPhrase() -> String {
-        return currentPhrase
+        guard let phraseManager = phraseManager else { return "" }
+        return phraseManager.currentPhrase
     }
     
-    internal func getResponse() -> String? {
-        if lastPhraseExpected && isDialogging {
-            return currentPhrase
-        }
-        else if isDialogging {
-            return getClarificationResponse()
-        }
-        else {
-            return nil
-        }
+    internal func getBotResponsePhrase() -> String? {
+        guard let phraseManager = phraseManager, isDialogging else { return nil }
+        
+        let botResponse = phraseManager.getBotResponse()
+        return botResponse.phrase
     }
     
     // MARK: - Private
     
-    private func pickUpLastAct() {
+    private func pickUpLastDialogueFromUserDefaults() {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
         if let index = dialogues.firstIndex(where: { $0.id == id }) {
             self.dialogueIndex = index
         }
     }
     
-    private func queueNextAct() {
+    private func queueNextDialogue() {
         dialogueIndex += 1
         
         if dialogueIndex > (dialogues.count - 1) {
@@ -100,14 +79,5 @@ class DialogueManager {
         }
         
         UserDefaults.standard.set(dialogues[dialogueIndex].id, forKey: Constant.UserDefault.actId)
-    }
-    
-    private func getClarificationResponse() -> String {
-        switch currentPhrase {
-        case ConstantLine.whosThere:
-            return ConstantLine.explainKnockKnock
-        default:
-            return ConstantLine.couldYouRepeatWhatYouSaid
-        }
     }
 }

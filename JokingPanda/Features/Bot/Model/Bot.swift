@@ -114,7 +114,7 @@ class Bot: NSObject, ObservableObject  {
      Depending on the conversation history and current conversation, this function calls `speak()` again or sets action to stop since the conversation is over.
      */
     private func respond() {
-        if let phrase = dialogueManager.getResponse() {
+        if let phrase = dialogueManager.getBotResponsePhrase() {
             speak(phrase)
         }
         else {
@@ -185,7 +185,7 @@ extension Bot: SpeechRecognizerDelegate {
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
         
-        dialogueManager.queueNextLineIfNeeded()
+        dialogueManager.queueNextPhraseIfNeeded()
         respond()
     }
     
@@ -206,7 +206,7 @@ extension Bot: SpeechSynthesizerDelegate {
         action = .stopped
         triggerActionUpdate()
         
-        dialogueManager.queueNextLineIfNeeded()
+        dialogueManager.queueNextPhraseIfNeeded()
         if !dialogueManager.isStartOfDialogue {
             listen(expectedPhrase: dialogueManager.getCurrentPhrase())
         }
@@ -222,7 +222,7 @@ extension Bot: SpeechSynthesizerDelegate {
 
 extension Bot: AudioPlayerDelegate {
     func audioPlayerDidPlay() {
-        if let phrase = dialogueManager.getResponse() {
+        if let phrase = dialogueManager.getBotResponsePhrase() {
             dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
             triggerPhraseHistoryUpdate()
         }
@@ -230,7 +230,7 @@ extension Bot: AudioPlayerDelegate {
         action = .stopped
         triggerActionUpdate()
         
-        dialogueManager.queueNextLineIfNeeded()
+        dialogueManager.queueNextPhraseIfNeeded()
         if !dialogueManager.isStartOfDialogue {
             listen(expectedPhrase: dialogueManager.getCurrentPhrase())
         }
