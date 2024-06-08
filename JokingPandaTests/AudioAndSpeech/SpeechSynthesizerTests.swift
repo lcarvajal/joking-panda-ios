@@ -68,12 +68,12 @@ final class SpeechSynthesizerTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func test_speechSynthesizer_initialization_shouldNotBeNil() throws {
+    func test_initialization_shouldNotBeNil() throws {
         XCTAssertNotNil(speechSynthesizer)
         XCTAssertNotNil(speechSynthesizer.delegate)
     }
 
-    func test_speechSynthesizer_withPhrase_ShouldBeEqual() throws {
+    func test_speak_withPhrase_ShouldBeEqual() throws {
         mockDelegate.expectPhraseToBeSaid()
         speechSynthesizer.speak(phrase: "Hello")
         
