@@ -19,9 +19,12 @@ class DialogueManager {
     
     internal var isStartOfDialogue: Bool { return phraseManager?.currentIndex == 0 }
     
+    /**
+     - returns: DialogueManager containing knock-knock jokes.
+     */
     static func knockKnockJokesInstance() -> DialogueManager {
-        let jokingActs: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
-        return DialogueManager(dialogues: jokingActs)
+        let jokeDialogues: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
+        return DialogueManager(dialogues: jokeDialogues)
     }
     
     init(dialogues: [Dialogue]) {
