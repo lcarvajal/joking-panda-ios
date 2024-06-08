@@ -65,12 +65,12 @@ final class LaughRecognizerTests: XCTestCase {
         mockDelegate = nil
     }
 
-    func test_laughRecognizer_withInitialization_shouldNotBeNil() throws {
+    func test_initialization_shouldNotBeNil() throws {
         XCTAssertNotNil(laughRecognizer)
         XCTAssertNotNil(laughRecognizer.delegate)
     }
     
-    func test_laughRecognizer_startWhileRecognizing_shouldNotThrowError() throws {
+    func test_start_withRecognizingInProgress_shouldNotThrowError() throws {
         mockDelegate.expectRecognizeLaughter()
         laughRecognizer.start(for: .seconds(2))
         laughRecognizer.start(for: .seconds(2))
