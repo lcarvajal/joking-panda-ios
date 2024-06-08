@@ -52,7 +52,7 @@ final class DialogueTests: XCTestCase {
         
         dialogueManager.queueNextPhraseIfNeeded()
         dialogueManager.queueNextPhraseIfNeeded()
-        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[2])
+        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[1].phrases[2])
     }
     
     func test_queueNextDialogue_shouldUpdateCurrentPhraseFromNextDialogue() {
@@ -65,5 +65,18 @@ final class DialogueTests: XCTestCase {
         
         dialogueManager.startDialogue()
         XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[0])
+    }
+    
+    func test_getBotResponse_withDynamicUserInput_shouldReturnDynamicResponse() {
+        dialogueManager.startDialogue()
+        dialogueManager.queueNextPhraseIfNeeded() // User
+        dialogueManager.lastPhraseUserSaid = "What?" // Saying something not according to dialogue
+        XCTAssertEqual(dialogueManager.getBotResponsePhrase(), ConstantPhrase.explainKnockKnock)
+        
+        dialogueManager.lastPhraseUserSaid = "Who's there?"
+        dialogueManager.queueNextPhraseIfNeeded() // Bot
+        dialogueManager.queueNextPhraseIfNeeded() // User
+        dialogueManager.lastPhraseUserSaid = "What?" // Saying something not according to dialogue
+        XCTAssertEqual(dialogueManager.getBotResponsePhrase(), ConstantPhrase.couldYouRepeatWhatYouSaid)
     }
 }
