@@ -95,9 +95,7 @@ class DialogueManager {
         return botResponse.phrase
     }
     
-    // MARK: - Private
-    
-    private func pickUpLastDialogueFromUserDefaults() {
+    internal func pickUpLastDialogueFromUserDefaults() {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
         if let index = dialogues.firstIndex(where: { $0.id == id }) {
             self.index = index

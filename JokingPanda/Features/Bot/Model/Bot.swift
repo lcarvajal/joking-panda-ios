@@ -45,6 +45,8 @@ class Bot: NSObject, ObservableObject  {
         laughRecognizer.delegate = self
         speechRecognizer.delegate = self
         mouth.delegate = self
+        
+        dialogueManager.pickUpLastDialogueFromUserDefaults()
     }
     
 //    /*
