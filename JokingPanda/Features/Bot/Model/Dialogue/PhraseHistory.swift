@@ -2,6 +2,9 @@
 //  PhraseHistory.swift
 //  JokingPanda
 //
+/**
+ Keeps track of the phrases said or heard in `phraseHistory`.
+ */
 
 import Foundation
 

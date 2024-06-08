@@ -2,6 +2,9 @@
 //  Dialogue.swift
 //  JokingPanda
 //
+/**
+ Dialogue stores the lines for a scripted back-and-forth conversation. For example, a knock-knock jokes or a riddle.
+ */
 
 import Foundation
 

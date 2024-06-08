@@ -2,8 +2,9 @@
 //  DialogueManager.swift
 //  JokingPanda
 //
-//  Created by Lukas Carvajal on 11/22/23.
-//
+/**
+ Keeps track of the current phrase within a dialogue as well as the current dialogue in an array of dialogues.
+ */
 
 import Foundation
 
