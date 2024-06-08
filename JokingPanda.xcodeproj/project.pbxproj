@@ -16,7 +16,7 @@
 		8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */; };
 		8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFF62B0C0B0100A3A8F8 /* BotView.swift */; };
 		8D0DDFFB2B0CADDF00A3A8F8 /* StageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */; };
-		8D0DE0052B0E4CD900A3A8F8 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0042B0E4CD900A3A8F8 /* Play.swift */; };
+		8D0DE0052B0E4CD900A3A8F8 /* Dialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DE0042B0E4CD900A3A8F8 /* Dialogue.swift */; };
 		8D2D00002AFD6780003E77B8 /* alex.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFF8E2AFD66BB003E77B8 /* alex.m4a */; };
 		8D2D00022AFD6780003E77B8 /* annie-way-you-can-let-me-in.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFC42AFD66BF003E77B8 /* annie-way-you-can-let-me-in.m4a */; };
 		8D2D00032AFD6780003E77B8 /* mary.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D2DFFBF2AFD66BF003E77B8 /* mary.m4a */; };
@@ -393,7 +393,7 @@
 		8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8D0DDFF62B0C0B0100A3A8F8 /* BotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BotView.swift; sourceTree = "<group>"; };
 		8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageManager.swift; sourceTree = "<group>"; };
-		8D0DE0042B0E4CD900A3A8F8 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
+		8D0DE0042B0E4CD900A3A8F8 /* Dialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialogue.swift; sourceTree = "<group>"; };
 		8D2DB8662BE2DA7A0002F01E /* we-can-journal-dance-or-listen-to-some-jokes.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "we-can-journal-dance-or-listen-to-some-jokes.m4a"; sourceTree = "<group>"; };
 		8D2DFF5E2AFD66B7003E77B8 /* honey-bee-a-dear-and-get-that-for-me-please.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "honey-bee-a-dear-and-get-that-for-me-please.m4a"; sourceTree = "<group>"; };
 		8D2DFF5F2AFD66B7003E77B8 /* needle-little-help-right-now.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "needle-little-help-right-now.m4a"; sourceTree = "<group>"; };
@@ -787,7 +787,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC97D952AE92CB0002CEA1E /* Phrase.swift */,
-				8D0DE0042B0E4CD900A3A8F8 /* Play.swift */,
+				8D0DE0042B0E4CD900A3A8F8 /* Dialogue.swift */,
 				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
 				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
 			);
@@ -1809,7 +1809,7 @@
 				8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Phrase.swift in Sources */,
 				8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */,
-				8D0DE0052B0E4CD900A3A8F8 /* Play.swift in Sources */,
+				8D0DE0052B0E4CD900A3A8F8 /* Dialogue.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */,

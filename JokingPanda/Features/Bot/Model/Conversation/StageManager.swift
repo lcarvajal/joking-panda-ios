@@ -14,15 +14,15 @@ class StageManager {
     internal var previousLine: String? { return currentPlay.previousLine }
     internal var lastAct: Phrase { return currentPlay.lastAct }
     
-    private var currentPlay: Play { return plays[0] }
+    private var currentPlay: Dialogue { return plays[0] }
     private var personActing: Person { return currentPlay.personActing }
-    private let plays: [Play]
+    private let plays: [Dialogue]
     
     static func loadedWithJokes() -> StageManager {
         let jokingActs: [Phrase] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
         
         let plays = [
-            Play(acts: jokingActs)
+            Dialogue(acts: jokingActs)
         ]
         
         return StageManager(plays: plays)
@@ -30,7 +30,7 @@ class StageManager {
     
     // MARK: - Setup
     
-    init(plays: [Play]) {
+    init(plays: [Dialogue]) {
         self.plays = plays
     }
     

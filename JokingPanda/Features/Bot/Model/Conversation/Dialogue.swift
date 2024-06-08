@@ -1,5 +1,5 @@
 //
-//  Conversations.swift
+//  Dialogue.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 11/22/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Play {
+class Dialogue {
     internal var currentAct: Phrase { return acts[actIndex] }
     internal var lastAct: Phrase { return acts[actIndex - 1]}
     internal var currentLine: String { return currentAct.lines[lineIndex] }
