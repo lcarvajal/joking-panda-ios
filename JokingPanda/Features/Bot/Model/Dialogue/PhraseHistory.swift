@@ -11,11 +11,15 @@ import Foundation
 class PhraseHistory {
     internal var history = ""
     
+    /**
+     Appends a phrase to `history` in a newline.
+     If the phrase is close to what is expected, the expected phrase gets appended instead of what was actually heard.
+     */
     internal func addPhrase(_ phraseSaidOrHeard: String, expectedPhrase: String?, saidBy personTalking: Person) {
         let phrase: String
         
         if let expectedPhrase = expectedPhrase {
-            phrase = interpret(phraseHeard: phraseSaidOrHeard, expectedPhrase: expectedPhrase)
+            phrase = getInterpretedPhrase(phraseHeard: phraseSaidOrHeard, expectedPhrase: expectedPhrase)
         }
         else {
             phrase = phraseSaidOrHeard
@@ -33,6 +37,9 @@ class PhraseHistory {
         }
     }
     
+    /**
+     Appends the loudness score with a description to `history` in a newline.
+     */
     internal func addLaughter(loudness: Int) {
         history += "\n🗣️ Laugh score: \(loudness) / 5"
         // FIXME: - Add event tracking back
@@ -46,7 +53,10 @@ class PhraseHistory {
         return history
     }
     
-    private func interpret(phraseHeard: String, expectedPhrase: String) -> String {
+    /**
+     - returns: String interpreted phrase which returns the expected phrase when it closely matches the heard phrase.
+     */
+    private func getInterpretedPhrase(phraseHeard: String, expectedPhrase: String) -> String {
         return Tool.levenshtein(aStr: phraseHeard, bStr: expectedPhrase) < 5 ? expectedPhrase : phraseHeard
     }
 }
