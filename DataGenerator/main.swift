@@ -10,8 +10,8 @@ import Speech
 
 // MARK: - Main
 
-let userLines = loadUniqueUserLinesFromJokes()
-let data = getCustomLanguageModelData(userLines: userLines)
+let userPhrases = loadUniqueUserLinesFromJokes()
+let data = getCustomLanguageModelData(userPhrases: userPhrases)
 try await data.export(to: URL(filePath: Constant.FilePath.tempCustomLLMData))
 
 // MARK: - Helper functions
@@ -25,31 +25,31 @@ private func loadUniqueUserLinesFromJokes() -> [String] {
     let resourcePath = currentPath + "/" + Constant.FileName.knockKnockJokesJSON
     let url = URL(fileURLWithPath: resourcePath)
     
-    let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: url)
+    let jokeDialogues: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: url)
     
-    let nestedUserLines = jokingActs.map { act in
-        stride(from: 1, to: act.lines.count, by: 2).map { act.lines[$0] }
+    let nestedUserPhrases = jokeDialogues.map { dialogue in
+        stride(from: 1, to: dialogue.phrases.count, by: 2).map { dialogue.phrases[$0] }
     }
-    let flattenedUserLines = nestedUserLines.reduce([], +)
+    let flattenedUserPhrases = nestedUserPhrases.reduce([], +)
     
-    var uniqueUserLines: [String] = []
-    for line in flattenedUserLines {
-        if !uniqueUserLines.contains(line) {
-            uniqueUserLines.append(line)
+    var uniqueUserPhrases: [String] = []
+    for phrase in flattenedUserPhrases {
+        if !uniqueUserPhrases.contains(phrase) {
+            uniqueUserPhrases.append(phrase)
         }
     }
     
-    return uniqueUserLines
+    return uniqueUserPhrases
 }
 
 /**
  Configures a custom language model so that lines a user is expected to say (f.e. 'I dunnapo') is recognized.
  */
-internal func getCustomLanguageModelData(userLines: [String]) -> SFCustomLanguageModelData {
+internal func getCustomLanguageModelData(userPhrases: [String]) -> SFCustomLanguageModelData {
     let data = SFCustomLanguageModelData(locale: Locale(identifier: "en_US"), identifier: Constant.AppProperty.bundleIdentifier, version: "1.1") {
         //
-        for line in userLines {
-            SFCustomLanguageModelData.PhraseCount(phrase: line, count: 10)
+        for phrase in userPhrases {
+            SFCustomLanguageModelData.PhraseCount(phrase: phrase, count: 10)
         }
     }
     

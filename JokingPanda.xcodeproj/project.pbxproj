@@ -125,7 +125,7 @@
 		8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */; };
 		8D4CB9EE2AEFDA8300B7A00F /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
 		8D5946082BEBC78B00EAF79A /* BotViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946072BEBC78B00EAF79A /* BotViewModel.swift */; };
-		8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59460A2BEC139E00EAF79A /* ConstantLine.swift */; };
+		8D59460B2BEC139E00EAF79A /* ConstantPhrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59460A2BEC139E00EAF79A /* ConstantPhrase.swift */; };
 		8D5946122BEE611500EAF79A /* AuthorizationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946112BEE611500EAF79A /* AuthorizationsViewModel.swift */; };
 		8D5946142BEE8C0D00EAF79A /* GaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5946132BEE8C0D00EAF79A /* GaugeView.swift */; };
 		8D5947392BEF89D400EAF79A /* britney-spears-oops-i-did-it-again.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5946C52BEF89CF00EAF79A /* britney-spears-oops-i-did-it-again.m4a */; };
@@ -503,7 +503,7 @@
 		8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
 		8D5946072BEBC78B00EAF79A /* BotViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotViewModel.swift; sourceTree = "<group>"; };
-		8D59460A2BEC139E00EAF79A /* ConstantLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantLine.swift; sourceTree = "<group>"; };
+		8D59460A2BEC139E00EAF79A /* ConstantPhrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantPhrase.swift; sourceTree = "<group>"; };
 		8D59460E2BEE182B00EAF79A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D5946112BEE611500EAF79A /* AuthorizationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationsViewModel.swift; sourceTree = "<group>"; };
 		8D5946132BEE8C0D00EAF79A /* GaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeView.swift; sourceTree = "<group>"; };
@@ -778,7 +778,7 @@
 			isa = PBXGroup;
 			children = (
 				8D0A790F2AF15A6100317DAF /* Constant.swift */,
-				8D59460A2BEC139E00EAF79A /* ConstantLine.swift */,
+				8D59460A2BEC139E00EAF79A /* ConstantPhrase.swift */,
 				8D0DDFF22B0BFBCE00A3A8F8 /* Event.swift */,
 				8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */,
 			);
@@ -1825,7 +1825,7 @@
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
 				8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
-				8D59460B2BEC139E00EAF79A /* ConstantLine.swift in Sources */,
+				8D59460B2BEC139E00EAF79A /* ConstantPhrase.swift in Sources */,
 				8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */,
 				8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */,
 				8D0A790E2AF1571500317DAF /* AnimationView.swift in Sources */,

@@ -35,14 +35,14 @@ final class FileTests: XCTestCase {
     }
     
     func test_constantAudioFiles_shouldExist() {
-        let constantLines = [
-            ConstantLine.couldYouRepeatWhatYouSaid,
-            ConstantLine.explainKnockKnock,
-            ConstantLine.whosThere
+        let constantPhrases = [
+            ConstantPhrase.couldYouRepeatWhatYouSaid,
+            ConstantPhrase.explainKnockKnock,
+            ConstantPhrase.whosThere
         ]
         
-        for line in constantLines {
-            let fileName = Tool.removePunctuation(from: line)
+        for phrase in constantPhrases {
+            let fileName = Tool.removePunctuation(from: phrase)
                 .lowercased()
                 .replacingOccurrences(of: " ", with: "-")
                 + ".m4a"

@@ -18,10 +18,10 @@ struct BotResponse {
         }
         else {
             switch nextPhraseInDialog {
-            case ConstantLine.whosThere:
-                self.phrase = ConstantLine.explainKnockKnock
+            case ConstantPhrase.whosThere:
+                self.phrase = ConstantPhrase.explainKnockKnock
             default:
-                self.phrase = ConstantLine.couldYouRepeatWhatYouSaid
+                self.phrase = ConstantPhrase.couldYouRepeatWhatYouSaid
             }
         }
     }

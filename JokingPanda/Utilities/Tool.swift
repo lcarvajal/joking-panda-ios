@@ -88,8 +88,8 @@ struct Tool {
         return cleanedText
     }
     
-    static func getAudioURL(for line: String) -> URL? {
-        let audioFileName = Tool.removePunctuation(from: line)
+    static func getAudioURL(for phrase: String) -> URL? {
+        let audioFileName = Tool.removePunctuation(from: phrase)
             .lowercased()
             .replacingOccurrences(of: " ", with: "-")
         return Bundle.main.url(forResource: audioFileName, withExtension: "m4a")

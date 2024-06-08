@@ -39,7 +39,7 @@ My goal was really to build something that engaged kids in conversation rather t
 
 1. Create a `Keys.plist` file in the `Resources` folder
 2. Add the key `mixpanelProjectToken` with the Mixpanel project token
-3. Create a `Resources/knockKnockJokeData.json` file and populate it with an array of JSON joke objects in the form `{"id":1001,"lines":["Knock, knock.","Who's there?","Tank.","Tank who?","You’re welcome."]}`
+3. Create a `Resources/knockKnockJokeData.json` file and populate it with an array of JSON joke objects in the form `{"id":1001,"phrases":["Knock, knock.","Who's there?","Tank.","Tank who?","You’re welcome."]}`
 4. Run the app 
 
 ## To-dos

@@ -38,7 +38,7 @@ class PhraseManager {
             index += 1
         }
         else {
-            debugPrint("Not queing next line in dialogue since last phrase was not expected.")
+            debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
         }
     }
     

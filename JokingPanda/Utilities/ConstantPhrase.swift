@@ -1,14 +1,14 @@
 //
-//  ConstantLine.swift
+//  ConstantPhrase.swift
 //  JokingPanda
 //
 
 import Foundation
 
 /**
- Lines said by the bot that are not imported.
+ Phrases said by the bot that are not imported.
  */
-struct ConstantLine {
+struct ConstantPhrase {
     static let couldYouRepeatWhatYouSaid = "I'm sorry, could you say that again?"
     static let explainKnockKnock = "Let's try that again. When I say 'Knock, knock.' you say 'Who's there'? Knock knock."
     static let whosThere = "Who's there?"
