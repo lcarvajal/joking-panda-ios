@@ -117,7 +117,9 @@ class Bot: NSObject, ObservableObject  {
     /**
      Depending on the conversation history and current conversation, this function calls `speak()` again or sets action to stop since the conversation is over.
      */
-    private func respond() {
+    private func respond(to lastPhraseUserSaid: String) {
+        dialogueManager.lastPhraseUserSaid = lastPhraseUserSaid
+        
         if let phrase = dialogueManager.getBotResponsePhrase() {
             speak(phrase)
         }

@@ -18,6 +18,11 @@ class DialogueManager {
     private var phraseManager: PhraseManager?
     
     internal var isStartOfDialogue: Bool { return phraseManager?.currentIndex == 0 }
+    internal var lastPhraseUserSaid: String = "" {
+        didSet {
+            phraseManager.la
+        }
+    }
     
     /**
      - returns: DialogueManager containing knock-knock jokes.

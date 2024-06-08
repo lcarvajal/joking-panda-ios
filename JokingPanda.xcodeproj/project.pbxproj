@@ -1265,9 +1265,9 @@
 		8DC97D702AE67101002CEA1E /* JokingPandaTests */ = {
 			isa = PBXGroup;
 			children = (
+				8D70B2102C14BBB5009ACEAA /* DialogueTests.swift */,
 				8D70B2052C13A918009ACEAA /* AudioAndSpeech */,
 				8DC97D712AE67101002CEA1E /* FileTests.swift */,
-				8D70B2102C14BBB5009ACEAA /* DialogueTests.swift */,
 			);
 			path = JokingPandaTests;
 			sourceTree = "<group>";

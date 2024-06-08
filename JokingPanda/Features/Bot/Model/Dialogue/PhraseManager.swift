@@ -11,26 +11,26 @@ import Foundation
 class PhraseManager {
     private var index: Int
     private var phrases: [String]
-    private var lastPhraseSaidOrHeard: String
     private var lastPhraseWasExpected: Bool {
-        if lastPhraseSaidOrHeard.isEmpty {
+        if lastPhraseUserSaid.isEmpty {
             return true
         }
         else {
-            return Tool.levenshtein(aStr: lastPhraseSaidOrHeard, bStr: currentPhrase) < 7
+            return Tool.levenshtein(aStr: lastPhraseUserSaid, bStr: currentPhrase) < 7
         }
     }
     private var personWhoShouldSpeakPhrase: Person { return index % 2 == 0 ? Person.bot : Person.currentUser }
     
     internal var currentIndex: Int { return index }
     internal var currentPhrase: String { return phrases[index] }
+    internal var lastPhraseUserSaid: String
     internal var noMorePhrasesToQueue: Bool { return index > (phrases.count - 1) }
     
     init(phrases: [String]){
         self.phrases = phrases
         
         self.index = 0
-        self.lastPhraseSaidOrHeard = ""
+        self.lastPhraseUserSaid = ""
     }
     
     internal func queueNextPhraseIfNeeded() {
