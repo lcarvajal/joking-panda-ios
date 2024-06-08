@@ -9,8 +9,8 @@ import Foundation
 
 class Play {
     internal let type: ActType
-    internal var currentAct: Act { return acts[actIndex] }
-    internal var lastAct: Act { return acts[actIndex - 1]}
+    internal var currentAct: Phrase { return acts[actIndex] }
+    internal var lastAct: Phrase { return acts[actIndex - 1]}
     internal var currentLine: String { return currentAct.lines[lineIndex] }
     internal var previousLine: String? {
         if lineIndex > 0 {
@@ -25,11 +25,11 @@ class Play {
     internal var isActing = false
     internal var personActing: Person { return lineIndex % 2 == 0 ? Person.bot : Person.currentUser }
     
-    private let acts: [Act]
+    private let acts: [Phrase]
     private var actIndex = 0
     private var lineIndex = 0
     
-    init(type: ActType, acts: [Act]) {
+    init(type: ActType, acts: [Phrase]) {
         self.type = type
         self.acts = acts
         pickUpLastAct()

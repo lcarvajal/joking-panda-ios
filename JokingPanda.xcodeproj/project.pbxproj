@@ -335,10 +335,10 @@
 		8DC97D7C2AE67101002CEA1E /* JokingPandaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7B2AE67101002CEA1E /* JokingPandaUITests.swift */; };
 		8DC97D7E2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */; };
 		8DC97D942AE80486002CEA1E /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D932AE80486002CEA1E /* Person.swift */; };
-		8DC97D962AE92CB0002CEA1E /* Act.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Act.swift */; };
+		8DC97D962AE92CB0002CEA1E /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Phrase.swift */; };
 		8DDFEF9A2C1343C000EBE2CD /* knockKnockJokeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */; };
 		8DDFEF9B2C1343E800EBE2CD /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4CB9ED2AEFDA8300B7A00F /* Tool.swift */; };
-		8DDFEF9C2C13441700EBE2CD /* Act.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Act.swift */; };
+		8DDFEF9C2C13441700EBE2CD /* Phrase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC97D952AE92CB0002CEA1E /* Phrase.swift */; };
 		8DDFEF9D2C13442100EBE2CD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0A790F2AF15A6100317DAF /* Constant.swift */; };
 		8DDFEF9E2C13482800EBE2CD /* knockKnockJokeData.json in Copy Files */ = {isa = PBXBuildFile; fileRef = 8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */; };
 		8DDFEFA22C135C3D00EBE2CD /* CustomLMDataForJokes.bin in Resources */ = {isa = PBXBuildFile; fileRef = 8DDFEFA12C135C3D00EBE2CD /* CustomLMDataForJokes.bin */; };
@@ -717,7 +717,7 @@
 		8DC97D7D2AE67101002CEA1E /* JokingPandaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokingPandaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8DC97D8E2AE6BE11002CEA1E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8DC97D932AE80486002CEA1E /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
-		8DC97D952AE92CB0002CEA1E /* Act.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Act.swift; sourceTree = "<group>"; };
+		8DC97D952AE92CB0002CEA1E /* Phrase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phrase.swift; sourceTree = "<group>"; };
 		8DDFEF992C1343C000EBE2CD /* knockKnockJokeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = knockKnockJokeData.json; sourceTree = "<group>"; };
 		8DDFEFA12C135C3D00EBE2CD /* CustomLMDataForJokes.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = CustomLMDataForJokes.bin; sourceTree = "<group>"; };
 		8DE4C1D12AFC1BC700B36205 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -786,7 +786,7 @@
 		8D5945FE2BEBA84800EAF79A /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				8DC97D952AE92CB0002CEA1E /* Act.swift */,
+				8DC97D952AE92CB0002CEA1E /* Phrase.swift */,
 				8D0DE0042B0E4CD900A3A8F8 /* Play.swift */,
 				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
 				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
@@ -1793,7 +1793,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DDFEF9C2C13441700EBE2CD /* Act.swift in Sources */,
+				8DDFEF9C2C13441700EBE2CD /* Phrase.swift in Sources */,
 				8DB559052C132285002FC27D /* main.swift in Sources */,
 				8DDFEF9B2C1343E800EBE2CD /* Tool.swift in Sources */,
 				8DDFEF9D2C13442100EBE2CD /* Constant.swift in Sources */,
@@ -1807,7 +1807,7 @@
 				8DE4C1D82AFC312C00B36205 /* MessagesView.swift in Sources */,
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */,
-				8DC97D962AE92CB0002CEA1E /* Act.swift in Sources */,
+				8DC97D962AE92CB0002CEA1E /* Phrase.swift in Sources */,
 				8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */,
 				8D0DE0052B0E4CD900A3A8F8 /* Play.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,

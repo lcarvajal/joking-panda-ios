@@ -12,7 +12,7 @@ class StageManager {
     internal var isRunningAnAct: Bool { return currentPlay.isActing }
     internal var currentLine: String { return currentPlay.currentLine }
     internal var previousLine: String? { return currentPlay.previousLine }
-    internal var lastAct: Act { return currentPlay.lastAct }
+    internal var lastAct: Phrase { return currentPlay.lastAct }
     
     private var selectedType: ActType = .joking
     private var currentPlay: Play { return plays[selectedType]! }
@@ -20,8 +20,8 @@ class StageManager {
     private let plays: [ActType: Play]
     
     static func loadedWithJokes() -> StageManager {
-        let decidingActs = [Act(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
-        let jokingActs: [Act] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
+        let decidingActs = [Phrase(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
+        let jokingActs: [Phrase] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
         
         let plays = [
             ActType.deciding : Play(type: .deciding, acts: decidingActs),

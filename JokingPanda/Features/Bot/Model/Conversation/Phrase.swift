@@ -1,5 +1,5 @@
 //
-//  Script.swift
+//  Phrase.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 10/25/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Act: Hashable, Codable, Identifiable {
+struct Phrase: Hashable, Codable, Identifiable {
     var id: Int
     var lines: [String]
 }
