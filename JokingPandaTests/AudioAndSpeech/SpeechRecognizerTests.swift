@@ -66,7 +66,7 @@ final class SpeechRecognizerTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func test_speechRecognizer_withInitialization_shouldNotBeNil() throws {
+    func test_initialization_shouldNotBeNil() throws {
         XCTAssertNotNil(speechRecognizer)
         XCTAssertNotNil(speechRecognizer.delegate)
     }
