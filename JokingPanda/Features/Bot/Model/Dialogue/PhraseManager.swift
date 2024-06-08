@@ -19,7 +19,7 @@ class PhraseManager {
             return Tool.levenshtein(aStr: lastPhraseUserSaid, bStr: currentPhrase) < 7
         }
     }
-    private var personWhoShouldSpeakPhrase: Person { return index % 2 == 0 ? Person.bot : Person.currentUser }
+    private var personSayingPhrase: Person { return index % 2 == 0 ? Person.bot : Person.currentUser }
     
     internal var currentIndex: Int { return index }
     internal var currentPhrase: String { return phrases[index] }
@@ -34,11 +34,11 @@ class PhraseManager {
     }
     
     internal func queueNextPhraseIfNeeded() {
-        if lastPhraseWasExpected {
-            index += 1
+        if personSayingPhrase == .currentUser && !lastPhraseWasExpected {
+            debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
         }
         else {
-            debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
+            index += 1
         }
     }
     
