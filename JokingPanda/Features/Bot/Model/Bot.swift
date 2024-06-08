@@ -185,14 +185,17 @@ extension Bot: SpeechRecognizerDelegate {
     
     func speechRecognizerDidRecognize(_ phrase: String) {
         let expectedPhrase = dialogueManager.getCurrentPhrase()
-        phraseHistory.addPhrase(phrase, expectedPhrase: expectedPhrase, saidBy: .currentUser)
+        // Use expected phrase if it is close enough to user input
+        let interpretedPhrase = Tool.levenshtein(aStr: phrase, bStr: expectedPhrase) < 5 ? expectedPhrase : phrase
+        
+        phraseHistory.addPhrase(interpretedPhrase, saidBy: .currentUser)
         
         action = .stopped
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
         
         dialogueManager.queueNextPhraseIfNeeded()
-        respond()
+        respond(to: interpretedPhrase)
     }
     
     func speechRecognizerErrorDidOccur(error: any Error) {
@@ -206,7 +209,7 @@ extension Bot: SpeechSynthesizerDelegate {
     }
     
     func speechSynthesizerDidSayPhrase(_ phrase: String) {
-        phraseHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
+        phraseHistory.addPhrase(phrase, saidBy: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
@@ -229,7 +232,7 @@ extension Bot: SpeechSynthesizerDelegate {
 extension Bot: AudioPlayerDelegate {
     func audioPlayerDidPlay() {
         if let phrase = dialogueManager.getBotResponsePhrase() {
-            phraseHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
+            phraseHistory.addPhrase(phrase, saidBy: .bot)
             triggerPhraseHistoryUpdate()
         }
         
