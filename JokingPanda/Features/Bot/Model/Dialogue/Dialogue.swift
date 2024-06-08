@@ -1,11 +1,11 @@
 //
-//  Phrase.swift
+//  Dialogue.swift
 //  JokingPanda
 //
 
 import Foundation
 
-struct Phrase: Hashable, Codable, Identifiable {
+struct Dialogue: Hashable, Codable, Identifiable {
     var id: Int
     var lines: [String]
 }

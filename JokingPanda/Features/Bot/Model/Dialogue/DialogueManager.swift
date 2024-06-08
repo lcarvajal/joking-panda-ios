@@ -1,5 +1,5 @@
 //
-//  Dialogue.swift
+//  DialogueManager.swift
 //  JokingPanda
 //
 //  Created by Lukas Carvajal on 11/22/23.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-class PhraseManager {
-    internal var currentAct: Phrase { return acts[actIndex] }
-    internal var lastAct: Phrase { return acts[actIndex - 1]}
+class DialogueManager {
+    internal var currentAct: Dialogue { return acts[actIndex] }
+    internal var lastAct: Dialogue { return acts[actIndex - 1]}
     internal var currentLine: String { return currentAct.lines[lineIndex] }
     internal var previousLine: String? {
         if lineIndex > 0 {
@@ -24,11 +24,11 @@ class PhraseManager {
     internal var isActing = false
     internal var personActing: Person { return lineIndex % 2 == 0 ? Person.bot : Person.currentUser }
     
-    private let acts: [Phrase]
+    private let acts: [Dialogue]
     private var actIndex = 0
     private var lineIndex = 0
     
-    init(acts: [Phrase]) {
+    init(acts: [Dialogue]) {
         self.acts = acts
         pickUpLastAct()
     }

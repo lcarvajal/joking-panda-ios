@@ -10,7 +10,7 @@ import XCTest
 
 final class FileTests: XCTestCase {    
     func test_jokeAudioFiles_shouldExist() {
-        if let acts: [Phrase] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil) {
+        if let acts: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil) {
             for act in acts {
                 for index in 0..<act.lines.count {
                     if index % 2 == 0 {
