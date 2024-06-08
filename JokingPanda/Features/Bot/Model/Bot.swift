@@ -22,8 +22,9 @@ class Bot: NSObject, ObservableObject  {
     internal weak var delegate: BotDelegate?
     
     private var action: AnimationAction = .stopped   // Animate based on current action
-    private var dialogueHistory: PhraseHistory    // Decides what to say and remembers what was said / heard
+    private var phraseHistory: PhraseHistory
     private var dialogueManager: DialogueManager
+    
     private let audioPlayer: AudioPlayer
     private let laughRecognizer: LaughRecognizer
     private let speechRecognizer: SpeechRecognizer
@@ -31,7 +32,7 @@ class Bot: NSObject, ObservableObject  {
     
     init(audioPlayer: AudioPlayer = AudioPlayer(), dialogueHistory: PhraseHistory = PhraseHistory(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
         self.dialogueManager = DialogueManager.knockKnockJokesInstance()
-        self.dialogueHistory = PhraseHistory()
+        self.phraseHistory = PhraseHistory()
         
         self.audioPlayer = audioPlayer
         self.laughRecognizer = laughRecognizer
@@ -150,7 +151,7 @@ class Bot: NSObject, ObservableObject  {
      Trigger phrase history update for view model to show all phrases said / heard.
      */
     private func triggerPhraseHistoryUpdate() {
-        delegate?.phraseHistoryDidUpdate(phraseHistory: dialogueHistory.getHistory())
+        delegate?.phraseHistoryDidUpdate(phraseHistory: phraseHistory.getHistory())
     }
 }
 
@@ -160,7 +161,7 @@ extension Bot: LaughRecognizerDelegate {
     }
     
     func laughRecognizerDidRecognize(loudness: Float) {
-        dialogueHistory.addLaughter(loudness: Int(loudness))
+        phraseHistory.addLaughter(loudness: Int(loudness))
         
         delegate?.laughLoudnessDidUpdate(loudness: loudness)
         action = .stopped
@@ -180,7 +181,7 @@ extension Bot: SpeechRecognizerDelegate {
     
     func speechRecognizerDidRecognize(_ phrase: String) {
         let expectedPhrase = dialogueManager.getCurrentPhrase()
-        dialogueHistory.addPhrase(phrase, expectedPhrase: expectedPhrase, saidBy: .currentUser)
+        phraseHistory.addPhrase(phrase, expectedPhrase: expectedPhrase, saidBy: .currentUser)
         
         action = .stopped
         triggerActionUpdate()
@@ -201,7 +202,7 @@ extension Bot: SpeechSynthesizerDelegate {
     }
     
     func speechSynthesizerDidSayPhrase(_ phrase: String) {
-        dialogueHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
+        phraseHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
@@ -224,7 +225,7 @@ extension Bot: SpeechSynthesizerDelegate {
 extension Bot: AudioPlayerDelegate {
     func audioPlayerDidPlay() {
         if let phrase = dialogueManager.getBotResponsePhrase() {
-            dialogueHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
+            phraseHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
             triggerPhraseHistoryUpdate()
         }
         
