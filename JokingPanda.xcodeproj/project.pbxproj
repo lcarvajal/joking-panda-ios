@@ -783,7 +783,7 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		8D5945FE2BEBA84800EAF79A /* Conversation */ = {
+		8D5945FE2BEBA84800EAF79A /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
 				8DC97D952AE92CB0002CEA1E /* Phrase.swift */,
@@ -791,7 +791,7 @@
 				8D0DDFFA2B0CADDF00A3A8F8 /* StageManager.swift */,
 				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
 			);
-			path = Conversation;
+			path = Dialogue;
 			sourceTree = "<group>";
 		};
 		8D5945FF2BEBC4A200EAF79A /* Features */ = {
@@ -1277,7 +1277,7 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D5945FE2BEBA84800EAF79A /* Conversation */,
+				8D5945FE2BEBA84800EAF79A /* Dialogue */,
 				8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */,
 				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
