@@ -11,10 +11,10 @@ class DialogueManager {
     internal var currentAct: Dialogue { return acts[actIndex] }
     internal var lastAct: Dialogue { return acts[actIndex - 1]}
     internal var lastPhraseSaidOrHeard = ""
-    internal var currentLine: String { return currentAct.lines[lineIndex] }
+    internal var currentLine: String { return currentAct.phrases[lineIndex] }
     internal var previousLine: String? {
         if lineIndex > 0 {
-            return currentAct.lines[lineIndex - 1]
+            return currentAct.phrases[lineIndex - 1]
         }
         else {
             return nil
@@ -77,7 +77,7 @@ class DialogueManager {
         if lastPhraseExpected {
             lineIndex += 1
             
-            if lineIndex > (currentAct.lines.count - 1) {
+            if lineIndex > (currentAct.phrases.count - 1) {
                 stopDialogue()
             }
         }

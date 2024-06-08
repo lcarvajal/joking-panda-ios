@@ -12,9 +12,9 @@ final class FileTests: XCTestCase {
     func test_jokeAudioFiles_shouldExist() {
         if let acts: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil) {
             for act in acts {
-                for index in 0..<act.lines.count {
+                for index in 0..<act.phrases.count {
                     if index % 2 == 0 {
-                        let fileName = Tool.removePunctuation(from: act.lines[index])
+                        let fileName = Tool.removePunctuation(from: act.phrases[index])
                             .lowercased()
                             .replacingOccurrences(of: " ", with: "-")
                             + ".m4a"
