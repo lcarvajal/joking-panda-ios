@@ -49,12 +49,12 @@ class Bot: NSObject, ObservableObject  {
         dialogueManager.pickUpLastDialogueFromUserDefaults()
     }
     
-//    /*
-//     Only needed if you don't want to use the default brain for the app.
-//     */
-//    internal func setBrain(_ brain: DialogueHistory) {
-//        self.brain = brain
-//    }
+    /*
+     Only needed if you don't want to use the default brain for the app.
+     */
+    internal func setDialogeManager(_ dialogueManager: DialogueManager) {
+        self.dialogueManager = dialogueManager
+    }
     
     /**
      Kick off conversation.
