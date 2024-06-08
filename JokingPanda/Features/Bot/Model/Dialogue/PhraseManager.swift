@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Dialogue {
+class PhraseManager {
     internal var currentAct: Phrase { return acts[actIndex] }
     internal var lastAct: Phrase { return acts[actIndex - 1]}
     internal var currentLine: String { return currentAct.lines[lineIndex] }
