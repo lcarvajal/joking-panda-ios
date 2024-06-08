@@ -19,7 +19,6 @@ class StageManager {
     private let plays: [Play]
     
     static func loadedWithJokes() -> StageManager {
-        let decidingActs = [Phrase(id: 1, lines: ["What would you like to do?", "", "We can dance or listen to some jokes.", ""])]
         let jokingActs: [Phrase] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
         
         let plays = [
