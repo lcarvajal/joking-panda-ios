@@ -54,4 +54,16 @@ final class DialogueTests: XCTestCase {
         dialogueManager.queueNextPhraseIfNeeded()
         XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[2])
     }
+    
+    func test_queueNextDialogue_shouldUpdateCurrentPhraseFromNextDialogue() {
+        for mockDialogue in mockDialogues {
+            dialogueManager.startDialogue()
+            XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogue.phrases[0])
+            dialogueManager.stopDialogue()
+            dialogueManager.queueNextDialogue()
+        }
+        
+        dialogueManager.startDialogue()
+        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[0])
+    }
 }
