@@ -68,6 +68,7 @@ class Bot: NSObject, ObservableObject  {
     internal func stopEverything() {
         action = .stopped
         dialogueManager.stopDialogue()
+        dialogueManager.queueNextDialogue()
         triggerActionUpdate()
         
         audioPlayer.stop()

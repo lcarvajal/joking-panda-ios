@@ -3,15 +3,16 @@
 //  JokingPanda
 //
 /**
- Keeps track of the current phrase within a dialogue as well as the current dialogue in an array of dialogues.
+ Manages which phrase to say/expect with a `dialogues` array.
+ The `phraseManager` manages the phrases within the current dialogue.
  */
 
 import Foundation
 
 class DialogueManager {
-    private var currentDialogue: Dialogue { return dialogues[dialogueIndex] }
+    private var currentDialogue: Dialogue { return dialogues[index] }
     private let dialogues: [Dialogue]
-    private var dialogueIndex = 0
+    private var index = 0
     private var isDialogging = false
     private var phraseManager: PhraseManager?
     
@@ -27,6 +28,9 @@ class DialogueManager {
         pickUpLastDialogueFromUserDefaults()
     }
     
+    /**
+     Instantiates a new `PhraseManager` object which tracks the current phrase as a user moves along in a dialogue.
+     */
     internal func startDialogue() {
         isDialogging = true
         phraseManager = PhraseManager(phrases: currentDialogue.phrases)
@@ -36,11 +40,30 @@ class DialogueManager {
         ])
     }
     
+    /**
+     Cleans up properties.
+     */
     internal func stopDialogue() {
         isDialogging = false
-        queueNextDialogue()
+        phraseManager = nil
     }
     
+    /**
+     Moves on to next dialogue index if available. If not, sets index to `0`.
+     */
+    internal func queueNextDialogue() {
+        index += 1
+        
+        if index > (dialogues.count - 1) {
+            index = 0
+        }
+        
+        UserDefaults.standard.set(dialogues[index].id, forKey: Constant.UserDefault.actId)
+    }
+    
+    /**
+     Moves on to the next phrase within the dialogue.
+     */
     internal func queueNextPhraseIfNeeded() {
         guard let phraseManager = phraseManager else { return }
         
@@ -50,11 +73,17 @@ class DialogueManager {
         }
     }
     
+    /**
+     - returns: String current phrase in current dialogue.
+     */
     internal func getCurrentPhrase() -> String {
         guard let phraseManager = phraseManager else { return "" }
         return phraseManager.currentPhrase
     }
     
+    /**
+     - returns: String bot response phrase if user says something that strays from current dialogue.
+     */
     internal func getBotResponsePhrase() -> String? {
         guard let phraseManager = phraseManager, isDialogging else { return nil }
         
@@ -67,17 +96,7 @@ class DialogueManager {
     private func pickUpLastDialogueFromUserDefaults() {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
         if let index = dialogues.firstIndex(where: { $0.id == id }) {
-            self.dialogueIndex = index
+            self.index = index
         }
-    }
-    
-    private func queueNextDialogue() {
-        dialogueIndex += 1
-        
-        if dialogueIndex > (dialogues.count - 1) {
-            dialogueIndex = 0
-        }
-        
-        UserDefaults.standard.set(dialogues[dialogueIndex].id, forKey: Constant.UserDefault.actId)
     }
 }
