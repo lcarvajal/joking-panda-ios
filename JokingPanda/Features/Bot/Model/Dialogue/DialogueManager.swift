@@ -99,6 +99,9 @@ class DialogueManager {
         return botResponse.phrase
     }
     
+    /**
+     Picks up index from last dialogue heard so that a user doesn't have to start from the beginning.
+     */
     internal func pickUpLastDialogueFromUserDefaults() {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
         if let index = dialogues.firstIndex(where: { $0.id == id }) {
