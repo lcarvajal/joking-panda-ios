@@ -22,15 +22,16 @@ class Bot: NSObject, ObservableObject  {
     internal weak var delegate: BotDelegate?
     
     private var action: AnimationAction = .stopped   // Animate based on current action
-    private var brain: Brain    // Decides what to say and remembers what was said / heard
+    private var dialogueHistory: DialogueHistory    // Decides what to say and remembers what was said / heard
+    private var dialogueManager: DialogueManager
     private let audioPlayer: AudioPlayer
     private let laughRecognizer: LaughRecognizer
     private let speechRecognizer: SpeechRecognizer
     private var speechSynthesizer: SpeechSynthesizer    // Says phrases outloud
     
-    init(audioPlayer: AudioPlayer = AudioPlayer(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
-        let stageManager = DialogueManager.knockKnockJokesInstance()
-        self.brain = Brain(stageManager: stageManager)
+    init(audioPlayer: AudioPlayer = AudioPlayer(), dialogueHistory: DialogueHistory = DialogueHistory(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
+        self.dialogueManager = DialogueManager.knockKnockJokesInstance()
+        self.dialogueHistory = DialogueHistory()
         
         self.audioPlayer = audioPlayer
         self.laughRecognizer = laughRecognizer
@@ -45,19 +46,19 @@ class Bot: NSObject, ObservableObject  {
         mouth.delegate = self
     }
     
-    /*
-     Only needed if you don't want to use the default brain for the app.
-     */
-    internal func setBrain(_ brain: Brain) {
-        self.brain = brain
-    }
+//    /*
+//     Only needed if you don't want to use the default brain for the app.
+//     */
+//    internal func setBrain(_ brain: DialogueHistory) {
+//        self.brain = brain
+//    }
     
     /**
      Kick off conversation.
      */
-    internal func startConversation() {
-        brain.startConversation()
-        let initalPhrase = brain.getInitalPhrase()
+    internal func startDialogue() {
+        dialogueManager.startDialogue()
+        let initalPhrase = dialogueManager.getCurrentPhrase()
         speak(initalPhrase)
     }
     
@@ -66,11 +67,11 @@ class Bot: NSObject, ObservableObject  {
      */
     internal func stopEverything() {
         action = .stopped
-        brain.stopConversation()
+        dialogueManager.stopDialogue()
         triggerActionUpdate()
         
         audioPlayer.stop()
-        try? laughRecognizer.stop()
+        laughRecognizer.stop()
         speechSynthesizer.stop()
         speechRecognizer.stop()
     }
@@ -113,7 +114,7 @@ class Bot: NSObject, ObservableObject  {
      Depending on the conversation history and current conversation, this function calls `speak()` again or sets action to stop since the conversation is over.
      */
     private func respond() {
-        if let phrase = brain.getResponse() {
+        if let phrase = dialogueManager.getResponse() {
             speak(phrase)
         }
         else {
@@ -148,7 +149,7 @@ class Bot: NSObject, ObservableObject  {
      Trigger phrase history update for view model to show all phrases said / heard.
      */
     private func triggerPhraseHistoryUpdate() {
-        delegate?.phraseHistoryDidUpdate(phraseHistory: brain.getPhraseHistory())
+        delegate?.phraseHistoryDidUpdate(phraseHistory: dialogueHistory.getPhraseHistory())
     }
 }
 
@@ -158,7 +159,7 @@ extension Bot: LaughRecognizerDelegate {
     }
     
     func laughRecognizerDidRecognize(loudness: Float) {
-        brain.rememberLaughter(loudness: Int(loudness))
+        dialogueHistory.rememberLaughter(loudness: Int(loudness))
         
         delegate?.laughLoudnessDidUpdate(loudness: loudness)
         action = .stopped
@@ -177,12 +178,14 @@ extension Bot: SpeechRecognizerDelegate {
     }
     
     func speechRecognizerDidRecognize(_ phrase: String) {
-        brain.remember(phrase, saidBy: .currentUser)
+        let expectedPhrase = dialogueManager.getCurrentPhrase()
+        dialogueHistory.remember(phrase, expectedPhrase: expectedPhrase, saidBy: .currentUser)
         
         action = .stopped
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
         
+        dialogueManager.queueNextLineIfNeeded()
         respond()
     }
     
@@ -197,15 +200,15 @@ extension Bot: SpeechSynthesizerDelegate {
     }
     
     func speechSynthesizerDidSayPhrase(_ phrase: String) {
-        brain.remember(phrase, saidBy: .bot)
-        
+        dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.currentLine, saidBy: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
         triggerActionUpdate()
         
-        if !brain.wantsToStartNewJoke {
-            listen(expectedPhrase: brain.getExpectedUserResponse())
+        dialogueManager.queueNextLineIfNeeded()
+        if !dialogueManager.isStartOfAct {
+            listen(expectedPhrase: dialogueManager.getCurrentPhrase())
         }
         else {
             listenForLaughter()
@@ -219,16 +222,17 @@ extension Bot: SpeechSynthesizerDelegate {
 
 extension Bot: AudioPlayerDelegate {
     func audioPlayerDidPlay() {
-        if let phrase = brain.getResponse() {
-            brain.remember(phrase, saidBy: .bot)
+        if let phrase = dialogueManager.getResponse() {
+            dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
             triggerPhraseHistoryUpdate()
         }
         
         action = .stopped
         triggerActionUpdate()
         
-        if !brain.wantsToStartNewJoke {
-            listen(expectedPhrase: brain.getExpectedUserResponse())
+        dialogueManager.queueNextLineIfNeeded()
+        if !dialogueManager.isStartOfAct {
+            listen(expectedPhrase: dialogueManager.getCurrentPhrase())
         }
         else {
             listenForLaughter()

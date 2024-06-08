@@ -21,9 +21,9 @@ import SwiftUI
         self.bot.delegate = self
     }
     
-    internal func startConversation() {
+    internal func startDialogue() {
         phraseHistory = ""
-        bot.startConversation()
+        bot.startDialogue()
     }
     
     internal func stopEverything() {

@@ -348,7 +348,7 @@
 		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
 		8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */; };
 		8DE87AAE2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */; };
-		8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AB02BEA9646008E6AF2 /* Brain.swift */; };
+		8DE87AB12BEA9646008E6AF2 /* DialogueHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AB02BEA9646008E6AF2 /* DialogueHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -725,7 +725,7 @@
 		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
 		8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizer.swift; sourceTree = "<group>"; };
 		8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
-		8DE87AB02BEA9646008E6AF2 /* Brain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brain.swift; sourceTree = "<group>"; };
+		8DE87AB02BEA9646008E6AF2 /* DialogueHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -786,7 +786,7 @@
 			children = (
 				8DC97D952AE92CB0002CEA1E /* Dialogue.swift */,
 				8D0DE0042B0E4CD900A3A8F8 /* DialogueManager.swift */,
-				8DE87AB02BEA9646008E6AF2 /* Brain.swift */,
+				8DE87AB02BEA9646008E6AF2 /* DialogueHistory.swift */,
 			);
 			path = Dialogue;
 			sourceTree = "<group>";
@@ -1805,7 +1805,7 @@
 				8D0A79152AF3B02B00317DAF /* AppDelegate.swift in Sources */,
 				8DC97D632AE670FF002CEA1E /* BaseView.swift in Sources */,
 				8DC97D962AE92CB0002CEA1E /* Dialogue.swift in Sources */,
-				8DE87AB12BEA9646008E6AF2 /* Brain.swift in Sources */,
+				8DE87AB12BEA9646008E6AF2 /* DialogueHistory.swift in Sources */,
 				8D0DE0052B0E4CD900A3A8F8 /* DialogueManager.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,

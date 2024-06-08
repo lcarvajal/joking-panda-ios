@@ -59,7 +59,7 @@ struct BotView: View {
     
     private func handleTapOnBot() {
         if botViewModel.action == .stopped {
-            botViewModel.startConversation()
+            botViewModel.startDialogue()
         }
         else {
             botViewModel.stopEverything()

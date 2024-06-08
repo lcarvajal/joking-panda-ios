@@ -10,6 +10,7 @@ import Foundation
 class DialogueManager {
     internal var currentAct: Dialogue { return acts[actIndex] }
     internal var lastAct: Dialogue { return acts[actIndex - 1]}
+    internal var lastPhraseSaidOrHeard = ""
     internal var currentLine: String { return currentAct.lines[lineIndex] }
     internal var previousLine: String? {
         if lineIndex > 0 {
@@ -26,6 +27,14 @@ class DialogueManager {
     
     private let acts: [Dialogue]
     private var actIndex = 0
+    private var lastPhraseExpected: Bool {
+        if lastPhraseSaidOrHeard.isEmpty {
+            return true
+        }
+        else {
+            return Tool.levenshtein(aStr: lastPhraseSaidOrHeard, bStr: currentLine) < 7
+        }
+    }
     private var lineIndex = 0
     
     static func knockKnockJokesInstance() -> DialogueManager {
@@ -48,7 +57,7 @@ class DialogueManager {
     
     // MARK: - Actions
     
-    internal func startAct() {
+    internal func startDialogue() {
         isActing = true
         
         // FIXME: Property should get set correctly for different conversation types
@@ -57,17 +66,23 @@ class DialogueManager {
           ])
     }
     
-    internal func stopAct() {
+    internal func stopDialogue() {
         lineIndex = 0
         isActing = false
+        lastPhraseSaidOrHeard = ""
         queueNextAct()
     }
     
-    internal func queueNextLine() {
-        lineIndex += 1
-        
-        if lineIndex > (currentAct.lines.count - 1) {
-            stopAct()
+    internal func queueNextLineIfNeeded() {
+        if lastPhraseExpected {
+            lineIndex += 1
+            
+            if lineIndex > (currentAct.lines.count - 1) {
+                stopDialogue()
+            }
+        }
+        else {
+            debugPrint("Not queing next line in dialogue since last phrase was not expected.")
         }
     }
     
@@ -80,5 +95,30 @@ class DialogueManager {
         
         // FIXME: Property should get set correctly for conversation types
         UserDefaults.standard.set(acts[actIndex].id, forKey: Constant.UserDefault.actId)
+    }
+    
+    internal func getCurrentPhrase() -> String {
+        return currentLine
+    }
+    
+    internal func getResponse() -> String? {
+        if lastPhraseExpected && isActing {
+            return currentLine
+        }
+        else if isActing {
+            return getClarificationResponse()
+        }
+        else {
+            return nil
+        }
+    }
+    
+    private func getClarificationResponse() -> String {
+        switch currentLine {
+        case ConstantLine.whosThere:
+            return ConstantLine.explainKnockKnock
+        default:
+            return ConstantLine.couldYouRepeatWhatYouSaid
+        }
     }
 }
