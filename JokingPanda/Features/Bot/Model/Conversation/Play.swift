@@ -8,7 +8,6 @@
 import Foundation
 
 class Play {
-    internal let type: ActType
     internal var currentAct: Phrase { return acts[actIndex] }
     internal var lastAct: Phrase { return acts[actIndex - 1]}
     internal var currentLine: String { return currentAct.lines[lineIndex] }
@@ -29,22 +28,16 @@ class Play {
     private var actIndex = 0
     private var lineIndex = 0
     
-    init(type: ActType, acts: [Phrase]) {
-        self.type = type
+    init(acts: [Phrase]) {
         self.acts = acts
         pickUpLastAct()
     }
     
     private func pickUpLastAct() {
-        switch type {
-        case .joking:
-            // FIXME: Property should get set correctly for conversation type
-            let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
-            if let index = acts.firstIndex(where: { $0.id == id }) {
-                self.actIndex = index
-            }
-        default:
-            return
+        // FIXME: Property should get set correctly for conversation type
+        let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
+        if let index = acts.firstIndex(where: { $0.id == id }) {
+            self.actIndex = index
         }
     }
     
@@ -80,12 +73,7 @@ class Play {
             actIndex = 0
         }
         
-        switch type {
-        case .joking:
-            // FIXME: Property should get set correctly for conversation types
-            UserDefaults.standard.set(acts[actIndex].id, forKey: Constant.UserDefault.actId)
-        default:
-            return
-        }
+        // FIXME: Property should get set correctly for conversation types
+        UserDefaults.standard.set(acts[actIndex].id, forKey: Constant.UserDefault.actId)
     }
 }

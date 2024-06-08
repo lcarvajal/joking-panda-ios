@@ -11,8 +11,3 @@ struct Phrase: Hashable, Codable, Identifiable {
     var id: Int
     var lines: [String]
 }
-
-enum ActType {
-    case deciding
-    case joking
-}
