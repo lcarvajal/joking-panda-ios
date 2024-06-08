@@ -6,30 +6,38 @@
 //
 
 import XCTest
+@testable import JokingPanda
 
 final class PhraseManagerTests: XCTestCase {
+    private var mockPhrases: [String]!
+    private var phraseManager: PhraseManager!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        mockPhrases = ["Knock, knock.","Who's there?","Tank.","Tank who?","You’re welcome."]
+        phraseManager = PhraseManager(phrases: mockPhrases)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        phraseManager = nil
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_initialization() {
+        XCTAssertEqual(phraseManager.currentIndex, 0)
+        XCTAssertEqual(phraseManager.lastPhraseUserSaid, "")
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_queueNextPhraseIfNeeded_withExpectedPhrase_shouldIncrementIndex() {
+        phraseManager.queueNextPhraseIfNeeded()
+        XCTAssertEqual(phraseManager.currentIndex, 1)
+        phraseManager.lastPhraseUserSaid = mockPhrases[2]
+        phraseManager.queueNextPhraseIfNeeded()
+        XCTAssertEqual(phraseManager.currentIndex, 2)
     }
-
+    
+    func test_queueNextPhraseIfNeeded_withUnexpectedPhrase_shouldNotIncrementIndex() {
+        phraseManager.queueNextPhraseIfNeeded()
+        phraseManager.lastPhraseUserSaid = "So unexpected!"
+        phraseManager.queueNextPhraseIfNeeded()
+        XCTAssertEqual(phraseManager.currentIndex, 1)
+    }
 }
