@@ -22,16 +22,16 @@ class Bot: NSObject, ObservableObject  {
     internal weak var delegate: BotDelegate?
     
     private var action: AnimationAction = .stopped   // Animate based on current action
-    private var dialogueHistory: DialogueHistory    // Decides what to say and remembers what was said / heard
+    private var dialogueHistory: PhraseHistory    // Decides what to say and remembers what was said / heard
     private var dialogueManager: DialogueManager
     private let audioPlayer: AudioPlayer
     private let laughRecognizer: LaughRecognizer
     private let speechRecognizer: SpeechRecognizer
     private var speechSynthesizer: SpeechSynthesizer    // Says phrases outloud
     
-    init(audioPlayer: AudioPlayer = AudioPlayer(), dialogueHistory: DialogueHistory = DialogueHistory(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
+    init(audioPlayer: AudioPlayer = AudioPlayer(), dialogueHistory: PhraseHistory = PhraseHistory(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
         self.dialogueManager = DialogueManager.knockKnockJokesInstance()
-        self.dialogueHistory = DialogueHistory()
+        self.dialogueHistory = PhraseHistory()
         
         self.audioPlayer = audioPlayer
         self.laughRecognizer = laughRecognizer

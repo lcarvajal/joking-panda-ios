@@ -1,11 +1,11 @@
 //
-//  Brain.swift
+//  PhraseHistory.swift
 //  JokingPanda
 //
 
 import Foundation
 
-class DialogueHistory {
+class PhraseHistory {
     internal var phraseHistory = ""
     
     internal func remember(_ phraseSaidOrHeard: String, expectedPhrase: String?, saidBy personTalking: Person) {
