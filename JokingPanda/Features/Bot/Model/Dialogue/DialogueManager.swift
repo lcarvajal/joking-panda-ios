@@ -4,7 +4,8 @@
 //
 /**
  Manages which phrase to say/expect with a `dialogues` array.
- The `phraseManager` manages the phrases within the current dialogue.
+ Uses `index` to keep track of the current dialogue in use.
+ Uses`phraseManager` to manage the phrases within the current dialogue.
  */
 
 import Foundation
