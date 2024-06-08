@@ -29,7 +29,6 @@ class DialogueManager {
     internal var isStartOfDialogue: Bool { return phraseIndex == 0 }
     internal var personWhoShouldSpeakPhrase: Person { return phraseIndex % 2 == 0 ? Person.bot : Person.currentUser }
     
-    
     static func knockKnockJokesInstance() -> DialogueManager {
         let jokingActs: [Dialogue] = Tool.load(Constant.FileName.knockKnockJokesJSON, url: nil)
         return DialogueManager(dialogues: jokingActs)
@@ -40,23 +39,12 @@ class DialogueManager {
         pickUpLastAct()
     }
     
-    private func pickUpLastAct() {
-        // FIXME: Property should get set correctly for conversation type
-        let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
-        if let index = dialogues.firstIndex(where: { $0.id == id }) {
-            self.dialogueIndex = index
-        }
-    }
-    
-    // MARK: - Actions
-    
     internal func startDialogue() {
         isDialogging = true
         
-        // FIXME: Property should get set correctly for different conversation types
         Event.track(Constant.Event.conversationStarted, properties: [
             Constant.Event.Property.actId: currentDialogue.id
-          ])
+        ])
     }
     
     internal func stopDialogue() {
@@ -79,17 +67,6 @@ class DialogueManager {
         }
     }
     
-    private func queueNextAct() {
-        dialogueIndex += 1
-        
-        if dialogueIndex > (dialogues.count - 1) {
-            dialogueIndex = 0
-        }
-        
-        // FIXME: Property should get set correctly for conversation types
-        UserDefaults.standard.set(dialogues[dialogueIndex].id, forKey: Constant.UserDefault.actId)
-    }
-    
     internal func getCurrentPhrase() -> String {
         return currentPhrase
     }
@@ -104,6 +81,25 @@ class DialogueManager {
         else {
             return nil
         }
+    }
+    
+    // MARK: - Private
+    
+    private func pickUpLastAct() {
+        let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
+        if let index = dialogues.firstIndex(where: { $0.id == id }) {
+            self.dialogueIndex = index
+        }
+    }
+    
+    private func queueNextAct() {
+        dialogueIndex += 1
+        
+        if dialogueIndex > (dialogues.count - 1) {
+            dialogueIndex = 0
+        }
+        
+        UserDefaults.standard.set(dialogues[dialogueIndex].id, forKey: Constant.UserDefault.actId)
     }
     
     private func getClarificationResponse() -> String {
