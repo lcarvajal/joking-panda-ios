@@ -1,5 +1,5 @@
 //
-//  BotResponsePhrase.swift
+//  BotResponse.swift
 //  JokingPanda
 //
 /**
