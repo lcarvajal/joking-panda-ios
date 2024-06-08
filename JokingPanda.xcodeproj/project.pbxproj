@@ -257,6 +257,7 @@
 		8D70B20D2C146A6A009ACEAA /* PhraseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20C2C146A6A009ACEAA /* PhraseManager.swift */; };
 		8D70B20F2C147550009ACEAA /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20E2C147550009ACEAA /* BotResponse.swift */; };
 		8D70B2112C14BBB5009ACEAA /* DialogueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */; };
+		8D70B2132C14CF99009ACEAA /* PhraseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2122C14CF99009ACEAA /* PhraseManagerTests.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -636,6 +637,7 @@
 		8D70B20C2C146A6A009ACEAA /* PhraseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseManager.swift; sourceTree = "<group>"; };
 		8D70B20E2C147550009ACEAA /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueManagerTests.swift; sourceTree = "<group>"; };
+		8D70B2122C14CF99009ACEAA /* PhraseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseManagerTests.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -1207,6 +1209,15 @@
 			path = AudioAndSpeech;
 			sourceTree = "<group>";
 		};
+		8D70B2142C14CFAE009ACEAA /* Dialogue */ = {
+			isa = PBXGroup;
+			children = (
+				8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */,
+				8D70B2122C14CF99009ACEAA /* PhraseManagerTests.swift */,
+			);
+			path = Dialogue;
+			sourceTree = "<group>";
+		};
 		8DB559032C132285002FC27D /* DataGenerator */ = {
 			isa = PBXGroup;
 			children = (
@@ -1265,8 +1276,8 @@
 		8DC97D702AE67101002CEA1E /* JokingPandaTests */ = {
 			isa = PBXGroup;
 			children = (
-				8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */,
 				8D70B2052C13A918009ACEAA /* AudioAndSpeech */,
+				8D70B2142C14CFAE009ACEAA /* Dialogue */,
 				8DC97D712AE67101002CEA1E /* FileTests.swift */,
 			);
 			path = JokingPandaTests;
@@ -1284,8 +1295,8 @@
 		8DC97D8A2AE673C0002CEA1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8D5945FE2BEBA84800EAF79A /* Dialogue */,
 				8DE87AB22BEAC2CA008E6AF2 /* AudioAndSpeech */,
+				8D5945FE2BEBA84800EAF79A /* Dialogue */,
 				8DE87AA92BE94174008E6AF2 /* Bot.swift */,
 				8D4CB9EB2AED1F7F00B7A00F /* Animation.swift */,
 			);
@@ -1851,6 +1862,7 @@
 				8D70B2092C13ABD5009ACEAA /* SpeechRecognizerTests.swift in Sources */,
 				8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */,
 				8D2EFD3C2C124787006AC2F2 /* AudioPlayerTests.swift in Sources */,
+				8D70B2132C14CF99009ACEAA /* PhraseManagerTests.swift in Sources */,
 				8D70B20B2C13B52C009ACEAA /* SpeechSynthesizerTests.swift in Sources */,
 				8D70B2112C14BBB5009ACEAA /* DialogueManagerTests.swift in Sources */,
 			);
