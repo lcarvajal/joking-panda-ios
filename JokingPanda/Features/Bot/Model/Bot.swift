@@ -149,7 +149,7 @@ class Bot: NSObject, ObservableObject  {
      Trigger phrase history update for view model to show all phrases said / heard.
      */
     private func triggerPhraseHistoryUpdate() {
-        delegate?.phraseHistoryDidUpdate(phraseHistory: dialogueHistory.getPhraseHistory())
+        delegate?.phraseHistoryDidUpdate(phraseHistory: dialogueHistory.getHistory())
     }
 }
 
@@ -159,7 +159,7 @@ extension Bot: LaughRecognizerDelegate {
     }
     
     func laughRecognizerDidRecognize(loudness: Float) {
-        dialogueHistory.rememberLaughter(loudness: Int(loudness))
+        dialogueHistory.addLaughter(loudness: Int(loudness))
         
         delegate?.laughLoudnessDidUpdate(loudness: loudness)
         action = .stopped
@@ -179,7 +179,7 @@ extension Bot: SpeechRecognizerDelegate {
     
     func speechRecognizerDidRecognize(_ phrase: String) {
         let expectedPhrase = dialogueManager.getCurrentPhrase()
-        dialogueHistory.remember(phrase, expectedPhrase: expectedPhrase, saidBy: .currentUser)
+        dialogueHistory.addPhrase(phrase, expectedPhrase: expectedPhrase, saidBy: .currentUser)
         
         action = .stopped
         triggerActionUpdate()
@@ -200,7 +200,7 @@ extension Bot: SpeechSynthesizerDelegate {
     }
     
     func speechSynthesizerDidSayPhrase(_ phrase: String) {
-        dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
+        dialogueHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
         triggerPhraseHistoryUpdate()
         
         action = .stopped
@@ -223,7 +223,7 @@ extension Bot: SpeechSynthesizerDelegate {
 extension Bot: AudioPlayerDelegate {
     func audioPlayerDidPlay() {
         if let phrase = dialogueManager.getBotResponsePhrase() {
-            dialogueHistory.remember(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
+            dialogueHistory.addPhrase(phrase, expectedPhrase: dialogueManager.getCurrentPhrase(), saidBy: .bot)
             triggerPhraseHistoryUpdate()
         }
         

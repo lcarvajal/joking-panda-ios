@@ -9,9 +9,9 @@
 import Foundation
 
 class PhraseHistory {
-    internal var phraseHistory = ""
+    internal var history = ""
     
-    internal func remember(_ phraseSaidOrHeard: String, expectedPhrase: String?, saidBy personTalking: Person) {
+    internal func addPhrase(_ phraseSaidOrHeard: String, expectedPhrase: String?, saidBy personTalking: Person) {
         let phrase: String
         
         if let expectedPhrase = expectedPhrase {
@@ -21,20 +21,20 @@ class PhraseHistory {
             phrase = phraseSaidOrHeard
         }
         
-        if phraseHistory != "" {
-            phraseHistory += "\n"
+        if history != "" {
+            history += "\n"
         }
         
         switch personTalking {
         case .bot:
-            phraseHistory += "🐼 " + phrase
+            history += "🐼 " + phrase
         case .currentUser:
-            phraseHistory += "🗣️ " + phrase
+            history += "🗣️ " + phrase
         }
     }
     
-    internal func rememberLaughter(loudness: Int) {
-        phraseHistory += "\n🗣️ Laugh score: \(loudness) / 5"
+    internal func addLaughter(loudness: Int) {
+        history += "\n🗣️ Laugh score: \(loudness) / 5"
         // FIXME: - Add event tracking back
 //        Event.track(Constant.Event.laughCaptured, properties: [
 //            Constant.Event.Property.actId: stageManager.lastAct.id,
@@ -42,8 +42,8 @@ class PhraseHistory {
 //          ])
     }
     
-    internal func getPhraseHistory() -> String {
-        return phraseHistory
+    internal func getHistory() -> String {
+        return history
     }
     
     private func interpret(phraseHeard: String, expectedPhrase: String) -> String {
