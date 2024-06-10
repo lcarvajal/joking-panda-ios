@@ -61,7 +61,7 @@ class DialogueManager {
      Moves on to the next phrase within the dialogue.
      */
     internal func moveOnInDialogueIfNeeded() {
-        currentDialogue.moveOnInDialogueIfNeeded()
+        currentDialogue.incrementIndexIfLastUserPhraseExpected()
     }
     
     /**

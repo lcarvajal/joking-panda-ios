@@ -34,12 +34,12 @@ final class DialogueTests: XCTestCase {
     func test_moveOnInDialogueIfNeeded_withExpectedUserPhrase_shouldMoveOn() {
         var index = 0
         dialogue.lastPhraseUserSaid = mockUserPhrases[index]
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         
         index = 1
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), mockBotPhrases[index])
         dialogue.lastPhraseUserSaid = mockUserPhrases[index]
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         
         index = 2
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), mockBotPhrases[index])
@@ -48,11 +48,11 @@ final class DialogueTests: XCTestCase {
     func test_queueNextPhraseIfNeeded_withUnexpectedUserPhrase_shouldNotMoveOn() {
         var index = 0
         dialogue.lastPhraseUserSaid = mockUserPhrases[index]
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         
         index = 1
         dialogue.lastPhraseUserSaid = "So unexpected!"
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         
         // Index should not increment.
         XCTAssertEqual(dialogue.getCurrentUserPhrase(), mockUserPhrases[index])
@@ -60,15 +60,15 @@ final class DialogueTests: XCTestCase {
     
     func test_queueNextPhraseIfNeeded_withUnexpectedUserPhrase_shouldGiveDynamicResponse() {
         dialogue.lastPhraseUserSaid = "So unexpected!"
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), ConstantPhrase.explainKnockKnock)
         
         dialogue.lastPhraseUserSaid = mockUserPhrases[0]
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), mockBotPhrases[1])
         
         dialogue.lastPhraseUserSaid = "So unexpected!"
-        dialogue.moveOnInDialogueIfNeeded()
+        dialogue.incrementIndexIfLastUserPhraseExpected()
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), ConstantPhrase.couldYouRepeatWhatYouSaid)
     }
 }

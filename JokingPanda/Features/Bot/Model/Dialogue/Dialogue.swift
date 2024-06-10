@@ -91,7 +91,7 @@ struct Dialogue: Hashable, Codable, Identifiable {
     
     // MARK: - Actions
     
-    internal mutating func moveOnInDialogueIfNeeded() {
+    internal mutating func incrementIndexIfLastUserPhraseExpected() {
         if isLastUserPhraseExpected {
             index += 1
         }
