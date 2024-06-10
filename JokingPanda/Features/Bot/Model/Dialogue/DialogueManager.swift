@@ -11,15 +11,14 @@
 import Foundation
 
 class DialogueManager {
-    private var currentDialogue: Dialogue { return dialogues[index] }
+    private var currentDialogue: Dialogue
     private let dialogues: [Dialogue]
     private var index = 0
-    private var phraseManager: PhraseManager?
     
-    internal var isStartOfDialogue: Bool { return phraseManager?.currentIndex == 0 }
+    internal var isStartOfDialogue: Bool { return currentDialogue.currentIndex == 0 }
     internal var lastPhraseUserSaid: String = "" {
         didSet {
-            phraseManager?.lastPhraseUserSaid = lastPhraseUserSaid
+            currentDialogue.lastPhraseUserSaid = lastPhraseUserSaid
         }
     }
     
@@ -33,24 +32,16 @@ class DialogueManager {
     
     init(dialogues: [Dialogue]) {
         self.dialogues = dialogues
+        self.currentDialogue = dialogues[index]
     }
     
     /**
-     Instantiates a new `PhraseManager` object which tracks the current phrase as a user moves along in a dialogue.
+     Instantiates a new `currentDialogue` object which tracks the current phrase as a user moves along in a dialogue.
      */
     internal func startDialogue() {
-        phraseManager = PhraseManager(dialogue: currentDialogue)
-        
         Event.track(Constant.Event.conversationStarted, properties: [
             Constant.Event.Property.actId: currentDialogue.id
         ])
-    }
-    
-    /**
-     Cleans up properties.
-     */
-    internal func stopDialogue() {
-        phraseManager = nil
     }
     
     /**
@@ -63,35 +54,29 @@ class DialogueManager {
             index = 0
         }
         
-        UserDefaults.standard.set(dialogues[index].id, forKey: Constant.UserDefault.actId)
+        currentDialogue = dialogues[index]
+        UserDefaults.standard.set(currentDialogue.id, forKey: Constant.UserDefault.actId)
     }
     
     /**
      Moves on to the next phrase within the dialogue.
      */
     internal func moveOnInDialogueIfNeeded() {
-        guard let phraseManager = phraseManager else { return }
-        
-        phraseManager.moveOnInDialogueIfNeeded()
-        if phraseManager.noMorePhrasesInDialogue {
-            stopDialogue()
-        }
+        currentDialogue.moveOnInDialogueIfNeeded()
     }
     
     /**
      - returns: String current phrase in current dialogue.
      */
     internal func getExpectedUserPhrase() -> String? {
-        guard let phraseManager = phraseManager else { return nil }
-        return phraseManager.getExpectedUserPhrase()
+        return currentDialogue.getCurrentUserPhrase()
     }
     
     /**
      - returns: String bot response phrase if user says something that strays from current dialogue.
      */
     internal func getBotPhrase() -> String? {
-        guard let phraseManager = phraseManager else { return nil }
-        return phraseManager.getBotPhrase()
+        return currentDialogue.getCurrentBotPhrase()
     }
     
     /**
@@ -101,6 +86,7 @@ class DialogueManager {
         let id = UserDefaults.standard.integer(forKey: Constant.UserDefault.actId)
         if let index = dialogues.firstIndex(where: { $0.id == id }) {
             self.index = index
+            self.currentDialogue = self.dialogues[self.index]
         }
     }
 }

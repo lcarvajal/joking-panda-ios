@@ -254,10 +254,9 @@
 		8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */; };
 		8D70B2092C13ABD5009ACEAA /* SpeechRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */; };
 		8D70B20B2C13B52C009ACEAA /* SpeechSynthesizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */; };
-		8D70B20D2C146A6A009ACEAA /* PhraseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20C2C146A6A009ACEAA /* PhraseManager.swift */; };
 		8D70B20F2C147550009ACEAA /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20E2C147550009ACEAA /* BotResponse.swift */; };
 		8D70B2112C14BBB5009ACEAA /* DialogueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */; };
-		8D70B2132C14CF99009ACEAA /* PhraseManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2122C14CF99009ACEAA /* PhraseManagerTests.swift */; };
+		8D70B2132C14CF99009ACEAA /* DialogueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2122C14CF99009ACEAA /* DialogueTests.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
 		8D8EAF572AFFF27800F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */; };
 		8D8EAF582AFFF27800F01B71 /* isabel-working.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */; };
@@ -634,10 +633,9 @@
 		8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizerTests.swift; sourceTree = "<group>"; };
 		8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerTests.swift; sourceTree = "<group>"; };
 		8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerTests.swift; sourceTree = "<group>"; };
-		8D70B20C2C146A6A009ACEAA /* PhraseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseManager.swift; sourceTree = "<group>"; };
 		8D70B20E2C147550009ACEAA /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueManagerTests.swift; sourceTree = "<group>"; };
-		8D70B2122C14CF99009ACEAA /* PhraseManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseManagerTests.swift; sourceTree = "<group>"; };
+		8D70B2122C14CF99009ACEAA /* DialogueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueTests.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
 		8D8EAF0E2AFFF27600F01B71 /* norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "norma-lee-i-dont-knock-on-random-doors-but-i-had-to-meet-you.m4a"; sourceTree = "<group>"; };
 		8D8EAF0F2AFFF27600F01B71 /* isabel-working.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "isabel-working.m4a"; sourceTree = "<group>"; };
@@ -797,7 +795,6 @@
 				8D0DE0042B0E4CD900A3A8F8 /* DialogueManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
 				8DE87AB02BEA9646008E6AF2 /* PhraseHistory.swift */,
-				8D70B20C2C146A6A009ACEAA /* PhraseManager.swift */,
 			);
 			path = Dialogue;
 			sourceTree = "<group>";
@@ -1212,8 +1209,8 @@
 		8D70B2142C14CFAE009ACEAA /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
+				8D70B2122C14CF99009ACEAA /* DialogueTests.swift */,
 				8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */,
-				8D70B2122C14CF99009ACEAA /* PhraseManagerTests.swift */,
 			);
 			path = Dialogue;
 			sourceTree = "<group>";
@@ -1830,7 +1827,6 @@
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
 				8D70B20F2C147550009ACEAA /* BotResponse.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
-				8D70B20D2C146A6A009ACEAA /* PhraseManager.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */,
 				8D5946142BEE8C0D00EAF79A /* GaugeView.swift in Sources */,
 				8DC97D942AE80486002CEA1E /* Person.swift in Sources */,
@@ -1862,7 +1858,7 @@
 				8D70B2092C13ABD5009ACEAA /* SpeechRecognizerTests.swift in Sources */,
 				8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */,
 				8D2EFD3C2C124787006AC2F2 /* AudioPlayerTests.swift in Sources */,
-				8D70B2132C14CF99009ACEAA /* PhraseManagerTests.swift in Sources */,
+				8D70B2132C14CF99009ACEAA /* DialogueTests.swift in Sources */,
 				8D70B20B2C13B52C009ACEAA /* SpeechSynthesizerTests.swift in Sources */,
 				8D70B2112C14BBB5009ACEAA /* DialogueManagerTests.swift in Sources */,
 			);

@@ -14,6 +14,15 @@ struct Dialogue: Hashable, Codable, Identifiable {
     private let botPhrases: [String]
     private let userPhrases: [String]
     
+    private var index: Int = 0
+    private var isLastUserPhraseExpected: Bool = true
+    
+    internal var currentIndex: Int { return index }
+    internal var lastPhraseUserSaid: String = ""
+    internal var noMorePhrasesInDialogue: Bool {
+        return getPhrase(for: .bot, index: index) == nil
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id, phrases
     }
@@ -48,5 +57,44 @@ struct Dialogue: Hashable, Codable, Identifiable {
         case .currentUser:
             return (index < userPhrases.count) ? userPhrases[index] : nil
         }
+    }
+    
+    internal func getCurrentUserPhrase() -> String? {
+        return getPhrase(for: .currentUser, index: index)
+    }
+    
+    internal func getCurrentBotPhrase() -> String? {
+        guard let botPhrase = getPhrase(for: .bot, index: index) else {
+            return nil
+        }
+        
+        if isLastUserPhraseExpected {
+            return botPhrase
+        }
+        else {
+            guard let expectedUserPhrase = getPhrase(for: .currentUser, index: index) else {
+                return botPhrase
+            }
+            let botResponse = BotResponse(userPhraseWasExpected: isLastUserPhraseExpected, expectedUserPhrase: expectedUserPhrase, nextBotPhrase: botPhrase)
+            return botResponse.phrase
+        }
+    }
+    
+    internal mutating func moveOnInDialogueIfNeeded() {
+        guard let expectedUserPhrase = getPhrase(for: .currentUser, index: index) else {
+            return
+        }
+        
+        isLastUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
+        if isLastUserPhraseExpected {
+            index += 1
+        }
+        else {
+            debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
+        }
+    }
+    
+    private func isPhraseExpected(phraseSaid: String, expectedPhrase: String) -> Bool {
+        return Tool.levenshtein(aStr: phraseSaid, bStr: expectedPhrase) < 7
     }
 }
