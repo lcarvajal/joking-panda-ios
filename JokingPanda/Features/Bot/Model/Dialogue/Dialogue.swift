@@ -17,7 +17,6 @@ struct Dialogue: Hashable, Codable, Identifiable {
     private var index: Int = 0
     internal var isLastUserPhraseExpected: Bool = true
     
-    internal var currentIndex: Int { return index }
     internal var lastPhraseUserSaid: String = "" {
         didSet {
             if let expectedUserPhrase = getCurrentUserPhrase() {
