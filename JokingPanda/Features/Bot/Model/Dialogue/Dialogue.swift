@@ -70,8 +70,13 @@ struct Dialogue: Hashable, Codable, Identifiable {
             guard let expectedUserPhrase = getCurrentUserPhrase() else {
                 return botPhrase
             }
-            let botResponse = BotResponse(userPhraseWasExpected: isLastUserPhraseExpected, expectedUserPhrase: expectedUserPhrase, nextBotPhrase: botPhrase)
-            return botResponse.phrase
+            
+            switch expectedUserPhrase {
+            case ConstantPhrase.whosThere:
+                return ConstantPhrase.explainKnockKnock
+            default:
+                return ConstantPhrase.couldYouRepeatWhatYouSaid
+            }
         }
     }
     

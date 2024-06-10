@@ -254,7 +254,6 @@
 		8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */; };
 		8D70B2092C13ABD5009ACEAA /* SpeechRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */; };
 		8D70B20B2C13B52C009ACEAA /* SpeechSynthesizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */; };
-		8D70B20F2C147550009ACEAA /* BotResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20E2C147550009ACEAA /* BotResponse.swift */; };
 		8D70B2112C14BBB5009ACEAA /* DialogueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */; };
 		8D70B2132C14CF99009ACEAA /* DialogueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2122C14CF99009ACEAA /* DialogueTests.swift */; };
 		8D8EAF562AFFF27800F01B71 /* wait-you-dont-know-who-you-are.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */; };
@@ -633,7 +632,6 @@
 		8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizerTests.swift; sourceTree = "<group>"; };
 		8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerTests.swift; sourceTree = "<group>"; };
 		8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerTests.swift; sourceTree = "<group>"; };
-		8D70B20E2C147550009ACEAA /* BotResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotResponse.swift; sourceTree = "<group>"; };
 		8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueManagerTests.swift; sourceTree = "<group>"; };
 		8D70B2122C14CF99009ACEAA /* DialogueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueTests.swift; sourceTree = "<group>"; };
 		8D8EAF0D2AFFF27600F01B71 /* wait-you-dont-know-who-you-are.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "wait-you-dont-know-who-you-are.m4a"; sourceTree = "<group>"; };
@@ -790,7 +788,6 @@
 		8D5945FE2BEBA84800EAF79A /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
-				8D70B20E2C147550009ACEAA /* BotResponse.swift */,
 				8DC97D952AE92CB0002CEA1E /* Dialogue.swift */,
 				8D0DE0042B0E4CD900A3A8F8 /* DialogueManager.swift */,
 				8DC97D932AE80486002CEA1E /* Person.swift */,
@@ -1825,7 +1822,6 @@
 				8DE87AB12BEA9646008E6AF2 /* PhraseHistory.swift in Sources */,
 				8D0DE0052B0E4CD900A3A8F8 /* DialogueManager.swift in Sources */,
 				8D0DDFF32B0BFBCE00A3A8F8 /* Event.swift in Sources */,
-				8D70B20F2C147550009ACEAA /* BotResponse.swift in Sources */,
 				8DC97D612AE670FF002CEA1E /* JokingPandaApp.swift in Sources */,
 				8D0DDFF72B0C0B0100A3A8F8 /* BotView.swift in Sources */,
 				8D5946142BEE8C0D00EAF79A /* GaugeView.swift in Sources */,
