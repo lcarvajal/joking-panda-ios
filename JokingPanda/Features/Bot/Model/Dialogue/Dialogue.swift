@@ -20,7 +20,7 @@ struct Dialogue: Hashable, Codable, Identifiable {
     internal var currentIndex: Int { return index }
     internal var lastPhraseUserSaid: String = ""
     internal var noMorePhrasesInDialogue: Bool {
-        return getPhrase(for: .bot, index: index) == nil
+        return getCurrentBotPhrase() == nil
     }
     
     private enum CodingKeys: String, CodingKey {
@@ -50,29 +50,24 @@ struct Dialogue: Hashable, Codable, Identifiable {
         try container.encode(phrases, forKey: .phrases)
     }
     
-    internal func getPhrase(for person: Person, index: Int) -> String? {
-        switch person {
-        case .bot:
-            return (index < botPhrases.count) ? botPhrases[index] : nil
-        case .currentUser:
-            return (index < userPhrases.count) ? userPhrases[index] : nil
-        }
-    }
+    // MARK: - Accessor methods
     
     internal func getCurrentUserPhrase() -> String? {
-        return getPhrase(for: .currentUser, index: index)
+        return (index < userPhrases.count) ? userPhrases[index] : nil
     }
     
     internal func getCurrentBotPhrase() -> String? {
-        guard let botPhrase = getPhrase(for: .bot, index: index) else {
+        guard index < botPhrases.count else {
             return nil
         }
+        
+        let botPhrase = botPhrases[index]
         
         if isLastUserPhraseExpected {
             return botPhrase
         }
         else {
-            guard let expectedUserPhrase = getPhrase(for: .currentUser, index: index) else {
+            guard let expectedUserPhrase = getCurrentUserPhrase() else {
                 return botPhrase
             }
             let botResponse = BotResponse(userPhraseWasExpected: isLastUserPhraseExpected, expectedUserPhrase: expectedUserPhrase, nextBotPhrase: botPhrase)
@@ -80,8 +75,14 @@ struct Dialogue: Hashable, Codable, Identifiable {
         }
     }
     
+    private func isPhraseExpected(phraseSaid: String, expectedPhrase: String) -> Bool {
+        return Tool.levenshtein(aStr: phraseSaid, bStr: expectedPhrase) < 7
+    }
+    
+    // MARK: - Actions
+    
     internal mutating func moveOnInDialogueIfNeeded() {
-        guard let expectedUserPhrase = getPhrase(for: .currentUser, index: index) else {
+        guard let expectedUserPhrase = getCurrentUserPhrase() else {
             return
         }
         
@@ -92,9 +93,5 @@ struct Dialogue: Hashable, Codable, Identifiable {
         else {
             debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
         }
-    }
-    
-    private func isPhraseExpected(phraseSaid: String, expectedPhrase: String) -> Bool {
-        return Tool.levenshtein(aStr: phraseSaid, bStr: expectedPhrase) < 7
     }
 }
