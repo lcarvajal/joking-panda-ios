@@ -15,10 +15,16 @@ struct Dialogue: Hashable, Codable, Identifiable {
     private let userPhrases: [String]
     
     private var index: Int = 0
-    private var isLastUserPhraseExpected: Bool = true
+    internal var isLastUserPhraseExpected: Bool = true
     
     internal var currentIndex: Int { return index }
-    internal var lastPhraseUserSaid: String = ""
+    internal var lastPhraseUserSaid: String = "" {
+        didSet {
+            if let expectedUserPhrase = getCurrentUserPhrase() {
+                isLastUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
+            }
+        }
+    }
     internal var noMorePhrasesInDialogue: Bool {
         return getCurrentBotPhrase() == nil
     }
@@ -87,11 +93,6 @@ struct Dialogue: Hashable, Codable, Identifiable {
     // MARK: - Actions
     
     internal mutating func moveOnInDialogueIfNeeded() {
-        guard let expectedUserPhrase = getCurrentUserPhrase() else {
-            return
-        }
-        
-        isLastUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
         if isLastUserPhraseExpected {
             index += 1
         }
