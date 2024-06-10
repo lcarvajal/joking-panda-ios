@@ -15,7 +15,6 @@ class DialogueManager {
     private let dialogues: [Dialogue]
     private var index = 0
     
-    internal var isStartOfDialogue: Bool { return currentDialogue.currentIndex == 0 }
     internal var lastPhraseUserSaid: String = "" {
         didSet {
             currentDialogue.lastPhraseUserSaid = lastPhraseUserSaid
