@@ -215,9 +215,5 @@ class SpeechRecognizer: NSObject {
     }
 }
 
-extension SpeechRecognizer: SFSpeechRecognizerDelegate {
-    //    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-    //        <#code#>
-    //    }
-}
+extension SpeechRecognizer: SFSpeechRecognizerDelegate {}
 
