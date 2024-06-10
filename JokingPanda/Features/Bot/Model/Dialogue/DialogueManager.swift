@@ -16,7 +16,6 @@ class DialogueManager {
     private var index = 0
     private var phraseManager: PhraseManager?
     
-    internal var isDialogging = false
     internal var isStartOfDialogue: Bool { return phraseManager?.currentIndex == 0 }
     internal var lastPhraseUserSaid: String = "" {
         didSet {
@@ -40,7 +39,6 @@ class DialogueManager {
      Instantiates a new `PhraseManager` object which tracks the current phrase as a user moves along in a dialogue.
      */
     internal func startDialogue() {
-        isDialogging = true
         phraseManager = PhraseManager(dialogue: currentDialogue)
         
         Event.track(Constant.Event.conversationStarted, properties: [
@@ -52,7 +50,6 @@ class DialogueManager {
      Cleans up properties.
      */
     internal func stopDialogue() {
-        isDialogging = false
         phraseManager = nil
     }
     
@@ -93,7 +90,7 @@ class DialogueManager {
      - returns: String bot response phrase if user says something that strays from current dialogue.
      */
     internal func getBotPhrase() -> String? {
-        guard let phraseManager = phraseManager, isDialogging else { return nil }
+        guard let phraseManager = phraseManager else { return nil }
         return phraseManager.getBotPhrase()
     }
     
