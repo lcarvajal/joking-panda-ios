@@ -9,24 +9,31 @@
 import Foundation
 
 class PhraseManager {
+    private let dialogue: Dialogue
     private var index: Int
-    private var botPhrases: [String]
-    private var userPhrases: [String]
     
     internal var currentIndex: Int { return index }
     internal var lastPhraseUserSaid: String
-    internal var noMorePhrasesInDialogue: Bool { return index > (botPhrases.count - 1) }
+    internal var noMorePhrasesInDialogue: Bool {
+        return dialogue.getPhrase(for: .bot, index: index) == nil
+    }
     
-    init(phrases: [String]){
-        self.botPhrases = stride(from: 0, to: phrases.count, by: 2).map { phrases[$0] }
-        self.userPhrases = stride(from: 1, to: phrases.count, by: 2).map { phrases[$0] }
+    init(dialogue: Dialogue){
+        self.dialogue = dialogue
         self.index = 0
         self.lastPhraseUserSaid = ""
     }
-    
+
     internal func moveOnInDialogueIfNeeded() {
-        let phraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: userPhrases[index])
-        if phraseExpected {
+        guard let expectedUserPhrase = dialogue.getPhrase(for: .currentUser, index: index) else {
+            debugPrint("unable to retrieve phrase for user")
+            return }
+        
+        print("expected user phrase: \(expectedUserPhrase)")
+        print("last phrase user said: \(lastPhraseUserSaid)")
+        
+        let isUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
+        if isUserPhraseExpected {
             index += 1
         }
         else {
@@ -34,19 +41,12 @@ class PhraseManager {
         }
     }
     
-    internal func getBotPhrase() -> BotResponse {
-        if index == 0 {
-            // Start of dialogue
-            return BotResponse(userSaidSomethingExpected: true, nextPhraseInDialog: botPhrases[index])
-        }
-        else {
-            let lastPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: userPhrases[index - 1])
-            return BotResponse(userSaidSomethingExpected: lastPhraseExpected, nextPhraseInDialog: botPhrases[index])
-        }
+    internal func getBotPhrase() -> String? {
+        dialogue.getPhrase(for: .bot, index: index)
     }
     
     internal func getExpectedUserPhrase() -> String? {
-        return index < userPhrases.count ? userPhrases[index] : nil
+        return dialogue.getPhrase(for: .currentUser, index: index)
     }
     
     private func isPhraseExpected(phraseSaid: String, expectedPhrase: String) -> Bool {
