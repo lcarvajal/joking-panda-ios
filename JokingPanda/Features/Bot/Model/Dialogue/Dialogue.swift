@@ -46,10 +46,6 @@ struct Dialogue: Hashable, Codable, Identifiable {
         case .bot:
             return (index < botPhrases.count) ? botPhrases[index] : nil
         case .currentUser:
-            print("Getting user phrase")
-            print(index)
-            print(userPhrases.count - 1)
-            print(userPhrases)
             return (index < userPhrases.count) ? userPhrases[index] : nil
         }
     }
