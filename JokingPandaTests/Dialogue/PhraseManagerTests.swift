@@ -59,4 +59,18 @@ final class PhraseManagerTests: XCTestCase {
         // Index should not increment.
         XCTAssertEqual(phraseManager.currentIndex, index)
     }
+    
+    func test_queueNextPhraseIfNeeded_withUnexpectedUserPhrase_shouldGiveDynamicResponse() {
+        phraseManager.lastPhraseUserSaid = "So unexpected!"
+        phraseManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(phraseManager.getBotPhrase(), ConstantPhrase.explainKnockKnock)
+        
+        phraseManager.lastPhraseUserSaid = mockUserPhrases[0]
+        phraseManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(phraseManager.getBotPhrase(), mockBotPhrases[1])
+        
+        phraseManager.lastPhraseUserSaid = "So unexpected!"
+        phraseManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(phraseManager.getBotPhrase(), ConstantPhrase.couldYouRepeatWhatYouSaid)
+    }
 }
