@@ -27,27 +27,25 @@ final class DialogueTests: XCTestCase {
     }
     
     func test_initialization() {
-        XCTAssertEqual(dialogue.currentIndex, 0)
+        XCTAssertTrue(dialogue.isLastUserPhraseExpected)
         XCTAssertEqual(dialogue.lastPhraseUserSaid, "")
     }
     
-    func test_moveOnInDialogueIfNeeded_withExpectedUserPhrase_shouldIncrementIndex() {
+    func test_moveOnInDialogueIfNeeded_withExpectedUserPhrase_shouldMoveOn() {
         var index = 0
         dialogue.lastPhraseUserSaid = mockUserPhrases[index]
         dialogue.moveOnInDialogueIfNeeded()
         
         index = 1
-        XCTAssertEqual(dialogue.currentIndex, index)
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), mockBotPhrases[index])
         dialogue.lastPhraseUserSaid = mockUserPhrases[index]
         dialogue.moveOnInDialogueIfNeeded()
         
         index = 2
-        XCTAssertEqual(dialogue.currentIndex, index)
         XCTAssertEqual(dialogue.getCurrentBotPhrase(), mockBotPhrases[index])
     }
     
-    func test_queueNextPhraseIfNeeded_withUnexpectedUserPhrase_shouldNotIncrementIndex() {
+    func test_queueNextPhraseIfNeeded_withUnexpectedUserPhrase_shouldNotMoveOn() {
         var index = 0
         dialogue.lastPhraseUserSaid = mockUserPhrases[index]
         dialogue.moveOnInDialogueIfNeeded()
@@ -57,7 +55,7 @@ final class DialogueTests: XCTestCase {
         dialogue.moveOnInDialogueIfNeeded()
         
         // Index should not increment.
-        XCTAssertEqual(dialogue.currentIndex, index)
+        XCTAssertEqual(dialogue.getCurrentUserPhrase(), mockUserPhrases[index])
     }
     
     func test_queueNextPhraseIfNeeded_withUnexpectedUserPhrase_shouldGiveDynamicResponse() {

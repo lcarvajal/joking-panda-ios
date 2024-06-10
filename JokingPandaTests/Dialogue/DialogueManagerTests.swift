@@ -29,12 +29,12 @@ final class DialogueManagerTests: XCTestCase {
     
     func test_startDialogue_shouldBeStartOfDialogue() {
         dialogueManager.startDialogue()
-        XCTAssertTrue(dialogueManager.isStartOfDialogue)
+        XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogues[0].phrases[0])
         
         dialogueManager.startDialogue()
         dialogueManager.queueNextDialogue()
         dialogueManager.startDialogue()
-        XCTAssertTrue(dialogueManager.isStartOfDialogue)
+        XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogues[1].phrases[0])
     }
     
     func test_moveOnInDialogueIfNeeded_withCorrectUserInput_shouldBeNextPhrase() {
