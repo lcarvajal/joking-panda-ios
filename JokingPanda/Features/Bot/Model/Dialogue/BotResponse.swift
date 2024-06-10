@@ -12,12 +12,12 @@ import Foundation
 struct BotResponse {
     let phrase: String
     
-    init(userSaidSomethingExpected: Bool, nextPhraseInDialog: String) {
-        if userSaidSomethingExpected {
-            phrase = nextPhraseInDialog
+    init(userPhraseWasExpected: Bool, expectedUserPhrase: String, nextBotPhrase: String) {
+        if userPhraseWasExpected {
+            phrase = nextBotPhrase
         }
         else {
-            switch nextPhraseInDialog {
+            switch expectedUserPhrase {
             case ConstantPhrase.whosThere:
                 self.phrase = ConstantPhrase.explainKnockKnock
             default:
