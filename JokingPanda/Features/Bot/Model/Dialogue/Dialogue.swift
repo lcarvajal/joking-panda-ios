@@ -10,12 +10,19 @@ import Foundation
 
 struct Dialogue: Hashable, Codable, Identifiable {
     internal let id: Int
-    private let phrases: [String]
+    internal let phrases: [String]
     private let botPhrases: [String]
     private let userPhrases: [String]
     
     private enum CodingKeys: String, CodingKey {
         case id, phrases
+    }
+    
+    init(id: Int, phrases: [String]) {
+        self.id = id
+        self.phrases = phrases
+        self.botPhrases = stride(from: 0, to: phrases.count, by: 2).map { phrases[$0] }
+        self.userPhrases = stride(from: 1, to: phrases.count, by: 2).map { phrases[$0] }
     }
     
     init(from decoder: Decoder) throws {
@@ -37,9 +44,13 @@ struct Dialogue: Hashable, Codable, Identifiable {
     internal func getPhrase(for person: Person, index: Int) -> String? {
         switch person {
         case .bot:
-            return (index < botPhrases.count - 1) ? botPhrases[index] : nil
+            return (index < botPhrases.count) ? botPhrases[index] : nil
         case .currentUser:
-            return (index < userPhrases.count - 1) ? userPhrases[index] : nil
+            print("Getting user phrase")
+            print(index)
+            print(userPhrases.count - 1)
+            print(userPhrases)
+            return (index < userPhrases.count) ? userPhrases[index] : nil
         }
     }
 }
