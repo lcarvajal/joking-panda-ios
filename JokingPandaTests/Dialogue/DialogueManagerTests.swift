@@ -24,7 +24,6 @@ final class DialogueManagerTests: XCTestCase {
 
     override func tearDownWithError() throws {
         mockDialogues = nil
-        dialogueManager.stopDialogue()
         dialogueManager = nil
     }
     
@@ -33,7 +32,6 @@ final class DialogueManagerTests: XCTestCase {
         XCTAssertTrue(dialogueManager.isStartOfDialogue)
         
         dialogueManager.startDialogue()
-        dialogueManager.stopDialogue()
         dialogueManager.queueNextDialogue()
         dialogueManager.startDialogue()
         XCTAssertTrue(dialogueManager.isStartOfDialogue)
@@ -58,7 +56,6 @@ final class DialogueManagerTests: XCTestCase {
         for mockDialogue in mockDialogues {
             dialogueManager.startDialogue()
             XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogue.phrases[0])
-            dialogueManager.stopDialogue()
             dialogueManager.queueNextDialogue()
         }
         
