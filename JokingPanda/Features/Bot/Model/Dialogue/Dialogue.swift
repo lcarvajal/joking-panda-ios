@@ -9,10 +9,10 @@
 import Foundation
 
 struct Dialogue: Hashable, Codable, Identifiable {
-    let id: Int
-    let phrases: [String]
-    let botPhrases: [String]
-    let userPhrases: [String]
+    internal let id: Int
+    private let phrases: [String]
+    private let botPhrases: [String]
+    private let userPhrases: [String]
     
     private enum CodingKeys: String, CodingKey {
         case id, phrases
@@ -32,5 +32,14 @@ struct Dialogue: Hashable, Codable, Identifiable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(phrases, forKey: .phrases)
+    }
+    
+    internal func getPhrase(for person: Person, index: Int) -> String? {
+        switch person {
+        case .bot:
+            return (index < botPhrases.count - 1) ? botPhrases[index] : nil
+        case .currentUser:
+            return (index < userPhrases.count - 1) ? userPhrases[index] : nil
+        }
     }
 }
