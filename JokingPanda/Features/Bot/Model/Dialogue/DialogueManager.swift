@@ -41,7 +41,7 @@ class DialogueManager {
      */
     internal func startDialogue() {
         isDialogging = true
-        phraseManager = PhraseManager(phrases: currentDialogue.phrases)
+        phraseManager = PhraseManager(dialogue: currentDialogue)
         
         Event.track(Constant.Event.conversationStarted, properties: [
             Constant.Event.Property.actId: currentDialogue.id
@@ -94,9 +94,7 @@ class DialogueManager {
      */
     internal func getBotPhrase() -> String? {
         guard let phraseManager = phraseManager, isDialogging else { return nil }
-        
-        let botResponse = phraseManager.getBotPhrase()
-        return botResponse.phrase
+        return phraseManager.getBotPhrase()
     }
     
     /**
