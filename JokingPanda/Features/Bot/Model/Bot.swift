@@ -61,8 +61,9 @@ class Bot: NSObject, ObservableObject  {
      */
     internal func startDialogue() {
         dialogueManager.startDialogue()
-        let initalPhrase = dialogueManager.getCurrentPhrase()
-        speak(initalPhrase)
+        if let initalPhrase = dialogueManager.getBotPhrase() {
+            speak(initalPhrase)
+        }
     }
     
     /**
@@ -118,9 +119,7 @@ class Bot: NSObject, ObservableObject  {
      Depending on the conversation history and current conversation, this function calls `speak()` again or sets action to stop since the conversation is over.
      */
     private func respond(to lastPhraseUserSaid: String) {
-        dialogueManager.lastPhraseUserSaid = lastPhraseUserSaid
-        
-        if let phrase = dialogueManager.getBotResponsePhrase() {
+        if let phrase = dialogueManager.getBotPhrase() {
             speak(phrase)
         }
         else {
@@ -184,7 +183,9 @@ extension Bot: SpeechRecognizerDelegate {
     }
     
     func speechRecognizerDidRecognize(_ phrase: String) {
-        let expectedPhrase = dialogueManager.getCurrentPhrase()
+        guard let expectedPhrase = dialogueManager.getExpectedUserPhrase() else {
+            return
+        }
         // Use expected phrase if it is close enough to user input
         let interpretedPhrase = Tool.levenshtein(aStr: phrase, bStr: expectedPhrase) < 5 ? expectedPhrase : phrase
         
@@ -194,7 +195,8 @@ extension Bot: SpeechRecognizerDelegate {
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
         
-        dialogueManager.queueNextPhraseIfNeeded()
+        dialogueManager.lastPhraseUserSaid = interpretedPhrase
+        dialogueManager.moveOnInDialogueIfNeeded()
         respond(to: interpretedPhrase)
     }
     
@@ -215,9 +217,9 @@ extension Bot: SpeechSynthesizerDelegate {
         action = .stopped
         triggerActionUpdate()
         
-        dialogueManager.queueNextPhraseIfNeeded()
         if !dialogueManager.isStartOfDialogue {
-            listen(expectedPhrase: dialogueManager.getCurrentPhrase())
+            let expectedPhrase = dialogueManager.getExpectedUserPhrase()
+            listen(expectedPhrase: expectedPhrase)
         }
         else {
             listenForLaughter()
@@ -231,17 +233,16 @@ extension Bot: SpeechSynthesizerDelegate {
 
 extension Bot: AudioPlayerDelegate {
     func audioPlayerDidPlay() {
-        if let phrase = dialogueManager.getBotResponsePhrase() {
-            phraseHistory.addPhrase(phrase, saidBy: .bot)
+        if let botPhrase = dialogueManager.getBotPhrase() {
+            phraseHistory.addPhrase(botPhrase, saidBy: .bot)
             triggerPhraseHistoryUpdate()
         }
         
         action = .stopped
         triggerActionUpdate()
         
-        dialogueManager.queueNextPhraseIfNeeded()
-        if !dialogueManager.isStartOfDialogue {
-            listen(expectedPhrase: dialogueManager.getCurrentPhrase())
+        if let expectedPhrase = dialogueManager.getExpectedUserPhrase() {
+            listen(expectedPhrase: dialogueManager.getExpectedUserPhrase())
         }
         else {
             listenForLaughter()
