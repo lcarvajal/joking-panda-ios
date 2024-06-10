@@ -9,27 +9,25 @@
 import Foundation
 
 struct Dialogue: Hashable, Codable, Identifiable {
-    internal let id: Int
-    internal let phrases: [String]
+    private enum CodingKeys: String, CodingKey {
+        case id, phrases
+    }
+    
     private let botPhrases: [String]
     private let userPhrases: [String]
-    
     private var index: Int = 0
-    internal var isLastUserPhraseExpected: Bool = true
     
+    internal let id: Int
+    internal let phrases: [String]
+    
+    internal var isLastUserPhraseExpected: Bool = true
     internal var lastPhraseUserSaid: String = "" {
         didSet {
             if let expectedUserPhrase = getCurrentUserPhrase() {
-                isLastUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
+                // Less than x changes needed to match user input
+                isLastUserPhraseExpected = Tool.levenshtein(aStr: lastPhraseUserSaid, bStr: expectedUserPhrase) < 7
             }
         }
-    }
-    internal var noMorePhrasesInDialogue: Bool {
-        return getCurrentBotPhrase() == nil
-    }
-    
-    private enum CodingKeys: String, CodingKey {
-        case id, phrases
     }
     
     init(id: Int, phrases: [String]) {
@@ -49,7 +47,7 @@ struct Dialogue: Hashable, Codable, Identifiable {
         self.userPhrases = stride(from: 1, to: phrases.count, by: 2).map { phrases[$0] }
     }
     
-    func encode(to encoder: Encoder) throws {
+    internal func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(id, forKey: .id)
         try container.encode(phrases, forKey: .phrases)
@@ -83,10 +81,6 @@ struct Dialogue: Hashable, Codable, Identifiable {
                 return ConstantPhrase.couldYouRepeatWhatYouSaid
             }
         }
-    }
-    
-    private func isPhraseExpected(phraseSaid: String, expectedPhrase: String) -> Bool {
-        return Tool.levenshtein(aStr: phraseSaid, bStr: expectedPhrase) < 7
     }
     
     // MARK: - Actions
