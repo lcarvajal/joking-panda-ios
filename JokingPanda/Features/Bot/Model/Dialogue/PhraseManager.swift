@@ -11,6 +11,7 @@ import Foundation
 class PhraseManager {
     private let dialogue: Dialogue
     private var index: Int
+    private var isLastUserPhraseExpected: Bool
     
     internal var currentIndex: Int { return index }
     internal var lastPhraseUserSaid: String
@@ -21,19 +22,17 @@ class PhraseManager {
     init(dialogue: Dialogue){
         self.dialogue = dialogue
         self.index = 0
+        self.isLastUserPhraseExpected = true
         self.lastPhraseUserSaid = ""
     }
 
     internal func moveOnInDialogueIfNeeded() {
         guard let expectedUserPhrase = dialogue.getPhrase(for: .currentUser, index: index) else {
-            debugPrint("unable to retrieve phrase for user")
-            return }
+            return
+        }
         
-        print("expected user phrase: \(expectedUserPhrase)")
-        print("last phrase user said: \(lastPhraseUserSaid)")
-        
-        let isUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
-        if isUserPhraseExpected {
+        isLastUserPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: expectedUserPhrase)
+        if isLastUserPhraseExpected {
             index += 1
         }
         else {
@@ -42,7 +41,20 @@ class PhraseManager {
     }
     
     internal func getBotPhrase() -> String? {
-        dialogue.getPhrase(for: .bot, index: index)
+        guard let botPhrase = dialogue.getPhrase(for: .bot, index: index) else {
+            return nil
+        }
+        
+        if isLastUserPhraseExpected {
+            return botPhrase
+        }
+        else {
+            guard let expectedUserPhrase = dialogue.getPhrase(for: .currentUser, index: index) else {
+                return botPhrase
+            }
+            let botResponse = BotResponse(userPhraseWasExpected: isLastUserPhraseExpected, expectedUserPhrase: expectedUserPhrase, nextBotPhrase: botPhrase)
+            return botResponse.phrase
+        }
     }
     
     internal func getExpectedUserPhrase() -> String? {
