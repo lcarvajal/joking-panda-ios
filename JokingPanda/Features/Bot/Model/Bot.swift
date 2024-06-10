@@ -170,6 +170,7 @@ extension Bot: LaughRecognizerDelegate {
         action = .stopped
         triggerActionUpdate()
         triggerPhraseHistoryUpdate()
+        stopEverything()
     }
     
     func laughRecognizerErrorDidOccur(error: any Error) {
@@ -217,8 +218,7 @@ extension Bot: SpeechSynthesizerDelegate {
         action = .stopped
         triggerActionUpdate()
         
-        if !dialogueManager.isStartOfDialogue {
-            let expectedPhrase = dialogueManager.getExpectedUserPhrase()
+        if let expectedPhrase = dialogueManager.getExpectedUserPhrase() {
             listen(expectedPhrase: expectedPhrase)
         }
         else {
@@ -242,7 +242,7 @@ extension Bot: AudioPlayerDelegate {
         triggerActionUpdate()
         
         if let expectedPhrase = dialogueManager.getExpectedUserPhrase() {
-            listen(expectedPhrase: dialogueManager.getExpectedUserPhrase())
+            listen(expectedPhrase: expectedPhrase)
         }
         else {
             listenForLaughter()
