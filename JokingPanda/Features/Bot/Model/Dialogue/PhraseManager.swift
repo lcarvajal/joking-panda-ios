@@ -10,39 +10,46 @@ import Foundation
 
 class PhraseManager {
     private var index: Int
-    private var phrases: [String]
-    private var lastPhraseWasExpected: Bool {
-        if lastPhraseUserSaid.isEmpty {
-            return true
-        }
-        else {
-            return Tool.levenshtein(aStr: lastPhraseUserSaid, bStr: currentPhrase) < 7
-        }
-    }
-    private var personSayingPhrase: Person { return index % 2 == 0 ? Person.bot : Person.currentUser }
+    private var botPhrases: [String]
+    private var userPhrases: [String]
     
     internal var currentIndex: Int { return index }
-    internal var currentPhrase: String { return phrases[index] }
     internal var lastPhraseUserSaid: String
-    internal var noMorePhrasesToQueue: Bool { return index > (phrases.count - 1) }
+    internal var noMorePhrasesInDialogue: Bool { return index > (botPhrases.count - 1) }
     
     init(phrases: [String]){
-        self.phrases = phrases
-        
+        self.botPhrases = stride(from: 0, to: phrases.count, by: 2).map { phrases[$0] }
+        self.userPhrases = stride(from: 1, to: phrases.count, by: 2).map { phrases[$0] }
         self.index = 0
         self.lastPhraseUserSaid = ""
     }
     
-    internal func queueNextPhraseIfNeeded() {
-        if personSayingPhrase == .currentUser && !lastPhraseWasExpected {
-            debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
+    internal func moveOnInDialogueIfNeeded() {
+        let phraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: userPhrases[index])
+        if phraseExpected {
+            index += 1
         }
         else {
-            index += 1
+            debugPrint("Not queing next phrase in dialogue since last phrase was not expected.")
         }
     }
     
-    internal func getBotResponse() -> BotResponse {
-        return BotResponse(userSaidSomethingExpected: lastPhraseWasExpected, nextPhraseInDialog: currentPhrase)
+    internal func getBotPhrase() -> BotResponse {
+        if index == 0 {
+            // Start of dialogue
+            return BotResponse(userSaidSomethingExpected: true, nextPhraseInDialog: botPhrases[index])
+        }
+        else {
+            let lastPhraseExpected = isPhraseExpected(phraseSaid: lastPhraseUserSaid, expectedPhrase: userPhrases[index - 1])
+            return BotResponse(userSaidSomethingExpected: lastPhraseExpected, nextPhraseInDialog: botPhrases[index])
+        }
+    }
+    
+    internal func getExpectedUserPhrase() -> String? {
+        return index < userPhrases.count ? userPhrases[index] : nil
+    }
+    
+    private func isPhraseExpected(phraseSaid: String, expectedPhrase: String) -> Bool {
+        return Tool.levenshtein(aStr: phraseSaid, bStr: expectedPhrase) < 7
     }
 }
