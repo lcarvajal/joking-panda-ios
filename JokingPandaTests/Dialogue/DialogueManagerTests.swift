@@ -39,44 +39,43 @@ final class DialogueManagerTests: XCTestCase {
         XCTAssertTrue(dialogueManager.isStartOfDialogue)
     }
     
-    func test_queueNextPhrase_shouldBeNextPhraseInPhrases() {
+    func test_moveOnInDialogueIfNeeded_withCorrectUserInput_shouldBeNextPhrase() {
         dialogueManager.startDialogue()
-        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[0])
+        XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogues[0].phrases[0])
+        XCTAssertEqual(dialogueManager.getExpectedUserPhrase(), mockDialogues[0].phrases[1])
         
-        dialogueManager.queueNextPhraseIfNeeded()
-        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[1])
+        dialogueManager.lastPhraseUserSaid = mockDialogues[0].phrases[1]
+        dialogueManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogues[0].phrases[2])
+        XCTAssertEqual(dialogueManager.getExpectedUserPhrase(), mockDialogues[0].phrases[3])
         
-        dialogueManager.queueNextDialogue()
-        dialogueManager.startDialogue()
-        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[1].phrases[0])
-        
-        dialogueManager.queueNextPhraseIfNeeded()
-        dialogueManager.queueNextPhraseIfNeeded()
-        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[1].phrases[2])
+        dialogueManager.lastPhraseUserSaid = mockDialogues[0].phrases[3]
+        dialogueManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogues[0].phrases[4])
     }
     
-    func test_queueNextDialogue_shouldUpdateCurrentPhraseFromNextDialogue() {
+    func test_queueNextDialogue_shouldBeFirstPhraseInNextDialogue() {
         for mockDialogue in mockDialogues {
             dialogueManager.startDialogue()
-            XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogue.phrases[0])
+            XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogue.phrases[0])
             dialogueManager.stopDialogue()
             dialogueManager.queueNextDialogue()
         }
         
         dialogueManager.startDialogue()
-        XCTAssertEqual(dialogueManager.getCurrentPhrase(), mockDialogues[0].phrases[0])
+        XCTAssertEqual(dialogueManager.getBotPhrase(), mockDialogues[0].phrases[0])
     }
     
     func test_getBotResponse_withDynamicUserInput_shouldReturnDynamicResponse() {
         dialogueManager.startDialogue()
-        dialogueManager.queueNextPhraseIfNeeded() // User
         dialogueManager.lastPhraseUserSaid = "What?" // Saying something not according to dialogue
-        XCTAssertEqual(dialogueManager.getBotResponsePhrase(), ConstantPhrase.explainKnockKnock)
+        dialogueManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(dialogueManager.getBotPhrase(), ConstantPhrase.explainKnockKnock)
         
         dialogueManager.lastPhraseUserSaid = "Who's there?"
-        dialogueManager.queueNextPhraseIfNeeded() // Bot
-        dialogueManager.queueNextPhraseIfNeeded() // User
+        dialogueManager.moveOnInDialogueIfNeeded()
         dialogueManager.lastPhraseUserSaid = "What?" // Saying something not according to dialogue
-        XCTAssertEqual(dialogueManager.getBotResponsePhrase(), ConstantPhrase.couldYouRepeatWhatYouSaid)
+        dialogueManager.moveOnInDialogueIfNeeded()
+        XCTAssertEqual(dialogueManager.getBotPhrase(), ConstantPhrase.couldYouRepeatWhatYouSaid)
     }
 }
