@@ -4,6 +4,8 @@
 //
 /**
  Dialogue stores the phrases for a scripted back-and-forth conversation. For example, a knock-knock jokes or a riddle.
+ `phrases` get organized into  `botPhrases` (odd indeces) and `userPhrases` (even indeces) on initialization.
+ `index` keeps track of the position in the dialogue for `botPhrases` and `userPhrases`.
  */
 
 import Foundation
@@ -55,10 +57,17 @@ struct Dialogue: Hashable, Codable, Identifiable {
     
     // MARK: - Accessor methods
     
+    /**
+     - returns: String? user phrase at the current index
+     */
     internal func getCurrentUserPhrase() -> String? {
         return (index < userPhrases.count) ? userPhrases[index] : nil
     }
     
+    /**
+     If a user says something unexpected, it will provide  a dynamic response instead of the phrase. If a user says something expected, it will return the bot phrase at the current index.
+     - returns: String? bot phrase.
+     */
     internal func getCurrentBotPhrase() -> String? {
         guard index < botPhrases.count else {
             return nil
