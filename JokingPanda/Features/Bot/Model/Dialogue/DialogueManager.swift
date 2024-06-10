@@ -14,9 +14,9 @@ class DialogueManager {
     private var currentDialogue: Dialogue { return dialogues[index] }
     private let dialogues: [Dialogue]
     private var index = 0
-    private var isDialogging = false
     private var phraseManager: PhraseManager?
     
+    internal var isDialogging = false
     internal var isStartOfDialogue: Bool { return phraseManager?.currentIndex == 0 }
     internal var lastPhraseUserSaid: String = "" {
         didSet {
@@ -72,11 +72,11 @@ class DialogueManager {
     /**
      Moves on to the next phrase within the dialogue.
      */
-    internal func queueNextPhraseIfNeeded() {
+    internal func moveOnInDialogueIfNeeded() {
         guard let phraseManager = phraseManager else { return }
         
-        phraseManager.queueNextPhraseIfNeeded()
-        if phraseManager.noMorePhrasesToQueue {
+        phraseManager.moveOnInDialogueIfNeeded()
+        if phraseManager.noMorePhrasesInDialogue {
             stopDialogue()
         }
     }
@@ -84,18 +84,18 @@ class DialogueManager {
     /**
      - returns: String current phrase in current dialogue.
      */
-    internal func getCurrentPhrase() -> String {
-        guard let phraseManager = phraseManager else { return "" }
-        return phraseManager.currentPhrase
+    internal func getExpectedUserPhrase() -> String? {
+        guard let phraseManager = phraseManager else { return nil }
+        return phraseManager.getExpectedUserPhrase()
     }
     
     /**
      - returns: String bot response phrase if user says something that strays from current dialogue.
      */
-    internal func getBotResponsePhrase() -> String? {
+    internal func getBotPhrase() -> String? {
         guard let phraseManager = phraseManager, isDialogging else { return nil }
         
-        let botResponse = phraseManager.getBotResponse()
+        let botResponse = phraseManager.getBotPhrase()
         return botResponse.phrase
     }
     
