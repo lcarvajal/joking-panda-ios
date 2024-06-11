@@ -28,6 +28,16 @@ struct Dialogue: Hashable, Codable, Identifiable {
             if let expectedUserPhrase = getCurrentUserPhrase() {
                 // Less than x changes needed to match user input
                 isLastUserPhraseExpected = Tool.levenshtein(aStr: lastPhraseUserSaid, bStr: expectedUserPhrase) < 7
+                
+                if !isLastUserPhraseExpected {
+                    let numberOfWordsInExpectedPhrase = expectedUserPhrase.split(separator: " ").count
+                    let numberOfMatchingWords = Tool.countMatchingWords(input: lastPhraseUserSaid, expected: expectedUserPhrase)
+                    
+                    if (Double(numberOfMatchingWords) / Double(numberOfWordsInExpectedPhrase)) >= 0.5 {
+                        isLastUserPhraseExpected = true
+                        return
+                    }
+                }
             }
         }
     }
