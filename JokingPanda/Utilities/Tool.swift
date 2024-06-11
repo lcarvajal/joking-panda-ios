@@ -8,11 +8,16 @@
 import Foundation
 
 struct Tool {
-    
     static func countMatchingWords(input: String, expected: String) -> Int {
-        let inputWords = Set(input.lowercased().split(separator: " "))
-        let expectedWords = Set(expected.lowercased().split(separator: " "))
+        // Remove punctuation and convert to lowercase
+        let cleanedInput = Tool.removePunctuation(from: input).lowercased()
+        let cleanedExpected = Tool.removePunctuation(from: expected).lowercased()
         
+        // Split into sets of words
+        let inputWords = Set(cleanedInput.split(separator: " "))
+        let expectedWords = Set(cleanedExpected.split(separator: " "))
+        
+        // Find the intersection of the sets
         let matchingWords = inputWords.intersection(expectedWords)
         return matchingWords.count
     }
