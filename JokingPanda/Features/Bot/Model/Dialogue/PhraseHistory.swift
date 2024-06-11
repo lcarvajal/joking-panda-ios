@@ -28,18 +28,6 @@ class PhraseHistory {
         }
     }
     
-    /**
-     Appends the loudness score with a description to `history` in a newline.
-     */
-    internal func addLaughter(loudness: Int) {
-        history += "\n🗣️ Laugh score: \(loudness) / 5"
-        // FIXME: - Add event tracking back
-//        Event.track(Constant.Event.laughCaptured, properties: [
-//            Constant.Event.Property.actId: stageManager.lastAct.id,
-//            Constant.Event.Property.laughScore: loudness
-//          ])
-    }
-    
     internal func getHistory() -> String {
         return history
     }
