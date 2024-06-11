@@ -9,6 +9,14 @@ import Foundation
 
 struct Tool {
     
+    static func countMatchingWords(input: String, expected: String) -> Int {
+        let inputWords = Set(input.lowercased().split(separator: " "))
+        let expectedWords = Set(expected.lowercased().split(separator: " "))
+        
+        let matchingWords = inputWords.intersection(expectedWords)
+        return matchingWords.count
+    }
+    
     // Get the number of character changes to get from string a to string b
     static func levenshtein(aStr: String, bStr: String) -> Int {
         if aStr.count < 1 || bStr.count < 1 {
