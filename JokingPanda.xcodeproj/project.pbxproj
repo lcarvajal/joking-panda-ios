@@ -251,7 +251,6 @@
 		8D5947B92BEF9DA700EAF79A /* success-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947B72BEF9DA700EAF79A /* success-piano.m4a */; };
 		8D5947BB2BEF9DB600EAF79A /* high-c-piano.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */; };
 		8D5947BD2BEFAABD00EAF79A /* Mixpanel in Frameworks */ = {isa = PBXBuildFile; productRef = 8D5947BC2BEFAABD00EAF79A /* Mixpanel */; };
-		8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */; };
 		8D70B2092C13ABD5009ACEAA /* SpeechRecognizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */; };
 		8D70B20B2C13B52C009ACEAA /* SpeechSynthesizerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */; };
 		8D70B2112C14BBB5009ACEAA /* DialogueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */; };
@@ -348,7 +347,6 @@
 		8DE4C1DA2AFC335500B36205 /* OverlayButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */; };
 		8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */; };
 		8DE87AAA2BE94174008E6AF2 /* Bot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AA92BE94174008E6AF2 /* Bot.swift */; };
-		8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */; };
 		8DE87AAE2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */; };
 		8DE87AB12BEA9646008E6AF2 /* PhraseHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE87AB02BEA9646008E6AF2 /* PhraseHistory.swift */; };
 /* End PBXBuildFile section */
@@ -629,7 +627,6 @@
 		8D5947B62BEF9DA700EAF79A /* low-c-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "low-c-piano.m4a"; sourceTree = "<group>"; };
 		8D5947B72BEF9DA700EAF79A /* success-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "success-piano.m4a"; sourceTree = "<group>"; };
 		8D5947BA2BEF9DB600EAF79A /* high-c-piano.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "high-c-piano.m4a"; sourceTree = "<group>"; };
-		8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizerTests.swift; sourceTree = "<group>"; };
 		8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizerTests.swift; sourceTree = "<group>"; };
 		8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizerTests.swift; sourceTree = "<group>"; };
 		8D70B2102C14BBB5009ACEAA /* DialogueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueManagerTests.swift; sourceTree = "<group>"; };
@@ -727,7 +724,6 @@
 		8DE4C1D92AFC335500B36205 /* OverlayButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayButtons.swift; sourceTree = "<group>"; };
 		8DE4C1DD2AFC3E2900B36205 /* BigButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigButtonStyle.swift; sourceTree = "<group>"; };
 		8DE87AA92BE94174008E6AF2 /* Bot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bot.swift; sourceTree = "<group>"; };
-		8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaughRecognizer.swift; sourceTree = "<group>"; };
 		8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechSynthesizer.swift; sourceTree = "<group>"; };
 		8DE87AB02BEA9646008E6AF2 /* PhraseHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1196,7 +1192,6 @@
 			isa = PBXGroup;
 			children = (
 				8D2EFD3B2C124787006AC2F2 /* AudioPlayerTests.swift */,
-				8D70B2062C13A932009ACEAA /* LaughRecognizerTests.swift */,
 				8D70B2082C13ABD5009ACEAA /* SpeechRecognizerTests.swift */,
 				8D70B20A2C13B52C009ACEAA /* SpeechSynthesizerTests.swift */,
 			);
@@ -1341,7 +1336,6 @@
 			isa = PBXGroup;
 			children = (
 				8D2EFD392C0EF4E5006AC2F2 /* AudioPlayer.swift */,
-				8DE87AAB2BEA8C4B008E6AF2 /* LaughRecognizer.swift */,
 				8D0DDFEC2B0BE90900A3A8F8 /* SpeechRecognizer.swift */,
 				8DE87AAD2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift */,
 			);
@@ -1829,7 +1823,6 @@
 				8DE87AAE2BEA8FFB008E6AF2 /* SpeechSynthesizer.swift in Sources */,
 				8D4CB9EC2AED1F7F00B7A00F /* Animation.swift in Sources */,
 				8D4CB9EA2AEBFD8700B7A00F /* AuthorizationsView.swift in Sources */,
-				8DE87AAC2BEA8C4B008E6AF2 /* LaughRecognizer.swift in Sources */,
 				8DE4C1DE2AFC3E2900B36205 /* BigButtonStyle.swift in Sources */,
 				8D59460B2BEC139E00EAF79A /* ConstantPhrase.swift in Sources */,
 				8D0DDFEF2B0BED0600A3A8F8 /* AVSpeechSynthesizer.swift in Sources */,
@@ -1852,7 +1845,6 @@
 			files = (
 				8DC97D722AE67101002CEA1E /* FileTests.swift in Sources */,
 				8D70B2092C13ABD5009ACEAA /* SpeechRecognizerTests.swift in Sources */,
-				8D70B2072C13A932009ACEAA /* LaughRecognizerTests.swift in Sources */,
 				8D2EFD3C2C124787006AC2F2 /* AudioPlayerTests.swift in Sources */,
 				8D70B2132C14CF99009ACEAA /* DialogueTests.swift in Sources */,
 				8D70B20B2C13B52C009ACEAA /* SpeechSynthesizerTests.swift in Sources */,

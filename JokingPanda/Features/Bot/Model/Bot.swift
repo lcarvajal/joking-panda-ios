@@ -15,7 +15,6 @@ protocol BotDelegate: AnyObject {
     func currentPhraseDidUpdate(phrase: String)
     func errorDidOccur(error: Error)
     func phraseHistoryDidUpdate(phraseHistory: String)
-    func laughLoudnessDidUpdate(loudness: Float)
 }
 
 class Bot: NSObject, ObservableObject  {
@@ -26,23 +25,20 @@ class Bot: NSObject, ObservableObject  {
     private var dialogueManager: DialogueManager
     
     private let audioPlayer: AudioPlayer
-    private let laughRecognizer: LaughRecognizer
     private let speechRecognizer: SpeechRecognizer
     private var speechSynthesizer: SpeechSynthesizer    // Says phrases outloud
     
-    init(audioPlayer: AudioPlayer = AudioPlayer(), dialogueHistory: PhraseHistory = PhraseHistory(), laughRecognizer: LaughRecognizer = LaughRecognizer(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
+    init(audioPlayer: AudioPlayer = AudioPlayer(), dialogueHistory: PhraseHistory = PhraseHistory(), speechRecognizer: SpeechRecognizer = SpeechRecognizer(), mouth: SpeechSynthesizer = SpeechSynthesizer()) {
         self.dialogueManager = DialogueManager.knockKnockJokesInstance()
         self.phraseHistory = PhraseHistory()
         
         self.audioPlayer = audioPlayer
-        self.laughRecognizer = laughRecognizer
         self.speechRecognizer = speechRecognizer
         self.speechSynthesizer = mouth
         
         super.init()
         
         audioPlayer.delegate = self
-        laughRecognizer.delegate = self
         speechRecognizer.delegate = self
         mouth.delegate = self
         
@@ -75,7 +71,6 @@ class Bot: NSObject, ObservableObject  {
         triggerActionUpdate()
         
         audioPlayer.stop()
-        laughRecognizer.stop()
         speechSynthesizer.stop()
         speechRecognizer.stop()
     }
@@ -103,15 +98,7 @@ class Bot: NSObject, ObservableObject  {
     private func listen(expectedPhrase: String?) {
         action = .listening
         triggerActionUpdate()
-        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
         speechRecognizer.start(expectedPhrase: expectedPhrase)
-    }
-    
-    private func listenForLaughter() {
-        action = .listeningToLaugher
-        triggerActionUpdate()
-        triggerCurrentPhraseUpdate(phrase: "Laugh meter: 0", person: .currentUser)
-        laughRecognizer.start(for: .seconds(3))
     }
     
     /**
@@ -157,27 +144,11 @@ class Bot: NSObject, ObservableObject  {
     }
 }
 
-extension Bot: LaughRecognizerDelegate {
-    func laughRecognizerIsRecognizing(loudness: Float) {
-        delegate?.laughLoudnessDidUpdate(loudness: loudness)
-    }
-    
-    func laughRecognizerDidRecognize(loudness: Float) {
-        phraseHistory.addLaughter(loudness: Int(loudness))
-        
-        delegate?.laughLoudnessDidUpdate(loudness: loudness)
-        action = .stopped
-        triggerActionUpdate()
-        triggerPhraseHistoryUpdate()
-        stopEverything()
-    }
-    
-    func laughRecognizerErrorDidOccur(error: any Error) {
-        delegate?.errorDidOccur(error: error)
-    }
-}
-
 extension Bot: SpeechRecognizerDelegate {
+    func speechRecognizerDidStart() {
+        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
+    }
+    
     func speechRecognizerIsRecognizing(_ phrase: String) {
         triggerCurrentPhraseUpdate(phrase: phrase, person: .currentUser)
     }
@@ -221,7 +192,7 @@ extension Bot: SpeechSynthesizerDelegate {
             listen(expectedPhrase: expectedPhrase)
         }
         else {
-            listenForLaughter()
+            stopEverything()
         }
     }
     
@@ -244,7 +215,7 @@ extension Bot: AudioPlayerDelegate {
             listen(expectedPhrase: expectedPhrase)
         }
         else {
-            listenForLaughter()
+            stopEverything()
         }
     }
     

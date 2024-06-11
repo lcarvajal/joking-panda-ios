@@ -10,6 +10,7 @@ import Foundation
 import Speech
 
 protocol SpeechRecognizerDelegate: AnyObject {
+    func speechRecognizerDidStart()
     func speechRecognizerIsRecognizing(_ phrase: String)
     func speechRecognizerDidRecognize(_ phrase: String)
     func speechRecognizerErrorDidOccur(error: Error)
@@ -117,6 +118,7 @@ class SpeechRecognizer: NSObject {
         
         do {
             try audioEngine.start()
+            delegate?.speechRecognizerDidStart()
         }
         catch {
             throw SpeechRecognizerError.audioEngineDidNotStart
