@@ -146,7 +146,12 @@ class Bot: NSObject, ObservableObject  {
 
 extension Bot: SpeechRecognizerDelegate {
     func speechRecognizerDidStart() {
-        triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
+        if dialogueManager.lastPhraseUserSaid.isEmpty {
+            triggerCurrentPhraseUpdate(phrase: "(Start talking)", person: .currentUser)
+        }
+        else {
+            triggerCurrentPhraseUpdate(phrase: "", person: .currentUser)
+        }
     }
     
     func speechRecognizerIsRecognizing(_ phrase: String) {
